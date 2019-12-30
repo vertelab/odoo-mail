@@ -28,7 +28,7 @@
     'description': """Only checks for emails older than 3 days. Currently only supports IMAP""",
     'author': 'Vertel AB',
     'website': 'http://www.vertel.se',
-    'depends': ['base_setup'],
+    'depends': ['fetchmail'],
     'data': [],
     'auto_install': True,
 }
