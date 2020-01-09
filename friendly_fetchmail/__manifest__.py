@@ -29,7 +29,9 @@
     'author': 'Vertel AB',
     'website': 'http://www.vertel.se',
     'depends': ['fetchmail'],
-    'data': [],
+    'data': [
+        'security/ir.model.access.csv',
+    ],
     'auto_install': True,
 }
 # vim:expandtab:smartindent:tabstop=4s:softtabstop=4:shiftwidth=4:

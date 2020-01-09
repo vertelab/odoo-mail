@@ -70,16 +70,15 @@ class FetchmailServer(models.Model):
             if server.type == 'imap':
                 try:
                     imap_server = server.connect()
-                    imap_server.select()
+                    # readonly to make sure we don't change any mails
+                    imap_server.select(readonly=True)
                     # Check only emails for the past 3 days instead of checking unseen mails
-                    # result, data = imap_server.search(None, '(UNSEEN)')
-                    result, data = imap_server.search(None, '(SINCE "%s")' % (datetime.datetime.now() - datetime.timedelta(days=3)).strftime('%d-%m-%Y'))
+                    result, data = imap_server.search(None, '(SINCE "%s")' % (datetime.datetime.now() - datetime.timedelta(days=3)).strftime('%d-%b-%Y'))
                     for num in data[0].split():
                         res_id = None
                         # check if message has already been processed
                         if not self.env['fetchmail.server.processed'].search([('msg_id','=',num)]):
                             result, data = imap_server.fetch(num, '(RFC822)')
-                            # imap_server.store(num, '-FLAGS', '\\Seen')
                             try:
                                 # save a record of having processed the message
                                 self.env['fetchmail.server.processed'].create({'msg_id': num})
@@ -93,7 +92,6 @@ class FetchmailServer(models.Model):
                                     'active_ids': [res_id],
                                     'active_model': self.env.context.get("thread_model", server.object_id.model)
                                 }).run()
-                            # imap_server.store(num, '+FLAGS', '\\Seen')
                             self._cr.commit()
                             count += 1
                     _logger.info("Fetched %d email(s) on %s server %s; %d succeeded, %d failed.", count, server.type, server.name, (count - failed), failed)
