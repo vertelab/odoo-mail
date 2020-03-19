@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+  <t t-name="mail.Composer.Jisti" t-extend="mail.Composer">
+    <t t-jquery=".o_chatter_composer_tools" t-operation="append">
+      <button tabindex="3" class="btn btn-secondary fa fa-desktop o_composer_button_jitsi" type="button" data-toggle="popover" title="Jitsi" aria-label="Jitsi" />
+    </t>
+  </t>
+</templates>
