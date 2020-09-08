@@ -1,0 +1,36 @@
+<odoo>
+
+    <record id="xpath_setup_api_server" model="ir.ui.view">
+        <field name="name">xpath_setup_api_server</field>
+        <field name="model">ir.mail_server</field>
+        <field name="inherit_id" ref="base.ir_mail_server_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="after">
+                <field string="Server Type" name="server_type"/>
+            </xpath>
+
+            <xpath expr="//group[2]" position="attributes">
+                <attribute name="attrs">{'invisible': [('server_type', '=', 'rest')]}</attribute>
+            </xpath>
+
+            <xpath expr="//group[1]" position="after">
+                <group name="api_parameter" col="4" attrs="{'invisible': [('server_type', '!=', 'rest')]}">
+                    <separator string="Connection Information" colspan="4"/>
+                    <field name="base_url" required="1"/>
+                    <field name="rest_port"/>
+                    <field name="resource_path" required="1"/>
+                </group>
+            </xpath>
+            <xpath expr="//button[@name='test_smtp_connection']" position="attributes">
+                <attribute name="attrs">{'invisible': [('server_type', '=', 'rest')]}</attribute>
+            </xpath>
+            <xpath expr="//group[4]" position="after">
+                <group>
+                    <button name="test_rest_connection" type="object" string="Test REST Connection"
+                            icon="fa-television" attrs="{'invisible': [('server_type', '!=', 'rest')]}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
