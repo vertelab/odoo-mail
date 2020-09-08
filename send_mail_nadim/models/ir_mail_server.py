@@ -2,9 +2,11 @@
 from email import encoders
 from email.mime.base import MIMEBase
 import requests
+from urllib import request
 import json
 import datetime
 import logging
+import ssl
 
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import except_orm, UserError
@@ -47,7 +49,22 @@ class IrMailServer(models.Model):
                 else:
                     url = '{}{}'.format(server.base_url, server.resource_path)
 
-                response = requests.get(url)
+                # START TEMP CODE TO TEST
+                ctx = ssl.create_default_context()
+                ctx.check_hostname = False
+                ctx.verify_mode = ssl.CERT_NONE
+                headers = {
+                    'AF-Environment': 'T2',
+                    'AF-SystemId': 'AFCRM',
+                    'AF-TrackingId': '123435436',
+                }
+                url = url + '?client_id=da03472cd17e4ce4bb2d017156db7156&client_secret=B4BC32F21a314Cb9B48877989Cc1e3b8'
+                _logger.warn("url: %s" % url)
+                # END TEMP CODE TO TEST
+                req = request.Request(url=url, headers=headers)
+                response = request.urlopen(req, context=ctx).read()
+                _logger.warn("response: %s" % response)
+                # response = requests.get(url, context=ctx)
                 if response.status_code != 200:
                     raise UserError(_("Connection Test Failed! Can't connect to server!"))
             except UserError as e:
