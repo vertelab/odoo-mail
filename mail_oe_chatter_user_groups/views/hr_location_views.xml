@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="hr_location_view_form_chatter">
+        <field name="name">hr.location.view.form</field>
+        <field name="model">hr.location</field>
+        <field name="inherit_id" ref="hr_office.view_location_form"/>
+        <field name="groups_id" eval="[(4,ref('mail_oe_chatter_user_groups.oe_chatter_user'))]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="after">
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
