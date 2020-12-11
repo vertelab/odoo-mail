@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="mail.res_partner_view_form_inherit_mail">
+            <field name="name">res.partner.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='email']" position="replace">
+                        <field name="is_blacklisted" invisible="1"/>
+                        <label for="email" class="oe_inline"/>
+                        <div class="o_row o_row_readonly">
+                            <i class="fa fa-ban" style="color: red;" role="img" title="This email is blacklisted for mass mailing" aria-label="Blacklisted" attrs="{'invisible': [('is_blacklisted', '=', False)]}" groups="base.group_user"/>
+                            <field name="email" widget="email"/>
+                        </div>
+                    </xpath>
+                    <xpath expr="//page[@name='sales_purchases']//field[@name='user_id']" position="after">
+                        <field name="message_bounce" groups="base.group_no_one"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="res_partner_view_form_chatter">
+            <field name="name">res.partner.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="mail.res_partner_view_form_inherit_mail"/>
+            <field name="groups_id" eval="[(4,ref('mail_oe_chatter_user_groups.oe_chatter_user'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="after">
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
