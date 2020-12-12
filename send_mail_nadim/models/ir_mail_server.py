@@ -77,7 +77,7 @@ class IrMailServer(models.Model):
 
                 response = requests.get(
                     url,
-                    headers=self.get_headers,
+                    headers=self.get_headers(),
                     params=querystring,
                     verify=False)
 
