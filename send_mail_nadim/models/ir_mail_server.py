@@ -5,6 +5,8 @@ import requests
 import json
 import datetime
 import logging
+from odoo.tools import pycompat
+import uuid
 
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import except_orm, UserError
@@ -21,6 +23,18 @@ class IrMailServer(models.Model):
         ('rest', 'Rest API')], 'Server Type',
         default='smtp', required=True)
 
+    client_secret = fields.Char(string='Client Secret',
+                                required=True)
+    client_id = fields.Char(string='Client ID',
+                            required=True)
+    environment = fields.Selection(selection=[('U1', 'U1'),
+                                              ('I1', 'I1'),
+                                              ('T1', 'IT'),
+                                              ('T2', 'T2'),
+                                              ('PROD', 'PROD'), ],
+                                   string='Environment',
+                                   default='u1',
+                                   required=True)
     base_url = fields.Char(string='Restful API Url', help="Base URL of API")
     rest_port = fields.Integer(string='Port', default=5000)
     resource_path = fields.Char()
@@ -38,6 +52,17 @@ class IrMailServer(models.Model):
             if not self.resource_path:
                 self.resource_path = "/"
 
+    def get_headers(self):
+        tracking_id = pycompat.text_type(uuid.uuid1())
+        headers = {
+            'x-amf-mediaType': "application/json",
+            'AF-TrackingId': tracking_id,
+            'AF-SystemId': "AF-SystemId",
+            'AF-EndUserId': "AF-EndUserId",
+            'AF-Environment': self.environment,
+        }
+        return headers
+
     @api.multi
     def test_rest_connection(self):
         for server in self:
@@ -47,7 +72,15 @@ class IrMailServer(models.Model):
                 else:
                     url = '{}{}'.format(server.base_url, server.resource_path)
 
-                response = requests.get(url)
+                querystring = {"client_secret": self.client_secret,
+                       "client_id": self.client_id}
+
+                response = requests.get(
+                    url,
+                    headers=self.get_headers,
+                    params=querystring,
+                    verify=False)
+
                 if response.status_code != 200:
                     raise UserError(_("Connection Test Failed! Can't connect to server!"))
             except UserError as e:
