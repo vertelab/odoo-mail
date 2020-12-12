@@ -33,7 +33,7 @@ class IrMailServer(models.Model):
                                               ('T2', 'T2'),
                                               ('PROD', 'PROD'), ],
                                    string='Environment',
-                                   default='u1',
+                                   default='T2',
                                    required=True)
     base_url = fields.Char(string='Restful API Url', help="Base URL of API")
     rest_port = fields.Integer(string='Port', default=5000)
