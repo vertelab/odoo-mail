@@ -20,6 +20,9 @@
                     <field name="base_url" required="1"/>
                     <field name="rest_port"/>
                     <field name="resource_path" required="1"/>
+                    <field name="client_id"/>
+                    <field name="client_secret"/>
+                    <field name="environment"/>
                 </group>
             </xpath>
             <xpath expr="//button[@name='test_smtp_connection']" position="attributes">

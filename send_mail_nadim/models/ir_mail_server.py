@@ -6,7 +6,9 @@ from urllib import request
 import json
 import datetime
 import logging
-import ssl
+from odoo.tools import pycompat
+import uuid
+import base64
 
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import except_orm, UserError
@@ -23,6 +25,18 @@ class IrMailServer(models.Model):
         ('rest', 'Rest API')], 'Server Type',
         default='smtp', required=True)
 
+    client_secret = fields.Char(string='Client Secret',
+                                required=True)
+    client_id = fields.Char(string='Client ID',
+                            required=True)
+    environment = fields.Selection(selection=[('U1', 'U1'),
+                                              ('I1', 'I1'),
+                                              ('T1', 'IT'),
+                                              ('T2', 'T2'),
+                                              ('PROD', 'PROD'), ],
+                                   string='Environment',
+                                   default='T2',
+                                   required=True)
     base_url = fields.Char(string='Restful API Url', help="Base URL of API")
     rest_port = fields.Integer(string='Port', default=5000)
     resource_path = fields.Char()
@@ -40,6 +54,17 @@ class IrMailServer(models.Model):
             if not self.resource_path:
                 self.resource_path = "/"
 
+    def get_headers(self):
+        tracking_id = pycompat.text_type(uuid.uuid1())
+        headers = {
+            'x-amf-mediaType': "application/json",
+            'AF-TrackingId': tracking_id,
+            'AF-SystemId': "AF-SystemId",
+            'AF-EndUserId': "AF-EndUserId",
+            'AF-Environment': self.environment,
+        }
+        return headers
+
     @api.multi
     def test_rest_connection(self):
         for server in self:
@@ -49,22 +74,15 @@ class IrMailServer(models.Model):
                 else:
                     url = '{}{}'.format(server.base_url, server.resource_path)
 
-                # START TEMP CODE TO TEST
-                ctx = ssl.create_default_context()
-                ctx.check_hostname = False
-                ctx.verify_mode = ssl.CERT_NONE
-                headers = {
-                    'AF-Environment': 'T2',
-                    'AF-SystemId': 'AFCRM',
-                    'AF-TrackingId': '123435436',
-                }
-                url = url + '?client_id=da03472cd17e4ce4bb2d017156db7156&client_secret=B4BC32F21a314Cb9B48877989Cc1e3b8'
-                _logger.warn("url: %s" % url)
-                # END TEMP CODE TO TEST
-                req = request.Request(url=url, headers=headers)
-                response = request.urlopen(req, context=ctx).read()
-                _logger.warn("response: %s" % response)
-                # response = requests.get(url, context=ctx)
+                querystring = {"client_secret": self.client_secret,
+                       "client_id": self.client_id}
+
+                response = requests.get(
+                    url,
+                    headers=self.get_headers(),
+                    params=querystring,
+                    verify=False)
+
                 if response.status_code != 200:
                     raise UserError(_("Connection Test Failed! Can't connect to server!"))
             except UserError as e:
@@ -104,43 +122,39 @@ class IrMailServer(models.Model):
                                                          headers=headers,
                                                          body_alternative=body_alternative,
                                                          subtype_alternative=subtype_alternative)
+        
+        body_bytes = body.encode('utf-8')
+        base64_bytes = base64.b64encode(body_bytes)
+        base64_body = base64_bytes.decode('utf-8')
 
-        emailAddresses = []
-        if email_cc:
-            emailAddresses.extend(email_cc.split(","))
-        if email_bcc:
-            emailAddresses.extend(email_bcc.split(","))
+        # TODO: check message type
+        if True:
+            # email
+            res = {
+                "externalId": pycompat.text_type(uuid.uuid1()),
+                "messageTypeId": "1221",
+                "systemId": "660",
+                "subject": subject,
+                "body": base64_body,
+                "contentType": "text/html",
+                "messageCategoryId": "1",
+                "messagePayloads": [],
+                "emailAddress": email_to[0],
+            }
 
-        res = {
-            "recipientId": "{}{}".format(datetime.datetime.now().strftime("%Y%m%d"), message_id),
-            "externalId": message_id,
-            "messageTypeId": "1",
-            "systemId": "1",
-            "subject": subject,
-            "body": body,
-            "contentType": "text/html",
-            "messageCategoryId": "1",
-            "messagePayloads": [],
-            "emailAddresses": emailAddresses,
-            "emailAddress": email_to,
-        }
+            for (fname, fcontent, mime) in attachments:
+                fcontent_bytes = fcontent.encode('utf-8')
+                base64_bytes = base64.b64encode(fcontent_bytes)
+                base64_fcontent = base64_bytes.decode('utf-8')
 
-        for (fname, fcontent, mime) in attachments:
-            if mime and '/' in mime:
-                maintype, subtype = mime.split('/', 1)
-                part = MIMEBase(maintype, subtype)
-            else:
-                part = MIMEBase('application', "octet-stream")
-            part.set_payload(fcontent)
-            encoders.encode_base64(part)
+                res['messagePayloads'].append(
+                    {
+                        "payload": base64_fcontent,
+                        "fileName": fname,
+                        "contentType": "application/pdf",
+                    }
+                )
 
-            res['messagePayloads'].append(
-                {
-                    "payload": str(part),
-                    "fileName": fname,
-                    "contentType": mime,
-                }
-            )
         return res
 
     @api.model
@@ -169,9 +183,22 @@ class IrMailServer(models.Model):
         else:
             url = '{}{}'.format(self.base_url, self.resource_path)
 
-        headers = {'content-type': 'application/json'}
+        headers = {
+            'Content-Type': 'application/json',
+            'AF-EndUserId': '*sys*',
+            'AF-TrackingId': pycompat.text_type(uuid.uuid1()),
+            'AF-SystemId': self.env["ir.config_parameter"].sudo().get_param("api_ipf.ipf_system_id"),
+            'AF-Environment': self.env["ir.config_parameter"].sudo().get_param("api_ipf.ipf_environment"),
+        }
+
+        querystring = {
+            "client_secret": self.client_secret,
+            "client_id": self.client_id
+        }
+
         try:
-            response = requests.post(url=url, data=json.dumps(datas), headers=headers)
+            response = requests.post(url=url, params=querystring, data=json.dumps(datas), headers=headers, verify=False)
+            _logger.warn("DAER: response: %s" % response.text)
             if response.status_code != 200:
                 raise UserError(_("Mail send failed! Something went wrong!"))
         except UserError as e:
