@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Format report -->
+    <record id="paperformat_euro_landscape"
+            model="report.paperformat">
+        <field name="name">European A4 Landscape</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">14</field>
+        <field name="margin_bottom">7</field>
+        <field name="margin_left">21</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <!-- Report calls ir.actions.report.xml -->
+    <report id="action_welcome_letter_report" 
+        string="Välkomstbrev DAFA"
+        model="calendar.appointment" report_type="qweb-pdf" 
+        name="mail_outplacement_report.report_welcome_letter_template"
+        file="mail_outplacement_report.report_welcome_letter_template"
+        paperformat="paperformat_euro_landscape" 
+    />
+   
+
+    <template id="report_welcome_letter_template">
+        <t t-call="web.html_container">
+            <!-- <t t-call="web.external_layout"> -->
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="o" t-value="o.with_context(lang=lang)" />
+                    <!-- <div class="row col-12" style="display: flex; justify-content: flex-start; flex-direction: column; ">
+                        <img src='/web/binary/company_logo' class="float-right" style="width: 200px; height: 150px" alt="Logo"/>
+                        <span t-field="o.operation_id" />
+                    </div> -->
+
+                    <!-- <div class="row col-12" style="display: flex; justify-content: flex-end;">
+                        <span t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' style="text-align:right" />
+                        <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["name", "email", "phone"]}'/>
+
+                    </div> -->
+
+                    <div class="page" style="margin:0; padding:0; width: 100%;"> 
+                        <style>
+
+                            p {
+                                margin: 0 0 1.15em;
+                            }
+                            .adress {
+                                font: Arial; 
+                                color: black; 
+                                font-size: 12px; 
+                                padding:0px; 
+                                margin: 0px;
+                                margin-bottom: 100px;
+                                width: 100%; 
+                                float: left;
+                              }
+                            .sender {
+                                padding:0px; 
+                                margin-top: 17px; 
+                                margin-left: 10px; 
+                                width: 30%; 
+                                float: left;
+                              }
+                            .receiver {
+                                padding: 0px; 
+                                margin-top: 120px;
+                                margin-left: 170px; 
+                                width: 30%; 
+                                float: left;
+                            }
+                    </style>
+                     
+
+                            <!-- Adress Box  -->
+                            <div class="adress" style="" >
+                                <!-- Avsändaradress  --> 
+                                <div class="sender" style="">   
+                                    <span style="">Arbetsförmedlingen</span><br/>
+                                    <span style="">Elektrogatan 4</span><br/>
+                                    <span style="">171 54 Solna</span><br/>
+                                </div>
+
+                                <!-- Mottagaradress -->
+                                <div class="receiver" style="" >   
+                                    <span style="">Arbetsförmedlingen</span><br/>
+                                    <span style="">Elektrogatan 4</span><br/>
+                                    <span style="">171 54 Solna</span><br/>
+                                </div>
+                            </div> 
+                            <div class="" style="margin-top: 70px;">
+                                <br/><br/>
+                                <h3>Välkomstbrev DAFA</h3>
+                            
+                                <p>Hej <span t-esc="o.partner_id.name"/> !
+                                </p>
+
+                                <p>
+                                    <span t-esc="o.case_worker_name"/> är din hanledare och du är välkomen till <span t-esc="o.operation_id.name"/> 
+                                    klockan <span t-esc="o.start.strftime('%I')"/> den <span t-esc="o.start.strftime('%A %d %B %Y')"/>.
+
+                                    Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
+                                    
+                                </p> 
+                                <p> 
+                                    Anteckningsmaterial finns på plats. 
+                                </p>
+                                <p style="">
+                                    Hälsningar <br/>
+                                    <span t-esc="o.company_id.name"/>
+                                </p>
+                              
+                            </div> 
+                        </div>
+                 
+                </t>
+            </t>
+        <!-- </t> -->
+    </template>
+</odoo>
