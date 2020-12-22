@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <!-- Assigned coach -->
+        <record id="email_template_assigned_coach" model="mail.template">
+            <field name="name">Välkomstmail till deltagare DAFA</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="subject">Välkomstbrev till deltagare</field>
+            <field name="email_to">${object.work_email | safe}</field>
+            <field name="body_html" type="html">
+                <div class=""  style="margin: 0px; padding: 0px;">
+                    <div class="card">
+                        <h3>Välkomstbrev DAFA</h3>
+                        <p>
+                            Hej ${object.name or ''}!
+                        </p>
+                        <p>
+                            <strong>${object.coach_id.name} </strong>  är din hanledare och du är välkomen till oss 
+                                 klockan 15:00 den 3 januri 2021.
+                                 Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
+                             </p> 
+                             <p> 
+                                 Anteckningsmaterial finns på plats. 
+                             </p>
+                             <p style="">
+                                 Hälsningar <br/>
+                                 Företagsnamn
+                             </p>
+                    </div>
+                </div>
+            </field>
+            <field name="user_signature" eval="False"/>
+            <!-- <field name="lang">${object.partner_id.lang}</field> -->
+            <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="mail_outplacement_report.action_assigned_coach_report"/>
+            <field name="report_name"> Välkomstbrev till deltagare DAFA - Ebrev</field>
+        </record> 
+        </data>
+    </odoo>

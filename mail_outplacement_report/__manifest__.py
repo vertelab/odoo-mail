@@ -11,13 +11,19 @@
 	Templates for Email, Eletters and SMS.
     """,
     "depends": [
-        "auth_signup"],
+        "hr",
+        "outplacement",
+        "auth_signup",
+        "send_mail_nadim",
+        ],
     "external_dependencies": [],
     "data": [
-        "reports/welcome_letter_report.xml",
+        "views/employee_view.xml",
+        "reports/assigned_coach_report.xml",
         "data/auth_signup_custom_data.xml",
+        "data/assigned_coach_data.xml",
     ],
     "application": False,
     "installable": True,
-    'auto_install': True,
+    "auto_install": True,
 }
