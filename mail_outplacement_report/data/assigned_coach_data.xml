@@ -14,8 +14,8 @@
                             Hej ${object.name or ''}!
                         </p>
                         <p>
-                            <strong>${object.coach_id.name} </strong>  är din hanledare och du är välkomen till oss 
-                                 klockan 15:00 den 3 januri 2021.
+                            <strong>${object.coach_id.name} </strong>  är din handledare och du är välkommen till oss 
+                                 klockan 15:00 den 3 januari 2021.
                                  Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
                              </p> 
                              <p> 
