@@ -1,7 +1,7 @@
 from odoo import models, fields
 
 class HrEmployee(models.Model):
-    _inherit = "hr.employee"
+    _inherit = "outplacement"
 
     def action_send_eletter(self):
         self.ensure_one()
