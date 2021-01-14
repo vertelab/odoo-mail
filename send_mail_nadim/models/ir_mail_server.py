@@ -9,6 +9,7 @@ import logging
 from odoo.tools import pycompat
 import uuid
 import base64
+import traceback
 
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import except_orm, UserError
@@ -31,14 +32,14 @@ class IrMailServer(models.Model):
                             required=True)
     environment = fields.Selection(selection=[('U1', 'U1'),
                                               ('I1', 'I1'),
-                                              ('T1', 'IT'),
+                                              ('T1', 'T1'),
                                               ('T2', 'T2'),
                                               ('PROD', 'PROD'), ],
                                    string='Environment',
                                    default='T2',
                                    required=True)
     base_url = fields.Char(string='Restful API Url', help="Base URL of API")
-    rest_port = fields.Integer(string='Port', default=5000)
+    rest_port = fields.Integer(string='Port', default=443)
     resource_path = fields.Char()
 
     @api.onchange('server_type')
@@ -112,6 +113,7 @@ class IrMailServer(models.Model):
     def build_email(self, email_from, email_to, subject, body, email_cc=None, email_bcc=None, reply_to=False,
                     attachments=None, message_id=None, references=None, object_id=False, subtype='plain', headers=None,
                     body_alternative=None, subtype_alternative='plain'):
+        _logger.warn(''.join(traceback.format_stack()))
         domain = []
         mail_server = self.search(domain, limit=1, order='sequence')
         if mail_server.server_type != 'rest':
@@ -129,18 +131,33 @@ class IrMailServer(models.Model):
 
         # TODO: check message type
         if True:
-            # email
+            # ebrev
             res = {
-                "externalId": pycompat.text_type(uuid.uuid1()),
-                "messageTypeId": "1221",
+                "messagePayloads": [],
                 "systemId": "660",
+                "recipientId": "191212121212",
                 "subject": subject,
                 "body": base64_body,
+                "zipCode": "18357",
+                "countryCode": "SE",
                 "contentType": "text/html",
+                "messageTypeId": "1220",
                 "messageCategoryId": "1",
-                "messagePayloads": [],
-                "emailAddress": email_to[0],
+                "externalId": pycompat.text_type(uuid.uuid1()),
             }
+            
+            # email
+            # res = {
+            #     "externalId": pycompat.text_type(uuid.uuid1()),
+            #     "messageTypeId": "1221",
+            #     "systemId": "660",
+            #     "subject": subject,
+            #     "body": base64_body,
+            #     "contentType": "text/html",
+            #     "messageCategoryId": "1",
+            #     "messagePayloads": [],
+            #     "emailAddress": email_to[0],
+            # }
 
             for (fname, fcontent, mime) in attachments:
                 fcontent_bytes = fcontent.encode('utf-8')
@@ -161,6 +178,7 @@ class IrMailServer(models.Model):
     def send_email(self, message, mail_server_id=None, smtp_server=None, smtp_port=None,
                    smtp_user=None, smtp_password=None, smtp_encryption=None, smtp_debug=False,
                    smtp_session=None):
+        _logger.warn(''.join(traceback.format_stack()))
         if mail_server_id:
             mail_server = self.browse(mail_server_id)
         else:
