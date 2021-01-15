@@ -19,8 +19,6 @@
     "external_dependencies": [],
     "data": [
         "views/employee_view.xml",
-        "reports/assigned_coach_report.xml",
-        "data/assigned_coach_data.xml",
         "data/employee_login_data.xml",
     ],
     "application": False,
