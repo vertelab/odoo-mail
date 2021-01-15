@@ -4,7 +4,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class HrEmployee(models.Model):
-    _inherit = "hr.employee"
+    _inherit = "outplacement"
 
     @api.multi
     def action_send_email(self):
