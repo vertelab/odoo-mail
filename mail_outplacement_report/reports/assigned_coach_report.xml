@@ -64,7 +64,8 @@
                                 </p>
 
                                 <p>
-                                   <span t-esc="o.coach_id.name"/> är din handledare och du är välkommen till oss 
+                               
+                                   är din handledare och du är välkommen till oss 
                                     klockan 15:00 den 3 januri 2021.
                                     Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
                                 </p> 
@@ -87,7 +88,7 @@
 <!-- Report calls ir.actions.report.xml -->
 <report id="action_assigned_coach_report" 
     string="Välkomstbrev till deltagare DAFA"
-    model="hr.employee" report_type="qweb-pdf" 
+    model="outplacement" report_type="qweb-pdf" 
     name="mail_outplacement_report.report_assigned_coach_template"
     file="mail_outplacement_report.report_assigned_coach_template"
     paperformat="paperformat_euro_landscape" 
