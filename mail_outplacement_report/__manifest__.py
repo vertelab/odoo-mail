@@ -2,14 +2,12 @@
 
 {
     "name": "DAFA Outplacement Templates",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.0.1",
     "author": "Vertel AB",
     "license": "AGPL-3",
     "website": "https://vertel.se/",
     "category": "Tools",
-    "description": """
-	Templates for Email, Eletters and SMS.
-    """,
+    "description": "Templates for Email, Eletters and SMS.",
     "depends": [
         "hr",
         "outplacement",
@@ -20,7 +18,6 @@
     "data": [
         "views/employee_view.xml",
         "reports/assigned_coach_report.xml",
-        "data/auth_signup_custom_data.xml",
         "data/assigned_coach_data.xml",
     ],
     "application": False,
