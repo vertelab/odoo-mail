@@ -2,33 +2,32 @@
 <odoo>
 
         <!-- Format report -->
-        <record id="paperformat_euro_landscape"
+    <record id="paperformat_euro_landscape"
         model="report.paperformat">
-    <field name="name">European A4 Landscape</field>
-    <field name="default" eval="True" />
-    <field name="format">A4</field>
-    <field name="page_height">0</field>
-    <field name="page_width">0</field>
-    <field name="orientation">Portrait</field>
-    <field name="margin_top">14</field>
-    <field name="margin_bottom">7</field>
-    <field name="margin_left">21</field>
-    <field name="margin_right">7</field>
-    <field name="header_line" eval="False" />
-    <field name="header_spacing">0</field>
-    <field name="dpi">90</field>
-</record>
+        <field name="name">European A4 Landscape</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">14</field>
+        <field name="margin_bottom">7</field>
+        <field name="margin_left">21</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
    
 
-<!-- Report calls ir.actions.report.xml -->
-<report id="action_assigned_coach_report" 
-    string="Välkomstbrev till deltagare DAFA"
-    model="outplacement" report_type="qweb-pdf" 
-    name="mail_outplacement_report.report_assigned_coach_template"
-    file="mail_outplacement_report.report_assigned_coach_template"
-    paperformat="paperformat_euro_landscape" 
-/>
-
+    <!-- Report calls ir.actions.report.xml -->
+    <report id="action_assigned_coach_report" 
+        string="Välkomstbrev till deltagare DAFA"
+        model="outplacement" report_type="qweb-pdf" 
+        name="mail_outplacement_report.report_assigned_coach_template"
+        file="mail_outplacement_report.report_assigned_coach_template"
+        paperformat="paperformat_euro_landscape" 
+    />
 
 
     <template id="report_assigned_coach_template">
