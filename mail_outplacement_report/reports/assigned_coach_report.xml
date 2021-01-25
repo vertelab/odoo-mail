@@ -69,17 +69,19 @@
                             <!-- Adress Box  -->
                             <div class="adress" style="" >
                                 <!-- Avsändaradress  --> 
-                                <div class="sender" style="">   
-                                    <span style="">Arbetsförmedlingen</span><br/>
-                                    <span style="">Elektrogatan 4</span><br/>
-                                    <span style="">171 54 Solna</span><br/>
+                                <div class="sender" style="">
+                                    <span t-esc="o.employee_id.address_id.name"/><br/>
+                                    <span t-esc="o.employee_id.address_id.street"/><br/>
+                                    <span t-esc="o.employee_id.address_id.city"/>
+                                    <span t-esc="o.employee_id.address_id.zip"/><br/>
                                 </div>
 
                                 <!-- Mottagaradress -->
                                 <div class="receiver" style="" >   
-                                    <span style="">Arbetsförmedlingen</span><br/>
-                                    <span style="">Elektrogatan 4</span><br/>
-                                    <span style="">171 54 Solna</span><br/>
+                                    <span t-esc="o.name"/><br/>
+                                    <span t-esc="o.partner_street"/><br/>
+                                    <span t-esc="o.partner_zip"/>
+                                    <span t-esc="o.partner_city"/><br/>
                                 </div>
                             </div> 
                             <div class="" style="margin-top: 70px;">
@@ -91,18 +93,27 @@
                                 </p>
 
                                 <p>
-                               
-                                   är din handledare och du är välkommen till oss 
-                                    klockan 15:00 den 3 januri 2021.
-                                    Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
-                                </p> 
+                                    <span t-esc="o.employee_id.name"/> är din handledare och du är välkommen till oss 
+                                     klockan <t t-esc="'%02d:%02d' % (int(o.time), o.time % 1 * 60)" /> den <span t-esc="o.date"/>
+                                     <t t-if="o.performing_operation_adress ">
+                                        på plats
+                                           <span t-esc="o.performing_operation_adress.street"/>, 
+                                           <span t-esc="o.performing_operation_adress.city"/> 
+                                           <span t-esc="o.performing_operation_adress.zip"/>
+                                    </t>.
+                                           
+                                     Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
+                                </p>
+                                 
+                                 
+
+
                                 <p> 
                                     Anteckningsmaterial finns på plats. 
                                 </p>
                                 <p style="">
                                     Hälsningar <br/>
-                                    Företagsnamn
-                                    <!-- <span t-esc="o.company_id.name"/> --> 
+                                    <span t-esc="o.employee_id.address_id.name"/><br/>
                                 </p>
                               
                             </div> 
