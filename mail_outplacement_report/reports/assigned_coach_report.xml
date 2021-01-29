@@ -97,7 +97,7 @@
                                      klockan <t t-esc="'%02d:%02d' % (int(o.time), o.time % 1 * 60)" /> den <span t-esc="o.date"/>
                                      <t t-if="o.performing_operation_adress ">
                                         på plats
-                                           <span t-esc="o.performing_operation_adress.street"/>, 
+                                           <span t-esc="o.performing_operation_adress.street"/>
                                            <span t-esc="o.performing_operation_adress.city"/> 
                                            <span t-esc="o.performing_operation_adress.zip"/>
                                     </t>.
