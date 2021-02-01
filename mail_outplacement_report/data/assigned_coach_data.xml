@@ -15,7 +15,7 @@
                         </p>
                         <p>
                             <strong>${object.employee_id.name} </strong>  är din handledare och du är välkommen till oss 
-                                 klockan 15:00 den 3 januari 2021.
+                                 klockan ${object.time} den ${object.date}.
                                  Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
                              </p> 
                              <p> 
