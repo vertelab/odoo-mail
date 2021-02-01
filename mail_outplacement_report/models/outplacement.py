@@ -24,7 +24,7 @@ class Outplacement(models.Model):
     _inherit = "outplacement"
 
     date = fields.Date(string="Meeting date", help="Date of meeting")
-    time = fields.Float(string="Meeting time", default=' " "', help="t.ex. 15:30")
+    time = fields.Float(string="Meeting time", help="t.ex. 15:30")
     performing_operation_adress = fields.Many2one(
         comodel_name ='res.partner',
         name='Adress', string='Performing Adress')
