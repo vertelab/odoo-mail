@@ -12,7 +12,7 @@
         "hr",
         "outplacement",
         #"auth_signup",
-        "send_mail_nadim",
+        #"send_mail_nadim",
         ],
     "external_dependencies": [],
     "data": [
