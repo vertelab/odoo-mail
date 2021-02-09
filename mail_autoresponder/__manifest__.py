@@ -9,7 +9,7 @@
     'maintainer': 'Vertel AB',
     'website': 'http://www.vertel.se',
     'depends': [
-        'base_setup', 'mail', 'af_security',
+        'base_setup', 'mail',
         ],
     'data': [
         'security/ir.model.access.csv',
