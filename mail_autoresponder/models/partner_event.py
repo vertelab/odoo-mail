@@ -51,14 +51,7 @@ class PartnerEvent(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('running', 'Running'), ('canceled', 'Cancelled')], default='draft')
     color = fields.Integer('Kanban Color Index')
 
-    # @api.model
-    # def _get_daily_partner(self):
-    #     daily_notes = self.env['res.partner.notes'].search([('note_type.name', '=', '90'),
-    #                                                         ('partner_id.segment_jobseeker', '=', 'a')])
-    #     return [("notes_ids", "in", daily_notes.ids)]
-
     contact_domain = fields.Char(string="Search Filter")
-    # contact_domain = fields.Char(string="Search Filter", default=_get_daily_partner)
 
     def automated_event_mail(self):
         event_ids = self.env['partner.event'].search([('state', '=', 'running')])
