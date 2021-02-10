@@ -17,7 +17,7 @@ class HrEmployee(models.Model):
             template_id = ir_model_data.get_object_reference('mail_outplacement_report', 'email_template_login_employee')[1]
         except ValueError:
             template_id = False
-        template_browse = self.env['mail.template'].browse(template_id).send_mail(self.id, force_send=True)
+        template_browse = self.env['mail.template'].browse(template_id).send_mail(self.id, email_values={'notification': True}, force_send=True)
 
 
 class Outplacement(models.Model):
