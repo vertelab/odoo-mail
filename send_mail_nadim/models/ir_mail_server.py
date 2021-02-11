@@ -38,6 +38,7 @@ class IrMailServer(models.Model):
                                    string='Environment',
                                    default='T2',
                                    required=True)
+    afsystemid = fields.Char(string='AF-SystemId', default = 'AFDAFA')
     base_url = fields.Char(string='Restful API Url', help="Base URL of API")
     rest_port = fields.Integer(string='Port', default=443)
     resource_path = fields.Char()
@@ -60,9 +61,15 @@ class IrMailServer(models.Model):
         headers = {
             'x-amf-mediaType': "application/json",
             'AF-TrackingId': tracking_id,
-            'AF-SystemId': "AF-SystemId",
-            'AF-EndUserId': "AF-EndUserId",
-            'AF-Environment': self.environment,
+            'AF-EndUserId': "*sys*",
+            'AF-SystemId': self.env["ir.config_parameter"].sudo().get_param("api_ipf.ipf_system_id"),
+            'AF-Environment': self.env["ir.config_parameter"].sudo().get_param("api_ipf.ipf_environment"),
+        }
+        headers = {
+            'Content-Type': 'application/json',
+            'AF-EndUserId': '*sys*',
+            'AF-TrackingId': pycompat.text_type(uuid.uuid1()),
+
         }
         return headers
 
@@ -145,7 +152,7 @@ class IrMailServer(models.Model):
                 "messageCategoryId": "1",
                 "externalId": pycompat.text_type(uuid.uuid1()),
             }
-            
+
             # email
             # res = {
             #     "externalId": pycompat.text_type(uuid.uuid1()),
@@ -160,8 +167,7 @@ class IrMailServer(models.Model):
             # }
 
             for (fname, fcontent, mime) in attachments:
-                fcontent_bytes = fcontent.encode('utf-8')
-                base64_bytes = base64.b64encode(fcontent_bytes)
+                base64_bytes = base64.b64encode(fcontent)
                 base64_fcontent = base64_bytes.decode('utf-8')
 
                 res['messagePayloads'].append(
@@ -201,22 +207,14 @@ class IrMailServer(models.Model):
         else:
             url = '{}{}'.format(self.base_url, self.resource_path)
 
-        headers = {
-            'Content-Type': 'application/json',
-            'AF-EndUserId': '*sys*',
-            'AF-TrackingId': pycompat.text_type(uuid.uuid1()),
-            'AF-SystemId': self.env["ir.config_parameter"].sudo().get_param("api_ipf.ipf_system_id"),
-            'AF-Environment': self.env["ir.config_parameter"].sudo().get_param("api_ipf.ipf_environment"),
-        }
-
         querystring = {
             "client_secret": self.client_secret,
             "client_id": self.client_id
         }
 
         try:
-            response = requests.post(url=url, params=querystring, data=json.dumps(datas), headers=headers, verify=False)
-            _logger.warn("DAER: response: %s" % response.text)
+            response = requests.post(url=url, params=querystring, data=json.dumps(datas), headers=self.get_headers(), verify=False)
+            _logger.warning("DAER: response: %s" % response.text)
             if response.status_code != 200:
                 raise UserError(_("Mail send failed! Something went wrong!"))
         except UserError as e:
