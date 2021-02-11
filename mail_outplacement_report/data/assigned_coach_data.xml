@@ -3,9 +3,9 @@
         <!-- Assigned coach -->
         <record id="email_template_assigned_coach" model="mail.template">
             <field name="name">Välkomstmail till deltagare DAFA</field>
-            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="model_id" ref="outplacement.model_outplacement"/>
             <field name="subject">Välkomstbrev till deltagare</field>
-            <field name="email_to">${object.work_email | safe}</field>
+            <field name="email_to">${object.partner_email | safe}</field>
             <field name="body_html" type="html">
                 <div class=""  style="margin: 0px; padding: 0px;">
                     <div class="card">
@@ -14,8 +14,8 @@
                             Hej ${object.name or ''}!
                         </p>
                         <p>
-                            <strong>${object.coach_id.name} </strong>  är din handledare och du är välkommen till oss 
-                                 klockan 15:00 den 3 januari 2021.
+                            <strong>${object.employee_id.name} </strong>  är din handledare och du är välkommen till oss 
+                                 klockan ${object.time} den ${object.date}.
                                  Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
                              </p> 
                              <p> 
@@ -23,7 +23,7 @@
                              </p>
                              <p style="">
                                  Hälsningar <br/>
-                                 Företagsnamn
+                                 ${object.employee_id.address_id.name} 
                              </p>
                     </div>
                 </div>

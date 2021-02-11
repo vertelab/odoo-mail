@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
+        <!-- Format report -->
+    <record id="paperformat_euro_landscape"
+        model="report.paperformat">
+        <field name="name">European A4 Landscape</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">14</field>
+        <field name="margin_bottom">7</field>
+        <field name="margin_left">21</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
    
+
+    <!-- Report calls ir.actions.report.xml -->
+    <report id="action_assigned_coach_report" 
+        string="Välkomstbrev till deltagare DAFA"
+        model="outplacement" report_type="qweb-pdf" 
+        name="mail_outplacement_report.report_assigned_coach_template"
+        file="mail_outplacement_report.report_assigned_coach_template"
+        paperformat="paperformat_euro_landscape" 
+    />
+
 
     <template id="report_assigned_coach_template">
         <t t-call="web.html_container">
@@ -42,17 +69,19 @@
                             <!-- Adress Box  -->
                             <div class="adress" style="" >
                                 <!-- Avsändaradress  --> 
-                                <div class="sender" style="">   
-                                    <span style="">Arbetsförmedlingen</span><br/>
-                                    <span style="">Elektrogatan 4</span><br/>
-                                    <span style="">171 54 Solna</span><br/>
+                                <div class="sender" style="">
+                                    <span t-esc="o.employee_id.address_id.name"/><br/>
+                                    <span t-esc="o.employee_id.address_id.street"/><br/>
+                                    <span t-esc="o.employee_id.address_id.city"/>
+                                    <span t-esc="o.employee_id.address_id.zip"/><br/>
                                 </div>
 
                                 <!-- Mottagaradress -->
                                 <div class="receiver" style="" >   
-                                    <span style="">Arbetsförmedlingen</span><br/>
-                                    <span style="">Elektrogatan 4</span><br/>
-                                    <span style="">171 54 Solna</span><br/>
+                                    <span t-esc="o.name"/><br/>
+                                    <span t-esc="o.partner_street"/><br/>
+                                    <span t-esc="o.partner_zip"/>
+                                    <span t-esc="o.partner_city"/><br/>
                                 </div>
                             </div> 
                             <div class="" style="margin-top: 70px;">
@@ -64,17 +93,27 @@
                                 </p>
 
                                 <p>
-                                   <span t-esc="o.coach_id.name"/> är din handledare och du är välkommen till oss 
-                                    klockan 15:00 den 3 januri 2021.
-                                    Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
-                                </p> 
+                                    <span t-esc="o.employee_id.name"/> är din handledare och du är välkommen till oss 
+                                     klockan <t t-esc="'%02d:%02d' % (int(o.time), o.time % 1 * 60)" /> den <span t-esc="o.date"/>
+                                     <t t-if="o.performing_operation_adress ">
+                                        på plats
+                                           <span t-esc="o.performing_operation_adress.street"/>
+                                           <span t-esc="o.performing_operation_adress.city"/> 
+                                           <span t-esc="o.performing_operation_adress.zip"/>
+                                    </t>.
+                                           
+                                     Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
+                                </p>
+                                 
+                                 
+
+
                                 <p> 
                                     Anteckningsmaterial finns på plats. 
                                 </p>
                                 <p style="">
                                     Hälsningar <br/>
-                                    Företagsnamn
-                                    <!-- <span t-esc="o.company_id.name"/> --> 
+                                    <span t-esc="o.employee_id.address_id.name"/><br/>
                                 </p>
                               
                             </div> 
@@ -83,32 +122,5 @@
             </t>
         <!-- </t> -->
     </template>
-
-<!-- Report calls ir.actions.report.xml -->
-<report id="action_assigned_coach_report" 
-    string="Välkomstbrev till deltagare DAFA"
-    model="hr.employee" report_type="qweb-pdf" 
-    name="mail_outplacement_report.report_assigned_coach_template"
-    file="mail_outplacement_report.report_assigned_coach_template"
-    paperformat="paperformat_euro_landscape" 
-/>
-
-        <!-- Format report -->
-        <record id="paperformat_euro_landscape"
-        model="report.paperformat">
-    <field name="name">European A4 Landscape</field>
-    <field name="default" eval="True" />
-    <field name="format">A4</field>
-    <field name="page_height">0</field>
-    <field name="page_width">0</field>
-    <field name="orientation">Portrait</field>
-    <field name="margin_top">14</field>
-    <field name="margin_bottom">7</field>
-    <field name="margin_left">21</field>
-    <field name="margin_right">7</field>
-    <field name="header_line" eval="False" />
-    <field name="header_spacing">0</field>
-    <field name="dpi">90</field>
-</record>
 
 </odoo>

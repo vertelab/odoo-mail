@@ -1,0 +1,33 @@
+<odoo>
+  <record id="view_employee_form" model="ir.ui.view">
+    <field name="name">employee.view.form.inherit.button</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//form//sheet" position="before">
+        <header>
+          <button name="action_send_email" string="Send login" type="object" class="oe_highlight" />
+        </header>
+      </xpath>
+    </field>
+  </record>
+
+      <record id="outplacement_form_view" model="ir.ui.view">
+        <field name="name">outplacement.view.form.inherit.button</field>
+        <field name="model">outplacement</field>
+        <field name="inherit_id" ref="outplacement.outplacement_form_view"/>
+        <field name="arch" type="xml">
+        <xpath expr="//header" position="inside">
+            <button name="action_send_eletter" string="Send Ebrev by mail" type="object" class="oe_highlight"/>
+      </xpath>
+      <xpath expr="//field[@name='performing_operation_id']" position="after">
+        <field name="performing_operation_adress" domain="[('performing_operation_id', '=', performing_operation_id)]" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" />
+        <field name="date" widget="date"/>
+        <field name="time" widget="float_time" />
+        </xpath>
+        </field>
+      </record>
+
+
+
+</odoo>
