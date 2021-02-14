@@ -13,3 +13,7 @@ class PartnerEvent(models.Model):
         return [("notes_ids", "in", daily_notes.ids)]
 
     contact_domain = fields.Char(string="Search Filter", default=_get_daily_partner)
+    customer_since = fields.Datetime(string="Customer since", related='user_id.partner_id.customer_since')
+    deactualization_date = fields.Datetime(string="Deactualization", related='user_id.partner_id.deactualization_date')
+    next_contact = fields.Date(string="Next Contact", related='user_id.partner_id.next_contact')
+    last_contact = fields.Date(string="Last Contact", related='user_id.partner_id.last_contact')
