@@ -17,7 +17,7 @@ class HrEmployee(models.Model):
             template_id = ir_model_data.get_object_reference('mail_outplacement_report', 'email_template_login_employee')[1]
         except ValueError:
             template_id = False
-        template_browse = self.env['mail.template'].browse(template_id).send_mail(self.id, email_values={'notification': True}, force_send=True)
+        self.env['mail.template'].browse(template_id).with_context(nadim_type='email').send_mail(self.id, email_values={'notification': True}, force_send=True)
 
 
 class Outplacement(models.Model):
@@ -33,7 +33,7 @@ class Outplacement(models.Model):
     def action_send_eletter(self):
         template_id = self.env.ref('mail_outplacement_report.email_template_assigned_coach').id
         template = self.env['mail.template'].browse(template_id)
-        result = template.send_mail(self.id, force_send=True)
+        template.with_context(nadim_type='eletter').send_mail(self.id, force_send=True)
 
     #FUTURE USE FOR EDITABLE EMAIL TEMPLATES VIA POP-UP WIZARD
     # @api.multi

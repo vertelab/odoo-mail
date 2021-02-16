@@ -38,10 +38,10 @@ class IrMailServer(models.Model):
                                    string='Environment',
                                    default='T2',
                                    required=True)
-    #afsystemid = fields.Char(string='AF-SystemId', default = 'AFDAFA')
     base_url = fields.Char(string='Restful API Url', help="Base URL of API")
     rest_port = fields.Integer(string='Port', default=443)
-    resource_path = fields.Char()
+    resource_type = fields.Selection(string='Resource type', selection=[('eletter', 'eLetter'), ('email', 'eMail'),])
+
 
     @api.onchange('server_type')
     def check_smtp_information(self):
@@ -53,23 +53,15 @@ class IrMailServer(models.Model):
         else:
             if not self.base_url:
                 self.base_url = "/"
-            if not self.resource_path:
-                self.resource_path = "/"
 
     def get_headers(self):
         tracking_id = pycompat.text_type(uuid.uuid1())
         headers = {
-            'x-amf-mediaType': "application/json",
+            'Content-Type': "application/json",
             'AF-TrackingId': tracking_id,
             'AF-EndUserId': "*sys*",
-            'AF-SystemId': self.env["ir.config_parameter"].sudo().get_param("api_ipf.ipf_system_id"),
-            'AF-Environment': self.env["ir.config_parameter"].sudo().get_param("api_ipf.ipf_environment"),
-        }
-        headers = {
-            'Content-Type': 'application/json',
-            'AF-EndUserId': '*sys*',
-            'AF-TrackingId': pycompat.text_type(uuid.uuid1()),
-
+            'AF-SystemId': self.env["ir.config_parameter"].sudo().get_param("api_ipf.ipf_system_id", "AFDAFA"),
+            'AF-Environment': self.environment,
         }
         return headers
 
@@ -78,21 +70,21 @@ class IrMailServer(models.Model):
         for server in self:
             try:
                 if server.rest_port:
-                    url = '{}:{}{}'.format(server.base_url, server.rest_port, server.resource_path)
+                    url = '{}:{}{}'.format(server.base_url, server.rest_port, '/nadim/emailmessages')
                 else:
-                    url = '{}{}'.format(server.base_url, server.resource_path)
+                    url = '{}{}'.format(server.base_url, '/nadim/emailmessages')
 
                 querystring = {"client_secret": self.client_secret,
                        "client_id": self.client_id}
 
-                response = requests.get(
+                response = requests.post(
                     url,
                     headers=self.get_headers(),
                     params=querystring,
                     verify=False)
 
-                if response.status_code != 200:
-                    raise UserError(_("Connection Test Failed! Can't connect to server!"))
+                if response.status_code:
+                    raise UserError(_("Connection Test: %s: %s") % (response.status_code, response.text))
             except UserError as e:
                 _logger.info(e)
                 raise e
@@ -120,8 +112,7 @@ class IrMailServer(models.Model):
     def build_email(self, email_from, email_to, subject, body, email_cc=None, email_bcc=None, reply_to=False,
                     attachments=None, message_id=None, references=None, object_id=False, subtype='plain', headers=None,
                     body_alternative=None, subtype_alternative='plain'):
-        _logger.warn(''.join(traceback.format_stack()))
-        domain = []
+        domain = [('resource_type', '=', self.env.context.get('nadim_type', ''))]
         mail_server = self.search(domain, limit=1, order='sequence')
         if mail_server.server_type != 'rest':
             return super(IrMailServer, self).build_email(email_from, email_to, subject, body, email_cc=email_cc,
@@ -135,29 +126,31 @@ class IrMailServer(models.Model):
         body_bytes = body.encode('utf-8')
         base64_bytes = base64.b64encode(body_bytes)
         base64_body = base64_bytes.decode('utf-8')
+        
 
-        # TODO: check message type
-        if True:
-            # ebrev
-            # res = {
-            #     "messagePayloads": [],
-            #     "systemId": "660",
-            #     "recipientId": "191212121212",
-            #     "subject": subject,
-            #     "body": base64_body,
-            #     "zipCode": "18357",
-            #     "countryCode": "SE",
-            #     "contentType": "text/html",
-            #     "messageTypeId": "1220",
-            #     "messageCategoryId": "1",
-            #     "externalId": pycompat.text_type(uuid.uuid1()),
-            # }
+        if mail_server.resource_type == 'eletter':
+            res_id, res_model = object_id.split('-')
+            # why does not .browse(res_id) work? 
+            res_obj = self.env[res_model].search([('id', '=', res_id)], limit=1)
 
-            # email
             res = {
                 "externalId": pycompat.text_type(uuid.uuid1()),
-                "messageTypeId": "1221",
-                "systemId": "660",
+                "systemId": "660", # DAFA
+                "subject": subject,
+                "body": base64_body,
+                "recipientId": res_obj.partner_social_sec_nr.replace('-', ''),
+                "zipCode": res_obj.partner_zip,
+                "countryCode": res_obj.country_id.code,
+                "contentType": "text/html",
+                "messageTypeId": "1220", # eletter
+                "messageCategoryId": "1",
+                "messagePayloads": [],
+            }
+        else:
+            res = {
+                "externalId": pycompat.text_type(uuid.uuid1()),
+                "messageTypeId": "1221", # email
+                "systemId": "660", # DAFA
                 "subject": subject,
                 "body": base64_body,
                 "contentType": "text/html",
@@ -166,25 +159,25 @@ class IrMailServer(models.Model):
                 "emailAddress": email_to[0],
             }
 
-            for (fname, fcontent, mime) in attachments:
-                base64_bytes = base64.b64encode(fcontent)
-                base64_fcontent = base64_bytes.decode('utf-8')
+        for (fname, fcontent, mime) in attachments:
+            base64_bytes = base64.b64encode(fcontent)
+            base64_fcontent = base64_bytes.decode('utf-8')
 
-                res['messagePayloads'].append(
-                    {
-                        "payload": base64_fcontent,
-                        "fileName": fname,
-                        "contentType": "application/pdf",
-                    }
-                )
+            res['messagePayloads'].append(
+                {
+                    "payload": base64_fcontent,
+                    "fileName": fname,
+                    "contentType": "application/pdf",
+                }
+            )
 
+        _logger.debug("NADIM message post: %s" % res)
         return res
 
     @api.model
     def send_email(self, message, mail_server_id=None, smtp_server=None, smtp_port=None,
                    smtp_user=None, smtp_password=None, smtp_encryption=None, smtp_debug=False,
                    smtp_session=None):
-        _logger.warn(''.join(traceback.format_stack()))
         if mail_server_id:
             mail_server = self.browse(mail_server_id)
         else:
@@ -202,10 +195,15 @@ class IrMailServer(models.Model):
         return mail_server.restapi_email_post_request(message)
 
     def restapi_email_post_request(self, datas):
-        if self.rest_port:
-            url = '{}:{}{}'.format(self.base_url, self.rest_port, self.resource_path)
+        if self.resource_type == 'eletter':
+            resource_path = '/nadim/elettermessages'
         else:
-            url = '{}{}'.format(self.base_url, self.resource_path)
+            resource_path = '/nadim/emailmessages'
+        
+        if self.rest_port:
+            url = '{}:{}{}'.format(self.base_url, self.rest_port, resource_path)
+        else:
+            url = '{}{}'.format(self.base_url, resource_path)
 
         querystring = {
             "client_secret": self.client_secret,
@@ -214,7 +212,7 @@ class IrMailServer(models.Model):
 
         try:
             response = requests.post(url=url, params=querystring, data=json.dumps(datas), headers=self.get_headers(), verify=False)
-            _logger.warning("DAER: response: %s" % response.text)
+            _logger.warn("NADIM response: %s" % response.text)
             if response.status_code != 200:
                 raise UserError(_("Mail send failed! Something went wrong!"))
         except UserError as e:
