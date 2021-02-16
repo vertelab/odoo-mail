@@ -38,7 +38,7 @@ class IrMailServer(models.Model):
                                    string='Environment',
                                    default='T2',
                                    required=True)
-    afsystemid = fields.Char(string='AF-SystemId', default = 'AFDAFA')
+    #afsystemid = fields.Char(string='AF-SystemId', default = 'AFDAFA')
     base_url = fields.Char(string='Restful API Url', help="Base URL of API")
     rest_port = fields.Integer(string='Port', default=443)
     resource_path = fields.Char()
@@ -139,32 +139,32 @@ class IrMailServer(models.Model):
         # TODO: check message type
         if True:
             # ebrev
-            res = {
-                "messagePayloads": [],
-                "systemId": "660",
-                "recipientId": "191212121212",
-                "subject": subject,
-                "body": base64_body,
-                "zipCode": "18357",
-                "countryCode": "SE",
-                "contentType": "text/html",
-                "messageTypeId": "1220",
-                "messageCategoryId": "1",
-                "externalId": pycompat.text_type(uuid.uuid1()),
-            }
-
-            # email
             # res = {
-            #     "externalId": pycompat.text_type(uuid.uuid1()),
-            #     "messageTypeId": "1221",
+            #     "messagePayloads": [],
             #     "systemId": "660",
+            #     "recipientId": "191212121212",
             #     "subject": subject,
             #     "body": base64_body,
+            #     "zipCode": "18357",
+            #     "countryCode": "SE",
             #     "contentType": "text/html",
+            #     "messageTypeId": "1220",
             #     "messageCategoryId": "1",
-            #     "messagePayloads": [],
-            #     "emailAddress": email_to[0],
+            #     "externalId": pycompat.text_type(uuid.uuid1()),
             # }
+
+            # email
+            res = {
+                "externalId": pycompat.text_type(uuid.uuid1()),
+                "messageTypeId": "1221",
+                "systemId": "660",
+                "subject": subject,
+                "body": base64_body,
+                "contentType": "text/html",
+                "messageCategoryId": "1",
+                "messagePayloads": [],
+                "emailAddress": email_to[0],
+            }
 
             for (fname, fcontent, mime) in attachments:
                 base64_bytes = base64.b64encode(fcontent)
