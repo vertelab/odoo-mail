@@ -8,12 +8,6 @@
                 <field name="contact_domain" position="replace">
                     <field name="contact_domain" widget="domain" options="{'model' : 'res.partner'}"/>
                 </field>
-                <field name="user_id" position="after">
-                    <field name="customer_since"/>
-                    <field name="deactualization_date"/>
-                    <field name="next_contact"/>
-                    <field name="last_contact"/>
-                </field>
             </field>
         </record>
     </data>

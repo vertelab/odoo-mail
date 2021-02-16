@@ -49,8 +49,7 @@ class PartnerEvent(models.Model):
     contact_domain = fields.Char(string="Search Filter")
 
     def automated_event_mail(self):
-        # event_ids = self.env['partner.event'].search([('state', '=', 'running')])
-        event_ids = self.env['partner.event'].search([])
+        event_ids = self.env['partner.event'].search([('state', '=', 'running')])
         for event in event_ids:
             for email_line in event.email_schedule_ids:
                 if email_line.interval_type == 'after_event' and not email_line.sent:
