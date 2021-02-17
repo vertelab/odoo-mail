@@ -50,61 +50,55 @@ class PartnerEvent(models.Model):
 
     def automated_event_mail(self):
         event_ids = self.env['partner.event'].search([('state', '=', 'running')])
-        for record in event_ids:
-            for rec in record.email_schedule_ids:
-                if rec.interval_type == 'before_event' and not rec.sent:
-                    self.before_event(record, rec)
-                if rec.interval_type == 'after_event' and not rec.sent:
-                    self.after_event(record, rec)
+        for event in event_ids:
+            for email_line in event.email_schedule_ids:
+                if email_line.interval_type == 'after_event' and not email_line.sent:
+                    self.after_event(event, email_line)
 
-    def after_registration(self, event_id, event_mail_id):
+                if email_line.interval_type == 'before_event' and not email_line.sent:
+                    self.before_event(event, email_line)
+
+    def after_event(self, event, email_line):
         today_date = datetime.datetime.today().strftime("%Y-%m-%d")
-        if event_mail_id.interval_unit == 'days':
-            _datetime = event_id.create_date + datetime.timedelta(days=event_mail_id.interval_nbr)
-            _date = _datetime.strftime("%Y-%m-%d")
-            if _date == today_date:
-                self.email_to_contacts(event_id, event_mail_id)
-        elif event_mail_id.interval_unit == 'weeks':
-            _datetime = event_id.create_date + datetime.timedelta(weeks=event_mail_id.interval_nbr)
-            _date = _datetime.strftime("%Y-%m-%d")
-            if _date == today_date:
-                self.email_to_contacts(event_id, event_mail_id)
 
-    def before_event(self, event_id, event_mail_id):
-        today_date = datetime.datetime.today().strftime("%Y-%m-%d")
-        if event_mail_id.interval_unit == 'days':
-            _datetime = event_id.date_begin - datetime.timedelta(days=event_mail_id.interval_nbr)
-            _date = _datetime.strftime("%Y-%m-%d")
-            if _date == today_date:
-                self.email_to_contacts(event_id, event_mail_id)
-        elif event_mail_id.interval_unit == 'weeks':
-            _datetime = event_id.date_begin - datetime.timedelta(weeks=event_mail_id.interval_nbr)
-            _date = _datetime.strftime("%Y-%m-%d")
-            if _date == today_date:
-                self.email_to_contacts(event_id, event_mail_id)
-
-    def after_event(self, event_id, event_mail_id):
-        today_date = datetime.datetime.today().strftime("%Y-%m-%d")
-        if event_mail_id.interval_unit == 'days':
-            _datetime = event_id.date_end + datetime.timedelta(days=event_mail_id.interval_nbr)
-            _date = _datetime.strftime("%Y-%m-%d")
-            if _date == today_date:
-                self.email_to_contacts(event_id, event_mail_id)
-        elif event_mail_id.interval_unit == 'weeks':
-            _datetime = event_id.date_end + datetime.timedelta(weeks=event_mail_id.interval_nbr)
-            _date = _datetime.strftime("%Y-%m-%d")
-            if _date == today_date:
-                self.email_to_contacts(event_id, event_mail_id)
-
-    def email_to_contacts(self, event_id, event_mail_id):
-        domain = safe_eval(event_id.contact_domain)
+        domain = safe_eval(event.contact_domain)
         res_ids = self.env['res.partner'].search(domain).ids
-        for rec in res_ids:
-            partner_id = self.env['res.partner'].search([('id', '=', rec)])
-            event_mail_id.template_id.with_context(
-                partner_email=partner_id.email, partner_lang=partner_id.lang
-            ).send_mail(event_id.id, force_send=True)
-        event_mail_id.sent = True
+
+        for contact_id in res_ids:
+            if email_line.interval_unit == 'days':
+                partner_id = self.env['res.partner'].search([('id', '=', contact_id)])
+                if email_line.ir_model_field:
+                    _datetime = partner_id[str(email_line.ir_model_field.name)] + datetime.timedelta(
+                        days=email_line.interval_nbr)
+                else:
+                    _datetime = event.date_begin + datetime.timedelta(days=email_line.interval_nbr)
+                _date = _datetime.strftime("%Y-%m-%d")
+                if _date == today_date:
+                    self._email_to_contacts(partner_id, event, email_line)
+
+    def before_event(self, event, email_line):
+        today_date = datetime.datetime.today().strftime("%Y-%m-%d")
+
+        domain = safe_eval(event.contact_domain)
+        res_ids = self.env['res.partner'].search(domain).ids
+
+        for contact_id in res_ids:
+            if email_line.interval_unit == 'days':
+                partner_id = self.env['res.partner'].search([('id', '=', contact_id)])
+                if email_line.ir_model_field:
+                    _datetime = partner_id[str(email_line.ir_model_field.name)] - datetime.timedelta(
+                        days=email_line.interval_nbr)
+                else:
+                    _datetime = event.date_begin - datetime.timedelta(days=email_line.interval_nbr)
+                _date = _datetime.strftime("%Y-%m-%d")
+                if _date == today_date:
+                    self._email_to_contacts(partner_id, event, email_line)
+
+    def _email_to_contacts(self, partner_id, event, email_line):
+        email_line.template_id.with_context(
+            partner_email=partner_id.email, partner_lang=partner_id.lang
+        ).send_mail(event.id, force_send=True)
+        email_line.sent = True
 
     def start_event(self):
         self.state = 'running'
@@ -124,13 +118,15 @@ class EventEmailSchedule(models.Model):
     interval_nbr = fields.Integer('Interval', default=1)
     interval_unit = fields.Selection([
         ('days', 'Day(s)'),
-        ('weeks', 'Week(s)')],
+        # ('weeks', 'Week(s)')
+    ],
         string='Unit', default='days', required=True)
     interval_type = fields.Selection([
         ('before_event', 'Before the event'),
         ('after_event', 'After the event')],
         string='Trigger ', default="before_event", required=True)
 
-    date = fields.Date(string="Date")
+    ir_model_field = fields.Many2one('ir.model.fields', string="Field", domain=[('model_id', '=', 'res.partner'),
+                                                                                ('ttype', 'in', ['date', 'datetime'])])
 
     sent = fields.Boolean('Sent', readonly=True)
