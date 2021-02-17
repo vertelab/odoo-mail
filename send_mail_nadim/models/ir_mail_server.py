@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
-from email import encoders
-from email.mime.base import MIMEBase
 import requests
-from urllib import request
 import json
-import datetime
 import logging
 from odoo.tools import pycompat
 import uuid
 import base64
-import traceback
 
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import except_orm, UserError
@@ -40,7 +35,8 @@ class IrMailServer(models.Model):
                                    required=True)
     base_url = fields.Char(string='Restful API Url', help="Base URL of API")
     rest_port = fields.Integer(string='Port', default=443)
-    resource_type = fields.Selection(string='Resource type', selection=[('eletter', 'eLetter'), ('email', 'eMail'),])
+    resource_type = fields.Selection(string='Resource type',
+                                     selection=[('eletter', 'eLetter'), ('email', 'eMail'), ])
 
     @api.onchange('server_type')
     def check_smtp_information(self):
@@ -59,7 +55,8 @@ class IrMailServer(models.Model):
             'Content-Type': "application/json",
             'AF-TrackingId': tracking_id,
             'AF-EndUserId': "*sys*",
-            'AF-SystemId': self.env["ir.config_parameter"].sudo().get_param("api_ipf.ipf_system_id", "AFDAFA"),
+            'AF-SystemId': self.env["ir.config_parameter"].sudo().get_param(
+                "api_ipf.ipf_system_id", "AFDAFA"),
             'AF-Environment': self.environment,
         }
         return headers
