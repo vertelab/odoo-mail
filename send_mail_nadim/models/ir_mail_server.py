@@ -42,7 +42,6 @@ class IrMailServer(models.Model):
     rest_port = fields.Integer(string='Port', default=443)
     resource_type = fields.Selection(string='Resource type', selection=[('eletter', 'eLetter'), ('email', 'eMail'),])
 
-
     @api.onchange('server_type')
     def check_smtp_information(self):
         if self.server_type == "rest":
@@ -74,8 +73,7 @@ class IrMailServer(models.Model):
                 else:
                     url = '{}{}'.format(server.base_url, '/nadim/emailmessages')
 
-                querystring = {"client_secret": self.client_secret,
-                       "client_id": self.client_id}
+                querystring = {"client_secret": self.client_secret, "client_id": self.client_id}
 
                 response = requests.post(
                     url,
@@ -126,7 +124,6 @@ class IrMailServer(models.Model):
         body_bytes = body.encode('utf-8')
         base64_bytes = base64.b64encode(body_bytes)
         base64_body = base64_bytes.decode('utf-8')
-        
 
         if mail_server.resource_type == 'eletter':
             res_id, res_model = object_id.split('-')
@@ -135,22 +132,22 @@ class IrMailServer(models.Model):
 
             res = {
                 "externalId": pycompat.text_type(uuid.uuid1()),
-                "systemId": "660", # DAFA
+                "systemId": "660",  # DAFA
                 "subject": subject,
                 "body": base64_body,
                 "recipientId": res_obj.partner_social_sec_nr.replace('-', ''),
                 "zipCode": res_obj.partner_zip,
                 "countryCode": res_obj.country_id.code,
                 "contentType": "text/html",
-                "messageTypeId": "1220", # eletter
+                "messageTypeId": "1220",  # eletter
                 "messageCategoryId": "1",
                 "messagePayloads": [],
             }
         else:
             res = {
                 "externalId": pycompat.text_type(uuid.uuid1()),
-                "messageTypeId": "1221", # email
-                "systemId": "660", # DAFA
+                "messageTypeId": "1221",  # email
+                "systemId": "660",  # DAFA
                 "subject": subject,
                 "body": base64_body,
                 "contentType": "text/html",
@@ -211,8 +208,9 @@ class IrMailServer(models.Model):
         }
 
         try:
-            response = requests.post(url=url, params=querystring, data=json.dumps(datas), headers=self.get_headers(), verify=False)
-            _logger.warn("NADIM response: %s" % response.text)
+            response = requests.post(url=url, params=querystring, data=json.dumps(datas), headers=self.get_headers(),
+                                     verify=False)
+            _logger.warning("NADIM response: %s" % response.text)
             if response.status_code != 200:
                 raise UserError(_("Mail send failed! Something went wrong!"))
         except UserError as e:
