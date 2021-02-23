@@ -17,9 +17,9 @@
             <xpath expr="//group[1]" position="after">
                 <group name="api_parameter" col="4" attrs="{'invisible': [('server_type', '!=', 'rest')]}">
                     <separator string="Connection Information" colspan="4"/>
-                    <field name="base_url" required="1"/>
+                    <field name="base_url" />
                     <field name="client_id"/>
-                    <field name="resource_type" required="1"/>
+                    <field name="resource_type" />
                     <field name="client_secret" password="True"/>
                     <field name="rest_port"/>
                     <field name="environment"/>

@@ -6,8 +6,8 @@ from odoo.tools import pycompat
 import uuid
 import base64
 
-from odoo import api, fields, models, tools, _
-from odoo.exceptions import except_orm, UserError
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError
 from odoo.tools import ustr
 
 _logger = logging.getLogger(__name__)
@@ -21,10 +21,8 @@ class IrMailServer(models.Model):
         ('rest', 'Rest API')], 'Server Type',
         default='smtp', required=True)
 
-    client_secret = fields.Char(string='Client Secret',
-                                required=True)
-    client_id = fields.Char(string='Client ID',
-                            required=True)
+    client_secret = fields.Char(string='Client Secret')
+    client_id = fields.Char(string='Client ID')
     environment = fields.Selection(selection=[('U1', 'U1'),
                                               ('I1', 'I1'),
                                               ('T1', 'T1'),
@@ -117,7 +115,7 @@ class IrMailServer(models.Model):
                                                          headers=headers,
                                                          body_alternative=body_alternative,
                                                          subtype_alternative=subtype_alternative)
-        
+
         body_bytes = body.encode('utf-8')
         base64_bytes = base64.b64encode(body_bytes)
         base64_body = base64_bytes.decode('utf-8')
@@ -193,7 +191,7 @@ class IrMailServer(models.Model):
             resource_path = '/nadim/elettermessages'
         else:
             resource_path = '/nadim/emailmessages'
-        
+
         if self.rest_port:
             url = '{}:{}{}'.format(self.base_url, self.rest_port, resource_path)
         else:
