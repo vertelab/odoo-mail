@@ -177,6 +177,8 @@ class IrMailServer(models.Model):
             mail_server = self.search(domain, limit=1, order='sequence')
         if not mail_server:
             raise UserError(_("Not found any configured server"))
+        if type(message) != dict:
+            return
         if mail_server.server_type != 'rest':
             return super(IrMailServer, self).send_email(message, mail_server_id=mail_server_id, smtp_server=smtp_server,
                                                         smtp_port=smtp_port,
