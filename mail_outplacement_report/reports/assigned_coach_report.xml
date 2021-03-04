@@ -94,7 +94,7 @@
 
                         <p>
                             <span t-esc="o.employee_id.name"/> är din handledare och du är välkommen till oss
-                            klockan <t t-esc="'%02d:%02d' % (int(o.time), o.time % 1 * 60)" /> den <span t-esc="o.date"/>
+                            klockan <t t-esc="'%02d:%02d' % (int(o.performing_time), o.performing_time % 1 * 60)" /> den <span t-esc="o.performing_date"/>
                             <t t-if="o.performing_operation_adress ">
                                 på plats
                                 <span t-esc="o.performing_operation_adress.street"/>
