@@ -28,24 +28,22 @@ class Outplacement(models.Model):
 
     performing_date = fields.Date(string="Meeting date", help="Date of meeting")
     performing_time = fields.Float(string="Meeting time", digits=(12, 2), copy=False, help="t.ex. 15:30")
-    performing_operation_address = fields.Many2one(
+    performing_operation_adress = fields.Many2one(
         comodel_name='res.partner',
-        name='Adress', string='Meeting Address')
+        name='Adress', string='Performing Adress')
 
     @api.multi
     def action_send_eletter(self):
-        if not self.performing_operation_address:
+        if not self.performing_operation_adress:
             raise ValidationError(_("Please enter meeting address before sending email"))
         if not self.performing_date:
             raise ValidationError(_("Please enter meeting date before sending email"))
         elif self.performing_time == 0:
             raise ValidationError(_("Please enter performing time before sending email"))
         else:
-            template_id = self.env.ref('mail_outplacement_report.email_template_assigned_coach').id
-            _logger.warning("NADIM template_id: %s" % template_id)
-            template = self.env['mail.template'].browse(template_id)
-            _logger.warning(" template: %s" % template)
-            template.with_context(nadim_type='eletter').send_mail(
+            template_id = self.env.ref('mail_outplacement_report.email_template_assigned_coach')
+            _logger.debug("NADIM template_id: %s" % template_id)
+            template_id.with_context(nadim_type='eletter').send_mail(
                 self.id, email_values={'notification': True}, force_send=True)
 
     # FUTURE USE FOR EDITABLE EMAIL TEMPLATES VIA POP-UP WIZARD

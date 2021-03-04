@@ -13,7 +13,7 @@
                     </p>
                     <p>
                         <strong>${object.employee_id.name} </strong>  är din handledare och du är välkommen till oss
-                        klockan ${object.performing_time  or ''} den ${object.performing_date or ''} på plats ${object.performing_operation_address or ''}.
+                        klockan ${object.performing_time  or ''} den ${object.performing_date or ''} på plats ${object.performing_operation_adress.street or ''},${object.performing_operation_adress.zip or ''} ${object.performing_operation_adress.city or ''}.
                         Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
                     </p>
                     <p>

@@ -21,7 +21,7 @@
             <button name="action_send_eletter" string="Send Ebrev by mail" type="object" class="btn-secondary"/>
       </xpath>
       <xpath expr="//field[@name='performing_operation_id']" position="after">
-        <field name="performing_operation_address" domain="[('performing_operation_id', '=', performing_operation_id)]" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" />
+        <field name="performing_operation_adress" domain="[('performing_operation_id', '=', performing_operation_id.adress)]" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" />
         <field name="performing_date" widget="date"/>
         <field name="performing_time" widget="float_time" />
         </xpath>
