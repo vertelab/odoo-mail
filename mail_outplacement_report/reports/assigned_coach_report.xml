@@ -94,12 +94,12 @@
 
                         <p>
                             <span t-esc="o.employee_id.name"/> är din handledare och du är välkommen till oss
-                            klockan <t t-esc="'%02d:%02d' % (int(o.time), o.time % 1 * 60)" /> den <span t-esc="o.date"/>
-                            <t t-if="o.performing_operation_adress ">
+                            klockan <t t-esc="'%02d:%02d' % (int(o.performing_time), o.performing_time % 1 * 60)" /> den <span t-esc="o.performing_date"/>
+                            <t t-if="o.performing_operation_address ">
                                 på plats
-                                <span t-esc="o.performing_operation_adress.street"/>
-                                <span t-esc="o.performing_operation_adress.zip"/>
-                                <span t-esc="o.performing_operation_adress.city"/>
+                                <span t-esc="o.performing_operation_address.street"/>
+                                <span t-esc="o.performing_operation_address.zip"/>
+                                <span t-esc="o.performing_operation_address.city"/>
                             </t>.
 
                             Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.

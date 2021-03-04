@@ -6,7 +6,7 @@
     <field name="arch" type="xml">
       <xpath expr="//form//sheet" position="before">
         <header>
-          <button name="action_send_email" string="Send login" type="object" class="oe_highlight" />
+          <button name="action_send_email" string="Send login" type="object" class="btn-secondary" />
         </header>
       </xpath>
     </field>
@@ -18,12 +18,12 @@
         <field name="inherit_id" ref="outplacement.outplacement_form_view"/>
         <field name="arch" type="xml">
         <xpath expr="//header" position="inside">
-            <button name="action_send_eletter" string="Send Ebrev by mail" type="object" class="oe_highlight"/>
+            <button name="action_send_eletter" string="Send Ebrev by mail" type="object" class="btn-secondary"/>
       </xpath>
       <xpath expr="//field[@name='performing_operation_id']" position="after">
-        <field name="performing_operation_adress" domain="[('performing_operation_id', '=', performing_operation_id)]" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" />
-        <field name="date" widget="date"/>
-        <field name="time" widget="float_time" />
+        <field name="performing_operation_address" domain="[('performing_operation_id', '=', performing_operation_id)]" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" />
+        <field name="performing_date" widget="date"/>
+        <field name="performing_time" widget="float_time" />
         </xpath>
         </field>
       </record>

@@ -13,7 +13,7 @@
                     </p>
                     <p>
                         <strong>${object.employee_id.name} </strong>  är din handledare och du är välkommen till oss
-                        klockan ${object.time  or ''} den ${object.date or ''}.
+                        klockan ${object.performing_time  or ''} den ${object.performing_date or ''} på plats ${object.performing_operation_address or ''}.
                         Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
                     </p>
                     <p>
@@ -21,7 +21,7 @@
                     </p>
                     <p>
                         Hälsningar <br/>
-                        ${object.employee_id.address_id.name}
+                        ${object.employee_id.address_id.name or ''}
                     </p>
                 </div>
             </field>

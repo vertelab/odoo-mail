@@ -1,5 +1,6 @@
 import logging
 from odoo import models, api, fields, _
+from odoo.exceptions import ValidationError
 from datetime import datetime, timedelta, date
 
 _logger = logging.getLogger(__name__)
@@ -25,18 +26,30 @@ class HrEmployee(models.Model):
 class Outplacement(models.Model):
     _inherit = "outplacement"
 
-    date = fields.Date(string="Meeting date", help="Date of meeting")
-    time = fields.Float(string="Meeting time", help="t.ex. 15:30")
-    performing_operation_adress = fields.Many2one(
+    performing_date = fields.Date(string="Meeting date", help="Date of meeting")
+    performing_time = fields.Float(string="Meeting time", digits=(12, 2), copy=False, help="t.ex. 15:30")
+    performing_operation_address = fields.Many2one(
         comodel_name='res.partner',
-        name='Adress', string='Performing Adress')
+        name='Adress', string='Meeting Address')
 
     @api.multi
     def action_send_eletter(self):
-        template_id = self.env.ref('mail_outplacement_report.email_template_assigned_coach').id
-        template = self.env['mail.template'].browse(template_id)
-        template.with_context(nadim_type='eletter').send_mail(
-            self.id, email_values={'notification': True}, force_send=True)
+        if not self.performing_operation_address:
+            _logger.warning("NADIM performing_operation_address: %s" % self.performing_operation_address)
+            raise ValidationError(_("Please enter meeting address before sending email"))
+        if not self.performing_date:
+            _logger.warning("NADIM performing_date: %s" % self.performing_date)
+            raise ValidationError(_("Please enter meeting date before sending email"))
+        elif self.performing_time == 0:
+            _logger.warning("NADIM performing_time: %s" % self.performing_time)
+            raise ValidationError(_("Please enter performing time before sending email"))
+        else:
+            template_id = self.env.ref('mail_outplacement_report.email_template_assigned_coach').id
+            _logger.warning("NADIM template_id: %s" % template_id)
+            template = self.env['mail.template'].browse(template_id)
+            _logger.warning(" template: %s" % template)
+            template.with_context(nadim_type='eletter').send_mail(
+                self.id, email_values={'notification': True}, force_send=True)
 
     # FUTURE USE FOR EDITABLE EMAIL TEMPLATES VIA POP-UP WIZARD
     # @api.multi
