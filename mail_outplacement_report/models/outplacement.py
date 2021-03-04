@@ -35,13 +35,10 @@ class Outplacement(models.Model):
     @api.multi
     def action_send_eletter(self):
         if not self.performing_operation_address:
-            _logger.warning("NADIM performing_operation_address: %s" % self.performing_operation_address)
             raise ValidationError(_("Please enter meeting address before sending email"))
         if not self.performing_date:
-            _logger.warning("NADIM performing_date: %s" % self.performing_date)
             raise ValidationError(_("Please enter meeting date before sending email"))
         elif self.performing_time == 0:
-            _logger.warning("NADIM performing_time: %s" % self.performing_time)
             raise ValidationError(_("Please enter performing time before sending email"))
         else:
             template_id = self.env.ref('mail_outplacement_report.email_template_assigned_coach').id
