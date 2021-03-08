@@ -12,16 +12,15 @@
                         Hej ${object.partner_name or ''}!
                     </p>
                     <p>
-                        <strong>${object.employee_id.name} </strong>  är din handledare och du är välkommen till oss
-                        klockan ${object.performing_time  or ''} den ${object.performing_date or ''} på plats ${object.performing_operation_address or ''}.
-                        Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
+                        <strong>${object.employee_id.name} </strong>  är din handledare och du är välkommen till oss.
+                        Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör. Se bifogad brev för tid och plats.
                     </p>
                     <p>
                         Anteckningsmaterial finns på plats.
                     </p>
                     <p>
                         Hälsningar <br/>
-                        ${object.employee_id.address_id.name or ''}
+                        ${object.performing_operation_id.name or 'object.employee_id.address_id.name'}
                     </p>
                 </div>
             </field>
