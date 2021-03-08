@@ -78,7 +78,7 @@
 
                         <!-- Mottagaradress -->
                         <div class="receiver" style="" >
-                            <span t-esc="o.name"/><br/>
+                            <span t-esc="o.partner_name"/><br/>
                             <span t-esc="o.partner_street"/><br/>
                             <span t-esc="o.partner_zip"/>
                             <span t-esc="o.partner_city"/><br/>
