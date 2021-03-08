@@ -17,7 +17,7 @@
         "views/outplacement_view.xml",
         "reports/assigned_coach_report.xml",
         "data/employee_login_data.xml",
-        "data/assigned_coach_data.xml",
+        "data/assigned_coach_data_edit.xml",
         
     ],
     "application": False,

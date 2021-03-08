@@ -99,8 +99,8 @@
                                 på plats
                                 <span t-esc="o.performing_operation_adress.street"/>
                                 <span t-esc="o.performing_operation_adress.zip"/>
-                                <span t-esc="o.performing_operation_adress.city"/>
-                            </t>.
+                                <span t-esc="o.performing_operation_adress.city"/>.
+                            </t>
 
                             Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
                         </p>
@@ -113,7 +113,7 @@
                         </p>
                         <p style="">
                             Hälsningar <br/>
-                            <span t-esc="o.employee_id.address_id.name"/><br/>
+                            <span t-esc="o.performing_operation_id.name"/><br/>
                         </p>
 
                     </div>

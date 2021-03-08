@@ -12,22 +12,21 @@
                         Hej ${object.partner_name or ''}!
                     </p>
                     <p>
-                        <strong>${object.employee_id.name} </strong>  är din handledare och du är välkommen till oss
-                        klockan ${object.performing_time  or ''} den ${object.performing_date or ''} på plats ${object.performing_operation_adress.street or ''},${object.performing_operation_adress.zip or ''} ${object.performing_operation_adress.city or ''}.
-                        Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör.
+                        <strong>${object.employee_id.name} </strong>  är din handledare och du är välkommen till oss.
+                        Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör. Se bifogad brev för tid och plats.
                     </p>
                     <p>
                         Anteckningsmaterial finns på plats.
                     </p>
                     <p>
                         Hälsningar <br/>
-                        ${object.employee_id.address_id.name or ''}
+                        ${object.performing_operation_id.name or 'object.employee_id.address_id.name'}
                     </p>
                 </div>
             </field>
             <field name="user_signature" eval="False"/>
+            <!--  Field below is for future use  -->
             <!-- <field name="lang">${object.partner_id.lang}</field> -->
-            <field name="auto_delete" eval="True"/>
             <field name="report_template" ref="mail_outplacement_report.action_assigned_coach_report"/>
             <field name="report_name"> Välkomstbrev till deltagare DAFA - Ebrev</field>
         </record>
