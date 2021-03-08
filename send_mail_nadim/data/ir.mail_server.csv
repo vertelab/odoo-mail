@@ -1,0 +1,3 @@
+"id","name","sequence","server_type","base_url","resource_type","rest_port","client_id","smtp_encryption","environment","smtp_host"
+"__export__.ir_mail_server_2_e9641982","NADIM eMail","10","Rest API","https://ipfapi.arbetsformedlingen.se","eMail","443","2391c9897741469ca9a183400c71837b","None","T2","/"
+"__export__.ir_mail_server_3_8d4b80dd","NADIM eBrev","10","Rest API","https://ipfapi.arbetsformedlingen.se","eLetter","443","2391c9897741469ca9a183400c71837b","None","T2","/"
