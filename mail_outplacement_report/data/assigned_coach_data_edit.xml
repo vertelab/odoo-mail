@@ -25,8 +25,8 @@
                 </div>
             </field>
             <field name="user_signature" eval="False"/>
+            <!--  Field below is for future use  -->
             <!-- <field name="lang">${object.partner_id.lang}</field> -->
-<!--            <field name="auto_delete" eval="True"/>-->
             <field name="report_template" ref="mail_outplacement_report.action_assigned_coach_report"/>
             <field name="report_name"> Välkomstbrev till deltagare DAFA - Ebrev</field>
         </record>
