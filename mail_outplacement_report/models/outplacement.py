@@ -5,11 +5,11 @@ from odoo.exceptions import ValidationError
 class Outplacement(models.Model):
     _inherit = "outplacement"
 
-    performing_date = fields.Date(string="Möte datum", help="Date of meeting")
-    performing_time = fields.Float(string="Möte tid", digits=(12, 2), copy=False, help="t.ex. 15:30")
+    performing_date = fields.Date(string="Meeting date", help="Date of meeting")
+    performing_time = fields.Float(string="Meeting time", digits=(12, 2), copy=False, help="t.ex. 15:30")
     performing_operation_adress = fields.Many2one(
         comodel_name='res.partner',
-        name='Adress', string='Utförande Adress')
+        name='Adress', string='Performing Adress')
 
     @api.depends('performing_operation_adress')
     def _compute_per_op_address(self):
@@ -20,7 +20,7 @@ class Outplacement(models.Model):
         else:
             self.per_op_address_text = False
 
-    per_op_address_text = fields.Char(compute='_compute_per_op_address', string='Utförande address')
+    per_op_address_text = fields.Char(compute='_compute_per_op_address', string='Performing address')
 
     @api.multi
     def action_send_eletter(self):
