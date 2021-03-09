@@ -1,56 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
-    <data>
+    <data noupdate="1">
         <!-- Custom mail template for new users that overrides auth_signup_data.xml -->
-            <record id="email_template_login_employee" model="mail.template">
+        <record id="email_template_login_employee" model="mail.template">
             <field name="name">Kontomail till användare</field>
             <field name="model_id" ref="hr.model_hr_employee"/>
             <field name="subject">Ett nytt konto har skapats!</field>
             <field name="email_to">${object.work_email | safe}</field>
-                <field name="body_html" type="html">
-                    <div>
+            <field name="body_html" type="html">
+                <div>
                     <p>
                         Hej ${object.name},<br/>
                     </p>
                     <p>
-                        Ett Konto har skapats och du kan nu logga på Digital Arbetsyta Fristående Aktör. Klicka på länken nedan för att logga in.<br />
+                        Ett Konto har skapats och du kan nu logga på Digital Arbetsyta Fristående Aktör. Klicka på
+                        länken nedan för att logga in.<br/>
                     </p>
-                        <div style="margin: 16px 0px 16px 0px;">
-                            <a href="/web/login?${ctx['auth_login']}"
-                               style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
-                                Mitt konto
-                            </a>
-                        </div>
-                        <br/><br/>
-
-                        Med vänlig hälsning,<br/>
-                        ${object.company_id.name}<br/><br/>
-
-            <p>
-                    <hr />
-                    <!-- FOOTER -->
-
-                    ${object.company_id.name}
-
-                    ${object.company_id.phone}
-                    % if object.company_id.email
-                    | <a href="'mailto:%s' % ${object.company_id.email}" style="text-decoration:none; color: #454748;">${object.company_id.email}</a>
-                    % endif
-                    % if object.company_id.website
-                    | <a href="'%s' % ${object.company_id.website}" style="text-decoration:none; color: #454748;">
-                    ${object.company_id.website}
-                </a>
-                    % endif
-            </p>
-
+                    <div style="margin: 16px 0px 16px 0px;">
+                        <a href="/web/login?${ctx['auth_login']}"
+                           style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                            Mitt konto
+                        </a>
                     </div>
+                    <br/><br/>
 
-                </field>
+                    Med vänlig hälsning,<br/>
+                    ${object.company_id.name}<br/><br/>
+
+                    <p>
+                        <hr/>
+                        <!-- FOOTER -->
+
+                        ${object.company_id.name}
+
+                        ${object.company_id.phone}
+                        % if object.company_id.email
+                        | <a href="'mailto:%s' % ${object.company_id.email}"
+                             style="text-decoration:none; color: #454748;">${object.company_id.email}</a>
+                        % endif
+                        % if object.company_id.website
+                        | <a href="'%s' % ${object.company_id.website}" style="text-decoration:none; color: #454748;">
+                        ${object.company_id.website}
+                    </a>
+                        % endif
+                    </p>
+
+                </div>
+
+            </field>
 
             <field name="user_signature" eval="False"/>
             <!-- <field name="lang">${object.partner_id.lang}</field> -->
-            <field name="auto_delete" eval="True"/>
-    </record>
-</data>
+            <field name="auto_delete" eval="False"/>
+        </record>
+    </data>
 </odoo>
