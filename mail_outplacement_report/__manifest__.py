@@ -2,7 +2,7 @@
 
 {
     "name": "DAFA Outplacement Templates",
-    "version": "12.0.1.0.3",
+    "version": "12.0.2.0.2",
     "author": "Vertel AB",
     "license": "AGPL-3",
     "website": "https://vertel.se/",
