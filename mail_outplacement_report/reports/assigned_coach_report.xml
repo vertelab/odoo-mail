@@ -70,15 +70,15 @@
                     <div class="adress" style="" >
                         <!-- Avsändaradress  -->
                         <div class="sender" style="">
-                            <span t-esc="o.employee_id.address_id.name"/><br/>
-                            <span t-esc="o.employee_id.address_id.street"/><br/>
-                            <span t-esc="o.employee_id.address_id.zip"/>
-                            <span t-esc="o.employee_id.address_id.city"/><br/>
+                            <span t-esc="o.performing_operation_id.name"/><br/>
+                            <span t-esc="o.performing_operation_adress.street"/><br/>
+                            <span t-esc="o.performing_operation_adress.zip"/>
+                            <span t-esc="o.performing_operation_adress.city"/><br/>
                         </div>
 
                         <!-- Mottagaradress -->
                         <div class="receiver" style="" >
-                            <span t-esc="o.name"/><br/>
+                            <span t-esc="o.partner_name"/><br/>
                             <span t-esc="o.partner_street"/><br/>
                             <span t-esc="o.partner_zip"/>
                             <span t-esc="o.partner_city"/><br/>
