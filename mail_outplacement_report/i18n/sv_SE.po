@@ -172,7 +172,7 @@ msgstr ""
 #. module: mail_outplacement_report
 #: model_terms:ir.ui.view,arch_db:mail_outplacement_report.outplacement_form_view
 msgid "Send Ebrev by mail"
-msgstr ""
+msgstr "Skicka välkomstbrev"
 
 #. module: mail_outplacement_report
 #: model_terms:ir.ui.view,arch_db:mail_outplacement_report.view_employee_form
