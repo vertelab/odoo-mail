@@ -24,6 +24,8 @@ class Outplacement(models.Model):
 
     @api.multi
     def action_send_eletter(self):
+        if not self.performing_operation_id:
+            raise ValidationError(_("Please enter Performing Operation field before sending email"))
         if not self.performing_operation_adress:
             raise ValidationError(_("Please enter meeting address before sending email"))
         if not self.performing_date:
