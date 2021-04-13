@@ -109,9 +109,7 @@
                                                 <u>Prenumerera</u>
                                             </span>
                                             <br/>
-                                            <span>
-											Klicka här här att <a href="/unsubscribe_from_list">avregistrera</a> dig
-                                            </span>
+                                            <span>Klicka här här att <a href="/unsubscribe_from_list">avregistrera</a> dig</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -151,7 +149,7 @@
                                                         <!--                        />-->
                                                     </td>
                                                     <td valign="middle" align="right">
-                                                        <span>Visa i webblasaren</span>
+                                                    <span><a href="#" class="view_in_browser_url">View this mail in browser></a></span>
                                                     </td>
                                                 </tr>
                                             </table>
