@@ -62,8 +62,8 @@ class PartnerEvent(models.Model):
                 rec.contact_domain_count = len(res_ids)
 
                 # Get Today's Email Count
-                today_event_mail_count = rec.env['mail.mail'].search([('model', '=', self._name),
-                                                                      ('res_id', '=', self.id)])
+                today_event_mail_count = rec.env['mail.mail'].search([('model', '=', rec._name),
+                                                                      ('res_id', '=', rec.id)])
 
                 total_event_mail_count = []
                 for _rec in today_event_mail_count:
@@ -74,7 +74,7 @@ class PartnerEvent(models.Model):
 
                 # All Email sent for this event
                 rec.all_event_mail_count = rec.env['mail.mail'].search_count([
-                    ('res_id', '=', self.id), ('model', '=', self._name)])
+                    ('res_id', '=', rec.id), ('model', '=', rec._name)])
 
     def automated_event_mail(self):
         event_ids = self.env['partner.event'].search([('state', '=', 'running')])
