@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Pre Header Snippet -->
+    <template id="s_mail_block_pre_header_af" name="Pre Header">
+        <div class="o_mail_block_pre_header">
+            <div class="o_mail_snippet_general">
+                <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles">
+                    <tr>
+                        <td width="100%" style="background-color:#eceff2;height:30px;vertical-align:middle;
+                            font-family:Arial, Verdana, sans-serif">
+                            &amp;nbsp; Plugga til Game &amp; UX designer vid yrkeshögskolan
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- Header Snippet -->
+    <template id="s_mail_block_header_af" name="Header">
+        <div class="o_mail_block_header">
+            <div class="o_mail_snippet_general">
+                <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles">
+                    <tr>
+                        <td width="40%" class="o_mail_logo_container o_mail_h_padding o_mail_v_padding"
+                            style="background-color:#00005a">
+                            &amp;nbsp;
+                            <a t-att-href="(company_id.website) or '#'"
+                               style="text-decoration:none;float:none;background-color:#00005a">
+                                <img border="0" src="/mass_mailing_editor_af/static/src/img/blocks/AF_logo.png"
+                                     style="height:50px;max-width:400px;padding-top:10px;padding-bottom:10px"
+                                     alt="Your Logo"/>
+                            </a>
+                            &amp;nbsp;
+                        </td>
+                        <td width="20%" style="background-color:#00005a"/>
+                        <td width="40%" style="vertical-align:middle;text-align:right;background-color:#00005a;
+                                color:#FFFFFF;padding-right:5px;">
+                            <h4 style="color:#FFFFFF;font-family:Arial, Verdana, sans-serif">> Visa i webbläsaren</h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- Full With Image Snippet -->
+    <template id="s_mail_block_full_width_image_af" name="Full Width Image">
+        <div class="o_mail_block_banner">
+            <div class="o_mail_snippet_general">
+                <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles">
+                    <tbody>
+                        <tr>
+                            <td width="100%" valign="top" class="o_mail_full_width_padding o_mail_no_colorpicker">
+                                <a href="#">
+                                    <img src="/mass_mailing_editor_af/static/src/img/blocks/full_width_image.jpg"
+                                         class="d-block mx-auto" alt="Full Width Image"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- Blue Header Text Block Snippet -->
+    <template id="s_mail_block_blue_header_text_block_af" name="Blue Header Text Block">
+        <div class="o_mail_block_banner">
+            <div class="o_mail_snippet_general">
+                <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles">
+                    <tbody>
+                        <tr>
+                            <td width="100%" style="background-color:#00005a;vertical-align:middle;
+                                padding-top:10px;border-bottom:5px Solid green">
+                                <h3 style="color:#FFFFFF;font-family:Arial, Verdana, sans-serif">
+                                    Game &amp; UX designer, 400 YH poäng
+                                </h3>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- Blue Text Block with two Columns Snippet -->
+    <template id="s_mail_block_blue_text_block_two_col_af" name="Blue Text Block With Two Columns">
+        <div class="o_mail_block_banner">
+            <div class="o_mail_snippet_general">
+                <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles">
+                    <tbody>
+                        <tr>
+                            <td width="45%" style="background-color:#00005a;vertical-align:top;
+                                padding-top:10px;padding-left:5px;">
+                                <p style="color:#FFFFFF;font-family:Arial, Verdana, sans-serif;text-align:justify">
+                                    Drömmer du om att jobba med spelutveckling?
+                                    Då är den här utbildningen helt rätt för dig. Du får
+                                    bland annat tvárvetenskaplig kompetens inom
+                                    spelutveckling, upplevelsebaserad design, UX,
+                                    VR/AR, affärsutveckling och ledarskap.
+                                </p>
+                            </td>
+                            <td width="10%" style="background-color:#00005a;"/>
+                            <td width="45%" style="background-color:#00005a;vertical-align:top;
+                                padding-top:10px;padding-right:5px;">
+                                <p style="color:#FFFFFF;font-family:Arial, Verdana, sans-serif;text-align:justify">
+                                    Utbildningen som är på heltid finns i Skellefteå och
+                                    startar i september 2021.
+                                </p>
+                                <br/>
+                                <p style="color:#FFFFFF;font-family:Arial, Verdana, sans-serif;text-align:justify">
+                                    <b>Sista ansökningsdag 4 maj</b>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="55%" colspan="2" style="background-color:#00005a;"/>
+                            <td width="45%" style="background-color:#00005a;padding-bottom:50px;padding-right:50px">
+                                <div class="text-center" style="margin-top:15px;">
+                                    <a role="button" href="#" class="btn btn-link"
+                                       style="background-color:green;border:1px solid green;border-radius:15%;
+                                            color:#FFFFFF;padding-top:5px;padding-bottom:5px;padding-left:10px;
+                                            padding-right:10px">
+                                        Läs mer om utbildningen och ansök
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- White text box with two column snippet -->
+    <template id="s_mail_block_image_text_af" name="White Text Block with Two Columns">
+        <div class="o_mail_block_image_text">
+            <div class="o_mail_snippet_general">
+                <table align="center" cellspacing="0" cellpadding="0" class="o_mail_table_styles">
+                    <tbody>
+                        <tr>
+                            <td width="50%">
+                                <img src="/mass_mailing_editor_af/static/src/img/blocks/group_img.jpg"
+                                     class="d-block mx-auto" alt="Your Picture"/>
+                            </td>
+                            <td width="5%"/>
+                            <td width="45%">
+                                <h2 style="text-align:justify">Utbildningar som matchar arbetsmarknadens behov</h2>
+                                <p class="o_mail_no_margin" style="text-align:justify;">Yrkeshögskolans utbildningar är
+                                    framtagna av
+                                    arbetsgivarna själva. Det innebär att du som
+                                    studerande kan vara säker på att få efterfrågade
+                                    kunskaper, vilket ofta innebär en snabb väg till
+                                    jobb. Utbildningarna är ofta ganska korta,
+                                    studiemedelsberättigade och flera sker på distans.
+                                    Det gör det lättare att delta - oavsett var du bor.
+                                </p>
+                                <div class="text-center" style="margin-top:15px;">
+                                    <a role="button" href="#" class="btn btn-link"
+                                       style="background-color:#00005a;border:1px solid #00005a;border-radius:15%;
+                                            color:#FFFFFF;padding-top:5px;padding-bottom:5px;padding-left:10px;
+                                            padding-right:10px">
+                                        Till yrkeshogskolan.se
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- White text box with one column snippet -->
+    <template id="s_mail_block_text_af" name="White Text with One Columns">
+        <div class="o_mail_block_image_text">
+            <div class="o_mail_snippet_general">
+                <table align="center" cellspacing="0" cellpadding="0" class="o_mail_table_styles">
+                    <tbody>
+                        <tr>
+                            <td style="padding:10px;background-color:#FFFFFF;height:30px;vertical-align:middle;
+                            font-family:Arial, Verdana, sans-serif" width="100%">
+                                <a href="#" style="color:blue">> Besök oss på www.arbetsformedlingen.se</a>
+                                | Detta mejl går inte att svara på
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- Blue Page footer snippet -->
+    <template id="s_mail_block_blue_page_footer_af" name="Blue Page Footer">
+        <div class="o_mail_block_image_text">
+            <div class="o_mail_snippet_general">
+                <table align="center" cellspacing="0" cellpadding="0" class="o_mail_table_styles">
+                    <tbody>
+                        <tr>
+                            <td style="padding:10px;background-color:#00005a;height:50px;vertical-align:top;
+                            font-family:Arial, Verdana, sans-serif;color:#FFFFFF" width="100%">
+                                <p style="text-align:justify;color:white">
+                                    Du får detta informationsbrev eftersom din epost, SubscriberEmail##registrerats när
+                                    du skapat ett
+                                    konto hos Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från
+                                    Arbetsförmedlingen kan du
+                                    <u>avanmäla dig här.</u>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- White Page Footer Snippet-->
+    <template id="s_mail_block_white_page_footer_af" name="White Page Footer">
+        <div class="o_mail_block_image_text">
+            <div class="o_mail_snippet_general">
+                <table align="center" cellspacing="0" cellpadding="0" class="o_mail_table_styles">
+                    <tbody>
+                        <tr>
+                            <td style="padding:10px;background-color:#eceff2;height:50px;vertical-align:top;
+                            font-family:Arial, Verdana, sans-serif" width="100%">
+                                <p style="text-align:justify;">
+                                    Du får detta informationsbrev eftersom din opost, SubscriberEmaille registrerats när
+                                    du skapat ett konto hos Arbetsförmedlingan. Vil
+                                    du inte ta emot for informationsbrev från Arbetsförmedlingen kan du avanmäla dig
+                                    hic,
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <!-- Inherit main template to add snippets -->
+    <template id="af_add_email_designer_snippets" inherit_id="mass_mailing.email_designer_snippets">
+        <xpath expr="//div[@id='email_designer_default_headers']/div[@class='o_panel_body']"
+               position="inside">
+            <t t-snippet="mass_mailing_editor_af.s_mail_block_pre_header_af"
+               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/pre_header.png"/>
+            <t t-snippet="mass_mailing_editor_af.s_mail_block_header_af"
+               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header.png"/>
+        </xpath>
+        <xpath expr="//div[@id='email_designer_default_body']/div[@class='o_panel_body']"
+               position="inside">
+            <t t-snippet="mass_mailing_editor_af.s_mail_block_full_width_image_af"
+               t-thumbnail="/mass_mailing/static/src/img/blocks/block_banner.png"/>
+            <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_header_text_block_af"
+               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_header_text_block.png"/>
+            <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_text_block_two_col_af"
+               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_text_two_col.png"/>
+            <t t-snippet="mass_mailing_editor_af.s_mail_block_image_text_af"
+               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_text_with_two_col.png"/>
+            <t t-snippet="mass_mailing_editor_af.s_mail_block_text_af"
+               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_text_with_one_col.png"/>
+        </xpath>
+        <xpath expr="//div[@id='email_designer_default_footer']/div[@class='o_panel_body']"
+               position="inside">
+            <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_page_footer_af"
+               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_footer.png"/>
+            <t t-snippet="mass_mailing_editor_af.s_mail_block_white_page_footer_af"
+               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_footer.png"/>
+        </xpath>
+    </template>
+
+</odoo>
