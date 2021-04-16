@@ -7,10 +7,10 @@
             <div class="o_mail_snippet_general">
                 <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles">
                     <tr>
-                        <td width="100%" style="background-color:#eceff2;height:30px;vertical-align:middle;
-                            font-family:Arial, Verdana, sans-serif">
-                            &amp;nbsp; Plugga til Game &amp; UX designer vid yrkeshögskolan
-                        </td>
+                        <th width="100%" style="background-color:#eceff2;height:30px;vertical-align:middle;
+                            font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;padding:15px 0;">
+                            Plugga til Game &amp; UX designer vid yrkeshögskolan
+                        </th>
                     </tr>
                 </table>
             </div>
@@ -23,8 +23,8 @@
             <div class="o_mail_snippet_general">
                 <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles">
                     <tr>
-                        <td width="40%" class="o_mail_logo_container o_mail_h_padding o_mail_v_padding"
-                            style="background-color:#00005a">
+                        <td width="40%"
+                            style="background-color:#00005a;padding-left:20px;">
                             &amp;nbsp;
                             <a t-att-href="(company_id.website) or '#'"
                                style="text-decoration:none;float:none;background-color:#00005a">
@@ -35,9 +35,13 @@
                             &amp;nbsp;
                         </td>
                         <td width="20%" style="background-color:#00005a"/>
-                        <td width="40%" style="vertical-align:middle;text-align:right;background-color:#00005a;
-                                color:#FFFFFF;padding-right:5px;">
-                            <h4 style="color:#FFFFFF;font-family:Arial, Verdana, sans-serif">> Visa i webbläsaren</h4>
+                        <td width="40%" style="font:15px/1.2 Arial, Helvetica, sans-serif; color:#ffffff;
+                        text-decoration:none; vertical-align: middle;text-align:right;background-color:#00005a;
+                        padding-right:20px;">
+                            <div style="font-size:0; line-height:0;"/>
+                            <a href="##WebVersion##" style="color:#ffffff; text-decoration:none;">
+                                > Visa i webbläsaren
+                            </a>
                         </td>
                     </tr>
                 </table>
@@ -54,7 +58,7 @@
                         <tr>
                             <td width="100%" valign="top" class="o_mail_full_width_padding o_mail_no_colorpicker">
                                 <a href="#">
-                                    <img src="/mass_mailing_editor_af/static/src/img/blocks/full_width_image.jpg"
+                                    <img src="/mass_mailing_editor_af/static/src/img/blocks/full_image.jpg"
                                          class="d-block mx-auto" alt="Full Width Image"/>
                                 </a>
                             </td>
@@ -73,10 +77,40 @@
                     <tbody>
                         <tr>
                             <td width="100%" style="background-color:#00005a;vertical-align:middle;
-                                padding-top:10px;border-bottom:5px Solid green">
-                                <h3 style="color:#FFFFFF;font-family:Arial, Verdana, sans-serif">
-                                    Game &amp; UX designer, 400 YH poäng
-                                </h3>
+                                padding:20px 20px;">
+                                <div style="font:24px/1.3 Arial, Helvetica, sans-serif; color:#ffffff;
+                                 padding-bottom:20px; border-width:0;">
+                                    <span>
+                                        Det är aldrig för sent att ställa om
+                                    </span>
+                                </div>
+                                <table style="width:100%" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                        <tr valign="top">
+                                            <th align="left">
+                                                <div align="left">
+                                                    <table style="width:67px;" cellspacing="0" cellpadding="0"
+                                                           border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th anpbgcolor="#picker,transparent,#ffffff,#b7ee4a"
+                                                                    style="width:67px; height:4px; line-height:1px; font-size:1px;"
+                                                                    bgcolor="#b7ee4a" align="left">
+                                                                    <img src="Apsis%20Newsletter%20Pro_files/pixel.gif"
+                                                                         link=""
+                                                                         style="display:block; width:100%!important;
+                                                                         height:4px;"
+                                                                         title="" alt="" width="1" height="4" border=""
+                                                                         align="middle"/>
+                                                                </th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </td>
                         </tr>
                     </tbody>
@@ -92,9 +126,10 @@
                 <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles">
                     <tbody>
                         <tr>
-                            <td width="45%" style="background-color:#00005a;vertical-align:top;
-                                padding-top:10px;padding-left:5px;">
-                                <p style="color:#FFFFFF;font-family:Arial, Verdana, sans-serif;text-align:justify">
+                            <td width="45%" style="background-color:#00005a;vertical-align:top;text-align:justify;
+                                padding-top:10px;padding-left:20px;font:12px/1.5 Arial, Helvetica, sans-serif;
+                                color:#FFFFFF;">
+                                <p style="color:#FFFFFF">
                                     Drömmer du om att jobba med spelutveckling?
                                     Då är den här utbildningen helt rätt för dig. Du får
                                     bland annat tvárvetenskaplig kompetens inom
@@ -103,14 +138,15 @@
                                 </p>
                             </td>
                             <td width="10%" style="background-color:#00005a;"/>
-                            <td width="45%" style="background-color:#00005a;vertical-align:top;
-                                padding-top:10px;padding-right:5px;">
-                                <p style="color:#FFFFFF;font-family:Arial, Verdana, sans-serif;text-align:justify">
+                            <td width="45%" style="background-color:#00005a;vertical-align:top;color:#FFFFFF;
+                                text-align:justify;
+                                padding-top:10px;padding-right:20px;font:12px/1.5 Arial, Helvetica, sans-serif;">
+                                <p style="color:#FFFFFF">
                                     Utbildningen som är på heltid finns i Skellefteå och
                                     startar i september 2021.
                                 </p>
                                 <br/>
-                                <p style="color:#FFFFFF;font-family:Arial, Verdana, sans-serif;text-align:justify">
+                                <p style="color:#FFFFFF">
                                     <b>Sista ansökningsdag 4 maj</b>
                                 </p>
                             </td>
@@ -118,13 +154,58 @@
                         <tr>
                             <td width="55%" colspan="2" style="background-color:#00005a;"/>
                             <td width="45%" style="background-color:#00005a;padding-bottom:50px;padding-right:50px">
-                                <div class="text-center" style="margin-top:15px;">
-                                    <a role="button" href="#" class="btn btn-link"
-                                       style="background-color:green;border:1px solid green;border-radius:15%;
-                                            color:#FFFFFF;padding-top:5px;padding-bottom:5px;padding-left:10px;
-                                            padding-right:10px">
-                                        Läs mer om utbildningen och ansök
-                                    </a>
+                                <div align="left">
+                                    <table cellspacing="0" cellpadding="0" border="0" align="left">
+                                        <tbody>
+                                            <tr>
+                                                <th anpbgcolor="#picker,transparent,#ffffff,#b7ee4a"
+                                                    style="padding:10px 30px; vertical-align:middle; border-radius: 25px;"
+                                                    valign="middle" bgcolor="#b7ee4a" align="center">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th style="vertical-align: middle;" valign="middle">
+                                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th style="font:12px/1.2 Arial, Helvetica, sans-serif; text-decoration:none; vertical-align: middle; color: #00005a; font-weight: bold;"
+                                                                                    class="bodytext" valign="middle"
+                                                                                    align="center">
+                                                                                    <font style="color:rgb(0, 0, 90);">
+                                                                                        <a href="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb?pk_medium=Email&amp;pk_source=as_crm&amp;pk_campaign=Mikro&amp;pk_content=hogskola2"
+                                                                                           name=""
+                                                                                           style="color:rgb(0, 0, 90); text-decoration:none;"
+                                                                                           data-original-color="">Läs
+                                                                                            mer om hur du kan tänka
+                                                                                        </a>
+                                                                                    </font>
+                                                                                </th>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </th>
+                                                                <th width="10" height="10"/>
+                                                                <th style="vertical-align: middle;" valign="middle">
+                                                                    <table cellspacing="0" cellpadding="0" border="0"
+                                                                           align="center">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th style="vertical-align: middle; line-height:normal;"
+                                                                                    class="icons" valign="middle"
+                                                                                    height="12">
+                                                                                    >
+                                                                                </th>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </td>
                         </tr>
@@ -141,29 +222,44 @@
                 <table align="center" cellspacing="0" cellpadding="0" class="o_mail_table_styles">
                     <tbody>
                         <tr>
-                            <td width="50%">
+                            <td width="50%" style="padding-top:20px;padding-bottom:20px;padding-left:20px;">
                                 <img src="/mass_mailing_editor_af/static/src/img/blocks/group_img.jpg"
                                      class="d-block mx-auto" alt="Your Picture"/>
                             </td>
-                            <td width="5%"/>
-                            <td width="45%">
-                                <h2 style="text-align:justify">Utbildningar som matchar arbetsmarknadens behov</h2>
-                                <p class="o_mail_no_margin" style="text-align:justify;">Yrkeshögskolans utbildningar är
-                                    framtagna av
-                                    arbetsgivarna själva. Det innebär att du som
-                                    studerande kan vara säker på att få efterfrågade
-                                    kunskaper, vilket ofta innebär en snabb väg till
-                                    jobb. Utbildningarna är ofta ganska korta,
-                                    studiemedelsberättigade och flera sker på distans.
-                                    Det gör det lättare att delta - oavsett var du bor.
-                                </p>
-                                <div class="text-center" style="margin-top:15px;">
-                                    <a role="button" href="#" class="btn btn-link"
-                                       style="background-color:#00005a;border:1px solid #00005a;border-radius:15%;
-                                            color:#FFFFFF;padding-top:5px;padding-bottom:5px;padding-left:10px;
-                                            padding-right:10px">
-                                        Till yrkeshogskolan.se
-                                    </a>
+                            <td width="5%" style="padding-top:20px;padding-bottom:20px"/>
+                            <td width="45%" style="font:12px/1.5 Arial, Helvetica, sans-serif; color:#303030;
+                                    padding-top:20px;padding-bottom:20px;padding-right:20px;"
+                                valign="top" align="left">
+                                <div style="font:20px/1.3 Arial, Helvetica, sans-serif; color:#000000;
+                                 padding-bottom:10px; border-width:0;"
+                                     class="headline">
+                                    <span style="">Sista ansäkningsdag 15 april</span>
+                                </div>
+                                <div style="padding:0 0 10px; border-width:0;text-align:justify">
+                                    <span style="">Om en vecka stänger anmäla till höstens
+                                        utbildningar. Gör din anmälan redan idag för att inte missa chansen. På
+                                        Antagning.se kan du både hitta utbildningar och skicka in din ansökan
+                                    </span>
+                                </div>
+                                <div align="left">
+                                    <table cellspacing="0" cellpadding="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <th anpbgcolor="#picker,transparent,#ffffff,#00005a"
+                                                    style="font:12px/1.2 Arial, Helvetica, sans-serif; color: #ffffff;
+                                                    text-decoration:none; padding:8px 20px; vertical-align:middle;
+                                                    border-radius: 6px; font-weight: bold;"
+                                                    class="bodytext" valign="middle" bgcolor="#00005a" align="center">
+                                                    <font style="color:rgb(255, 255, 255);">
+                                                        <a href="https://www.antagning.se/" name=""
+                                                           style="color:rgb(255, 255, 255); text-decoration:none;"
+                                                           data-original-color="">Till antagning.se
+                                                        </a>
+                                                    </font>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </td>
                         </tr>
@@ -180,10 +276,10 @@
                 <table align="center" cellspacing="0" cellpadding="0" class="o_mail_table_styles">
                     <tbody>
                         <tr>
-                            <td style="padding:10px;background-color:#FFFFFF;height:30px;vertical-align:middle;
-                            font-family:Arial, Verdana, sans-serif" width="100%">
+                            <td style="padding:20px;height:30px;vertical-align:middle;
+                            font:12px/1.5 Arial, Helvetica, sans-serif" width="100%">
                                 <a href="#" style="color:blue">> Besök oss på www.arbetsformedlingen.se</a>
-                                | Detta mejl går inte att svara på
+                                <span style="color:black">| Detta mejl går inte att svara på</span>
                             </td>
                         </tr>
                     </tbody>
@@ -199,14 +295,16 @@
                 <table align="center" cellspacing="0" cellpadding="0" class="o_mail_table_styles">
                     <tbody>
                         <tr>
-                            <td style="padding:10px;background-color:#00005a;height:50px;vertical-align:top;
-                            font-family:Arial, Verdana, sans-serif;color:#FFFFFF" width="100%">
-                                <p style="text-align:justify;color:white">
+                            <td style="padding:20px 20px 40px;background-color:#00005a;height:50px;vertical-align:top;
+                            font:12px/1.5 Arial, Helvetica, sans-serif;color:#FFFFFF;text-align:justify;"
+                                width="100%">
+                                <p style="color:#FFFFFF">
                                     Du får detta informationsbrev eftersom din epost, SubscriberEmail##registrerats när
                                     du skapat ett
                                     konto hos Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från
                                     Arbetsförmedlingen kan du
-                                    <u>avanmäla dig här.</u>
+                                     <a href="##OptOutAll##" name="" style="color:rgb(255, 255, 255);
+                                     font-weight:normal;"><u>avanmäla dig här.</u></a>
                                 </p>
                             </td>
                         </tr>
@@ -223,9 +321,9 @@
                 <table align="center" cellspacing="0" cellpadding="0" class="o_mail_table_styles">
                     <tbody>
                         <tr>
-                            <td style="padding:10px;background-color:#eceff2;height:50px;vertical-align:top;
-                            font-family:Arial, Verdana, sans-serif" width="100%">
-                                <p style="text-align:justify;">
+                            <td style="padding:20px;background-color:#eceff2;height:50px;vertical-align:top;
+                            font:12px/1.5 Arial, Helvetica, sans-serif;text-align:justify;" width="100%">
+                                <p style="color:black">
                                     Du får detta informationsbrev eftersom din opost, SubscriberEmaille registrerats när
                                     du skapat ett konto hos Arbetsförmedlingan. Vil
                                     du inte ta emot for informationsbrev från Arbetsförmedlingen kan du avanmäla dig
@@ -253,9 +351,9 @@
             <t t-snippet="mass_mailing_editor_af.s_mail_block_full_width_image_af"
                t-thumbnail="/mass_mailing/static/src/img/blocks/block_banner.png"/>
             <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_header_text_block_af"
-               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_header_text_block.png"/>
+               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header_block_blue.png"/>
             <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_text_block_two_col_af"
-               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_text_two_col.png"/>
+               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_block_two_col.png"/>
             <t t-snippet="mass_mailing_editor_af.s_mail_block_image_text_af"
                t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_text_with_two_col.png"/>
             <t t-snippet="mass_mailing_editor_af.s_mail_block_text_af"
