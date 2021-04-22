@@ -6,8 +6,8 @@
             <field name="arch" type="xml">
                 <form string="Events">
                     <header>
-                        <button string="Start Event" name="automated_event_mail" states="draft" type="object" class="oe_highlight" groups="base.group_user"/>
-<!--                        <button string="Start Event" name="start_event" states="draft" type="object" class="oe_highlight" groups="base.group_user"/>-->
+                        <button string="Start Event" name="start_event" states="draft" type="object" class="oe_highlight" groups="base.group_user"/>
+<!--                        <button string="automated_event_mail" name="automated_event_mail" states="running" type="object" class="oe_highlight" groups="base.group_user"/>-->
                         <button string="Cancel Event" name="button_cancel" states="running" type="object" groups="base.group_user" confirm="Are you sure you want to cancel this event?" />
                         <button string="Re-Run Event" name="start_event" states="canceled" type="object" class="oe_highlight" groups="base.group_user"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,running,canceled"/>
@@ -27,6 +27,9 @@
                                     context="{'show_address': 1}"
                                     options='{"always_reload": True}'/>
                                 <field name="user_id"/>
+                                <field name="contact_domain_count" invisible="1"/>
+                                <field name="today_event_mail_count" invisible="1"/>
+                                <field name="all_event_mail_count" invisible="1"/>
                             </group>
                             <group>
                                 <field name="category"/>
@@ -47,7 +50,6 @@
                                         <field name="interval_nbr"/>
                                         <field name="interval_unit"/>
                                         <field name="interval_type"/>
-<!--                                        <field name="ir_model"/>-->
                                         <field name="ir_model_field"/>
                                         <field name="sent"/>
                                     </tree>
@@ -105,21 +107,17 @@
                                         <ul class="oe_kanban_colorpicker" data-field="color" role="menu"/>
                                     </div>
                                 </div>
-                                <div class="o_event_left">
-                                    <div class="o_day"><t t-esc="record.date_begin.raw_value.getDate()"/></div>
-                                    <div>
-                                        <t t-esc="moment(record.date_begin.raw_value).format('MMM')"/>
-                                        <t t-esc="record.date_begin.raw_value.getFullYear()"/>
-                                    </div>
-                                    <div><t t-esc="moment(record.date_begin.raw_value).format('LT')"/></div>
-                                </div>
                                 <div class="o_event_right">
-                                    <h4 class="o_kanban_record_title"><field name="name"/></h4>
-                                    <div>
-                                        <t t-if="record.country_id.raw_value"> <b class="o_kanban_record_subtitle"> <field name="country_id"/> </b> <br/> </t>
-                                        <b><i class="fa fa-clock-o"/>
-                                        To</b> <t t-esc="moment(record.date_end.raw_value).format('lll')"/>
-                                    </div>
+                                    <b><h4 class="o_kanban_record_title"><field name="name"/></h4></b>
+                                    <p>
+                                        <h4 class="o_kanban_record_title">Count of Sample: <field name="contact_domain_count"/></h4>
+                                    </p>
+                                    <p>
+                                        <h4 class="o_kanban_record_title">Emails Sent: <field name="today_event_mail_count"/></h4>
+                                    </p>
+                                    <p>
+                                        <h4 class="o_kanban_record_title">Emails Sent Totally: <field name="all_event_mail_count"/></h4>
+                                    </p>
                                 </div>
                             </div>
                         </t>
@@ -137,8 +135,6 @@
             <field name="res_model">partner.event</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
-<!--            <field name="context">{"search_default_upcoming":1}</field>-->
-<!--            <field name="search_view_id" ref="view_event_search"/>-->
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Add a new event
