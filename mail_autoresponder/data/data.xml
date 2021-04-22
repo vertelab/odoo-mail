@@ -16,7 +16,7 @@
 
 
         <!-- Move the event state to end-->
-        <record model="ir.cron" forcecreate="True" id="customer_dialogue_event_mail_scheduler">
+        <record model="ir.cron" forcecreate="True" id="event_close_when_end">
             <field name="name">Event : Update event status to end when it finished.</field>
             <field name="model_id" ref="model_partner_event"/>
             <field name="state">code</field>
