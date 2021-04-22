@@ -23,6 +23,7 @@
         'views/templates.xml',
         'views/menuitem.xml',
         'views/partner_event_view.xml',
+        'views/mail_audit_view.xml',
         'data/mail_template.xml',
         'data/data.xml',
     ],
