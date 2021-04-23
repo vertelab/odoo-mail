@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="mass_mail_editor_af_assets_backend" name="mass_mailing assets"
+              inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="shortcut icon" href="https://www.anpdm.com/favicon.ico"/>
+            <link href="/mass_mailing_editor_af/static/src/css/fancybutton.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/anpPrompt.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/general.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/jquery.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/editor4.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/editor4-dropdownchecklist.css" rel="stylesheet"
+                  type="text/css"/>
+            <script src="/mass_mailing_editor_af/static/src/js//jquery-ui-1.js" type="text/javascript/"/>
+            <script src="/mass_mailing_editor_af/static/src/js/jquery_005.js" type="text/javascript"/>
+            <script src="/mass_mailing_editor_af/static/src/js/require-1.js" type="text/javascript"/>
+            <script src="/mass_mailing_editor_af/static/src/js/anp-common.js" type="text/javascript"/>
+            <script src="/mass_mailing_editor_af/static/src/js/jquery-impromptu.js" type="text/javascript"/>
+            <script src="/mass_mailing_editor_af/static/src/js/anpPrompt.js" type="text/javascript"/>
+
+            <script type="text/javascript">
+                require.config({
+                baseUrl: "/static/js/build/"
+                });
+                require(
+                ['newsletterpreview/editor4-Preview-init', 'newsletterpreview/editor4-NewsletterPreview-Parts',
+                'common/csharp-to-js-glue'],
+                function (init, parts, glue) {
+                $(document).ready(function () {
+                glue.init('indexconfig',
+                {
+                tabLoadingFailedMessage: 'Unable to load this tab.',
+                homeUrl: '/home2/home.aspx'
+                });
+                $('#editor4-loader').hide();
+                $('.editor-page-container').fadeTo("fast", 1);
+                Editor4NewsletterPreview.ShowFilterPreview();
+                $(document).delegate('.show-filter', 'change', Editor4NewsletterPreview.ShowFilterPreview);
+                });
+                });
+            </script>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="newsletterpreview/editor4-Preview-init"
+                    src="/mass_mailing_editor_af/static/src/js/editor4-Preview-init.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="newsletterpreview/editor4-NewsletterPreview-Parts"
+                    src="/mass_mailing_editor_af/static/src/js/editor4-NewsletterPreview-Parts.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="common/csharp-to-js-glue"
+                    src="/mass_mailing_editor_af/static/src/js/csharp-to-js-glue.js"/>
+
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="jquery-plugins/jquery.validate.min"
+                    src="/mass_mailing_editor_af/static/src/js/jquery.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="jquery-plugins/jquery.form"
+                    src="/mass_mailing_editor_af/static/src/js/jquery_004.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="editor4/editor4-module-preview"
+                    src="/mass_mailing_editor_af/static/src/js/editor4-module-preview.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="editor4/common/editor4-helper"
+                    src="/mass_mailing_editor_af/static/src/js/editor4-helper.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="editor4/editor4-newsletter-preview"
+                    src="/mass_mailing_editor_af/static/src/js/editor4-newsletter-preview.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="jquery-plugins/jquery.extend.dialog.window"
+                    src="/mass_mailing_editor_af/static/src/js/jquery_006.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="jquery-plugins/smartpaginator"
+                    src="/mass_mailing_editor_af/static/src/js/smartpaginator.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="common/common" src="/mass_mailing_editor_af/static/src/js/common.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="common/modules/underscore"
+                    src="/mass_mailing_editor_af/static/src/js/underscore.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="lib/encoder" src="/mass_mailing_editor_af/static/src/js/encoder.js"/>
+            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
+                    data-requiremodule="common/widgets/popup" src="/mass_mailing_editor_af/static/src/js/popup.js"/>
+
+            <style type="text/css">
+                #html-content .icons {
+                line-height: 1px!important;
+                }
+                .footer-text a { color:#ffffff !important; text-decoration:none !important; }
+                .FullW { width: 100%!important; }
+                form td { padding: 0; } /* Removing padding in webversion */
+                .ii a, .ReadMsgBody .ExternalClass a:link, .yshortcuts {
+                text-decoration: none!important; color: transparent!important; }
+                table th { /* Fix for unwanted th styling in yahoo */
+                margin: inherit; padding: inherit; font-weight: normal; }
+                table tr th { vertical-align: top; }
+                a[x-apple-data-detectors] { /* Fix for unwanted styling of links in ios */
+                color: inherit!important; text-decoration: none!important; font-size: inherit!important; font-family:
+                inherit!important; font-weight: inherit!important; line-height: inherit!important; }
+                table, td { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+                .ExternalClass * { /* Fix for Outlook.com */ line-height: normal; }
+                body, table, div, p, a, li, td, th { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+                ul.editorSection li:hover { /*Fix for unwanted align colsplit when hovering on modules*/ margin: 0
+                -1px!important; }
+                body { width: 100%; padding: 0!important; margin: 0 auto!important; background-color: #f7f7f7; }
+                body, table { font: 13px/1.5 Arial, Verdana, sans-serif; color: #000000; }
+            </style>
+
+            <style>
+                @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+            </style>
+
+            <style type="text/css">
+                @media screen and (max-width: 600px) {
+                .nomob { display: none!important; }
+                .rsd47 { width: 47%!important; height: auto!important; }
+                .rsd, td.rsd img, th.rsd img, div.rsd img { width: 100%!important; height: auto!important; }
+                .db { display: block!important; width: auto!important; }
+                .p_n { padding: 0!important; }
+                .p_lr { padding-left: 20px!important; padding-right: 20px!important; }
+                .p_r { padding-right: 20px!important; }
+                .p_b { padding-bottom: 20px!important; }
+                .p_b30 { padding-bottom: 30px!important; }
+                .a_left { text-align: left!important; }
+                .footer-text a { color:#ffffff; }
+                .scl, .scl img { width: 30px!important; height: auto!important; }
+                }
+            </style>
+            <style type="text/css">
+                @media screen and (max-width: 600px) {
+                @-ms-viewport { width:320px; }
+                }
+            </style>
+
+        </xpath>
+    </template>
+</odoo>

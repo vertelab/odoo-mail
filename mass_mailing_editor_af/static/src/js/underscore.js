@@ -1,0 +1,1 @@
+define("common/modules/underscore",["../../lib/underscore-1.7.0/underscore-min"],function(){return _.templateSettings={interpolate:/\{\{(.+?)\}\}/g,evaluate:/<%([\s\S]+?)%>/g},_});

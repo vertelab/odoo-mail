@@ -14,7 +14,8 @@
         "mass_mailing"
     ],
     "data": [
-        'views/snippets_themes.xml'
+        'views/snippets_themes.xml',
+        'views/assets.xml'
     ],
     "auto_install": False,
     "installable": True,
