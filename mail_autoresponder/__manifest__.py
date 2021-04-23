@@ -3,7 +3,7 @@
 {
     'name': 'Mail Autoresponder',
     'summary': "Adds an automatic Emailing Trigger based service",
-    'version': '12.0.0.0.6',
+    'version': '12.0.0.0.7',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
@@ -16,16 +16,18 @@
         - 12.0.0.0.6  added debuggin \n
     """,
     'depends': [
-        'base_setup', 'mail',
+        'base_setup', 'mail', 'mass_mailing',
         ],
     'data': [
         'security/ir.model.access.csv',
-        'views/templates.xml',
+        'data/cron.xml',
+        'data/mail_template.xml',
+        'views/assets.xml',
         'views/menuitem.xml',
         'views/partner_event_view.xml',
         'views/mail_audit_view.xml',
-        'data/mail_template.xml',
-        'data/data.xml',
+        'views/mail_template_views.xml',
+        'wizard/mail_compose_message_view.xml',
     ],
     'auto_install': False,
     'installable': True,
