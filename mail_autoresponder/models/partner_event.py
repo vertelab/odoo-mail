@@ -107,17 +107,18 @@ class PartnerEvent(models.Model):
         today_date = datetime.datetime.today().strftime("%Y-%m-%d")
         domain = safe_eval(event.contact_domain)
         for contact in self.env['res.partner'].search(domain):
+            week_day_date = False
             if email_line.interval_unit == 'days':
                 if email_line.ir_model_field:
-                    _datetime = contact[str(email_line.ir_model_field.name)] + datetime.timedelta(
-                        days=email_line.interval_nbr)
-
-                    week_day_date = list(rrule.rrule(rrule.DAILY,
-                                                     dtstart=contact[str(email_line.ir_model_field.name)],
-                                                     until=_datetime,
-                                                     byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
+                    contact_date = contact[str(email_line.ir_model_field.name)]
+                    if contact_date:
+                        _datetime = contact_date + datetime.timedelta(
+                            days=email_line.interval_nbr)
+                        week_day_date = list(rrule.rrule(rrule.DAILY,
+                                                         dtstart=contact_date,
+                                                         until=_datetime,
+                                                         byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
                 else:
-                    print ("Inside Else")
                     _datetime = event.date_begin + datetime.timedelta(days=email_line.interval_nbr)
 
                     week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=event.date_begin, until=_datetime,
