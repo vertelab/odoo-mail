@@ -109,9 +109,12 @@ class PartnerEvent(models.Model):
         for contact in self.env['res.partner'].search(domain):
             if email_line.interval_unit == 'days':
                 if email_line.ir_model_field:
+                    print ("email ::",email_line.interval_nbr)
+                    print ("email ::", email_line.ir_model_field.name)
+                    _logger.info("Email internval %s", email_line.interval_nbr)
+                    _logger.info("date field %s", email_line.ir_model_field.name)
                     _datetime = contact[str(email_line.ir_model_field.name)] + datetime.timedelta(
                         days=email_line.interval_nbr)
-
                     week_day_date = list(rrule.rrule(rrule.DAILY,
                                                      dtstart=contact[str(email_line.ir_model_field.name)],
                                                      until=_datetime,
