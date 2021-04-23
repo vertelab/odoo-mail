@@ -120,7 +120,6 @@ class PartnerEvent(models.Model):
                                                          byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
                 else:
                     _datetime = event.date_begin + datetime.timedelta(days=email_line.interval_nbr)
-
                     week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=event.date_begin, until=_datetime,
                                                      byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
 
