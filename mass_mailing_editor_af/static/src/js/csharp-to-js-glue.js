@@ -1,1 +1,0 @@
-define([],function(){var e={},t={moduleName:"csharp-to-js-glue",init:function(t,n){e[t]=n},initOrUpdate:function(t,n){e[t]=n},values:function(t){return function(){return e[t]}}};return t});

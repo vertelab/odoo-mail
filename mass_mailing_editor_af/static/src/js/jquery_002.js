@@ -1,1 +1,0 @@
-(function(e){var t=e.ajax;e.ajax=function(e){e=jQuery.extend(e,jQuery.extend({},jQuery.ajaxSettings,e));var n=e.success;return e.success=function(){if(arguments.length>0&&arguments[0]!=undefined&&arguments[0].RedirectionUrl!=undefined){window.location.href=arguments[0].RedirectionUrl;return}n&&n.apply(this,arguments)},t.apply(this,arguments)}})(jQuery);

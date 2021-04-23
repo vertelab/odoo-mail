@@ -1,1 +1,0 @@
-define(["jquery-plugins/jquery.validate.min","jquery-plugins/jquery.ajax.queue","jquery-plugins/jquery.ajax.redirectresponse","jquery-plugins/jquery.form","editor4/editor4-module-preview","editor4/common/editor4-helper","editor4/editor4-newsletter-preview","jquery-plugins/jquery.extend.dialog.window"],function(e){}(jQuery));
