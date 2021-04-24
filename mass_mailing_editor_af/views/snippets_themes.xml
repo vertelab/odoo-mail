@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Pre Header Snippet -->
-    <template id="s_mail_block_pre_header_af" name="Pre Header">
+    <!-- Af Pre Header Snippet -->
+    <template id="s_mail_block_pre_header_af" name="Af Pre Header">
         <div style="background-color:#f7f7f7;padding:0;margin:0;-webkit-text-size-adjust:none;width:100%;
         background-color:#f7f7f7" class="body-div">
             <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f7f7f7" align="center">
@@ -59,8 +59,8 @@
         </div>
     </template>
 
-    <!-- Header Snippet -->
-    <template id="s_mail_block_header_af" name="Header">
+    <!-- Af Header Snippet -->
+    <template id="s_mail_block_header_af" name="Af Header">
         <div>
             <div>
                 <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
@@ -75,9 +75,9 @@
                                                 align="left">
                                                 <div id="align-wrapper" style="text-align:center;">
                                                     <a target="_blank"
-                                                       href="https://arbetsformedlingen.se/?pk_medium=Email&amp;pk_source=as_crm&amp;pk_campaign=Mikro&amp;pk_content=hogskola2">
+                                                       href="https://arbetsformedlingen.se/">
                                                         <img src="/mass_mailing_editor_af/static/src/img/blocks/logo-vit.png"
-                                                             link="https://arbetsformedlingen.se/?pk_medium=Email&amp;pk_source=as_crm&amp;pk_campaign=Mikro&amp;pk_content=hogskola2"
+                                                             link="https://arbetsformedlingen.se/"
                                                              style="display:block;" title="" alt="" width="200"
                                                              border=""
                                                              align="middle"/>
@@ -124,11 +124,7 @@
                                                                                                 valign="middle"
                                                                                                 align="center">
                                                                                                 <div style="font-size:0; line-height:0;"/>
-                                                                                                <a href="##WebVersion##"
-                                                                                                   name=""
-                                                                                                   style="color:#ffffff; text-decoration:none;">
-                                                                                                    Visa i webbläsaren
-                                                                                                </a>
+                                                                                                <a href="#" class="view_in_browser_url">Visa i webbläsaren</a>
                                                                                             </th>
                                                                                         </tr>
                                                                                     </tbody>
@@ -153,8 +149,8 @@
         </div>
     </template>
 
-    <!-- Full With Image Snippet -->
-    <template id="s_mail_block_full_width_image_af" name="Full Width Image">
+    <!-- Af Full With Image Snippet -->
+    <template id="s_mail_block_full_width_image_af" name="Af Full Width Image">
         <div>
             <table anpbgcolor="#picker,transparent,#ffffff" class="rsd" width="600" cellspacing="0" cellpadding="0"
                    border="0" bgcolor="#ffffff" align="center">
@@ -163,9 +159,9 @@
                         <th class="rsd">
                             <div id="align-wrapper" style="text-align:center;">
                                 <a target="_blank"
-                                   href="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb?pk_medium=Email&amp;pk_source=as_crm&amp;pk_campaign=Mikro&amp;pk_content=hogskola2">
+                                   href="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb">
                                     <img src="/mass_mailing_editor_af/static/src/img/blocks/kvinna-beslutsam.jpg"
-                                         link="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb?pk_medium=Email&amp;pk_source=as_crm&amp;pk_campaign=Mikro&amp;pk_content=hogskola2"
+                                         link="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb"
                                          style="display:block;" title="" alt="" width="600" border="" align="middle"/>
                                 </a>
                             </div>
@@ -176,8 +172,8 @@
         </div>
     </template>
 
-    <!-- Blue Header Text Block Snippet -->
-    <template id="s_mail_block_blue_header_text_block_af" name="Blue Header Text Block">
+    <!-- Af Blue Header Text Block Snippet -->
+    <template id="s_mail_block_blue_header_text_block_af" name="Af Blue Header Text Block">
         <div>
             <table anpbgcolor="#picker,transparent,#ffffff,#05055d" class="rsd" width="600"
                    cellspacing="0" cellpadding="0" border="0" bgcolor="#05055d" align="center">
@@ -202,8 +198,7 @@
                                                                 bgcolor="#b7ee4a" align="left">
                                                                 <img src="Apsis%20Newsletter%20Pro_files/pixel.gif"
                                                                      link=""
-                                                                     style="display:block; width:100%!important;
-                                                                         height:4px;"
+                                                                     style="display:block; width:100%!important; height:4px;"
                                                                      title="" alt="" width="1" height="4" border=""
                                                                      align="middle"/>
                                                             </th>
@@ -222,8 +217,8 @@
         </div>
     </template>
 
-    <!-- Blue Text Block with two Columns Snippet -->
-    <template id="s_mail_block_blue_text_block_two_col_af" name="Blue Text Block With Two Columns">
+    <!-- Af Blue Text Block with two Columns Snippet -->
+    <template id="s_mail_block_blue_text_block_two_col_af" name="Af Blue Text Block With Two Columns">
         <div>
             <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
                    cellpadding="0" border="0" bgcolor="#ffffff" align="center">
@@ -254,11 +249,8 @@
                                                                  class="bodytext">
                                                                 <span style="">– Att söka till högskolan kan vara en
                                                                     bra väg om du fastnat. Det är aldrig för sent att
-                                                                    ställa om, det finns
-                                                                    många fördelar att plugga när man är lite äldre,
-                                                                    säger
-                                                                    Arbetsförmedlingens jobbsökarexpert Charlotte
-                                                                    Lindman.
+                                                                    ställa om, det finns många fördelar att plugga när man är lite äldre,
+                                                                    säger Arbetsförmedlingens jobbsökarexpert Charlotte Lindman.
                                                                     <br/>
                                                                     <br/>
                                                                 </span>
@@ -288,7 +280,7 @@
                                                                                                                 valign="middle"
                                                                                                                 align="center">
                                                                                                                 <font style="color:rgb(0, 0, 90);">
-                                                                                                                    <a href="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb?pk_medium=Email&amp;pk_source=as_crm&amp;pk_campaign=Mikro&amp;pk_content=hogskola2"
+                                                                                                                    <a href="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb"
                                                                                                                        name=""
                                                                                                                        style="color:rgb(0, 0, 90); text-decoration:none;"
                                                                                                                        data-original-color="">
@@ -356,8 +348,8 @@
         </div>
     </template>
 
-    <!-- White text box with two column snippet -->
-    <template id="s_mail_block_image_text_af" name="White Text Block with Two Columns">
+    <!-- Af White text box with two column snippet -->
+    <template id="s_mail_block_image_text_af" name="Af White Text Block with Two Columns">
         <div>
             <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
                    cellpadding="0" border="0" bgcolor="#ffffff" align="center">
@@ -381,13 +373,12 @@
                                             class="db" valign="top" align="left">
                                             <div style="font:20px/1.3 Arial, Helvetica, sans-serif; color:#000000; padding-bottom:10px; border-width:0;"
                                                  class="headline">
-                                                <span style="">Sista ansäkningsdag 15 april</span>
+                                                <span style="">Sista ansökningsdag 15 april</span>
                                             </div>
                                             <div style="padding:0 0 10px; border-width:0;" class="bodytext">
                                                 <span style="">Om en vecka stänger anmäla till höstens
                                                     utbildningar. Gör din anmälan redan idag för att inte missa chansen.
-                                                    På
-                                                    Antagning.se kan du både hitta utbildningar och skicka in din
+                                                    På Antagning.se kan du både hitta utbildningar och skicka in din
                                                     ansökan
                                                 </span>
                                             </div>
@@ -402,8 +393,7 @@
                                                                 <font style="color:rgb(255, 255, 255);">
                                                                     <a href="https://www.antagning.se/" name=""
                                                                        style="color:rgb(255, 255, 255); text-decoration:none;"
-                                                                       data-original-color="">Till antagning.se
-                                                                    </a>
+                                                                       data-original-color="">Till antagning.se</a>
                                                                 </font>
                                                             </th>
                                                         </tr>
@@ -421,8 +411,8 @@
         </div>
     </template>
 
-    <!-- White text box with one column snippet -->
-    <template id="s_mail_block_text_af" name="White Text with One Columns">
+    <!-- Af White text box with one column snippet -->
+    <template id="s_mail_block_text_af" name="Af White Text with One Columns">
         <div>
             <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
                    cellpadding="0"
@@ -464,7 +454,7 @@
                                                                             class="bodytext" valign="middle"
                                                                             align="center">
                                                                             <font style="color:rgb(22, 22, 178);">
-                                                                                <a href="https://arbetsformedlingen.se/?pk_medium=Email&amp;pk_source=as_crm&amp;pk_campaign=Mikro&amp;pk_content=hogskola2"
+                                                                                <a href="https://arbetsformedlingen.se/"
                                                                                    name=""
                                                                                    style="color:rgb(22, 22, 178); text-decoration:none;"
                                                                                    data-original-color="">Besök oss på
@@ -500,8 +490,8 @@
         </div>
     </template>
 
-    <!-- Blue Page footer snippet -->
-    <template id="s_mail_block_blue_page_footer_af" name="Blue Page Footer">
+    <!-- Af Blue Page footer snippet -->
+    <template id="s_mail_block_blue_page_footer_af" name="Af Blue Page Footer">
         <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
                border="0" bgcolor="#05055d" align="center">
             <tbody>
@@ -514,7 +504,7 @@
                                 Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från
                                 Arbetsförmedlingen kan du
                             </span>
-                            <a href="##OptOutAll##" name=""
+                            <a href="/unsubscribe_from_list" name=""
                                style="color:rgb(255, 255, 255); font-weight:normal; text-decoration:underline;"
                                data-original-color="">avanmäla dig här.
                             </a>
@@ -525,8 +515,8 @@
         </table>
     </template>
 
-    <!-- White Page Footer Snippet-->
-    <template id="s_mail_block_white_page_footer_af" name="White Page Footer">
+    <!-- Af White Page Footer Snippet-->
+    <template id="s_mail_block_white_page_footer_af" name="Af White Page Footer">
         <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
                border="0" bgcolor="#f7f7f7" align="center">
             <tbody>
@@ -539,7 +529,7 @@
                                 Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från
                                 Arbetsförmedlingen kan du
                             </span>
-                            <a href="##OptOutAll##" name=""
+                            <a href="/unsubscribe_from_list" name=""
                                style="color:#000000; font-weight:normal; text-decoration:underline;"
                                data-original-color="">avanmäla dig här.
                             </a>
@@ -558,9 +548,6 @@
                t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/pre_header.png"/>
             <t t-snippet="mass_mailing_editor_af.s_mail_block_header_af"
                t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header_top.png"/>
-        </xpath>
-        <xpath expr="//div[@id='email_designer_default_body']/div[@class='o_panel_body']"
-               position="inside">
             <t t-snippet="mass_mailing_editor_af.s_mail_block_full_width_image_af"
                t-thumbnail="/mass_mailing/static/src/img/blocks/block_banner.png"/>
             <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_header_text_block_af"
@@ -571,9 +558,6 @@
                t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_block_two_col.png"/>
             <t t-snippet="mass_mailing_editor_af.s_mail_block_text_af"
                t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_block_one_col.png"/>
-        </xpath>
-        <xpath expr="//div[@id='email_designer_default_footer']/div[@class='o_panel_body']"
-               position="inside">
             <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_page_footer_af"
                t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_footer.png"/>
             <t t-snippet="mass_mailing_editor_af.s_mail_block_white_page_footer_af"
