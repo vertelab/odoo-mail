@@ -34,46 +34,6 @@
                 });
                 });
             </script>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="newsletterpreview/editor4-Preview-init"
-                    src="/mass_mailing_editor_af/static/src/js/editor4-Preview-init.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="newsletterpreview/editor4-NewsletterPreview-Parts"
-                    src="/mass_mailing_editor_af/static/src/js/editor4-NewsletterPreview-Parts.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="common/csharp-to-js-glue"
-                    src="/mass_mailing_editor_af/static/src/js/csharp-to-js-glue.js"/>
-
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="jquery-plugins/jquery.validate.min"
-                    src="/mass_mailing_editor_af/static/src/js/jquery.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="jquery-plugins/jquery.form"
-                    src="/mass_mailing_editor_af/static/src/js/jquery_004.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="editor4/editor4-module-preview"
-                    src="/mass_mailing_editor_af/static/src/js/editor4-module-preview.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="editor4/common/editor4-helper"
-                    src="/mass_mailing_editor_af/static/src/js/editor4-helper.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="editor4/editor4-newsletter-preview"
-                    src="/mass_mailing_editor_af/static/src/js/editor4-newsletter-preview.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="jquery-plugins/jquery.extend.dialog.window"
-                    src="/mass_mailing_editor_af/static/src/js/jquery_006.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="jquery-plugins/smartpaginator"
-                    src="/mass_mailing_editor_af/static/src/js/smartpaginator.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="common/common" src="/mass_mailing_editor_af/static/src/js/common.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="common/modules/underscore"
-                    src="/mass_mailing_editor_af/static/src/js/underscore.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="lib/encoder" src="/mass_mailing_editor_af/static/src/js/encoder.js"/>
-            <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_"
-                    data-requiremodule="common/widgets/popup" src="/mass_mailing_editor_af/static/src/js/popup.js"/>
 
             <style type="text/css">
                 #html-content .icons {
@@ -81,11 +41,8 @@
                 }
                 .footer-text a { color:#ffffff !important; text-decoration:none !important; }
                 .FullW { width: 100%!important; }
-                form td { padding: 0; } /* Removing padding in webversion */
                 .ii a, .ReadMsgBody .ExternalClass a:link, .yshortcuts {
                 text-decoration: none!important; color: transparent!important; }
-                table th { /* Fix for unwanted th styling in yahoo */
-                margin: inherit; padding: inherit; font-weight: normal; }
                 table tr th { vertical-align: top; }
                 a[x-apple-data-detectors] { /* Fix for unwanted styling of links in ios */
                 color: inherit!important; text-decoration: none!important; font-size: inherit!important; font-family:
@@ -96,7 +53,6 @@
                 ul.editorSection li:hover { /*Fix for unwanted align colsplit when hovering on modules*/ margin: 0
                 -1px!important; }
                 body { width: 100%; padding: 0!important; margin: 0 auto!important; background-color: #f7f7f7; }
-                body, table { font: 13px/1.5 Arial, Verdana, sans-serif; color: #000000; }
             </style>
 
             <style>

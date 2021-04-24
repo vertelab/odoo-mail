@@ -124,7 +124,10 @@
                                                                                                 valign="middle"
                                                                                                 align="center">
                                                                                                 <div style="font-size:0; line-height:0;"/>
-                                                                                                <a href="#" class="view_in_browser_url">Visa i webbläsaren</a>
+                                                                                                <a href="#" style="color:#ffffff;text-decoration: none;"
+                                                                                                   class="view_in_browser_url">
+                                                                                                    Visa i webbläsaren
+                                                                                                </a>
                                                                                             </th>
                                                                                         </tr>
                                                                                     </tbody>
@@ -196,7 +199,7 @@
                                                             <th anpbgcolor="#picker,transparent,#ffffff,#b7ee4a"
                                                                 style="width:67px; height:4px; line-height:1px; font-size:1px;"
                                                                 bgcolor="#b7ee4a" align="left">
-                                                                <img src="Apsis%20Newsletter%20Pro_files/pixel.gif"
+                                                                <img src="/mass_mailing_editor_af/static/src/img/blocks/pixel.gif"
                                                                      link=""
                                                                      style="display:block; width:100%!important; height:4px;"
                                                                      title="" alt="" width="1" height="4" border=""
@@ -249,8 +252,10 @@
                                                                  class="bodytext">
                                                                 <span style="">– Att söka till högskolan kan vara en
                                                                     bra väg om du fastnat. Det är aldrig för sent att
-                                                                    ställa om, det finns många fördelar att plugga när man är lite äldre,
-                                                                    säger Arbetsförmedlingens jobbsökarexpert Charlotte Lindman.
+                                                                    ställa om, det finns många fördelar att plugga när
+                                                                    man är lite äldre,
+                                                                    säger Arbetsförmedlingens jobbsökarexpert Charlotte
+                                                                    Lindman.
                                                                     <br/>
                                                                     <br/>
                                                                 </span>
@@ -393,7 +398,8 @@
                                                                 <font style="color:rgb(255, 255, 255);">
                                                                     <a href="https://www.antagning.se/" name=""
                                                                        style="color:rgb(255, 255, 255); text-decoration:none;"
-                                                                       data-original-color="">Till antagning.se</a>
+                                                                       data-original-color="">Till antagning.se
+                                                                    </a>
                                                                 </font>
                                                             </th>
                                                         </tr>
@@ -500,7 +506,7 @@
                         align="left">
                         <div class="bodytext">
                             <span style="">Du får detta informationsbrev eftersom din epost,
-                                ##SubscriberEmail## registrerats när du skapat ett konto hos
+                                email-recipient registrerats när du skapat ett konto hos
                                 Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från
                                 Arbetsförmedlingen kan du
                             </span>
@@ -525,7 +531,7 @@
                         align="left">
                         <div class="bodytext">
                             <span style="">Du får detta informationsbrev eftersom din epost,
-                                ##SubscriberEmail## registrerats när du skapat ett konto hos
+                                email-recipient registrerats när du skapat ett konto hos
                                 Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från
                                 Arbetsförmedlingen kan du
                             </span>
@@ -542,26 +548,31 @@
 
     <!-- Inherit main template to add snippets -->
     <template id="af_add_email_designer_snippets" inherit_id="mass_mailing.email_designer_snippets">
-        <xpath expr="//div[@id='email_designer_default_headers']/div[@class='o_panel_body']"
-               position="inside">
-            <t t-snippet="mass_mailing_editor_af.s_mail_block_pre_header_af"
-               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/pre_header.png"/>
-            <t t-snippet="mass_mailing_editor_af.s_mail_block_header_af"
-               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header_top.png"/>
-            <t t-snippet="mass_mailing_editor_af.s_mail_block_full_width_image_af"
-               t-thumbnail="/mass_mailing/static/src/img/blocks/block_banner.png"/>
-            <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_header_text_block_af"
-               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header_block_blue.png"/>
-            <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_text_block_two_col_af"
-               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/block_blue_two_col.png"/>
-            <t t-snippet="mass_mailing_editor_af.s_mail_block_image_text_af"
-               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_block_two_col.png"/>
-            <t t-snippet="mass_mailing_editor_af.s_mail_block_text_af"
-               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_block_one_col.png"/>
-            <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_page_footer_af"
-               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_footer.png"/>
-            <t t-snippet="mass_mailing_editor_af.s_mail_block_white_page_footer_af"
-               t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_footer.png"/>
+        <xpath expr="//div[@id='email_designer_default_headers']" position="before">
+            <div class="o_panel_header">
+                <i class="fa fa-columns"/>
+                Af Snippets
+            </div>
+            <div class="o_panel_body">
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_pre_header_af"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/pre_header.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_header_af"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header_top.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_full_width_image_af"
+                   t-thumbnail="/mass_mailing/static/src/img/blocks/block_banner.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_header_text_block_af"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header_block_blue.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_text_block_two_col_af"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/block_blue_two_col.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_image_text_af"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_block_two_col.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_text_af"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_block_one_col.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_page_footer_af"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_footer.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_white_page_footer_af"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_footer.png"/>
+            </div>
         </xpath>
     </template>
 
