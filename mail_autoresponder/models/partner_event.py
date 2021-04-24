@@ -6,7 +6,6 @@ from dateutil import rrule
 import logging
 _logger = logging.getLogger(__name__)
 
-
 class PartnerEvent(models.Model):
     _name = 'partner.event'
     _description = 'Customer Dialogue'
@@ -56,9 +55,7 @@ class PartnerEvent(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('running', 'Running'), ('end', 'End'),('cancelled', 'Cancelled') ],
                              default='draft')
     color = fields.Integer('Kanban Color Index')
-
     contact_domain = fields.Char(string="Search Filter")
-
     contact_domain_count = fields.Integer(string="Contact Count", compute='_compute_event_record')
     all_event_mail_count = fields.Integer(string="All Event Email Count", compute='_compute_event_record')
     today_event_mail_count = fields.Integer(string="Today's Email Count", compute='_compute_event_record')
@@ -177,13 +174,11 @@ class PartnerEvent(models.Model):
 
         self.env['event.email.audit'].create(audit_email)
 
-
     def start_event(self):
         self.state = 'running'
 
     def button_cancel(self):
         self.state = 'cancelled'
-
 
 class EventEmailSchedule(models.Model):
     _name = 'partner.event.email.schedule'

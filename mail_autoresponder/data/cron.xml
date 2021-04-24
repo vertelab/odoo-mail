@@ -14,7 +14,6 @@
             <field name="doall" eval="False" />
         </record>
 
-
         <!-- Move the event state to end-->
         <record model="ir.cron" forcecreate="True" id="event_close_when_end">
             <field name="name">Event : Update event status to end when it finished.</field>
