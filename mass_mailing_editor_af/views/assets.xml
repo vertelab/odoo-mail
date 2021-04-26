@@ -13,28 +13,6 @@
             <link href="/mass_mailing_editor_af/static/src/css/editor4-dropdownchecklist.css" rel="stylesheet"
                   type="text/css"/>
 
-            <script type="text/javascript">
-                require.config({
-                baseUrl: "/static/js/build/"
-                });
-                require(
-                ['newsletterpreview/editor4-Preview-init', 'newsletterpreview/editor4-NewsletterPreview-Parts',
-                'common/csharp-to-js-glue'],
-                function (init, parts, glue) {
-                $(document).ready(function () {
-                glue.init('indexconfig',
-                {
-                tabLoadingFailedMessage: 'Unable to load this tab.',
-                homeUrl: '/home2/home.aspx'
-                });
-                $('#editor4-loader').hide();
-                $('.editor-page-container').fadeTo("fast", 1);
-                Editor4NewsletterPreview.ShowFilterPreview();
-                $(document).delegate('.show-filter', 'change', Editor4NewsletterPreview.ShowFilterPreview);
-                });
-                });
-            </script>
-
             <style type="text/css">
                 #html-content .icons {
                 line-height: 1px!important;
