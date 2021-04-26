@@ -1,12 +1,13 @@
 {
     "name": "AF Mass Mailing Snippets",
     "summary": "This version is used to customize the Odoo standard mail body widgets in accordance to 'Af' mail template.",
-    "version": "12.0.0.0.3",
+    "version": "12.0.0.0.4",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.1 AFC-2067  Added snippets in Mass mailing body.\n
 	 v12.0.0.2 AFC-2067 IMP  Added snippets in Mass mailing body.\n
 	 v12.0.0.3 AFC-2067 IMP  Added snippets in separate section of Mass mailing body.\n
+	 v12.0.0.4 AFC-2067 Fix  Fixed setting menu URL issue.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
