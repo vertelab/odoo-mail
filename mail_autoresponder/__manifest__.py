@@ -3,7 +3,7 @@
 {
     'name': 'Mail Autoresponder',
     'summary': "Adds an automatic Emailing Trigger based service",
-    'version': '12.0.0.0.7',
+    'version': '12.0.0.0.8',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
