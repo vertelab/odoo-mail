@@ -94,59 +94,64 @@ class PartnerEvent(models.Model):
         event_ids = self.env['partner.event'].search([('state', '=', 'running')])
         for event in event_ids:
             for email_line in event.email_schedule_ids:
-                if email_line.interval_type == 'after_event' and not email_line.sent:
-                    self.after_event(event, email_line)
-                if email_line.interval_type == 'before_event' and not email_line.sent:
+                if email_line.interval_type == 'after_event':
+                    self.after_event(event, email_line, email_line.contact_ids)
+                if email_line.interval_type == 'before_event':
                     print ("It's here!")
-                    self.before_event(event, email_line)
+                    self.before_event(event, email_line, email_line.contact_ids)
 
-    def after_event(self, event, email_line):
+    def after_event(self, event, email_line, contacts):
         today_date = datetime.datetime.today().strftime("%Y-%m-%d")
         domain = safe_eval(event.contact_domain)
         for contact in self.env['res.partner'].search(domain):
-            week_day_date = False
-            if email_line.interval_unit == 'days':
-                if email_line.ir_model_field:
-                    contact_date = contact[str(email_line.ir_model_field.name)]
-                    if contact_date:
-                        _datetime = contact_date + datetime.timedelta(
-                            days=email_line.interval_nbr)
-                        week_day_date = list(rrule.rrule(rrule.DAILY,
-                                                         dtstart=contact_date,
-                                                         until=_datetime,
+            if contact.id not in contacts.ids:
+                week_day_date = False
+                if email_line.interval_unit == 'days':
+                    if email_line.ir_model_field:
+                        contact_date = contact[str(email_line.ir_model_field.name)]
+                        if contact_date:
+                            _datetime = contact_date + datetime.timedelta(
+                                days=email_line.interval_nbr)
+                            week_day_date = list(rrule.rrule(rrule.DAILY,
+                                                             dtstart=contact_date,
+                                                             until=_datetime,
+                                                             byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
+                    else:
+                        _datetime = event.date_begin + datetime.timedelta(days=email_line.interval_nbr)
+                        week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=event.date_begin, until=_datetime,
                                                          byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
-                else:
-                    _datetime = event.date_begin + datetime.timedelta(days=email_line.interval_nbr)
-                    week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=event.date_begin, until=_datetime,
-                                                     byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
 
-                if week_day_date:
-                    partner_comp_date = week_day_date[-1].strftime("%Y-%m-%d")
-                    if partner_comp_date == today_date:
-                        self._email_to_contacts(contact, event, email_line)
+                    if week_day_date:
+                        partner_comp_date = week_day_date[-1].strftime("%Y-%m-%d")
+                        if partner_comp_date >= today_date:
+                            self._email_to_contacts(contact, event, email_line)
+                            email_line.contact_ids = [(4, contact.id)]
 
-    def before_event(self, event, email_line):
+    def before_event(self, event, email_line, contacts):
         today_date = datetime.datetime.today().strftime("%Y-%m-%d")
         domain = safe_eval(event.contact_domain)
         res_ids = self.env['res.partner'].search(domain).ids
         for contact_id in res_ids:
-            if email_line.interval_unit == 'days':
-                partner_id = self.env['res.partner'].search([('id', '=', contact_id)])
-                if email_line.ir_model_field:
-                    _datetime = partner_id[str(email_line.ir_model_field.name)] - datetime.timedelta(
-                        days=email_line.interval_nbr)
-                    week_day_date = list(rrule.rrule(rrule.DAILY,
-                                                     dtstart=_datetime,
-                                                     until=partner_id[str(email_line.ir_model_field.name)],
-                                                     byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
-                else:
-                    _datetime = event.date_begin - datetime.timedelta(days=email_line.interval_nbr)
+            if contact_id not in contacts.ids:
+                if email_line.interval_unit == 'days':
+                    partner_id = self.env['res.partner'].search([('id', '=', contact_id)])
+                    if email_line.ir_model_field:
+                        _datetime = partner_id[str(email_line.ir_model_field.name)] - datetime.timedelta(
+                            days=email_line.interval_nbr)
+                        week_day_date = list(rrule.rrule(rrule.DAILY,
+                                                         dtstart=_datetime,
+                                                         until=partner_id[str(email_line.ir_model_field.name)],
+                                                         byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
+                    else:
+                        _datetime = event.date_begin - datetime.timedelta(days=email_line.interval_nbr)
 
-                    week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=_datetime, until=event.date_begin,
-                                                     byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
-                if week_day_date:
-                    if week_day_date[-1].strftime("%Y-%m-%d") == today_date:
-                        self._email_to_contacts(partner_id, event, email_line)
+                        week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=_datetime, until=event.date_begin,
+                                                         byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
+                    if week_day_date:
+                        if week_day_date[-1].strftime("%Y-%m-%d") <= today_date:
+                            self._email_to_contacts(partner_id, event, email_line)
+                            email_line.contact_ids = [(4, partner_id.id)]
+
 
     def _email_to_contacts(self, partner_id, event, email_line):
         audit_email = {
@@ -185,9 +190,9 @@ class EventEmailSchedule(models.Model):
 
     name = fields.Text(string='Description')
     template_id = fields.Many2one('mail.template', string="Email Template", domain=[('model', '=', 'partner.event')])
-
     partner_event_id = fields.Many2one('partner.event', string="Partner Event")
-
+    contact_ids = fields.Many2many("res.partner","email_schedule_partner_rel","event_schedule_line_id","partner_id",
+                                   string="Contacts")
     interval_nbr = fields.Integer('Interval', default=1)
     interval_unit = fields.Selection([
         ('days', 'Work Day(s)'),

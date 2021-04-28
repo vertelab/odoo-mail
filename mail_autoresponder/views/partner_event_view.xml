@@ -97,6 +97,7 @@
                                         <field name="interval_type"/>
                                         <field name="ir_model_field"/>
                                         <field name="sent"/>
+                                        <field name="contact_ids" widget="many2many_tags" invisible="1"/>
                                         <button type="action" name="%(action_schedule_line_emails)d"
                                                 class="fa fa-envelope"/>
                                     </tree>
