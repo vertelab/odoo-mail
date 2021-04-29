@@ -26,6 +26,7 @@ class PartnerEvent(models.Model):
     date_end = fields.Date(string="End Date", required=True)
     creation_date = fields.Date(string="Creation Date", default=lambda self: self._context.get('date', fields.Date.context_today(self)))
     count_email_sent = fields.Integer(compute="count_total_email_sent", string="Email count")
+    opened = fields.Float(string="Opened", default="95.0")
 
     def count_total_email_sent(self):
 
@@ -208,3 +209,17 @@ class EventEmailSchedule(models.Model):
                                                                                 ('ttype', 'in', ['date', 'datetime'])])
 
     sent = fields.Boolean('Sent', readonly=True)
+    delivered = fields.Integer("Delivered", default="")
+    opened = fields.Integer("Opened")
+    clicked = fields.Integer("Clicked")
+    # delivered_ratio = fields.Char("Delivered Ratio", compute="_compute_statistics")
+    # opened_ratio = fields.Char("Opened Ratio", compute="_compute_statistics")
+    # clicked_ratio = fields.Char("Clicked Ratio", compute="_compute_statistics")
+
+    # def _compute_statistics(self):
+
+
+
+
+
+
