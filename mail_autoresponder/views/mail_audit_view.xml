@@ -36,7 +36,7 @@
                     <field name="email"/>
                     <field name="sent_time"/>
                     <field name="user_id"/>
-                    <field name="event_id"/>
+                    <field name="event_id" string="Autoresponder"/>
                     <field name="response"/>
                 </tree>
             </field>
@@ -77,7 +77,7 @@
 
         <!-- Action for Event email audit views  -->
         <record model="ir.actions.act_window" id="action_event_mail_trail">
-            <field name="name">Email Audit</field>
+            <field name="name">Message log</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">event.email.audit</field>
             <field name="view_type">form</field>
@@ -92,7 +92,7 @@
             </field>
         </record>
 
-        <menuitem id="event_mail_audit_menu" name="Event Email Trail" action="action_event_mail_trail" sequence="2"
+        <menuitem id="event_mail_audit_menu" name="Message log" action="action_event_mail_trail" sequence="2"
                   parent="mail_autoresponder.customer_dialogue_menu_id"/>
 
     </data>

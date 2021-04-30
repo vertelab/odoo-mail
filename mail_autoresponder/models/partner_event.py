@@ -26,6 +26,7 @@ class PartnerEvent(models.Model):
     date_end = fields.Date(string="End Date", required=True)
     creation_date = fields.Date(string="Creation Date", default=lambda self: self._context.get('date', fields.Date.context_today(self)))
     count_email_sent = fields.Integer(compute="count_total_email_sent", string="Email count")
+    opened = fields.Float(string="Opened", default="95.0")
 
     def count_total_email_sent(self):
 
@@ -123,7 +124,7 @@ class PartnerEvent(models.Model):
 
                     if week_day_date:
                         partner_comp_date = week_day_date[-1].strftime("%Y-%m-%d")
-                        if partner_comp_date >= today_date:
+                        if partner_comp_date == today_date:
                             self._email_to_contacts(contact, event, email_line)
                             email_line.contact_ids = [(4, contact.id)]
 
@@ -148,7 +149,7 @@ class PartnerEvent(models.Model):
                         week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=_datetime, until=event.date_begin,
                                                          byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
                     if week_day_date:
-                        if week_day_date[-1].strftime("%Y-%m-%d") <= today_date:
+                        if week_day_date[-1].strftime("%Y-%m-%d") == today_date:
                             self._email_to_contacts(partner_id, event, email_line)
                             email_line.contact_ids = [(4, partner_id.id)]
 
@@ -208,3 +209,17 @@ class EventEmailSchedule(models.Model):
                                                                                 ('ttype', 'in', ['date', 'datetime'])])
 
     sent = fields.Boolean('Sent', readonly=True)
+    delivered = fields.Integer("Delivered", default="")
+    opened = fields.Integer("Opened")
+    clicked = fields.Integer("Clicked")
+    # delivered_ratio = fields.Char("Delivered Ratio", compute="_compute_statistics")
+    # opened_ratio = fields.Char("Opened Ratio", compute="_compute_statistics")
+    # clicked_ratio = fields.Char("Clicked Ratio", compute="_compute_statistics")
+
+    # def _compute_statistics(self):
+
+
+
+
+
+

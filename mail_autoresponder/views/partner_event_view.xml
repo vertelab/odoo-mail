@@ -53,9 +53,14 @@
                     <sheet>
                         <div class="oe_button_box" name="button_box">
                             <button name="%(action_all_email_sent)d" type="action"
-                                    class="oe_stat_button" icon="fa fa-envelope">
+                                    class="oe_stat_button">
                                 <field name="count_email_sent" widget="statinfo"/>
                             </button>
+                            <!--<button name="action_view_delivered"-->
+                                <!--type="object"-->
+                                <!--class="oe_stat_button">-->
+                                <!--<field name="opened" string="Opened" widget="percentpie"/>-->
+                            <!--</button>-->
                         </div>
 
                         <div class="oe_title">
@@ -97,6 +102,9 @@
                                         <field name="interval_type"/>
                                         <field name="ir_model_field"/>
                                         <field name="sent"/>
+                                        <field name="delivered"/>
+                                        <field name="opened"/>
+                                        <field name="clicked"/>
                                         <field name="contact_ids" widget="many2many_tags" invisible="1"/>
                                         <button type="action" name="%(action_schedule_line_emails)d"
                                                 class="fa fa-envelope"/>
@@ -156,15 +164,15 @@
                                     </div>
                                 </div>
                                 <div class="o_event_right">
-                                    <b><h4 class="o_kanban_record_title"><field name="name"/></h4></b>
+                                    <b><span class="o_kanban_record_title"><field name="name"/></span></b>
                                     <p>
-                                        <h4 class="o_kanban_record_title">Count of Sample: <field name="contact_domain_count"/></h4>
+                                        <h4 class="o_kanban_record_title"><b>Count of Sample: </b><field name="contact_domain_count"/></h4>
                                     </p>
                                     <p>
-                                        <h4 class="o_kanban_record_title">Emails Sent: <field name="today_event_mail_count"/></h4>
+                                        <h4 class="o_kanban_record_title"><b>Emails Sent: </b><field name="today_event_mail_count"/></h4>
                                     </p>
                                     <p>
-                                        <h4 class="o_kanban_record_title">Emails Sent Totally: <field name="all_event_mail_count"/></h4>
+                                        <h4 class="o_kanban_record_title"><b>Emails Sent Totally: </b><field name="all_event_mail_count"/></h4>
                                     </p>
                                 </div>
                             </div>
@@ -191,7 +199,7 @@
             </field>
         </record>
 
-        <menuitem id="dialogue_event_id" name="Dialogue Event" action="action_dialogue_event" sequence="1"
+        <menuitem id="dialogue_event_id" name="Autoresponder" action="action_dialogue_event" sequence="1"
                   parent="mail_autoresponder.customer_dialogue_menu_id"/>
 
     </data>
