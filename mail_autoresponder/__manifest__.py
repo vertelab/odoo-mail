@@ -3,7 +3,7 @@
 {
     'name': 'Mail Autoresponder',
     'summary': "Adds an automatic Emailing Trigger based service",
-    'version': '12.0.0.0.8',
+    'version': '12.0.1.0.9',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
@@ -14,6 +14,7 @@
             email each day based on the criteria of the email-line. \n
         - 12.0.0.0.5  Fixed out of range issue \n
         - 12.0.0.0.6  added debuggin \n
+        - 12.0.1.0.9  Updates on sending logic \n
     """,
     'depends': [
         'base_setup', 'mail', 'mass_mailing',
