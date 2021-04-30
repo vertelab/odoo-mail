@@ -8,10 +8,10 @@ _logger = logging.getLogger(__name__)
 
 class PartnerEvent(models.Model):
     _name = 'partner.event'
-    _description = 'Customer Dialogue'
+    _description = 'Autoresponder'
     _inherit = ['mail.thread']
 
-    name = fields.Char(string="Event Segment")
+    name = fields.Char(string="Autoresponder Segment")
     organizer_id = fields.Many2one('res.partner', string="Organizer")
     is_online = fields.Boolean('Online Event')
     address_id = fields.Many2one(
@@ -90,7 +90,7 @@ class PartnerEvent(models.Model):
                 event.state = 'end'
 
 
-    def automated_event_mail(self):
+    def automated_autoresponder_mail(self):
 
         event_ids = self.env['partner.event'].search([('state', '=', 'running')])
         for event in event_ids:
@@ -201,8 +201,8 @@ class EventEmailSchedule(models.Model):
     ],
         string='Unit', default='days', required=True)
     interval_type = fields.Selection([
-        ('before_event', 'Before the event'),
-        ('after_event', 'After the event')],
+        ('before_event', 'Before the date'),
+        ('after_event', 'After the date')],
         string='Trigger ', default="before_event", required=True)
 
     ir_model_field = fields.Many2one('ir.model.fields', string="Field", domain=[('model_id', '=', 'res.partner'),
