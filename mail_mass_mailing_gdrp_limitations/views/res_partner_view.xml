@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="contact_tree_view_for_email_marketing">
+        <field name="name">contact.tree.view.for.email.marketing</field>
+        <field name="model">res.partner</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <tree string="Contacts">
+                <field name="display_name" string="Name" invisible="1"/>
+                <field name="function" invisible="0"/>
+                <field name="is_jobseeker" invisible="0"/>
+                <field name="segment_jobseeker" invisible="0"/>
+                <field name="is_employer" invisible="0"/>
+                <field name="segment_employer" invisible="0"/>
+                <field name="phone" class="o_force_ltr" invisible="1"/>
+                <field name="email" invisible="1"/>
+                <field name="user_id" invisible="1"/>
+                <field name="is_company" invisible="1"/>
+                <field name="country_id" invisible="0"/>
+                <field name="parent_id" invisible="1"/>
+                <field name="active" invisible="0"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>
