@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <template id="matomo_image_email_tracking_snippet" name="Matomo Email Tracking Image">
+        <div class="o_mail_snippet_general">
+            <table align="center">
+                <tbody>
+                    <tr>
+                        <td>
+                            <t t-set="matomo_website_url"
+                               t-value="request.env['ir.config_parameter'].sudo().get_param('mail_massmail_matomo_statistics.website_url')"/>
+                            <t t-set="matomo_website_id"
+                               t-value="request.env['ir.config_parameter'].sudo().get_param('mail_massmail_matomo_statistics.website_id')"/>
+                            <t t-if="matomo_website_url and matomo_website_id">
+                                <img t-att-src="matomo_website_url + '/matomo.php?idsite=' + matomo_website_id + '&amp;rec=1&amp;bots=1&amp;url=https%3A%2F%2Fexample.com%2Femail-opened%2Fnewsletter_XYZ&amp;action_name=Email%20opened&amp;_rcn=internal%20email%20name&amp;_rck=newsletter_XYZ'"
+                                 style="border:0;" alt="" />
+                            </t>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+
+    <!-- Inherit main template to add snippet -->
+    <template id="af_add_matomo_image_email_tracking_snippets" inherit_id="mass_mailing.email_designer_snippets">
+        <xpath expr="//div[@id='email_designer_default_footer']/div[2]" position="inside">
+            <t t-snippet="mail_massmail_matomo_statistics.matomo_image_email_tracking_snippet"
+               t-thumbnail="/mail_massmail_matomo_statistics/static/src/img/matomo_img.jpeg"/>
+        </xpath>
+    </template>
+
+</odoo>
