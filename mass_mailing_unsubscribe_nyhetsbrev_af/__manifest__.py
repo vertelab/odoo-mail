@@ -16,6 +16,7 @@
     "data": [
         'data/mail_unsubscription_reason.xml',
         'views/unsubsribe_views.xml',
+        'views/assets.xml'
     ],
     "auto_install": False,
     "installable": True,
