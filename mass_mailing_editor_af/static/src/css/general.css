@@ -1,0 +1,86 @@
+/* General */
+
+#masterHeaderContainer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+}
+#lightSupportContent {
+    display: none;
+}
+body {
+	height: 100%;
+	overflow-y: scroll;
+}
+h2 {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+h4 {
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+.textbox {
+	border: 1px solid #B5B8C8;
+	background: white url(../img/common/textbox_bg.gif) repeat-x;
+}
+small {
+	font-size: 90%;
+}
+.hidden {
+	display: none!important;
+}
+/* Reset/override certain external controls */
+body .ui-tabs .ui-tabs-nav li a {
+	padding: 3px 15px;
+}
+.wym_containers, .wym_classes {
+	display: none!important;
+}
+.wym_box {
+	border: none!important;
+}
+.ui-widget-overlay {
+	background: #000!important;
+}
+.ui-slider-range {
+	background-color: #DDD!important;
+}
+.ui-resizable-handle {
+	z-index: 0!important;
+}
+/* Common controls */
+
+/* jQuery UI Spinner 1.9 pre */
+
+/* Applies to .ui-dialog-content under Safari only (not in Chrome). */
+.ui-dialog .ui-dialog-content.safari {
+	margin-top: -14px !important;
+}
+/* Custom ui-dialog classes */
+.ui-dialog-right {
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+/* Custom ui-dialog classes HACK FOR IE 8*/
+.ui-dialog-right-top {
+ position: absolute!important\9;
+}
+.ui-dialog-right-content {
+ position: absolute!important\9;
+ top: 40px!important\9;
+ left: -15px!important\9;
+}
+.ui-dialog-titlebar-close:hover {
+ background: none!important\9;
+}
+.ui-dialog-right-bottom {
+ position: absolute!important\9;
+	padding-left:5px\9;
+}
+.ui-dialog .ui-button .ui-button-text {
+	position:relative\9;
+}
