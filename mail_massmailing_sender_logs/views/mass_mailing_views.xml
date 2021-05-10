@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="inherit_mail_mass_mailing_form_af_logger">
+        <field name="name">inherit.mail.mass.mailing.form.af.logger</field>
+        <field name="model">mail.mass_mailing</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="after">
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"
+                           widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
