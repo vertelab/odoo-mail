@@ -1,22 +1,71 @@
-from odoo import models, fields, _
+from odoo import models, fields, api, _
+
 
 class MassMailing(models.Model):
-
     _name = 'mail.mass_mailing'
     _inherits = {'utm.source': 'source_id'}
-    _inherit = ['mail.mass_mailing','mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.mass_mailing', 'mail.thread', 'mail.activity.mixin']
 
-    state = fields.Selection([('draft', 'Draft'), ('in_queue', 'In Queue'), ('sending', 'Sending'), ('done', 'Sent')],
-                             string='Status', required=True, copy=False, default='draft',
-                             group_expand='_group_expand_states', track_visibility='onchange')
+    email_from = fields.Char(string='From', required=True,
+        default=lambda self: self.env['mail.message']._get_default_from(), track_visibility='onchange')
 
-class MassMailingScheduleDate(models.TransientModel):
-    _inherit = 'mass.mailing.schedule.date'
-
-    def set_schedule_date(self):
+    @api.model
+    def create(self, vals):
+        res = super(MassMailing, self).create(vals)
         mail_msg_obj = self.env['mail.message']
-        msg = _("Mailing - " + "<b> " + self.mass_mailing_id.name + "</b>" + " scheduled by " + self.env.user.name + " From " + \
-                self.mass_mailing_id.email_from)
-        mail_msg_obj.sudo().create({'model': 'mail.mass_mailing', 'res_id': self.mass_mailing_id.id,
-                             'body': msg})
-        self.mass_mailing_id.write({'schedule_date': self.schedule_date, 'state': 'in_queue'})
+        if res.state == 'draft':
+            msg = """<div class='o_thread_message_content'> <ul class='o_mail_thread_message_tracking'>        
+                                            <li>
+                                                Status:
+                                                    <span> Draft </span>
+                                            </li>
+                                    </ul>
+                                </div>"""
+            mail_msg_obj.create({
+                'model': 'mail.mass_mailing', 'res_id': res.id,
+                'body': msg
+            })
+        return res
+
+    @api.multi
+    def write(self, vals):
+        res = super(MassMailing, self).write(vals)
+        if vals.get('state') and vals.get('state') in ('in_queue', 'draft'):
+            mail_msg_obj = self.env['mail.message']
+            if vals.get('state') == 'in_queue':
+                for mass_mail in self:
+                    msg = """<div class='o_thread_message_content'> <ul class='o_mail_thread_message_tracking'>        
+                                <li>
+                                    Status:
+                                        <span> Draft </span>
+                                        <span aria-label='Changed' class='fa fa-long-arrow-right' role='img' title='Changed'></span>
+                                    <span>
+                                        In Queue
+                                    </span>
+                                </li>
+                            
+                        </ul>
+                    </div>"""
+                    mail_msg_obj.create({
+                        'model': 'mail.mass_mailing', 'res_id': mass_mail.id,
+                        'body': msg
+                    })
+            elif vals.get('state') == 'draft':
+                for mass_mail in self:
+                    msg = """<div class='o_thread_message_content'> <ul class='o_mail_thread_message_tracking'>        
+                                <li>
+                                    Status:
+                                        <span> In Queue </span>
+                                        <span aria-label='Changed' class='fa fa-long-arrow-right' role='img' title='Changed'></span>
+                                    <span>
+                                        Draft
+                                    </span>
+                                </li>
+
+                        </ul>
+                    </div>"""
+                    mail_msg_obj.create({
+                        'model': 'mail.mass_mailing', 'res_id': mass_mail.id,
+                        'body': msg
+                    })
+        return res
