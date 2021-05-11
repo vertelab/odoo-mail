@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="mass_mail_editor_af_assets_backend" name="mass_mailing assets"
+              inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="shortcut icon" href="https://www.anpdm.com/favicon.ico"/>
+            <link href="/mass_mailing_editor_af/static/src/css/fancybutton.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/anpPrompt.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/general.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/jquery.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/editor4.css" rel="stylesheet" type="text/css"/>
+            <link href="/mass_mailing_editor_af/static/src/css/editor4-dropdownchecklist.css" rel="stylesheet"
+                  type="text/css"/>
+
+            <style type="text/css">
+                #html-content .icons {
+                line-height: 1px!important;
+                }
+                .footer-text a { color:#ffffff !important; text-decoration:none !important; }
+                .FullW { width: 100%!important; }
+                .ii a, .ReadMsgBody .ExternalClass a:link, .yshortcuts {
+                text-decoration: none!important; color: transparent!important; }
+                table tr th { vertical-align: top; }
+                a[x-apple-data-detectors] { /* Fix for unwanted styling of links in ios */
+                color: inherit!important; text-decoration: none!important; font-size: inherit!important; font-family:
+                inherit!important; font-weight: inherit!important; line-height: inherit!important; }
+                table, td { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+                .ExternalClass * { /* Fix for Outlook.com */ line-height: normal; }
+                body, table, div, p, a, li, td, th { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+                ul.editorSection li:hover { /*Fix for unwanted align colsplit when hovering on modules*/ margin: 0
+                -1px!important; }
+                body { width: 100%; padding: 0!important; margin: 0 auto!important; background-color: #f7f7f7; }
+            </style>
+
+            <style>
+                @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+            </style>
+
+            <style type="text/css">
+                @media screen and (max-width: 600px) {
+                .nomob { display: none!important; }
+                .rsd47 { width: 47%!important; height: auto!important; }
+                .rsd, td.rsd img, th.rsd img, div.rsd img { width: 100%!important; height: auto!important; }
+                .db { display: block!important; width: auto!important; }
+                .p_n { padding: 0!important; }
+                .p_lr { padding-left: 20px!important; padding-right: 20px!important; }
+                .p_r { padding-right: 20px!important; }
+                .p_b { padding-bottom: 20px!important; }
+                .p_b30 { padding-bottom: 30px!important; }
+                .a_left { text-align: left!important; }
+                .footer-text a { color:#ffffff; }
+                .scl, .scl img { width: 30px!important; height: auto!important; }
+                }
+            </style>
+            <style type="text/css">
+                @media screen and (max-width: 600px) {
+                @-ms-viewport { width:320px; }
+                }
+            </style>
+
+        </xpath>
+    </template>
+</odoo>
