@@ -45,12 +45,15 @@
                 <form string="Events">
                     <header>
                         <button string="Start Event" name="start_event" states="draft" type="object" class="oe_highlight" groups="base.group_user"/>
+                        <button string="Re-Run Event" name="start_event" states="running" type="object" class="oe_highlight" groups="base.group_user"/>
 <!--                        <button string="automated_event_mail" name="automated_event_mail" states="running" type="object" class="oe_highlight" groups="base.group_user"/>-->
                         <button string="Cancel Event" name="button_cancel" states="running" type="object" groups="base.group_user" confirm="Are you sure you want to cancel this event?" />
                         <button string="Re-Run Event" name="start_event" states="cancelled" type="object" class="oe_highlight" groups="base.group_user"/>
+
+
                         <field name="state" widget="statusbar" statusbar_visible="draft,running,end"/>
                     </header>
-                    <sheet>
+
                         <div class="oe_button_box" name="button_box">
                             <button name="%(action_all_email_sent)d" type="action"
                                     class="oe_stat_button">
@@ -101,10 +104,12 @@
                                         <field name="interval_unit"/>
                                         <field name="interval_type"/>
                                         <field name="ir_model_field"/>
+                                        <field name="received_info"/>
+                                        <field name="opened_info"/>
+                                        <field name="replied_info"/>
+                                        <field name="bounced_info"/>
                                         <field name="sent"/>
-                                        <field name="delivered"/>
-                                        <field name="opened"/>
-                                        <field name="clicked"/>
+                                        <field name="total"/>
                                         <field name="contact_ids" widget="many2many_tags" invisible="1"/>
                                         <button type="action" name="%(action_schedule_line_emails)d"
                                                 class="fa fa-envelope"/>
@@ -112,11 +117,11 @@
                                 </field>
                             </page>
                         </notebook>
-                    </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
-                        <field name="message_ids" widget="mail_thread"/>
-                    </div>
+
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
                 </form>
             </field>
         </record>

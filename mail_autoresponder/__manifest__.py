@@ -26,6 +26,7 @@
         'views/assets.xml',
         'views/menuitem.xml',
         'views/partner_event_view.xml',
+        'views/mass_mailing_view.xml',
         'views/mail_audit_view.xml',
         'views/mail_template_views.xml',
         'wizard/mail_compose_message_view.xml',

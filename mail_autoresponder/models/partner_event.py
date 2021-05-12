@@ -52,7 +52,6 @@ class PartnerEvent(models.Model):
 
     email_schedule_ids = fields.One2many('partner.event.email.schedule', 'partner_event_id',
                                          string="Email Schedule", default=_prefill_email_schedule_ids)
-
     state = fields.Selection([('draft', 'Draft'), ('running', 'Running'), ('end', 'End'),('cancelled', 'Cancelled') ],
                              default='draft')
     color = fields.Integer('Kanban Color Index')
@@ -89,7 +88,6 @@ class PartnerEvent(models.Model):
             if event.date_end <= date.today():
                 event.state = 'end'
 
-
     def automated_autoresponder_mail(self):
 
         event_ids = self.env['partner.event'].search([('state', '=', 'running')])
@@ -100,6 +98,7 @@ class PartnerEvent(models.Model):
                 if email_line.interval_type == 'before_event':
                     print ("It's here!")
                     self.before_event(event, email_line, email_line.contact_ids)
+
 
     def after_event(self, event, email_line, contacts):
         today_date = datetime.datetime.today().strftime("%Y-%m-%d")
@@ -125,7 +124,8 @@ class PartnerEvent(models.Model):
                     if week_day_date:
                         partner_comp_date = week_day_date[-1].strftime("%Y-%m-%d")
                         if partner_comp_date == today_date:
-                            self._email_to_contacts(contact, event, email_line)
+                            self._create_mail_campaign(contact, email_line)
+                            # self._email_to_contacts(contact, event, email_line)
                             email_line.contact_ids = [(4, contact.id)]
 
     def before_event(self, event, email_line, contacts):
@@ -148,11 +148,29 @@ class PartnerEvent(models.Model):
 
                         week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=_datetime, until=event.date_begin,
                                                          byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
+
                     if week_day_date:
                         if week_day_date[-1].strftime("%Y-%m-%d") == today_date:
-                            self._email_to_contacts(partner_id, event, email_line)
+                            self._create_mail_campaign(partner_id, email_line)
+                            # self._email_to_contacts(partner_id, event, email_line)
                             email_line.contact_ids = [(4, partner_id.id)]
 
+    def _create_mail_campaign(self, partner, event_line):
+        partner_model = self.env['ir.model'].search([('model','=','res.partner')], limit=1)
+        name = event_line.name and event_line.name or ""
+        name += " "
+        name += partner.name
+        mailing_data = {
+            'name':name,
+            'user_id':self.env.user.id,
+            'mailing_model_id':partner_model and partner_model.id or False,
+            'mailing_domain': '%s' % [('email', 'in', [partner.email])],
+            'body_html':event_line.template_id and event_line.template_id.body_html or False,
+            'event_line_id':event_line.id,
+            'auto_responder':True,
+        }
+        mailing_record = self.env['mail.mass_mailing'].create(mailing_data)
+        mailing_record.put_in_queue()
 
     def _email_to_contacts(self, partner_id, event, email_line):
         audit_email = {
@@ -208,18 +226,109 @@ class EventEmailSchedule(models.Model):
     ir_model_field = fields.Many2one('ir.model.fields', string="Field", domain=[('model_id', '=', 'res.partner'),
                                                                                 ('ttype', 'in', ['date', 'datetime'])])
 
-    sent = fields.Boolean('Sent', readonly=True)
-    delivered = fields.Integer("Delivered", default="")
-    opened = fields.Integer("Opened")
-    clicked = fields.Integer("Clicked")
-    # delivered_ratio = fields.Char("Delivered Ratio", compute="_compute_statistics")
-    # opened_ratio = fields.Char("Opened Ratio", compute="_compute_statistics")
-    # clicked_ratio = fields.Char("Clicked Ratio", compute="_compute_statistics")
+    # sent = fields.Boolean('Sent', readonly=True)
 
-    # def _compute_statistics(self):
+    #statistics fields
+    mail_massmailing_ids = fields.One2many("mail.mass_mailing", "event_line_id", string="Mass Mailing")
+    sent = fields.Integer('Sent', compute="_compute_statistics_info")
+    received = fields.Integer("Delivered Email", compute="_compute_statistics_info")
+    opened = fields.Integer("Opened Email", compute="_compute_statistics_info")
+    replied = fields.Integer("Replied Email", compute="_compute_statistics_info")
+    bounced = fields.Integer("Bounced Email", compute="_compute_statistics_info")
+    received_ratio = fields.Char("Delivered Ratio", compute="_compute_statistic_ratio")
+    opened_ratio = fields.Char("Opened Ratio", compute="_compute_statistic_ratio")
+    replied_ratio = fields.Char("Replied Ratio", compute="_compute_statistic_ratio")
+    bounced_ratio = fields.Char("Bounced Ratio", compute="_compute_statistic_ratio")
+    total = fields.Integer("Total", compute="_compute_total_camp")
+    received_info = fields.Char("Delivered", compute="_compute_line_statistics")
+    opened_info = fields.Char("Opened", compute="_compute_line_statistics")
+    replied_info = fields.Char("Replied", compute="_compute_line_statistics")
+    bounced_info = fields.Char("Bounced", compute="_compute_line_statistics")
+
+    @api.multi
+    def _compute_line_statistics(self):
+        for event_line in self:
+            received_line = str(event_line.received)
+            received_line += "/"
+            received_line += str(event_line.total)
+            received_line += " ("
+            received_line += str(event_line.received_ratio)
+            received_line += " %)"
+            event_line.received_info = received_line
+
+            opened_line = str(event_line.opened)
+            opened_line += "/"
+            opened_line += str(event_line.total)
+            opened_line += " ("
+            opened_line += str(event_line.opened_ratio)
+            opened_line += " %)"
+            event_line.opened_info = opened_line
+
+            replied_line = str(event_line.replied)
+            replied_line += "/"
+            replied_line += str(event_line.total)
+            replied_line += " ("
+            replied_line += str(event_line.replied_ratio)
+            replied_line += " %)"
+            event_line.replied_info = replied_line
+
+            bounced_line = str(event_line.bounced)
+            bounced_line += "/"
+            bounced_line += str(event_line.total)
+            bounced_line += " ("
+            bounced_line += str(event_line.bounced_ratio)
+            bounced_line += " %)"
+            event_line.bounced_info = bounced_line
 
 
 
+    @api.multi
+    def _compute_total_camp(self):
 
+        for event_line in self:
+            event_line.total = len(event_line.mail_massmailing_ids.ids)
 
+    @api.multi
+    def _compute_statistic_ratio(self):
+        for event_line in self:
+            total = len(event_line.mail_massmailing_ids.ids)
+            if total>0:
+                event_line.delivered = event_line.sent - event_line.bounced
+                event_line.received_ratio = 100.0 * event_line.delivered /total
+                event_line.opened_ratio = 100.0 * event_line.opened/ total
+                event_line.replied_ratio = 100.0 * event_line.replied /total
+                event_line.bounced_ratio = 100.0 * event_line.bounced /total
+            else:
+                event_line.delivered = 0
+                event_line.received_ratio = 0
+                event_line.opened_ratio = 0
+                event_line.replied_ratio = 0
+                event_line.bounced_ratio = 0
 
+    @api.multi
+    def _compute_statistics_info(self):
+
+        for event_line in self:
+            sent = 0
+            received = 0
+            opened = 0
+            replied = 0
+            bounced = 0
+            for mailing_info in event_line.mail_massmailing_ids:
+                received += mailing_info.delivered
+                opened += mailing_info.opened
+                replied += mailing_info.replied
+                bounced += mailing_info.bounced
+                sent += mailing_info.sent
+            event_line.received = received
+            event_line.opened = opened
+            event_line.replied = replied
+            event_line.bounced = bounced
+            event_line.sent = sent
+
+class MailMassMailing(models.Model):
+
+    _inherit = 'mail.mass_mailing'
+
+    auto_responder = fields.Boolean("Auto Responder")
+    event_line_id = fields.Many2one("partner.event.email.schedule", "Event Line")
