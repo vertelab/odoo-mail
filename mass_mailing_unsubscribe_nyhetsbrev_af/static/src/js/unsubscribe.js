@@ -1,4 +1,4 @@
-odoo.define('mass_mailing_custom_unsubscribe.unsubscribe', function (require) {
+odoo.define('mass_mailing_unsubscribe_nyhetsbrev_af.unsubscribe', function (require) {
     'use strict';
     var ajax = require('web.ajax');
     var core = require('web.core');
