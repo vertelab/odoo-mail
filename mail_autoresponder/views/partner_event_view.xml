@@ -3,7 +3,7 @@
 
         <!-- Action for email sent from complete event  -->
         <record model="ir.actions.act_window" id="action_all_email_sent">
-            <field name="name">Event Mail Audit</field>
+            <field name="name">Autoresponder Mail Audit</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">event.email.audit</field>
             <field name="view_type">form</field>
@@ -21,7 +21,7 @@
 
         <!-- Action for all email sent from scheduled lines -->
         <record model="ir.actions.act_window" id="action_schedule_line_emails">
-            <field name="name">Event Mail Audit</field>
+            <field name="name">Autoresponder Mail Audit</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">event.email.audit</field>
             <field name="view_type">form</field>
@@ -44,11 +44,11 @@
             <field name="arch" type="xml">
                 <form string="Events">
                     <header>
-                        <button string="Start Event" name="start_event" states="draft" type="object" class="oe_highlight" groups="base.group_user"/>
-                        <button string="Re-Run Event" name="start_event" states="running" type="object" class="oe_highlight" groups="base.group_user"/>
+                        <button string="Start" name="start_event" states="draft" type="object" class="oe_highlight" groups="base.group_user"/>
+                        <button string="Re-Run" name="start_event" states="running" type="object" class="oe_highlight" groups="base.group_user"/>
 <!--                        <button string="automated_event_mail" name="automated_event_mail" states="running" type="object" class="oe_highlight" groups="base.group_user"/>-->
-                        <button string="Cancel Event" name="button_cancel" states="running" type="object" groups="base.group_user" confirm="Are you sure you want to cancel this event?" />
-                        <button string="Re-Run Event" name="start_event" states="cancelled" type="object" class="oe_highlight" groups="base.group_user"/>
+                        <button string="Cancel" name="button_cancel" states="running" type="object" groups="base.group_user" confirm="Are you sure you want to cancel this event?" />
+                        <button string="Re-Run" name="start_event" states="cancelled" type="object" class="oe_highlight" groups="base.group_user"/>
 
 
                         <field name="state" widget="statusbar" statusbar_visible="draft,running,end"/>

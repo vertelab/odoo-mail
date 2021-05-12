@@ -6,7 +6,7 @@ from dateutil import rrule
 import logging
 _logger = logging.getLogger(__name__)
 
-class PartnerEvent(models.Model):
+class Autoresponder(models.Model):
     _name = 'partner.event'
     _description = 'Autoresponder'
     _inherit = ['mail.thread']
@@ -83,7 +83,7 @@ class PartnerEvent(models.Model):
                 rec.all_event_mail_count = rec.env['mail.mail'].search_count([
                     ('res_id', '=', rec.id), ('model', '=', rec._name)])
 
-    def update_event_status(self):
+    def update_autoresponder_status(self):
         for event in self.env['partner.event'].search([('state', '=', 'running')]):
             if event.date_end <= date.today():
                 event.state = 'end'
