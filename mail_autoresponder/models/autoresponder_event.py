@@ -102,7 +102,7 @@ class Autoresponder(models.Model):
 
     def after_event(self, event, email_line, contacts):
         today_date = datetime.datetime.today().strftime("%Y-%m-%d")
-        domain = safe_eval(event.contact_domain)
+        domain = event.contact_domain and safe_eval(event.contact_domain) or []
         for contact in self.env['res.partner'].search(domain):
             if contact.id not in contacts.ids:
                 week_day_date = False
@@ -130,7 +130,7 @@ class Autoresponder(models.Model):
 
     def before_event(self, event, email_line, contacts):
         today_date = datetime.datetime.today().strftime("%Y-%m-%d")
-        domain = safe_eval(event.contact_domain)
+        domain = event.contact_domain and safe_eval(event.contact_domain) or  []
         res_ids = self.env['res.partner'].search(domain).ids
         for contact_id in res_ids:
             if contact_id not in contacts.ids:
