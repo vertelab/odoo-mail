@@ -7,7 +7,7 @@ class EventEmailAudit(models.Model):
 
     _name = 'event.email.audit'
 
-    _description = 'Event Email Audit'
+    _description = 'Autoreponder Email Audit'
 
     user_id = fields.Many2one("res.users", "Sent through")
     partner_id = fields.Many2one("res.partner")

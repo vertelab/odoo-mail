@@ -16,10 +16,10 @@
 
         <!-- Move the event state to end-->
         <record model="ir.cron" forcecreate="True" id="event_close_when_end">
-            <field name="name">Event : Update event status to end when it finished.</field>
+            <field name="name">Autoresponder : Update Autoresponder status to end when it finished.</field>
             <field name="model_id" ref="model_partner_event"/>
             <field name="state">code</field>
-            <field name="code">model.update_event_status()</field>
+            <field name="code">model.update_autoresponder_status()</field>
             <field name="user_id" ref="base.user_root"/>
             <field name="interval_number">1</field>
             <field name="interval_type">weeks</field>

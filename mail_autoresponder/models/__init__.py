@@ -2,5 +2,5 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from . import mail_audit
-from . import partner_event
+from . import autoresponder_event
 
