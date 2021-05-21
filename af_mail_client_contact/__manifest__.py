@@ -1,5 +1,5 @@
 {
-    "name": "Depreciated AF Mail Client Contact",
+    "name": "AF Mail Client Contact",
     "summary": "AF Mail Client Contact",
     "version": "12.0.0.1",
     "category": "Messaging",
