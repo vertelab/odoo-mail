@@ -1,10 +1,11 @@
 {
     "name": "Mass mailing unsubscribe nyhetsbrev AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.0.0.1",
+    "version": "12.0.0.0.2",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.1 AFC-2173  Update layout of Unsubscribe Page.\n
+	 v12.0.0.2 AFC-2173 Fixed bug with link.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
