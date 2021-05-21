@@ -5,7 +5,7 @@
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.1 AFC-2173  Update layout of Unsubscribe Page.\n
-	 v12.0.0.2 AFC-2173 Fixed buug with link.\n
+	 v12.0.0.2 AFC-2173 Fixed bug with link.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
