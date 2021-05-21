@@ -1,5 +1,6 @@
 <odoo>
     <data>
+
         <record model="ir.ui.view" id="view_event_form">
             <field name="name">partner.event.form</field>
             <field name="model">partner.event</field>
@@ -10,5 +11,11 @@
                 </field>
             </field>
         </record>
+
+        <menuitem id="mail_autoresponder.dialogue_event_id" name="Autoresponder" action="mail_autoresponder.action_dialogue_event"
+                  sequence="1"
+                  parent="mail_autoresponder.customer_dialogue_menu_id"
+                  groups="af_security.af_newsletter_automatic"/>
+        />
     </data>
 </odoo>
