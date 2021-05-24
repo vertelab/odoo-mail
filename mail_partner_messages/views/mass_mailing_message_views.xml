@@ -13,6 +13,11 @@
                                 <field name="mass_mailing_id" string="Subject"/>
                                 <field name="document" string="Document"/>
                                 <field name="sent_date" string="Sent"/>
+                                <field name="clicked" string="Clicked"/>
+                                <field name="opened" string="Opened"/>
+                                <field name="replied" string="Replied"/>
+                                <field name="bounced" string="Bounced"/>
+                                <button name="open_email" type="object" string="Email" class="btn btn-primary"/>
                             </tree>
                         </field>
                     </page>
@@ -32,6 +37,11 @@
                                 <field name="mass_mailing_id" string="Subject"/>
                                 <field name="document" string="Document"/>
                                 <field name="sent_date" string="Sent"/>
+                                <field name="clicked" string="Clicked"/>
+                                <field name="opened" string="Opened"/>
+                                <field name="replied" string="Replied"/>
+                                <field name="bounced" string="Bounced"/>
+                                <button name="open_email" type="object" string="Email" class="btn btn-primary"/>
                             </tree>
                         </field>
                     </page>
@@ -48,6 +58,11 @@
                     <field name="mass_mailing_id" string="Mailing"/>
                     <field name="document" string="Document"/>
                     <field name="sent_date" string="Sent"/>
+                    <field name="clicked" string="Clicked"/>
+                    <field name="opened" string="Opened"/>
+                    <field name="replied" string="Replied"/>
+                    <field name="bounced" string="Bounced"/>
+                    <button name="open_email" type="object" string="Email" class="btn btn-primary"/>
                 </tree>
             </field>
         </record>
@@ -59,10 +74,19 @@
                 <form string="Mailing Messages">
                     <sheet>
                         <group>
-                            <field name="partner_id" string="Contact"/>
-                            <field name="mass_mailing_id" string="Mailing"/>
-                            <field name="document" string="Document"/>
-                            <field name="sent_date" string="Sent"/>
+                            <group>
+                                <field name="partner_id" string="Contact"/>
+                                <field name="mass_mailing_id" string="Mailing"/>
+                                <field name="document" string="Document"/>
+                                <field name="sent_date" string="Sent"/>
+                                <button name="open_email" type="object" string="Email" class="btn btn-primary"/>
+                            </group>
+                            <group>
+                                <field name="clicked" string="Clicked"/>
+                                <field name="opened" string="Opened"/>
+                                <field name="replied" string="Replied"/>
+                                <field name="bounced" string="Bounced"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
@@ -95,7 +119,7 @@
         </record>
 
         <menuitem name="Messages" id="contact_menu_mail_messages" parent="contacts.menu_contacts"
-                  groups="af_security.af_newsletter_manual"
+                  groups="af_security.3_line_support"
                   action="action_view_contact_mail_message" sequence="200"/>
 
     </data>
