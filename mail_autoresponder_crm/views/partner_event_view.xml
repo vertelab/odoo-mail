@@ -21,6 +21,10 @@
                   parent="mail_autoresponder.customer_dialogue_menu_id"
                   groups="af_security.af_newsletter_automatic"/>
         />
+
+        <menuitem name="Email Marketing" id="mass_mailing.mass_mailing_menu_root" sequence="60"
+                  groups="af_security.af_newsletter_manual"
+                  web_icon="mass_mailing,static/description/icon.png"/>
                 
     </data>
 </odoo>
