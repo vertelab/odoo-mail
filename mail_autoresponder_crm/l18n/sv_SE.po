@@ -408,7 +408,7 @@ msgstr "Aktiverad"
 msgid "Schedule and organize your events efficiently:\n"
 "                    track registrations and participations, automate the confirmation emails, sell tickets, etc."
 msgstr "Schemalägg och organisera händelserna effektivt: \n"
-"                    Språa registreringar och deltagare, automatisera bekräftelser mm"
+"                    Spåra registreringar och deltagare, automatisera bekräftelser mm"
 
 #. module: mail_autoresponder_crm
 #: model:ir.model.fields,field_description:mail_autoresponder_crm.field_partner_event__contact_domain
