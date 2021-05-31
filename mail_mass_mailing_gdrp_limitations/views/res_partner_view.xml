@@ -10,7 +10,7 @@
                 <field name="display_name" string="Name" invisible="1"/>
                 <field name="is_jobseeker"/>
                 <field name="segment_jobseeker"/>
-                <!-- <field name="ssyk_codes" string="SSYK Codes"/> -->
+                <field name="ssyk_codes" string="SSYK Codes"/>
                 <field name="phone" class="o_force_ltr" invisible="1"/>
                 <field name="email" invisible="1"/>
                 <field name="user_id" invisible="1"/>
