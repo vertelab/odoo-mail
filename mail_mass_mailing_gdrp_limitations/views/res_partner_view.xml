@@ -8,18 +8,21 @@
         <field name="arch" type="xml">
             <tree string="Contacts">
                 <field name="display_name" string="Name" invisible="1"/>
-                <field name="function" invisible="0"/>
-                <field name="is_jobseeker" invisible="0"/>
-                <field name="segment_jobseeker" invisible="0"/>
-                <field name="is_employer" invisible="0"/>
-                <field name="segment_employer" invisible="0"/>
+                <field name="is_jobseeker"/>
+                <field name="segment_jobseeker"/>
+                <!-- <field name="ssyk_codes" string="SSYK Codes"/> -->
                 <field name="phone" class="o_force_ltr" invisible="1"/>
                 <field name="email" invisible="1"/>
                 <field name="user_id" invisible="1"/>
                 <field name="is_company" invisible="1"/>
-                <field name="country_id" invisible="0"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="zip"/>
+                <field name="state_code"/>
+                <field name="state_name_code"/>
+                <field name="country_id"/>
                 <field name="parent_id" invisible="1"/>
-                <field name="active" invisible="0"/>
+                <field name="active"/>
             </tree>
         </field>
     </record>
