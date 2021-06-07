@@ -6,7 +6,7 @@ from odoo.exceptions import UserError
 from xlrd import open_workbook
 from odoo import models, fields, api, _
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
-
+from odoo.modules.module import get_resource_path
 
 class ImportDeregistratioFile(models.TransientModel):
     _name = 'import.deregistration.file'
@@ -14,11 +14,17 @@ class ImportDeregistratioFile(models.TransientModel):
 
     file = fields.Binary(string='File')
     filename = fields.Char(string='File name')
+    dwnld_csv_filename = fields.Char("CSV File name")
+    dwnld_xls_filename = fields.Char("XLS File name")
+    dwnld_txt_filename = fields.Char("TXT File name")
+    dwnld_csv_file = fields.Binary("CSV File")
+    dwnld_xls_file = fields.Binary("XLS File")
+    dwnld_txt_file = fields.Binary("TXT File")
 
     def import_data(self):
         if not self.file or not \
-                self.filename.lower().endswith(('.xls', '.xlsx', '.csv')):
-            raise UserError(_("Please Select an .xls or .csv or its compatible file to Import."))
+                self.filename.lower().endswith(('.xls', '.xlsx', '.csv', 'txt')):
+            raise UserError(_("Please Select an .xls, .xlsx, .txt or .csv file to Import."))
         unsub_obj = self.env['mail.unsubscription']
         mail_list_obj = self.env['mail.mass_mailing.contact']
         black_list_obj = self.env['mail.blacklist']
@@ -48,17 +54,17 @@ class ImportDeregistratioFile(models.TransientModel):
                     result_dict.update({headers[counter]: cell})
                     counter += 1
                 result_vals.append(result_dict)
-            correct_header = ['Email', 'Date', 'Reason']
+            correct_header = ['email', 'date', 'reason']
             check_header = all(item in headers for item in correct_header)
             if not check_header:
                 raise UserError(_("Please correct Header in file!"))
             else:
                 for row in result_vals:
-                    email = row.get('Email')
-                    date = row.get('Date')
-                    reason_val = row.get('Reason')
+                    email = row.get('email')
+                    date = row.get('date')
+                    reason_val = row.get('reason')
                     if date:
-                        date = str(datetime.strptime(date, DEFAULT_SERVER_DATETIME_FORMAT) - timedelta(hours=2))
+                        date = str(datetime.strptime(str(date), DEFAULT_SERVER_DATETIME_FORMAT) - timedelta(hours=2))
                     reason = reason_obj.search([('name', '=', reason_val)])
                     details = ''
                     if not reason:
@@ -91,6 +97,55 @@ class ImportDeregistratioFile(models.TransientModel):
                                 black_list = black_list_obj.search([('email', '=', email)])
                                 if not black_list:
                                     black_list_obj.create({'email': email})
+        elif self.filename.lower().endswith('.txt'):
+            file_data = base64.decodestring(self.file)
+            file_data = file_data.decode("utf-8")
+            data_list = file_data.split('\n')
+            for data in data_list[1:]:
+                if data:
+                    row = data.split(',')
+                    if len(row) != 3:
+                        raise UserError(_("Correct following line! \n %s" % row))
+                    else:
+                        email = row[0]
+                        date = row[1]
+                        reason_val = row[2]
+                        if date:
+                            date = str(datetime.strptime(str(date), DEFAULT_SERVER_DATETIME_FORMAT) - timedelta(hours=2))
+                        if not isinstance(date, str):
+                            raise UserError(_("Format Date column with String!"))
+                        reason = reason_obj.search([('name', '=', reason_val)])
+                        details = ''
+                        if not reason:
+                            reason = self.env.ref('mass_mailing_custom_unsubscribe.reason_other')
+                            details = reason_val if reason_val else 'From Deregistration List'
+                        if email:
+                            contact_list = mail_list_obj.search([('email', '=', email)])
+                            for contact in contact_list:
+                                unsub_obj.create({
+                                    'date': date if date else now,
+                                    'mailing_list_ids': [(4, list.list_id.id) for list in contact.subscription_list_ids],
+                                    'email': email,
+                                    'action': 'unsubscription',
+                                    'reason_id': reason.id if reason else False,
+                                    'details': details,
+                                })
+                                for mail_list in contact.subscription_list_ids:
+                                    mail_list.opt_out = True
+                            if not contact_list:
+                                partners = partner_obj.search([('email', '=', email)])
+                                for partner in partners:
+                                    unsub_obj.create({
+                                        'date': date if date else now,
+                                        'email': email,
+                                        'action': 'unsubscription',
+                                        'reason_id': reason.id if reason else '',
+                                        'details': details,
+                                        'unsubscriber_id': 'res.partner,' + str(partner.id)
+                                    })
+                                    black_list = black_list_obj.search([('email', '=', email)])
+                                    if not black_list:
+                                        black_list_obj.create({'email': email})
         else:
             data = base64.decodestring(self.file)
             book = open_workbook(file_contents=data or b'')
@@ -116,7 +171,7 @@ class ImportDeregistratioFile(models.TransientModel):
                     elif colx == 3:
                         reason_val = cell.value
                 if date:
-                    date = str(datetime.strptime(date, DEFAULT_SERVER_DATETIME_FORMAT) - timedelta(hours=2))
+                    date = str(datetime.strptime(str(date), DEFAULT_SERVER_DATETIME_FORMAT) - timedelta(hours=2))
                 if not isinstance(date, str):
                     raise UserError(_("Format Date column with String!"))
                 reason = reason_obj.search([('name', '=', reason_val)])
@@ -151,3 +206,64 @@ class ImportDeregistratioFile(models.TransientModel):
                             black_list = black_list_obj.search([('email', '=', email)])
                             if not black_list:
                                 black_list_obj.create({'email': email})
+
+    def download_xls_file(self):
+        xls_file_path = get_resource_path(
+            'mass_mailing_unsubscribe_af', 'static/file', 'deregistration.xls')
+        xls_file = False
+        with open(xls_file_path, 'rb') as file_date:
+            xls_file = base64.b64encode(file_date.read())
+        if xls_file:
+            self.dwnld_xls_filename = 'deregistration.xls'
+            self.dwnld_xls_file = xls_file
+        return {
+            'name': 'Deregistration',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'view_id': False,
+            'res_model': 'import.deregistration.file',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'res_id': self.id,
+        }
+
+    def download_csv_file(self):
+        csv_file_path = get_resource_path(
+            'mass_mailing_unsubscribe_af', 'static/file', 'deregistration.csv')
+        csv_file = False
+        with open(csv_file_path, 'rb') as file_date:
+            csv_file = base64.b64encode(file_date.read())
+        if csv_file:
+            self.dwnld_csv_filename = 'deregistration.csv'
+            self.dwnld_csv_file = csv_file
+        return {
+            'name': 'Deregistration',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'view_id': False,
+            'res_model': 'import.deregistration.file',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'res_id': self.id,
+        }
+
+    def download_txt_file(self):
+        txt_file_path = get_resource_path(
+            'mass_mailing_unsubscribe_af', 'static/file', 'deregistration.txt')
+        txt_file = False
+        with open(txt_file_path, 'rb') as file_date:
+            txt_file = base64.b64encode(file_date.read())
+        if txt_file:
+            self.dwnld_txt_filename = 'deregistration.txt'
+            self.dwnld_txt_file = txt_file
+        return {
+            'name': 'Deregistration',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'view_id': False,
+            'res_model': 'import.deregistration.file',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'res_id': self.id,
+        }
+

@@ -1,0 +1,5 @@
+email,date,reason
+aa@example.com,2021-05-31 12:00:00,I no longer want to receive these emails
+bb@example.com,2021-05-28 14:30:00,I'm not interested
+test@gmail.com,2021-06-28 17:30:00,I did not request this
+test2@gmail.com,2021-04-28 18:06:00,I get too many emails
