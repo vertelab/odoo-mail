@@ -12,67 +12,21 @@
                     </group>
                     <h2>Import file with following format:</h2>
                     <br/>
+
                     <button name="download_xls_file" string="Download Sample Excel Format"
                             type="object" class="oe_highlight"/>
                     <field name="dwnld_xls_filename" invisible="1"/>
-                    <field name="dwnld_xls_file" filename="dwnld_xls_filename" readonly="1"/>
-                    <table class="table table-bordered" width="50%">
-                        <thead>
-                            <th>Email</th>
-                            <th>Date</th>
-                            <th>Reason</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>test1@gmail.com</td>
-                                <td>2021-06-01 12:42:02</td>
-                                <td>I no longer want to receive these emails</td>
-                            </tr>
-                            <tr>
-                                <td>test2@gmail.com</td>
-                                <td>2021-06-02 13:42:02</td>
-                                <td>I'm not interested</td>
-                            </tr>
-                            <tr>
-                                <td>aa@gmail.com</td>
-                                <td>2021-05-01 14:40:02</td>
-                                <td>I did not request this</td>
-                            </tr>
-                            <tr>
-                                <td>bb@gmail.com</td>
-                                <td>2021-04-25 13:00:02</td>
-                                <td>I get too many emails</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <field name="dwnld_xls_file" filename="dwnld_xls_filename" readonly="1"/><br/><br/>
+
                     <button name="download_csv_file" string="Download Sample CSV Format"
                             type="object" class="oe_highlight"/>
                     <field name="dwnld_csv_filename" invisible="1"/>
-                    <field name="dwnld_csv_file" filename="dwnld_csv_filename" readonly="1"/>
-                    <br/>
-                    email,date,reason
-                    <br/>
-                    test1@gmail.com,2021-06-01 12:42:02,I no longer want to receive these emails
-                    <br/>
-                    test2@gmail.com,2021-05-01 14:07:08,I did not request this
-                    <br/>
-                    aa@gmail.com,2021-05-30 17:30:00,I'm not interested
-                    <br/>
-                    bb@gmail.com,2021-04-01 13:00:02,I get too many emails<br/>
+                    <field name="dwnld_csv_file" filename="dwnld_csv_filename" readonly="1"/><br/><br/>
+
                     <button name="download_txt_file" string="Download Sample Text Format"
                             type="object" class="oe_highlight"/>
                     <field name="dwnld_txt_filename" invisible="1"/>
-                    <field name="dwnld_txt_file" filename="dwnld_txt_filename" readonly="1"/>
-                    <br/>
-                    email,date,reason
-                    <br/>
-                    test1@gmail.com,2021-06-01 12:42:02,I no longer want to receive these emails
-                    <br/>
-                    test2@gmail.com,2021-05-01 14:07:08,I did not request this
-                    <br/>
-                    aa@gmail.com,2021-05-30 17:30:00,I'm not interested
-                    <br/>
-                    bb@gmail.com,2021-04-01 13:00:02,I get too many emails
+                    <field name="dwnld_txt_file" filename="dwnld_txt_filename" readonly="1"/><br/><br/>
 
                     <footer>
                         <button string="Import" name="import_data" type="object" class="oe_highlight"/>

@@ -54,17 +54,17 @@ class ImportDeregistratioFile(models.TransientModel):
                     result_dict.update({headers[counter]: cell})
                     counter += 1
                 result_vals.append(result_dict)
-            correct_header = ['email', 'date', 'reason']
+            correct_header = ['E-postadress', 'Opt out date', 'Reason']
             check_header = all(item in headers for item in correct_header)
             if not check_header:
                 raise UserError(_("Please correct Header in file!"))
             else:
                 for row in result_vals:
-                    email = row.get('email')
-                    date = row.get('date')
-                    reason_val = row.get('reason')
+                    email = row.get('E-postadress')
+                    date = row.get('Opt out date')
+                    reason_val = row.get('Reason')
                     if date:
-                        date = str(datetime.strptime(str(date), DEFAULT_SERVER_DATETIME_FORMAT) - timedelta(hours=2))
+                        date = str(datetime.strptime(str(date), '%Y-%m-%d %H:%M') - timedelta(hours=2))
                     reason = reason_obj.search([('name', '=', reason_val)])
                     details = ''
                     if not reason:
@@ -104,14 +104,14 @@ class ImportDeregistratioFile(models.TransientModel):
             for data in data_list[1:]:
                 if data:
                     row = data.split(',')
-                    if len(row) != 3:
+                    if len(row) < 3:
                         raise UserError(_("Correct following line! \n %s" % row))
                     else:
-                        email = row[0]
-                        date = row[1]
-                        reason_val = row[2]
+                        email = row[1]
+                        date = row[2]
+                        reason_val = row[3]
                         if date:
-                            date = str(datetime.strptime(str(date), DEFAULT_SERVER_DATETIME_FORMAT) - timedelta(hours=2))
+                            date = str(datetime.strptime(str(date), '%Y-%m-%d %H:%M') - timedelta(hours=2))
                         if not isinstance(date, str):
                             raise UserError(_("Format Date column with String!"))
                         reason = reason_obj.search([('name', '=', reason_val)])
@@ -156,7 +156,10 @@ class ImportDeregistratioFile(models.TransientModel):
                 for colx, cell in enumerate(row, 1):
                     headers.append(cell.value)
 
-            if headers != ['Email', 'Date', 'Reason']:
+            correct_header = ['E-postadress', 'Opt out date', 'Reason']
+            check_header = all(item in headers for item in correct_header)
+            if not check_header or (len(headers) < 3) or (headers[1] != 'E-postadress') or \
+                    (headers[2]!= 'Opt out date') or (headers[3] != 'Reason'):
                 raise UserError(_("Please correct Header in File!"))
 
             for rowx, row in enumerate(map(sheet.row, range(1, sheet.nrows)), 1):
@@ -164,14 +167,14 @@ class ImportDeregistratioFile(models.TransientModel):
                 date = ''
                 reason_val = ''
                 for colx, cell in enumerate(row, 1):
-                    if colx == 1:
+                    if colx == 2:
                         email = cell.value
-                    elif colx == 2:
-                        date = cell.value
                     elif colx == 3:
+                        date = cell.value
+                    elif colx == 4:
                         reason_val = cell.value
                 if date:
-                    date = str(datetime.strptime(str(date), DEFAULT_SERVER_DATETIME_FORMAT) - timedelta(hours=2))
+                    date = str(datetime.strptime(str(date), '%Y-%m-%d %H:%M') - timedelta(hours=2))
                 if not isinstance(date, str):
                     raise UserError(_("Format Date column with String!"))
                 reason = reason_obj.search([('name', '=', reason_val)])
@@ -209,12 +212,12 @@ class ImportDeregistratioFile(models.TransientModel):
 
     def download_xls_file(self):
         xls_file_path = get_resource_path(
-            'mass_mailing_unsubscribe_af', 'static/file', 'deregistration.xls')
+            'mass_mailing_unsubscribe_af', 'static/file', 'Optout_Apsis.xlsx')
         xls_file = False
         with open(xls_file_path, 'rb') as file_date:
             xls_file = base64.b64encode(file_date.read())
         if xls_file:
-            self.dwnld_xls_filename = 'deregistration.xls'
+            self.dwnld_xls_filename = 'Optout_Apsis.xlsx'
             self.dwnld_xls_file = xls_file
         return {
             'name': 'Deregistration',
@@ -229,12 +232,12 @@ class ImportDeregistratioFile(models.TransientModel):
 
     def download_csv_file(self):
         csv_file_path = get_resource_path(
-            'mass_mailing_unsubscribe_af', 'static/file', 'deregistration.csv')
+            'mass_mailing_unsubscribe_af', 'static/file', 'Optout_Apsis.csv')
         csv_file = False
         with open(csv_file_path, 'rb') as file_date:
             csv_file = base64.b64encode(file_date.read())
         if csv_file:
-            self.dwnld_csv_filename = 'deregistration.csv'
+            self.dwnld_csv_filename = 'Optout_Apsis.csv'
             self.dwnld_csv_file = csv_file
         return {
             'name': 'Deregistration',
@@ -249,12 +252,12 @@ class ImportDeregistratioFile(models.TransientModel):
 
     def download_txt_file(self):
         txt_file_path = get_resource_path(
-            'mass_mailing_unsubscribe_af', 'static/file', 'deregistration.txt')
+            'mass_mailing_unsubscribe_af', 'static/file', 'Optout_Apsis.txt')
         txt_file = False
         with open(txt_file_path, 'rb') as file_date:
             txt_file = base64.b64encode(file_date.read())
         if txt_file:
-            self.dwnld_txt_filename = 'deregistration.txt'
+            self.dwnld_txt_filename = 'Optout_Apsis.txt'
             self.dwnld_txt_file = txt_file
         return {
             'name': 'Deregistration',
