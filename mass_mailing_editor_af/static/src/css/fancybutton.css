@@ -1,0 +1,58 @@
+﻿button.fancy-button
+{
+    border: 0;
+    margin: 0;
+    padding: 0 6px 0 0;
+    background-color:transparent;
+    cursor: pointer;
+}
+/*Remove extra button spacing/padding in Firefox*/
+button.fancy-button::-moz-focus-inner
+{
+    padding: 0;
+}
+button.fancy-button div
+{
+    border:0;
+    margin:0;
+    padding:0;
+    height:28px;
+}
+button.fancy-button div.bg-left
+{
+    float:left;
+    background: transparent url("button-back-left.png") no-repeat 0 0 !important;
+    width:10px;
+}
+button.fancy-button div.content
+{
+    float:left;
+    font-size: 12px;
+    min-width: 50px;
+    text-shadow: white 0px -1px 1px;
+    padding: 0 0 0 0;
+    background: transparent url("button-back-content.png") repeat 100% 0;
+}
+button.fancy-button div.content .button-image img
+{
+    vertical-align:text-bottom;
+    margin-left: 5px;
+}
+button.fancy-button div.content .button-text
+{
+    padding: 0;
+}
+button.fancy-button div.bg-right
+{
+    width:10px;
+    float:left;
+    background: transparent url("button-back-right.png") no-repeat 100% 0;
+}
+
+button.fancy-button span
+{
+    background: none no-repeat scroll 0 0 transparent;
+    padding: 0;
+    margin: 0;
+    display: inline;
+}

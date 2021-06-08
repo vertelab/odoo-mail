@@ -1,0 +1,223 @@
+﻿/* used by inactivityFilterErrorMessage template in editor4-module.js */
+body {
+    overflow-y: visible !important;
+}
+
+.popup {
+    overflow: hidden;
+}
+
+    .popup .icon {
+        float: left;
+        background: transparent url(../../img/common/error.png) no-repeat;
+        width: 48px;
+        height: 48px;
+        margin: 10px 20px 0 10px;
+    }
+
+    .popup .messages {
+        margin: 10px 10px 0 0;
+        overflow: hidden;
+    }
+
+.subject-container {
+    float: left;
+    color: #CDCDCD;
+    width: 325px;
+}
+
+.popup .messages ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .popup .messages ul li {
+        margin-bottom: 10px;
+    }
+
+/* Editor 4 preview styles */
+.preview-content {
+    text-align: center;
+}
+
+.previewFrame {
+    overflow-y: scroll;
+    overflow-x: auto;
+    background: #ffffff;
+}
+
+.defaultPreviewFrame {
+    width: 1000px;
+}
+
+.smallPreviewFrame {
+    width: 768px;
+}
+
+.superSmallPreviewFrame {
+    width: 340px;
+    overflow-x: hidden;
+}
+
+
+.previewMask {
+    background-color: rgba(0, 0, 0, 0.5);
+    content: ".";
+    display: block;
+    height: 0;
+    margin-top: 9999px;
+    position: absolute;
+    width: 1000px;
+    z-index: 0;
+}
+
+.previewResizeIcons {
+    display: inline;
+}
+
+#boxPreview {
+    display: inline;
+}
+
+.previewResizeIcons #Preview-MediaQueriesBox {
+    top: 0;
+}
+
+    .previewResizeIcons #Preview-MediaQueriesBox button {
+        top: 0;
+        margin-bottom: 10px;
+    }
+
+#newsletterPreview {
+    background: url("../../../App_Themes/DarkGreen/img/loader.gif") no-repeat scroll 400px 64px rgba(0, 0, 0, 0);
+    display: inline-block;
+    min-height: 200px;
+    width: 100%;
+    text-align: center;
+}
+
+    #newsletterPreview .defaultPreviewFrame, #newsletterPreview .previewMask {
+        margin-left: 5px;
+        width: 820px;
+    }
+
+    #newsletterPreview .previewFrame {
+        height: 600px;
+    }
+
+.preview-filter-list {
+    list-style-type: none;
+}
+
+label.advanced-subject-subject-validation, label.advanced-subject-filter-validation {
+    display: none;
+    color: #d33c0d;
+}
+
+#newsletter-links-validation p {
+    margin-bottom: 12px;
+}
+
+#newsletter-links-validation #validation-links {
+    max-height: 260px;
+    overflow: auto;
+    line-height: normal;
+}
+
+#newsletter-links-validation li.validation-link-result {
+    background-image: url(../../img/new/badlink.png);
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+    #newsletter-links-validation li.validation-link-result div {
+        margin-top: 8px;
+    }
+
+#newsletter-links-validation li.validation-link-result {
+    padding-left: 20px;
+}
+
+.filter-box {
+    position: absolute;
+    margin-top: -10px;
+    min-width: 80px;
+    min-height: 15px;
+    background: url(../../img/new/filter-16x16.png) #cdcdcd no-repeat 5px 5px;
+    -moz-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    padding: 6px;
+    padding-left: 24px;
+    opacity: 0.8;
+    color: #1a1a1a;
+    -moz-opacity: 0.8;
+}
+
+.lock-box {
+    position: absolute;
+    margin-top: -10px;
+    min-width: 50px;
+    min-height: 15px;
+    background: url(../../img/new/lock.png) #cdcdcd no-repeat 5px 5px;
+    border: 1px solid #dddddd;
+    -moz-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    padding: 5px;
+    padding-left: 24px;
+    opacity: 0.8;
+    color: #1a1a1a;
+    -moz-opacity: 0.8;
+}
+
+.preview-error-message {
+    color: #fafafa;
+}
+
+.editXmlModuleUpdateOnSendoutTab {
+    overflow: hidden;
+}
+
+.editXmlModuleUpdateOnSendoutTab-list {
+    color: #cdcdcd;
+}
+
+.editXmlModuleUpdateOnSendoutTab-listTitle {
+    float: left;
+    clear: left;
+    width: 130px;
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 0;
+}
+
+    .editXmlModuleUpdateOnSendoutTab-listTitle:after {
+        content: ":";
+    }
+
+.editXmlModuleUpdateOnSendoutTab-listDescription {
+    float: left;
+    width: 135px;
+    padding: 5px 0;
+    margin: 0;
+}
+
+.editXmlModuleUpdateOnSendoutTab input[type="text"].editXmlModuleUpdateOnSendoutTab-input {
+    max-width: 135px;
+    color: #cdcdcd;
+}
+
+#includeEventRegistrationLinkPopUp {
+    padding: 0 10px;
+}
+
+    #includeEventRegistrationLinkPopUp div:first-child {
+        padding-bottom: 25px;
+    }
+
+    #includeEventRegistrationLinkPopUp input {
+        margin: 10px 0;
+        width: 300px;
+    }

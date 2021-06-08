@@ -1,0 +1,67 @@
+﻿.jqifade{
+	position: absolute;
+	background-color: #333333;
+}
+
+.jqimessage div.content {
+    padding: 10px 14px!important;
+}
+.jqimessage div.content.smsCredit {
+    padding: 10px 25px!important;
+}
+
+.jqimessage div.content td[align=left] {
+    text-align: left;
+}
+.jqimessage div.content td[align=right] button
+, .jqimessage div.content td[align=right] input[type="text"] {
+    float:right
+}
+
+div.jqi .jqimessage{
+	padding: 10px;
+	color: #333333;
+}
+div.jqibuttons button{
+	border:none;
+
+/* BUTTONS */
+	background:none;
+	padding: 0 6px 0 0;
+	margin:0;
+	width:auto;
+	cursor: pointer;
+	overflow:visible;					
+	text-align:center;	
+	white-space:nowrap;	
+}
+
+/*Remove extra button spacing/padding in Firefox*/
+div.jqibuttons button::-moz-focus-inner
+{
+    padding: 0;
+}
+
+div.jqibuttons button:focus { 
+    outline: none; 
+}
+button span em.anp-button-disabled:hover, button span em.anp-button-disabled{ color:#BBBBBB; }
+
+.jqibuttons {
+    padding-right: 15px;
+}
+
+.jqimessage h2 span, .jqimessage h3 span {
+    float: left; 
+    margin-left: 17px;
+}
+
+.jqimessage h2 {
+    height:22px
+}
+.jqimessage h3 {
+    height: 20px;
+}
+.jqimessage .placeholder {
+    height: 20px;
+}

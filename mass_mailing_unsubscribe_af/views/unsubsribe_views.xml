@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template inherit_id="mass_mailing.unsubscribed" id="af_nyhetsbrev_unsubscribed">
+        <xpath expr="//div[@id='subscription_info']" position="replace">
+            <div id="subscription_info" class="text-center" role="status">
+                <p>You have been successfully <strong>unsubscribed</strong>!
+                </p>
+            </div>
+        </xpath>
+    </template>
+
+    <template inherit_id="mass_mailing.unsubscribe" id="af_nyhetsbrev_unsubscribe">
+        <xpath expr="//h1" position="replace">
+            <br/>
+            <h1 class="o_page_header" style="color:#00005a;">Mailing Subscriptions</h1>
+        </xpath>
+        <xpath expr="//form/div/t/p" position="replace">
+            <p style="color:#00005a;">Choose your mailing subscriptions</p>
+        </xpath>
+        <xpath expr="//div[@id='div_opt_out']/div" position="replace">
+            <div class="mb64 pt-3">
+                <div t-if="show_blacklist_button">
+                    <div class="btn pull-right" id="button_add_blacklist"
+                         style="display:none;border-color:#00005a;color:#00005a;font-size:17px;border-radius:6px;background-color:#ffffff;">
+                        Blacklist Me
+                    </div>
+                </div>
+                <div class="btn pull-right" id="button_remove_blacklist"
+                     style="display:none;border-color:#00005a;color:#00005a;font-size:17px;border-radius:6px;background-color:#ffffff;">
+                    Come Back
+                </div>
+                <button type="submit" id="send_form" class="btn"
+                        style="border-color:#00005a;color:#00005a;font-size:17px;border-radius:6px;background-color:#ffffff;">
+                    Update my subscriptions
+                </button>
+            </div>
+        </xpath>
+        <xpath expr="//ul[@class='list-group']/t/t/li/t" position="replace">
+            <t style="color:#00005a" t-esc="list_id.name"/>
+        </xpath>
+        <xpath expr="//div[@id='info_state']" position="attributes">
+            <attribute name="class">text-center</attribute>
+            <attribute name="style">color:#00005a;font-size:17px;</attribute>
+        </xpath>
+    </template>
+
+    <template inherit_id="mass_mailing_custom_unsubscribe.reason" id="af_nyhetsbrev_unsubscribe_reason">
+        <xpath expr="//div[@id='custom_div_feedback']" position="attributes">
+            <attribute name="t-attf-class">mt-4 #{extra_class or ''}</attribute>
+        </xpath>
+        <xpath expr="//div[@id='custom_div_feedback']/p" position="replace">
+            <p style="color:#00005a;">We would appreciate if you provide feedback about why you updated your
+                subscriptions.
+            </p>
+        </xpath>
+        <xpath expr="//div[@id='custom_div_feedback']/div" position="replace">
+            <div class="col-md-12 mb16">
+                <t t-foreach="reasons" t-as="reason">
+                    <div class="radio" style="color:#00005a">
+                        <label>
+                            <input type="radio" name="reason_id" t-att-data-details-required="reason.details_required"
+                                   t-att-value="reason.id" required="required"/>
+                            <t t-esc="reason.display_name"/>
+                        </label>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template inherit_id="mass_mailing_custom_unsubscribe.reason_form" id="af_nyhetsbrev_unsubscribe_reason_form">
+        <xpath expr="//form/div" position="replace">
+            <div class="form-group mb16 mt16" align="right">
+                <button type="submit" class="button" align="right"
+                        style="border-color:#00005a;color:#00005a;font-size:17px;border-radius:6px">
+                    <b>Unsubscribe now</b>
+                </button>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="mass_mailing.layout" name="Mass Mailing Layout">
+        <t t-call="web.layout">
+            <t t-set="head">
+                <t t-call-assets="web.assets_common"/>
+                <t t-call-assets="mass_mailing.assets_backend"/>
+            </t>
+            <body class="o_white_body">
+                <header>
+                    <div>
+                        <title>Odoo</title>
+                    </div>
+                    <div class="text-center">
+                        <br/>
+                        <br/>
+                        <img style="width:15%" src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"/>
+                    </div>
+                </header>
+                <div id="wrap" class="oe_structure oe_empty"/>
+                <main>
+                    <t t-raw="0"/>
+                </main>
+            </body>
+            <xpath expr="//footer" position="replace">
+            </xpath>
+        </t>
+    </template>
+
+</odoo>

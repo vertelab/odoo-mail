@@ -1,0 +1,99 @@
+<odoo>
+    <data>
+
+        <!-- Event email audit form view -->
+        <record model="ir.ui.view" id="view_event_email_audit_form">
+            <field name="name">event.email.audit</field>
+            <field name="model">event.email.audit</field>
+            <field name="arch" type="xml">
+                <form string="Events" create="false" edit="false" delete="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="email" />
+                                <field name="sent_time" />
+                                <field name="user_id"/>
+                            </group>
+                            <group>
+                                <field name="event_id"/>
+                                <field name="event_line_id"/>
+                                <field name="response" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Event email audit tree view -->
+        <record model="ir.ui.view" id="view_event_email_audit_tree">
+            <field name="name">event.email.audit.tree</field>
+            <field name="model">event.email.audit</field>
+            <field name="arch" type="xml">
+                <tree string="Email Audit" create="false" edit="false" delete="false">
+                    <field name="partner_id"/>
+                    <field name="email"/>
+                    <field name="sent_time"/>
+                    <field name="user_id"/>
+                    <field name="event_id" string="Autoresponder"/>
+                    <field name="response"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Event email audit search view -->
+        <record model="ir.ui.view" id="view_event_email_audit_search">
+            <field name="name">event.email.audit.search</field>
+            <field name="model">event.email.audit</field>
+            <field name="arch" type="xml">
+                <search string="Email Audit" >
+                    <field name="partner_id"/>
+                    <field name="email"/>
+                    <field name="sent_time"/>
+                    <field name="user_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Contacts" name="email_contacts" context="{'group_by':'partner_id'}"/>
+                        <filter string="Responsible" name="email_repsonsible" context="{'group_by':'user_id'}"/>
+                        <filter string="Event" name="email_events" context="{'group_by':'event_id'}"/>
+                        <filter string="Schedule Event Line" name="email_event_lines"
+                                context="{'group_by':'event_line_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Event email audit pivot view -->
+        <record id="view_event_email_audit_pivot" model="ir.ui.view">
+            <field name="name">event.email.audit.pivot</field>
+            <field name="model">event.email.audit</field>
+            <field name="arch" type="xml">
+                <pivot string="Email Audit Analysis">
+                    <field name="partner_id" type="row"/>
+                    <field name="sent_time" type="col"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- Action for Event email audit views  -->
+        <record model="ir.actions.act_window" id="action_event_mail_trail">
+            <field name="name">Message log</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">event.email.audit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,pivot</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Event Email Reminder Audit Trail
+                </p>
+                <p>
+                    This screen will capture the email created for auto reminder to receipient of the event.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="event_mail_audit_menu" name="Message log" action="action_event_mail_trail" sequence="2"
+                  parent="mail_autoresponder.customer_dialogue_menu_id"/>
+
+    </data>
+</odoo>

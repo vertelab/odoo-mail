@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="FieldPercentPie">
+        <t t-jquery=".o_field_percent_pie" t-operation="replace">
+             <div class="o_field_percent_pie">
+                <div class="o_pie">
+                    <div class="o_mask"/>
+                    <div class="o_mask"/>
+                    <div class="o_pie_value"/>
+                </div>
+                <t t-if="widget.model != 'mail.mass_mailing'">
+                    <span t-if="widget.string"><t t-esc="widget.string"/></span>
+                </t>
+            </div>
+        </t>
+    </t>
+</templates>

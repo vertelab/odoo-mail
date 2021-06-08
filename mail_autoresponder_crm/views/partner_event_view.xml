@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_event_form">
+            <field name="name">partner.event.form</field>
+            <field name="model">partner.event</field>
+            <field name="inherit_id" ref="mail_autoresponder.view_event_form"/>
+            <field name="arch" type="xml">
+                <field name="contact_domain" position="replace">
+                    <field name="contact_domain" widget="domain" options="{'model' : 'res.partner'}"/>
+                </field>
+            </field>
+        </record>
+
+        <menuitem id="mail_autoresponder.customer_dialogue_menu_id" name="Autoresponder" action="mail_autoresponder.action_dialogue_event"
+                  sequence="1"
+                  groups="af_security.af_newsletter_automatic"/>
+        />
+        <menuitem id="mail_autoresponder.dialogue_event_id" name="Autoresponder" action="mail_autoresponder.action_dialogue_event"
+                  sequence="1"
+                  parent="mail_autoresponder.customer_dialogue_menu_id"
+                  groups="af_security.af_newsletter_automatic"/>
+        />
+
+        <menuitem name="Email Marketing" id="mass_mailing.mass_mailing_menu_root" sequence="60"
+                  groups="af_security.af_newsletter_manual"
+                  web_icon="mass_mailing,static/description/icon.png"/>
+                
+    </data>
+</odoo>

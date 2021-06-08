@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="inherit_mail_mass_mailing_form_af_statistics">
+        <field name="name">inherit.mail.mass.mailing.form.af.statistics</field>
+        <field name="model">mail.mass_mailing</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_sent']" position="replace">
+                <button name="action_view_sent"
+                        type="object"
+                        context="{'search_default_filter_sent': True}"
+                        class="oe_stat_button o_mass_mailing_button"
+                        attrs="{'invisible': ['&amp;', ('sent', '=', 0), ('state', 'in', ('draft','test'))]}">
+                    <span style="color:#ffffff">123</span>
+                    <field name="sent" string="Emails Sent" widget="statinfo"/>
+                    <span style="color:#ffffff">1</span>
+                    <i class="fa fa-lg fa-envelope-o"/>
+                </button>
+            </xpath>
+            <xpath expr="//button[@name='action_view_delivered']/field[@name='received_ratio']" position="before">
+                <span style="color:#ffffff">12</span>
+                <field name="received" widget="statinfo"/>
+                <span style="color:#ffffff">1</span>
+            </xpath>
+            <xpath expr="//button[@name='action_view_opened']/field[@name='opened_ratio']" position="before">
+                <span style="color:#ffffff">12</span>
+                <field name="opened" widget="statinfo"/>
+                <span style="color:#ffffff">1</span>
+            </xpath>
+            <xpath expr="//button[@name='action_view_replied']/field[@name='replied_ratio']" position="before">
+                <span style="color:#ffffff">123</span>
+                <field name="replied" widget="statinfo"/>
+                <span style="color:#ffffff">1</span>
+            </xpath>
+            <xpath expr="//button[@name='action_view_clicked']/field[@name='clicks_ratio']" position="before">
+                <span style="color:#ffffff">12</span>
+                <field name="clicks" widget="statinfo"/>
+                <span style="color:#ffffff">1234</span>
+            </xpath>
+            <xpath expr="//button[@name='action_view_bounced']/field[@name='bounced_ratio']" position="before">
+                <span style="color:#ffffff">12</span>
+                <field name="bounced" widget="statinfo"/>
+                <span style="color:#ffffff">1</span>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="inherit_mail_mass_mailing_kanban_af_statistics">
+        <field name="name">inherit.mail.mass.mailing.kanban.af.statistics</field>
+        <field name="model">mail.mass_mailing</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[1]" position="replace">
+                <div class="row">
+                    <div class="col-6">
+                        <a name="%(mass_mailing.action_view_mail_mail_statistics_mailing)d"
+                           context="{'search_default_filter_opened': True}"
+                           type="action">Opened
+                        </a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <field name="opened"/>
+                        /
+                        <field name="total"/>
+                        (
+                        <field name="opened_ratio"/>
+                        %)
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[2]" position="replace">
+                <div class="row">
+                    <div class="col-6">
+                        <a name="%(mass_mailing.action_view_mail_mail_statistics_mailing)d"
+                           context="{'search_default_filter_replied': True}"
+                           type="action">Replied
+                        </a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <field name="replied"/>
+                        /
+                        <field name="total"/>
+                        (
+                        <field name="replied_ratio"/>
+                        %)
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[3]" position="replace">
+                <div class="row">
+                    <div class="col-6">
+                        <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
+                           type="action">Clicks
+                        </a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <field name="clicks"/>
+                        /
+                        <field name="total"/>
+                        (
+                        <field name="clicks_ratio"/>
+                        %)
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+
+    <record id="reason_no_longer_want_to_receive"
+            model="mail.unsubscription.reason"
+            forcecreate="False">
+        <field name="name">I no longer want to receive these emails</field>
+        <field name="sequence">10</field>
+        <field name="details_required" eval="False"/>
+    </record>
+
+</data>

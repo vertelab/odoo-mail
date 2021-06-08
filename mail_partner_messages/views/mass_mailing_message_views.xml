@@ -1,0 +1,126 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="message_tab_for_partner_jobseekers_inherit">
+            <field name="name">inherit.message.tab.for.partner.jobseekers</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="partner_view_360.view_jobseeker_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Messages" name="mail_message" groups="af_security.af_newsletter_manual">
+                        <field name="mail_message_ids">
+                            <tree>
+                                <field name="mass_mailing_id" string="Subject"/>
+                                <field name="document" string="Document"/>
+                                <field name="sent_date" string="Sent"/>
+                                <field name="clicked" string="Clicked"/>
+                                <field name="opened" string="Opened"/>
+                                <field name="replied" string="Replied"/>
+                                <field name="bounced" string="Bounced"/>
+                                <button name="open_email" type="object" string="Email" class="btn btn-primary"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="message_tab_for_partner_inherit">
+            <field name="name">inherit.message.tab.for.partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Messages" name="mail_message" groups="af_security.af_newsletter_manual">
+                        <field name="mail_message_ids">
+                            <tree>
+                                <field name="mass_mailing_id" string="Subject"/>
+                                <field name="document" string="Document"/>
+                                <field name="sent_date" string="Sent"/>
+                                <field name="clicked" string="Clicked"/>
+                                <field name="opened" string="Opened"/>
+                                <field name="replied" string="Replied"/>
+                                <field name="bounced" string="Bounced"/>
+                                <button name="open_email" type="object" string="Email" class="btn btn-primary"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_contact_messages_tree">
+            <field name="name">mass.mail.message.tree</field>
+            <field name="model">mass.mailing.message</field>
+            <field name="arch" type="xml">
+                <tree string="Mailing Messages">
+                    <field name="partner_id" string="Contact"/>
+                    <field name="mass_mailing_id" string="Mailing"/>
+                    <field name="document" string="Document"/>
+                    <field name="sent_date" string="Sent"/>
+                    <field name="clicked" string="Clicked"/>
+                    <field name="opened" string="Opened"/>
+                    <field name="replied" string="Replied"/>
+                    <field name="bounced" string="Bounced"/>
+                    <button name="open_email" type="object" string="Email" class="btn btn-primary"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_contact_messages_form">
+            <field name="name">mass.mail.message.form</field>
+            <field name="model">mass.mailing.message</field>
+            <field name="arch" type="xml">
+                <form string="Mailing Messages">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id" string="Contact"/>
+                                <field name="mass_mailing_id" string="Mailing"/>
+                                <field name="document" string="Document"/>
+                                <field name="sent_date" string="Sent"/>
+                                <button name="open_email" type="object" string="Email" class="btn btn-primary"/>
+                            </group>
+                            <group>
+                                <field name="clicked" string="Clicked"/>
+                                <field name="opened" string="Opened"/>
+                                <field name="replied" string="Replied"/>
+                                <field name="bounced" string="Bounced"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_contact_messages_search">
+            <field name="name">mass.mail.message.search</field>
+            <field name="model">mass.mailing.message</field>
+            <field name="priority">25</field>
+            <field name="arch" type="xml">
+                <search string="Messages Search">
+                    <field name="mass_mailing_id" string="Subject"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Sent Date" context="{'group_by': 'sent_date'}" name="sent_date"/>
+                        <filter string="Mailing/Subject" context="{'group_by': 'mass_mailing_id'}" name="mass_mailing"/>
+                        <filter string="Contact" context="{'group_by': 'partner_id'}" name="partner_id"/>
+                        <filter string="Document Model" context="{'group_by': 'model'}" name="document"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_view_contact_mail_message" model="ir.actions.act_window">
+            <field name="name">Messages</field>
+            <field name="res_model">mass.mailing.message</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_contact_messages_search"/>
+        </record>
+
+        <menuitem name="Messages" id="contact_menu_mail_messages" parent="contacts.menu_contacts"
+                  groups="af_security.3_line_support"
+                  action="action_view_contact_mail_message" sequence="200"/>
+
+    </data>
+</odoo>
