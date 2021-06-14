@@ -32,6 +32,7 @@ MAIL_TIMEOUT = 60
 
 class FetchmailServerProcessed(models.Model):
     _name = 'fetchmail.server.processed'
+    _description = "Fercmail Server Processed"
 
     msg_id = fields.Integer(string='Message id')
 

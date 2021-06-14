@@ -38,6 +38,7 @@ poplib._MAXLINE = 65536
 
 class FetchmailServerProcessed(models.Model):
     _name = 'fetchmail.server.processed'
+    _description = "Fetchmail Server Processed"
 
     msg_id = fields.Integer(string='Message id')
 
