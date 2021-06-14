@@ -25,7 +25,6 @@
     'category': 'other',
     'license': 'AGPL-3',
     'summary': 'Changes fetchmail functionality so that it does not marks mail as read.',
-    'description': """Only checks for emails older than 3 days. Currently only supports IMAP""",
     'author': 'Vertel AB',
     'website': 'http://www.vertel.se',
     'depends': ['fetchmail'],

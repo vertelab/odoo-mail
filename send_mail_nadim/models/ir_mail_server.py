@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-import requests
+import base64
 import json
 import logging
-from odoo.tools import pycompat
+import requests
 import uuid
-import base64
+from odoo.exceptions import UserError
+from odoo.tools import pycompat
+from odoo.tools import ustr
 
 from odoo import api, fields, models, _
-from odoo.exceptions import UserError
-from odoo.tools import ustr
 
 _logger = logging.getLogger(__name__)
 

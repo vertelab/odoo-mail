@@ -24,8 +24,6 @@
     'name': 'Mail Chatter User Group',
     'version': '12.0.0.0.1',
     'category': 'Mail',
-    'description': """Module adds chatter security group for chatter""",
-
     'author': "N-development",
     'license': 'AGPL-3',
     'website': 'https://www.n-development.com',

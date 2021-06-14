@@ -19,16 +19,14 @@
 #
 ##############################################################################
 
+import datetime
 import logging
 import poplib
 from imaplib import IMAP4, IMAP4_SSL
+from odoo.exceptions import UserError
 from poplib import POP3, POP3_SSL
 
 from odoo import api, fields, models, tools, _
-from odoo.exceptions import UserError
-
-import datetime
-
 
 _logger = logging.getLogger(__name__)
 MAX_POP_MESSAGES = 50
@@ -36,6 +34,7 @@ MAIL_TIMEOUT = 60
 
 # Workaround for Python 2.7.8 bug https://bugs.python.org/issue23906
 poplib._MAXLINE = 65536
+
 
 class FetchmailServerProcessed(models.Model):
     _name = 'fetchmail.server.processed'
@@ -45,9 +44,11 @@ class FetchmailServerProcessed(models.Model):
     @api.multi
     def cleanup(self, days=7):
         """ cron job to remove old entries after X days"""
-        old_messages = self.search([('created','<',(datetime.datetime.now() - datetime.timedelta(days=days)).strftime('%d-%m-%Y'))])
+        old_messages = self.search(
+            [('created', '<', (datetime.datetime.now() - datetime.timedelta(days=days)).strftime('%d-%m-%Y'))])
         for msg in old_messages:
             msg.unlink()
+
 
 class FetchmailServer(models.Model):
     """Incoming POP/IMAP mail server account"""
@@ -73,18 +74,22 @@ class FetchmailServer(models.Model):
                     # readonly to make sure we don't change any mails
                     imap_server.select(readonly=True)
                     # Check only emails for the past 3 days instead of checking unseen mails
-                    result, data = imap_server.search(None, '(SINCE "%s")' % (datetime.datetime.now() - datetime.timedelta(days=3)).strftime('%d-%b-%Y'))
+                    result, data = imap_server.search(None, '(SINCE "%s")' % (
+                                datetime.datetime.now() - datetime.timedelta(days=3)).strftime('%d-%b-%Y'))
                     for num in data[0].split():
                         res_id = None
                         # check if message has already been processed
-                        if not self.env['fetchmail.server.processed'].search([('msg_id','=',num)]):
+                        if not self.env['fetchmail.server.processed'].search([('msg_id', '=', num)]):
                             result, data = imap_server.fetch(num, '(RFC822)')
                             try:
                                 # save a record of having processed the message
                                 self.env['fetchmail.server.processed'].create({'msg_id': num})
-                                res_id = MailThread.with_context(**additionnal_context).message_process(server.object_id.model, data[0][1], save_original=server.original, strip_attachments=(not server.attach))
+                                res_id = MailThread.with_context(**additionnal_context).message_process(
+                                    server.object_id.model, data[0][1], save_original=server.original,
+                                    strip_attachments=(not server.attach))
                             except Exception:
-                                _logger.info('Failed to process mail from %s server %s.', server.type, server.name, exc_info=True)
+                                _logger.info('Failed to process mail from %s server %s.', server.type, server.name,
+                                             exc_info=True)
                                 failed += 1
                             if res_id and server.action_id:
                                 server.action_id.with_context({
@@ -94,9 +99,11 @@ class FetchmailServer(models.Model):
                                 }).run()
                             self._cr.commit()
                             count += 1
-                    _logger.info("Fetched %d email(s) on %s server %s; %d succeeded, %d failed.", count, server.type, server.name, (count - failed), failed)
+                    _logger.info("Fetched %d email(s) on %s server %s; %d succeeded, %d failed.", count, server.type,
+                                 server.name, (count - failed), failed)
                 except Exception:
-                    _logger.info("General failure when trying to fetch mail from %s server %s.", server.type, server.name, exc_info=True)
+                    _logger.info("General failure when trying to fetch mail from %s server %s.", server.type,
+                                 server.name, exc_info=True)
                 finally:
                     if imap_server:
                         imap_server.close()
@@ -114,10 +121,13 @@ class FetchmailServer(models.Model):
                             message = '\n'.join(messages)
                             res_id = None
                             try:
-                                res_id = MailThread.with_context(**additionnal_context).message_process(server.object_id.model, message, save_original=server.original, strip_attachments=(not server.attach))
+                                res_id = MailThread.with_context(**additionnal_context).message_process(
+                                    server.object_id.model, message, save_original=server.original,
+                                    strip_attachments=(not server.attach))
                                 pop_server.dele(num)
                             except Exception:
-                                _logger.info('Failed to process mail from %s server %s.', server.type, server.name, exc_info=True)
+                                _logger.info('Failed to process mail from %s server %s.', server.type, server.name,
+                                             exc_info=True)
                                 failed += 1
                             if res_id and server.action_id:
                                 server.action_id.with_context({
@@ -129,9 +139,11 @@ class FetchmailServer(models.Model):
                         if num_messages < MAX_POP_MESSAGES:
                             break
                         pop_server.quit()
-                        _logger.info("Fetched %d email(s) on %s server %s; %d succeeded, %d failed.", num_messages, server.type, server.name, (num_messages - failed), failed)
+                        _logger.info("Fetched %d email(s) on %s server %s; %d succeeded, %d failed.", num_messages,
+                                     server.type, server.name, (num_messages - failed), failed)
                 except Exception:
-                    _logger.info("General failure when trying to fetch mail from %s server %s.", server.type, server.name, exc_info=True)
+                    _logger.info("General failure when trying to fetch mail from %s server %s.", server.type,
+                                 server.name, exc_info=True)
                 finally:
                     if pop_server:
                         pop_server.quit()

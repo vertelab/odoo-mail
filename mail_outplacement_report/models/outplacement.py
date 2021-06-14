@@ -1,5 +1,6 @@
-from odoo import models, api, fields, _
 from odoo.exceptions import ValidationError
+
+from odoo import models, api, fields, _
 
 
 class Outplacement(models.Model):
@@ -37,7 +38,7 @@ class Outplacement(models.Model):
             template_id.with_context(nadim_type='eletter').send_mail(
                 self.id, email_values={'notification': True}, force_send=True)
 
-    #FOR FUTURE USE
+    # FOR FUTURE USE
     # @api.multi
     # def action_send_eletter(self):
     #     """

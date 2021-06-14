@@ -25,7 +25,6 @@
     'category': 'other',
     'license': 'AGPL-3',
     'summary': 'Integrates Jitsi screen sharing to Odoo discussions.',
-    'description': """ """,
     'author': 'Vertel AB',
     'website': 'http://www.vertel.se',
     'depends': ['mail'],
