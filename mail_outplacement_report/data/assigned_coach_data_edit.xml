@@ -12,7 +12,8 @@
                         Hej ${object.partner_name or ''}!
                     </p>
                     <p>
-                        <strong>${object.employee_id.name or ''} </strong> är din handledare och du är välkommen till oss.
+                        <strong>${object.employee_id.name or ''}</strong>
+                        är din handledare och du är välkommen till oss.
                         Ta med dig en kopia på dina intyg, ID-handlingar och glatt humör. Se bifogad brev för tid och
                         plats.
                     </p>
@@ -20,7 +21,8 @@
                         Anteckningsmaterial finns på plats.
                     </p>
                     <p>
-                        Hälsningar <br/>
+                        Hälsningar
+                        <br/>
                         ${object.performing_operation_id.name or ''}
                     </p>
                 </div>
@@ -30,7 +32,7 @@
             <!-- <field name="lang">${object.partner_id.lang}</field> -->
             <field name="auto_delete" eval="False"/>
             <field name="report_template" ref="mail_outplacement_report.action_assigned_coach_report"/>
-            <field name="report_name"> Välkomstbrev till deltagare DAFA - Ebrev</field>
+            <field name="report_name">Välkomstbrev till deltagare DAFA - Ebrev</field>
         </record>
     </data>
 </odoo>

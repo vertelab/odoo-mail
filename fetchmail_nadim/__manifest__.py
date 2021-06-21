@@ -25,7 +25,6 @@
     'category': 'other',
     'license': 'AGPL-3',
     'summary': 'Changes fetchmail functionality to convert imap to REST.',
-    'description': """REST""",
     'author': 'Vertel AB',
     'website': 'http://www.vertel.se',
     'depends': ['fetchmail'],

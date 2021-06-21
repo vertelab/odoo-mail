@@ -1,37 +1,39 @@
 <odoo>
-  <record id="view_employee_form" model="ir.ui.view">
-    <field name="name">employee.view.form.inherit.button</field>
-    <field name="model">hr.employee</field>
-    <field name="inherit_id" ref="hr.view_employee_form" />
-    <field name="arch" type="xml">
-      <xpath expr="//form//sheet" position="before">
-        <header>
-          <button name="action_send_email" string="Send login" type="object" class="btn-secondary" />
-        </header>
-      </xpath>
-    </field>
-  </record>
+    <record id="view_employee_form" model="ir.ui.view">
+        <field name="name">employee.view.form.inherit.button</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet" position="before">
+                <header>
+                    <button name="action_send_email" string="Send login" type="object" class="btn-secondary"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
 
-      <record id="outplacement_form_view" model="ir.ui.view">
+    <record id="outplacement_form_view" model="ir.ui.view">
         <field name="name">outplacement.view.form.inherit.button</field>
         <field name="model">outplacement</field>
         <field name="inherit_id" ref="outplacement.outplacement_form_view"/>
         <field name="arch" type="xml">
-        <xpath expr="//header" position="inside">
-            <button name="action_send_eletter" string="Send Ebrev by mail" type="object" class="btn-secondary"/>
-      </xpath>
-      <xpath expr="//field[@name='performing_operation_id']" position="after">
-        <label for="performing_operation_adress" class="oe_edit_only" />
-        <field name="performing_operation_adress" domain="[('performing_operation_id', '=', performing_operation_id)]" context="{'show_address': 1}"
-               options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" class="oe_edit_only" nolabel="1"/>
-        <label for="per_op_address_text" class="oe_read_only"/>
-        <field name="per_op_address_text" class="oe_read_only" nolabel="1"/>
-        <field name="performing_date" widget="date"/>
-        <field name="performing_time" widget="float_time" />
-        </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_send_eletter" string="Send Ebrev by mail" type="object" class="btn-secondary"/>
+            </xpath>
+            <xpath expr="//field[@name='performing_operation_id']" position="after">
+                <label for="performing_operation_adress" class="oe_edit_only"/>
+                <field name="performing_operation_adress"
+                       domain="[('performing_operation_id', '=', performing_operation_id)]"
+                       context="{'show_address': 1}"
+                       options="{'no_create': True, 'no_create_edit':True, 'no_open':True}" class="oe_edit_only"
+                       nolabel="1"/>
+                <label for="per_op_address_text" class="oe_read_only"/>
+                <field name="per_op_address_text" class="oe_read_only" nolabel="1"/>
+                <field name="performing_date" widget="date"/>
+                <field name="performing_time" widget="float_time"/>
+            </xpath>
         </field>
-      </record>
-
+    </record>
 
 
 </odoo>

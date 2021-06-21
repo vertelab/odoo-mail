@@ -4,8 +4,8 @@
     'name': 'Send mail Nadim',
     'version': '12.0.1.0.3',
     'category': 'Mail',
-    'author':   'Arbetsförmedlingen',
-    'website':  'https://arbetsformedlingen.se/',
+    'author': 'Arbetsförmedlingen',
+    'website': 'https://arbetsformedlingen.se/',
     'summary': """
 Instead of SMTP, this module use RestAPI to send messages between Odoo server and Nadim integration server.
 """,

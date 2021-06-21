@@ -5,7 +5,7 @@
     <record id="paperformat_euro_landscape"
             model="report.paperformat">
         <field name="name">European A4 Landscape</field>
-        <field name="default" eval="True" />
+        <field name="default" eval="True"/>
         <field name="format">A4</field>
         <field name="page_height">0</field>
         <field name="page_width">0</field>
@@ -14,7 +14,7 @@
         <field name="margin_bottom">7</field>
         <field name="margin_left">21</field>
         <field name="margin_right">7</field>
-        <field name="header_line" eval="False" />
+        <field name="header_line" eval="False"/>
         <field name="header_spacing">0</field>
         <field name="dpi">90</field>
     </record>
@@ -34,7 +34,7 @@
         <t t-call="web.html_container">
             <!-- <t t-call="web.external_layout"> -->
             <t t-foreach="docs" t-as="o">
-                <t t-set="o" t-value="o.with_context(lang=lang)" />
+                <t t-set="o" t-value="o.with_context(lang=lang)"/>
                 <div class="page" style="margin:0; padding:0; width: 100%;">
                     <style>
                         p {
@@ -67,34 +67,45 @@
                     </style>
 
                     <!-- Adress Box  -->
-                    <div class="adress" style="" >
+                    <div class="adress" style="">
                         <!-- Avsändaradress  -->
                         <div class="sender" style="">
-                            <span t-esc="o.performing_operation_id.name"/><br/>
-                            <span t-esc="o.performing_operation_adress.street"/><br/>
+                            <span t-esc="o.performing_operation_id.name"/>
+                            <br/>
+                            <span t-esc="o.performing_operation_adress.street"/>
+                            <br/>
                             <span t-esc="o.performing_operation_adress.zip"/>
-                            <span t-esc="o.performing_operation_adress.city"/><br/>
+                            <span t-esc="o.performing_operation_adress.city"/>
+                            <br/>
                         </div>
 
                         <!-- Mottagaradress -->
-                        <div class="receiver" style="" >
-                            <span t-esc="o.partner_name"/><br/>
-                            <span t-esc="o.partner_street"/><br/>
+                        <div class="receiver" style="">
+                            <span t-esc="o.partner_name"/>
+                            <br/>
+                            <span t-esc="o.partner_street"/>
+                            <br/>
                             <span t-esc="o.partner_zip"/>
-                            <span t-esc="o.partner_city"/><br/>
+                            <span t-esc="o.partner_city"/>
+                            <br/>
                         </div>
                     </div>
                     <div class="" style="margin-top: 70px;">
-                        <br/><br/>
+                        <br/>
+                        <br/>
                         <h3>Välkomstbrev DAFA</h3>
 
                         <p>
-                            Hej <span t-esc="o.partner_name"/>!
+                            Hej<span t-esc="o.partner_name"/>!
                         </p>
 
                         <p>
-                            <span t-esc="o.employee_id.name"/> är din handledare och du är välkommen till oss
-                            klockan <t t-esc="'%02d:%02d' % (int(o.performing_time), o.performing_time % 1 * 60)" /> den <span t-esc="o.performing_date"/>
+                            <span t-esc="o.employee_id.name"/>
+                            är din handledare och du är välkommen till oss
+                            klockan
+                            <t t-esc="'%02d:%02d' % (int(o.performing_time), o.performing_time % 1 * 60)"/>
+                            den
+                            <span t-esc="o.performing_date"/>
                             <t t-if="o.performing_operation_adress ">
                                 på plats
                                 <span t-esc="o.performing_operation_adress.street"/>
@@ -106,14 +117,14 @@
                         </p>
 
 
-
-
                         <p>
                             Anteckningsmaterial finns på plats.
                         </p>
                         <p style="">
-                            Hälsningar <br/>
-                            <span t-esc="o.performing_operation_id.name"/><br/>
+                            Hälsningar
+                            <br/>
+                            <span t-esc="o.performing_operation_id.name"/>
+                            <br/>
                         </p>
 
                     </div>

@@ -11,11 +11,13 @@
             <field name="body_html" type="html">
                 <div>
                     <p>
-                        Hej ${object.name},<br/>
+                        Hej ${object.name},
+                        <br/>
                     </p>
                     <p>
                         Ett Konto har skapats och du kan nu logga på Digital Arbetsyta Fristående Aktör. Klicka på
-                        länken nedan för att logga in.<br/>
+                        länken nedan för att logga in.
+                        <br/>
                     </p>
                     <div style="margin: 16px 0px 16px 0px;">
                         <a href="/web/login?${ctx['auth_login']}"
@@ -23,10 +25,14 @@
                             Mitt konto
                         </a>
                     </div>
-                    <br/><br/>
+                    <br/>
+                    <br/>
 
-                    Med vänlig hälsning,<br/>
-                    ${object.company_id.name}<br/><br/>
+                    Med vänlig hälsning,
+                    <br/>
+                    ${object.company_id.name}
+                    <br/>
+                    <br/>
 
                     <p>
                         <hr/>
@@ -36,13 +42,16 @@
 
                         ${object.company_id.phone}
                         % if object.company_id.email
-                        | <a href="'mailto:%s' % ${object.company_id.email}"
-                             style="text-decoration:none; color: #454748;">${object.company_id.email}</a>
+                        |
+                        <a href="'mailto:%s' % ${object.company_id.email}"
+                           style="text-decoration:none; color: #454748;">${object.company_id.email}
+                        </a>
                         % endif
                         % if object.company_id.website
-                        | <a href="'%s' % ${object.company_id.website}" style="text-decoration:none; color: #454748;">
-                        ${object.company_id.website}
-                    </a>
+                        |
+                        <a href="'%s' % ${object.company_id.website}" style="text-decoration:none; color: #454748;">
+                            ${object.company_id.website}
+                        </a>
                         % endif
                     </p>
 
