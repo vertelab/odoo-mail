@@ -2,7 +2,7 @@
 
 {
     "name": "Af ADKD Install modules",
-    "version": "12.0.1.0.3",
+    "version": "12.0.1.0.4",
     "author": "Swedish Public Employement Service",
     "license": "AGPL-3",
     "website": "https://arbetsformedlingen.se/",
@@ -17,8 +17,8 @@
 		"mail_improved_tracking_value",		# github.com/OCA/social This module extends the mail_tracking_value
 		"mass_mailing_custom_unsubscribe",	# github.com/OCA/social  module Gives reasons for unsubscribe
 		"mass_mailing_editor_af",		# odoo-mail This adds custom snippets to the mail-editor
-		"mail_mass_mailing_gdrp_limitations",	# Module to hide personal-data in the Display Sample in MassMailing and Autoresponder-modules
-		"mail_massmailing_statistics_af",	# odoo-mail This extends the statistics displayed in smart buttons to give percentages.
+		"mass_mailing_gdpr_limitations",	# Module to hide personal-data in the Display Sample in MassMailing and Autoresponder-modules
+		"mass_mailing_statistics_af",	# odoo-mail This extends the statistics displayed in smart buttons to give percentages.
 	    	"mass_mailing_unsubscribe_af",		# Fixes layout of unsubscribe-page https://github.com/vertelab/odoo-mail/tree/Dev-12.0/mass_mailing_unsubscribe_af
 		"mail_partner_messages",		# Adds a tab with messages to the contact and jobseeker view. https://github.com/vertelab/odoo-mail/tree/Dev-12.0/mail_partner_messages
 
