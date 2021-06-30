@@ -14,7 +14,7 @@ class MassMailing(models.Model):
         res_ids = opened_stats.mapped('res_id')
         model_name = self.env['ir.model']._get(self.mailing_model_real).display_name
         if self.mailing_model_real == 'res.partner':
-            view_ref = self.env['ir.model.data'].get_object_reference('mail_mass_mailing_gdrp_limitations',
+            view_ref = self.env['ir.model.data'].get_object_reference('mass_mailing_gdpr_limitations_limitations',
                                                                       'contact_tree_view_for_email_marketing')
             view_id = view_ref and view_ref[1] or False,
             return {
