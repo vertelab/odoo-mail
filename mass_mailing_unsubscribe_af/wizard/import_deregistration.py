@@ -1,12 +1,15 @@
 import base64
+from datetime import datetime, timedelta
 import csv
 import io
-from datetime import datetime, timedelta
-from odoo.exceptions import UserError
-from xlrd import open_workbook
+
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.modules.module import get_resource_path
+import pytz
+from xlrd import open_workbook
+
 
 class ImportDeregistratioFile(models.TransientModel):
     _name = 'import.deregistration.file'
@@ -21,16 +24,21 @@ class ImportDeregistratioFile(models.TransientModel):
     dwnld_xls_file = fields.Binary("XLS File")
     dwnld_txt_file = fields.Binary("TXT File")
 
+    def adjust_for_tz(self, date, from_tz='Europe/Stockholm', to_tz='utc'):
+        return pytz.timezone(from_tz).localize(date).astimezone(to_tz).replace(tzinfo=None)
+
     def import_data(self):
         if not self.file or not \
                 self.filename.lower().endswith(('.xls', '.xlsx', '.csv', 'txt')):
             raise UserError(_("Please Select an .xls, .xlsx, .txt or .csv file to Import."))
+
         unsub_obj = self.env['mail.unsubscription']
         mail_list_obj = self.env['mail.mass_mailing.contact']
         black_list_obj = self.env['mail.blacklist']
         partner_obj = self.env['res.partner']
         reason_obj = self.env['mail.unsubscription.reason']
-        now = datetime.now() + timedelta(hours=2)
+
+        now = datetime.now()
         if self.filename.lower().endswith('.csv'):
             data_list = []
             headers = []
@@ -40,11 +48,16 @@ class ImportDeregistratioFile(models.TransientModel):
             csv_data = base64.b64decode(self.file)
             data_file = io.StringIO(csv_data.decode("utf-8"))
             # Read CSV
-            csv_reader = csv.reader(data_file, delimiter=',')
+            headers, *data = csv.reader(data_file, delimiter=',')
+            _logger.warning(headers)
+            _logger.warning(data)
             # Put rows to data list
             data_list.extend(csv_reader)
             # Set headers
             headers.extend(data_list[0])
+
+            _logger.warning(headers)
+            _logger.warning(data_list)
 
             # Prepare values
             for row in data_list[1:]:
