@@ -156,7 +156,7 @@
                         <tr>
                             <th style="padding:0 20px 30px;" class="rsd p_b">
                                 <div id="align-wrapper" style="text-align:center;">
-                                    <img src="/mail_massmail_template_af/static/img/Af_logo_rgb_270.png"
+                                    <img src="/mass_mailing_template_af/static/img/Af_logo_rgb_270.png"
                                          link=""
                                          style="display:block;width:50%" title="" alt="" width="280"
                                          border=""
@@ -258,7 +258,7 @@
                         <tr>
                             <th style="padding:0 20px 30px;" class="rsd p_b">
                                 <div id="align-wrapper" style="text-align:center;">
-                                    <img src="/mail_massmail_template_af/static/img/CY1_1.jpg"
+                                    <img src="/mass_mailing_template_af/static/img/CY1_1.jpg"
                                          link=""
                                          style="display:block;"
                                          title="Bild på tre personer med olika yrken"
@@ -478,7 +478,7 @@
                         <tr>
                             <th style="padding:0 20px 30px;" class="rsd p_b">
                                 <div id="align-wrapper" style="text-align:center;">
-                                    <img src="/mail_massmail_template_af/static/img/Af_logo_rgb_270.png"
+                                    <img src="/mass_mailing_template_af/static/img/Af_logo_rgb_270.png"
                                          link=""
                                          style="display:block;width:50%" title="" alt="" width="280"
                                          border=""
@@ -580,7 +580,7 @@
                         <tr>
                             <th style="padding:0 20px 30px;" class="rsd p_b">
                                 <div id="align-wrapper" style="text-align:center;">
-                                    <img src="/mail_massmail_template_af/static/img//37AH3ZB4YU.jpg"
+                                    <img src="/mass_mailing_template_af/static/img//37AH3ZB4YU.jpg"
                                          link=""
                                          style="display:block;"
                                          title="Bild på tre personer med olika yrken"
@@ -763,14 +763,14 @@
         <xpath expr="//div[@id='email_designer_themes']/div[@data-name='default']" position="replace"/>
         <xpath expr="//div[@id='email_designer_themes']" position="inside">
             <div data-name="default"
-                 data-img="/mail_massmail_template_af/static/img/sample_template2"
+                 data-img="/mass_mailing_template_af/static/img/sample_template2"
                  data-images-info='{"logo": {"format": "png"}}'>
-                <t t-call="mail_massmail_template_af.sample_mail_template_2"/>
+                <t t-call="mass_mailing_template_af.sample_mail_template_2"/>
             </div>
             <div data-name="default"
-                 data-img="/mail_massmail_template_af/static/img/sample_template3"
+                 data-img="/mass_mailing_template_af/static/img/sample_template3"
                  data-images-info='{"logo": {"format": "png"}}'>
-                <t t-call="mail_massmail_template_af.sample_mail_template_3"/>
+                <t t-call="mass_mailing_template_af.sample_mail_template_3"/>
             </div>
         </xpath>
     </template>
