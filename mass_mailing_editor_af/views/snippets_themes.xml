@@ -2,7 +2,7 @@
 <odoo>
 
     <!-- Af Pre Header Snippet -->
-    <template id="s_mail_block_pre_header_af" name="Af Pre Header">
+    <template id="s_mail_block_pre_header_af" name="Af Pre Header - Gör smarta val till höstens utbildningar">
         <div style="background-color:#f7f7f7;padding:0;margin:0;-webkit-text-size-adjust:none;width:100%;
         background-color:#f7f7f7;" class="body-div">
             <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f7f7f7" align="center">
@@ -59,8 +59,63 @@
         </div>
     </template>
 
+    <template id="s_mail_block_header_af_with_view_in_browser"
+              name="Af Pre Header - Välj bland flera sätt att nå dina mål, Visa i webbläsaren">
+        <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles"
+               style="background-color: #F1F1F1;">
+            <tbody>
+                <tr>
+                    <td style="padding-top:10px;padding-bottom:20px;font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;"
+                        class="nomob" align="left">
+                        <span style="">Välj bland flera sätt att nå dina mål</span>
+                        <div style="color:#f7f7f7; font-size:1px; line-height:1px;"/>
+                    </td>
+                    <td class="nomob" width="20"/>
+                    <td style="padding-top:10px;padding-bottom:20px;font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;text-align:right"
+                        valign="top" align="right">
+                        <a href="#" class="view_in_browser_url"
+                           style="color:rgb(0, 0, 0);"
+                           data-original-color="">
+                            <u>
+                                <b>Visa i webbläsaren</b>
+                            </u>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+    <template id="s_mail_block_header_2_af_with_view_in_browser"
+              name="Af Pre Header - Gör vårt intressanta test!, Visa i webbläsaren">
+        <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles"
+               style="background-color: #F1F1F1;">
+            <tbody>
+                <tr>
+                    <td style="padding-top:10px;padding-bottom:20px;font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;"
+                        class="nomob" align="left">
+                        <span style="">Gör vårt intressanta test!</span>
+                        <div style="color:#f7f7f7; font-size:1px; line-height:1px;"/>
+                    </td>
+                    <td class="nomob" width="20"/>
+                    <td style="padding-top:10px;padding-bottom:20px;font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;text-align:right"
+                        valign="top" align="right">
+                        <a href="#" class="view_in_browser_url"
+                           style="color:rgb(0, 0, 0);"
+                           data-original-color="">
+                            <u>
+                                <b>Visa i webbläsaren</b>
+                            </u>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+
     <!-- Af Header Snippet -->
-    <template id="s_mail_block_header_af" name="Af Header">
+    <template id="s_mail_block_header_af" name="Af Header Blue">
         <div style="background-color:#05055d">
             <div>
                 <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
@@ -124,7 +179,8 @@
                                                                                                 valign="middle"
                                                                                                 align="center">
                                                                                                 <div style="font-size:0; line-height:0;"/>
-                                                                                                <a href="#" style="color:#ffffff;text-decoration: none;"
+                                                                                                <a href="#"
+                                                                                                   style="color:#ffffff;text-decoration: none;"
                                                                                                    class="view_in_browser_url">
                                                                                                     Visa i webbläsaren
                                                                                                 </a>
@@ -150,6 +206,38 @@
                 </table>
             </div>
         </div>
+    </template>
+
+    <!-- AF White header snippet -->
+    <template id="s_mail_block_white_header_top_af" name="Af Header White">
+        <table anpbgcolor="#picker,transparent,#e6005c" class="rsd" width="600"
+               cellspacing="0"
+               cellpadding="0" border="0" bgcolor="#e6005c" align="center">
+            <tbody>
+                <tr>
+                    <td style="padding:20px 0 0 0; line-height:1px;" bgcolor="#ffffff">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table anpbgcolor="#picker,transparent,#ffffff" width="100%"
+               cellspacing="0"
+               cellpadding="0" class="o_mail_table_styles"
+               border="0" bgcolor="#ffffff" align="center">
+            <tbody>
+                <tr>
+                    <th style="padding:0 20px 30px;" class="rsd p_b">
+                        <div id="align-wrapper" style="text-align:center;">
+                            <img src="/mass_mailing_template_af/static/img/Af_logo_rgb_270.png"
+                                 link=""
+                                 style="display:block;width:50%" title="" alt="" width="280"
+                                 border=""
+                                 align="middle"/>
+                        </div>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <!-- Af Full With Image Snippet -->
@@ -178,7 +266,8 @@
     <!-- Af Blue Header Text Block Snippet -->
     <template id="s_mail_block_blue_header_text_block_af" name="Af Blue Header Text Block">
         <div style="background-color:#05055d">
-            <table anpbgcolor="#picker,transparent,#ffffff,#05055d" class="rsd" width="600" style="background-color:#05055d"
+            <table anpbgcolor="#picker,transparent,#ffffff,#05055d" class="rsd" width="600"
+                   style="background-color:#05055d"
                    cellspacing="0" cellpadding="0" border="0" bgcolor="#05055d" align="center">
                 <tbody>
                     <tr>
@@ -554,6 +643,297 @@
         </table>
     </template>
 
+    <!-- AF White Text Box Content -->
+    <template id="s_mail_block_white_text_box_content" name="Af White Text Box Content">
+        <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
+               cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff"
+               align="center">
+            <tbody>
+                <tr valign="top">
+                    <th style="padding:0 20px 30px; font-weight:normal;" class="p_b"
+                        align="left">
+
+                        <div style="font: 16px Arial, Verdana, sans-serif; font-weight:bold; color:#000000; text-decoration:none;"
+                             class="headline">
+                            <span style="">
+                                <span>
+                                    <span style="font-size: 24px;">Drömjobbet -
+                                        kanske något helt annat än det du tror
+                                    </span>
+                                    <span>
+                                        <br/>
+                                        <br/>
+                                    </span>
+                                </span>
+                            </span>
+                        </div>
+
+                        <div style="font-weight:none;color:#000000;" class="bodytext">
+                            <span style="">
+                                <span style="font-size: 14px;">Har du en bild av vad
+                                    ditt drömjobb är? Det finns en massa olika jobb
+                                    som passar dig. Många
+                                    fler än vad du tror och kanske till och med inom
+                                    helt andra branscher än
+                                    vad du tror.
+                                    <br/>
+                                    <br/>
+                                    Svara på 12 enkla frågor i vår intresseguide och
+                                    få förslag på jobb som
+                                    skulle kunna passa dig baserat på dina
+                                    intressen. Förhoppningsvis får du
+                                    nya insikter om dig själv och ditt jobbsökande.
+                                    Insikter som skulle
+                                    kunna leda till en helt ny karriär.
+                                </span>
+                            </span>
+                        </div>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+    <!-- AF Blue Small Header -->
+    <template id="s_mail_block_blue_small_footer" name="Af Blue Small Footer">
+        <table anpbgcolor="#picker,transparent,#e6005c" class="o_mail_table_styles"
+               width="600"
+               cellspacing="0" cellpadding="0" border="0"
+               bgcolor="#00005a" align="center">
+            <tbody>
+                <tr valign="middle">
+                    <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle;"
+                        class="footer-text" height="26" align="Center">
+                        <font style="color:rgb(255, 255, 255);">
+                            <a href="" name=""
+                               style="color:rgb(255, 255, 255); text-decoration:none;"
+                               data-original-color="" target="_blank"/>
+                        </font>
+                        <span style="">Besök oss på</span>
+                        <font style="color:rgb(255, 255, 255);">
+                            <a href="https://www.arbetsformedlingen.se/?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_1_AG1"
+                               name=""
+                               style="color:rgb(255, 255, 255); text-decoration:none;"
+                               data-original-color="">
+                                www.arbetsformedlingen.se
+                            </a>
+                        </font>
+                        <span style="">| Detta mejl går inte att svara
+                            på
+                        </span>
+                        <font style="color:rgb(255, 255, 255);">
+                            <a href="tel:0771-416 416" name=""
+                               style="color:rgb(255, 255, 255); text-decoration:none;"
+                               data-original-color="" target="_blank"/>
+                        </font>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+    <!-- AF White Small Footer -->
+    <template id="s_mail_block_white_small_footer" name="Af White Small Footer">
+        <table anpbgcolor="#picker,transparent,#e6005c" class="rsd"
+               width="600"
+               cellspacing="0" cellpadding="0" border="0"
+               bgcolor="transparent"
+               align="center">
+            <tbody>
+                <tr>
+                    <th style="padding:15px 0;" class="p_lr">
+                        <table width="100%" cellspacing="0"
+                               cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <th style="font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;"
+                                        align="left">
+                                        <span style="">Du
+                                            får detta informationsbrev
+                                            eftersom din epost,
+                                            ##SubscriberEmail##
+                                            registrerats när du skapat
+                                            ett konto hos
+                                            Arbetsförmedlingen. Vill du
+                                            inte ta emot fler
+                                            informationsbrev från
+                                            Arbetsförmedlingen kan du
+                                            avanmäla dig
+                                            <a href="/unsubscribe_from_list">
+                                                <u>här</u>
+                                            </a>
+                                            .
+                                        </span>
+                                        <br/>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+    <!-- AF White Text Box Two columns -->
+    <template id="s_mail_block_white_text_two_col" name="Af White Text Box Two Columns">
+        <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
+               cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+            <tbody>
+                <tr>
+                    <th style="padding:0 20px 30px;" class="p_b">
+                        <table width="100%" cellspacing="0" cellpadding="10" border="0">
+                            <tbody>
+                                <tr>
+                                    <th class="db p_b" style="font-weight:normal;"
+                                        width="270" valign="top" align="left">
+                                        <div style="font: 16px Arial, Verdana, sans-serif; font-weight:bold; color:#000000; text-decoration:none;"
+                                             class="headline">
+                                            <span style="">
+                                                <span style="font-size: 16px;">Hitta jobb
+                                                    med sociala medier
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div style="font-weight:none; padding:0 0 15px; border-width:0;color:#000000"
+                                             class="bodytext">
+                                            <span style="">
+                                                <span style="font-size: 13.5px;">Här får du
+                                                    tips på hur du söker jobb via
+                                                    <a href="https://arbetsformedlingen.se/for-arbetssokande/hitta-jobb/hitta-jobb-med-sociala-medier?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_1_AG1">
+                                                        <b>
+                                                            <span style="color: rgb(22, 22, 178);">
+                                                                <u>Facebook, Instagram,
+                                                                    Linkedin och Twitter
+                                                                </u>
+                                                            </span>
+                                                        </b>
+                                                        <u/>.
+                                                    </a>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div style="color:#999999;" align="right">
+                                            <a href="" name=""
+                                               style="color:rgb(153, 153, 153); font:  13px Arial, Verdana, sans-serif; color:#999999; text-decoration:underline;"
+                                               class="link"
+                                               data-original-color="rgb(153, 153, 153)"
+                                               target="_blank"/>
+                                        </div>
+                                    </th>
+                                    <th class="nomob" width="20" valign="top"/>
+                                    <th class="db" style="font-weight:normal;" width="270"
+                                        valign="top" align="left">
+                                        <div style="font: 16px Arial, Verdana, sans-serif; font-weight:bold; color:#000000; text-decoration:none;"
+                                             class="headline">
+                                            <span style="">
+                                                <span style="font-size: 16px;">Sök jobb där
+                                                    de flesta annonserna finns-
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div style="font-weight:none; padding:0 0 15px; border-width:0;color:#000000"
+                                             class="bodytext">
+                                            <span style="">
+                                                <span style="font-size: 13.5px;">
+                                                    <a href="https://arbetsformedlingen.se/platsbanken/?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_1_AG1">
+                                                        <b>
+                                                            <u>
+                                                                <span style="color: rgb(22, 22, 178);">
+                                                                    <u>I Platsbanken!</u>
+                                                                </span>
+                                                            </u>
+                                                        </b>
+                                                    </a>
+                                                    Skräddarsy din sökning med hjälp av
+                                                    sökord och filter. Givetvis kan du spara
+                                                    dina sökningar och intressanta annonser.
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div style="color:#999999;" align="right">
+                                            <a href="" name=""
+                                               style="color:rgb(153, 153, 153); font:  13px Arial, Verdana, sans-serif; color:#999999; text-decoration:underline;"
+                                               class="link" data-original-color=""
+                                               target="_blank"/>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+    <!-- AF button Snippets -->
+    <template id="s_mail_block_to_the_guide" name="Af Button - Till guiden!">
+        <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
+               cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+            <tbody>
+                <tr valign="top">
+                    <th style="padding:0 20px 30px; font-weight:normal;" class="p_b"
+                        align="left">
+
+                        <table anpbgcolor="#picker,transparent,#2D860A" class="rsd"
+                               style="border-radius: 1px;" height="50" cellspacing="0"
+                               cellpadding="0" border="0" bgcolor="#2d860a" align="center">
+                            <tbody>
+                                <tr>
+                                    <th style="padding:0 30px; line-height:normal; vertical-align:middle; font-size: 19px; font-family: 'Open Sans', Helvetica, Arial, sans-serif;"
+                                        class="p_n" valign="middle" align="center">
+                                        <div style="color:#ffffff!important;">
+                                            <a href="https://arbetsformedlingen.se/for-arbetssokande/yrken-och-studier/intresseguide/?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_1_AG1"
+                                               name=""
+                                               style="color:rgb(255, 255, 255); background-color:#2d860a; border-color: #2d860a; line-height:normal; text-decoration:none; font-weight:none;"
+                                               class="btn btn-primary" data-original-color="">
+                                                <b>Till guiden!</b>
+                                            </a>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+    <template id="s_mail_block_to_the_tips" name="Af Button - Till tipsen!">
+        <table anpbgcolor="#picker,transparent,#ffffff" class="rsd" width="600" cellspacing="0"
+               cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+            <tbody>
+                <tr valign="top">
+                    <th style="padding:0 20px 30px; font-weight:normal;" class="p_b"
+                        align="left">
+
+                        <table anpbgcolor="#picker,transparent,#2D860A" class="rsd"
+                               style="border-radius: 1px;" height="50" cellspacing="0"
+                               cellpadding="0" border="0" bgcolor="#2d860a" align="center">
+                            <tbody>
+                                <tr>
+                                    <th style="padding:0 30px; line-height:normal; vertical-align:middle; font-size: 19px; font-family: 'Open Sans', Helvetica, Arial, sans-serif;"
+                                        class="p_n" valign="middle" align="center">
+                                        <div style="color:#ffffff!important;">
+                                            <a href="https://arbetsformedlingen.se/For-arbetssokande/Yrken-och-studier/Utbildning/Att-valja-utbildning?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_2_AG1"
+                                               name=""
+                                               style="color:rgb(255, 255, 255); background-color:#2d860a; border-color: #2d860a; line-height:normal; text-decoration:none; font-weight:none;"
+                                               class="btn btn-primary" data-original-color="">
+                                                <b>Till tipsen!</b>
+                                            </a>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
     <!-- Inherit main template to add snippets -->
     <template id="af_add_email_designer_snippets" inherit_id="mass_mailing.email_designer_snippets">
         <xpath expr="//div[@id='email_designer_default_headers']" position="before">
@@ -564,8 +944,14 @@
             <div class="o_panel_body">
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_pre_header_af"
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/pre_header.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_header_af_with_view_in_browser"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header_with_browser_view.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_header_2_af_with_view_in_browser"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header_with_browser_view.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_header_af"
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header_top.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_white_header_top_af"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/header_white.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_full_width_image_af"
                    t-thumbnail="/mass_mailing/static/src/img/blocks/block_banner.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_header_text_block_af"
@@ -576,10 +962,23 @@
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_block_two_col.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_text_af"
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_block_one_col.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_white_text_box_content"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_text_box.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_white_text_two_col"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_text_two_col.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_to_the_tips"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/af_button.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_to_the_guide"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/af_button.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_page_footer_af"
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_footer.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_white_page_footer_af"
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_footer.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_blue_small_footer"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_small_footer.png"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_white_small_footer"
+                   t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_small_footer.png"/>
+
             </div>
         </xpath>
     </template>
