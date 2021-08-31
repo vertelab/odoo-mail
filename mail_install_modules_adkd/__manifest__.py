@@ -21,8 +21,8 @@
 		"mass_mailing_statistics_af",	# odoo-mail This extends the statistics displayed in smart buttons to give percentages.
 	    "mass_mailing_unsubscribe_af",		# Fixes layout of unsubscribe-page https://github.com/vertelab/odoo-mail/tree/Dev-12.0/mass_mailing_unsubscribe_af
 		"mail_partner_messages",		# Adds a tab with messages to the contact and jobseeker view. https://github.com/vertelab/odoo-mail/tree/Dev-12.0/mail_partner_messages
-		"mass_mailing_template_af" # odoo-mail This adds new sample mass mailing templates and hide odoo standard's mass mailing templates.
-		"mass_mailing_editor_af" # odoo-mail This adds new snippets for mass mailing templates.
+		"mass_mailing_template_af", # odoo-mail This adds new sample mass mailing templates and hide odoo standard's mass mailing templates.
+		"mass_mailing_editor_af", # odoo-mail This adds new snippets for mass mailing templates.
 
 
 			],
