@@ -2,11 +2,15 @@
 
 {
     "name": "Af ADKD Install modules",
-    "version": "12.0.1.0.4",
+    "version": "12.0.1.0.5",
     "author": "Swedish Public Employement Service",
     "license": "AGPL-3",
     "website": "https://arbetsformedlingen.se/",
-    "description": "This module is maintained here https://github.com/vertelab/odoo-mail/blob/Dev-12.0/mail_install_modules_adkd",
+    "description": """
+    This module is maintained here https://github.com/vertelab/odoo-mail/blob/Dev-12.0/mail_install_modules_adkd
+    v12.0.1.0.4 AFC-2658 Added ',' between depends modules
+    v12.0.1.0.5 AFC-2658 Corrected wrong module name
+    """,
     "category": "Tools",
     "depends": [
 		"fetchmail",                    # odoo-core-module. Needed but not used by us.		
