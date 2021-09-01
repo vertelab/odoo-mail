@@ -10,7 +10,7 @@
     "category": "Tools",
     "depends": [
 		"fetchmail",                    # odoo-core-module. Needed but not used by us.		
-		"hr_mail_employee_client",      # odoo-hr This adds a tab on the Employee form for messages sent to and from that employee.
+		"hr_employee_mail_client",      # odoo-hr This adds a tab on the Employee form for messages sent to and from that employee.
 		# "mail_bot",		        # odoo-core-module. Needed but not used by us.	    
 		"mail_browser_view",		# https://github.com/OCA/social A module for reading newsletters through a webpage.
 		"mail_improved_tracking_value",	# https://github.com/OCA/social A module improved tracking. This is optional now.
