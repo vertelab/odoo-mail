@@ -1,7 +1,7 @@
 {
     "name": "AF Mass Mailing Template",
     "summary": "Adds a Mass Mailing Template Design",
-    "version": "12.0.1.1.6",
+    "version": "12.0.1.1.7",
     "category": "Email Marketing",
     "description": """
     v12.0.0.1 AFC-86  Add Mass mailing template for AF newsletters.\n
@@ -11,6 +11,7 @@
     v12.0.1.1.4 Moved back to vertel odoo-mail\n
     v12.0.1.1.5 AFC-1725 Added two more sample templates and hide Odoo standard templates.\n
     v12.0.1.1.6 AFC-1725 Added dynamic links and updated some styles on sample templates.\n
+    v12.0.1.1.7 Fixed typos in templates.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Swedish Public Employement Service",

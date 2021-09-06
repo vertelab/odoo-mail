@@ -98,7 +98,7 @@
                                         </div>
                                         <br/>
                                         <div style="color: #999999;">
-                                            <span>Telefon 0771-508 508 | <u>Fler kontakvagar</u> |
+                                            <span>Telefon 0771-508 508 | <u>Fler kontaktvägar</u> |
                                                 <u>Prenumerera</u>
                                             </span>
                                             <br/>
@@ -405,21 +405,9 @@
                                                     <tr>
                                                         <th style="font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;"
                                                             align="left">
-                                                            <span style="">Du
-                                                                får detta informationsbrev
-                                                                eftersom din epost,
-                                                                ##SubscriberEmail##
-                                                                registrerats när du skapat
-                                                                ett konto hos
-                                                                Arbetsförmedlingen. Vill du
-                                                                inte ta emot fler
-                                                                informationsbrev från
-                                                                Arbetsförmedlingen kan du
-                                                                avanmäla dig
-                                                                <a href="/unsubscribe_from_list">
-                                                                    <u>här</u>
-                                                                </a>
-                                                                .
+                                                            <span style="">Du får detta informationsbrev eftersom din epost, registrerats när du skapat 
+                                                                ett konto hos Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev 
+                                                                från Arbetsförmedlingen kan du avanmäla dig <a href="/unsubscribe_from_list"><u>här</u></a>.
                                                             </span>
                                                             <br/>
                                                         </th>
@@ -718,28 +706,11 @@
                                         <tr>
                                             <th style="font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;"
                                                 align="left">
-                                                <span style="">Du
-                                                    får detta informationsbrev eftersom din epost,
-                                                    ##SubscriberEmail##
-                                                    registrerats när du skapat ett konto hos
-                                                    Arbetsförmedlingen. Vill du
-                                                    inte ta emot fler informationsbrev från
-                                                    Arbetsförmedlingen kan du
-                                                    avanmäla dig
-                                                    <a href="/unsubscribe_from_list">
-                                                        <u>här</u>
-                                                    </a>
-                                                    .
-                                                </span>
+                                                   <span style="">Du får detta informationsbrev eftersom din epost, registrerats när du skapat 
+                                                                ett konto hos Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev 
+                                                                från Arbetsförmedlingen kan du avanmäla dig <a href="/unsubscribe_from_list"><u>här</u></a>.
+                                                   </span>
                                                 <br/>
-                                                <span style=""/>
-                                                <font style="color:rgb(0, 0, 0);">
-                                                    <a href="##OptOutAll##" name=""
-                                                       style="color:rgb(0, 0, 0); text-decoration: underline;"
-                                                       data-original-color=""/>
-                                                </font>
-                                                <br/>
-                                                <span style=""/>
                                                 <font style="color:rgb(0, 0, 0);">
                                                     <a href="" name=""
                                                        style="color:rgb(0, 0, 0); text-decoration: underline;"
