@@ -58,10 +58,10 @@ class ImportKnimeExportWizard(models.TransientModel):
         if not partner:
             raise UserError(
                 _('Can not find jobseeker with email: {}').format(email))
-        if segment == 'a' or segment == 'b' or segment == 'c':
+        if segment ('a', 'b', 'c'):
             partner.segment_jobseeker = segment
         else:
-            raise UserError(_('Invalid segment. Segment should be A, B or C'))
+            raise UserError(_('Invalid segment. Segment should be a, b or c'))
         campaign = campaign_obj.search(
             [('name', 'ilike', active_email)],
             limit=1)
@@ -112,12 +112,12 @@ class ImportKnimeExportWizard(models.TransientModel):
 
             # Verify Header, Force it lowercase and make a dict
             headers = self.check_header([cell.value for cell in sheet.row(0)])
-            for row_nr in range(sheet.nrows, 1):
+            for row_nr in range(1, sheet.nrows):
                 email = sheet.cell_value(row_nr, headers['e-postadress'])
                 segment = sheet.cell_value(row_nr,
-                                           headers['segment'].lower().strip())
-                send_today = sheet.cell_value(row_nr, headers['sendToday'])
-                active_mail = sheet.cell_value(row_nr, headers['activeMail'])
+                                           headers['segment']).lower().strip()
+                send_today = sheet.cell_value(row_nr, headers['sendtoday'])
+                active_mail = sheet.cell_value(row_nr, headers['activemail'])
                 self.import_row(email, segment, send_today,
                                 active_mail, partner_obj, campaign_obj)
         else:
