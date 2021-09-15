@@ -22,7 +22,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_form
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_tree
 msgid "Bounced"
-msgstr ""
+msgstr "Studsade"
 
 #. module: mail_partner_messages
 #: model:ir.model.fields,field_description:mail_partner_messages.field_mass_mailing_message__clicked
@@ -31,7 +31,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_form
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_tree
 msgid "Clicked"
-msgstr ""
+msgstr "Klickade"
 
 #. module: mail_partner_messages
 #: model:ir.model,name:mail_partner_messages.model_res_partner
@@ -55,22 +55,22 @@ msgstr "Skapad den"
 #. module: mail_partner_messages
 #: model:ir.model.fields,help:mail_partner_messages.field_mass_mailing_message__clicked
 msgid "Date when customer clicked on at least one tracked link"
-msgstr ""
+msgstr "Datum då kunden klickade på minst en spårad länk"
 
 #. module: mail_partner_messages
 #: model:ir.model.fields,help:mail_partner_messages.field_mass_mailing_message__opened
 msgid "Date when the email has been opened the first time"
-msgstr ""
+msgstr "Datum när e-postmeddelandet har öppnats första gången"
 
 #. module: mail_partner_messages
 #: model:ir.model.fields,help:mail_partner_messages.field_mass_mailing_message__replied
 msgid "Date when this email has been replied for the first time."
-msgstr ""
+msgstr "Datum då detta e-postmeddelande har besvarats för första gången."
 
 #. module: mail_partner_messages
 #: model:ir.model.fields,help:mail_partner_messages.field_mass_mailing_message__bounced
 msgid "Date when this email has bounced."
-msgstr ""
+msgstr "Datum när det här e-postmeddelandet har studsat"
 
 #. module: mail_partner_messages
 #: model:ir.model.fields,field_description:mail_partner_messages.field_mass_mailing_message__display_name
@@ -95,7 +95,7 @@ msgstr "Dokument ID"
 #: model:ir.model.fields,field_description:mail_partner_messages.field_mass_mailing_message__model
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_search
 msgid "Document Model"
-msgstr ""
+msgstr "Dokument Modell"
 
 #. module: mail_partner_messages
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.message_tab_for_partner_inherit
@@ -108,7 +108,7 @@ msgstr "E-post"
 #. module: mail_partner_messages
 #: model:ir.model,name:mail_partner_messages.model_mail_mail_statistics
 msgid "Email Statistics"
-msgstr ""
+msgstr "E-post Statistik"
 
 #. module: mail_partner_messages
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_search
@@ -118,12 +118,12 @@ msgstr "Gruppera efter"
 #. module: mail_partner_messages
 #: model:ir.model.fields,field_description:mail_partner_messages.field_mass_mailing_message__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: mail_partner_messages
 #: model:ir.model.fields,field_description:mail_partner_messages.field_mail_mass_mailing__keep_archives
 msgid "Keep Archives"
-msgstr ""
+msgstr "Spara arkiv"
 
 #. module: mail_partner_messages
 #: model:ir.model.fields,field_description:mail_partner_messages.field_mass_mailing_message____last_update
@@ -145,18 +145,18 @@ msgstr "Senast uppdaterad"
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_form
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_tree
 msgid "Mailing"
-msgstr ""
+msgstr "Utskick"
 
 #. module: mail_partner_messages
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_form
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_tree
 msgid "Mailing Messages"
-msgstr ""
+msgstr "Utskick Meddelanden"
 
 #. module: mail_partner_messages
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_search
 msgid "Mailing/Subject"
-msgstr ""
+msgstr "Utskick/Ämne"
 
 #. module: mail_partner_messages
 #: model:ir.model,name:mail_partner_messages.model_mail_mass_mailing
@@ -166,13 +166,13 @@ msgstr "Massutskick per e-post"
 #. module: mail_partner_messages
 #: model:ir.model,name:mail_partner_messages.model_mass_mailing_message
 msgid "Mass Mailing Message"
-msgstr ""
+msgstr "Massutskick per e-postmeddelande"
 
 #. module: mail_partner_messages
 #: model:ir.model.fields,field_description:mail_partner_messages.field_res_partner__mail_message_ids
 #: model:ir.model.fields,field_description:mail_partner_messages.field_res_users__mail_message_ids
 msgid "Mass mailing Messages"
-msgstr ""
+msgstr "Massutskick e-postmeddelanden"
 
 #. module: mail_partner_messages
 #: model:ir.actions.act_window,name:mail_partner_messages.action_view_contact_mail_message
@@ -203,7 +203,7 @@ msgstr "Öppnad"
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_form
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_tree
 msgid "Replied"
-msgstr ""
+msgstr "Svarade"
 
 #. module: mail_partner_messages
 #: model:ir.model.fields,field_description:mail_partner_messages.field_mass_mailing_message__sent_date
@@ -217,12 +217,12 @@ msgstr "Skickat"
 #. module: mail_partner_messages
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.view_contact_messages_search
 msgid "Sent Date"
-msgstr ""
+msgstr "Skickat datum"
 
 #. module: mail_partner_messages
 #: model:ir.model.fields,field_description:mail_partner_messages.field_mass_mailing_message__statistic_id
 msgid "Statistic"
-msgstr ""
+msgstr "Statistisk"
 
 #. module: mail_partner_messages
 #: model_terms:ir.ui.view,arch_db:mail_partner_messages.message_tab_for_partner_inherit
