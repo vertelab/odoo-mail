@@ -1,4 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_partner_event,partner.event,mass_mailing_autoresponder.model_partner_event,base.group_user,1,1,1,1
-access_partner_event_email_schedule,partner.event.email.schedule,mass_mailing_autoresponder.model_partner_event_email_schedule,base.group_user,1,1,1,1
-access_email_audit,event.email.audit.trail,mass_mailing_autoresponder.model_event_email_audit,base.group_user,1,1,1,1
+access_partner_event,partner.event,mass_mailing_autoresponder.model_partner_event,af_security.af_newsletter_manual,1,1,1,0
+access_partner_event_email_schedule,partner.event.email.schedule,mass_mailing_autoresponder.model_partner_event_email_schedule,af_security.af_newsletter_manual,1,1,1,0
+access_email_audit,event.email.audit.trail,mass_mailing_autoresponder.model_event_email_audit,af_security.af_newsletter_manual,1,1,1,0
+access_partner_event,partner.event,mass_mailing_autoresponder.model_partner_event,af_security.af_newsletter_automatic,1,1,1,0
+access_partner_event_email_schedule,partner.event.email.schedule,mass_mailing_autoresponder.model_partner_event_email_schedule,af_security.af_newsletter_automatic,1,1,1,0
+access_email_audit,event.email.audit.trail,mass_mailing_autoresponder.model_event_email_audit,af_security.af_newsletter_automatic,1,1,1,0
