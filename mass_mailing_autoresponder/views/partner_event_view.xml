@@ -205,7 +205,8 @@
         </record>
 
         <menuitem id="dialogue_event_id" name="Autoresponder" action="action_dialogue_event" sequence="1"
-                  parent="mass_mailing_autoresponder.customer_dialogue_menu_id"/>
+                  parent="mass_mailing_autoresponder.customer_dialogue_menu_id"
+                  groups="af_security.af_newsletter_automatic"/>
 
     </data>
 </odoo>
