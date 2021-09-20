@@ -30,7 +30,7 @@ msgstr "<b>Avsluta prenumeration</b>"
 #: code:addons/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js:277
 #, python-format
 msgid "An error occured. Please try again later or contact us."
-msgstr ""
+msgstr "Ett fel inträffade. Försök igen senare eller kontakta oss."
 
 #. module: mass_mailing_unsubscribe_af
 #. openerp-web
@@ -38,22 +38,22 @@ msgstr ""
 #: code:addons/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js:171
 #, python-format
 msgid "An error occurred. Your changes have not been saved, try again later."
-msgstr ""
+msgstr "Ett fel uppstod. Dina ändringar har inte sparats. Försök igen senare."
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.af_nyhetsbrev_unsubscribe
 msgid "Blacklist Me"
-msgstr ""
+msgstr "Svartlista mig"
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__dwnld_csv_file
 msgid "CSV File"
-msgstr ""
+msgstr "CSV fil"
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__dwnld_csv_filename
 msgid "CSV File name"
-msgstr ""
+msgstr "CSV Filnamn"
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.import_deregistration_form_view
@@ -63,12 +63,12 @@ msgstr "Avbryt"
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.af_nyhetsbrev_unsubscribe
 msgid "Choose your mailing subscriptions"
-msgstr ""
+msgstr "Välj dina utskicksprenumerationer"
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.af_nyhetsbrev_unsubscribe
 msgid "Come Back"
-msgstr ""
+msgstr "Kom tillbaka"
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__create_uid
@@ -94,17 +94,17 @@ msgstr "Visningsnamn"
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.import_deregistration_form_view
 msgid "Download Sample CSV Format"
-msgstr ""
+msgstr "Ladda ner exempel på CSV format "
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.import_deregistration_form_view
 msgid "Download Sample Excel Format"
-msgstr ""
+msgstr "Ladda ner exempel på Excel format "
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.import_deregistration_form_view
 msgid "Download Sample Text Format"
-msgstr ""
+msgstr "Ladda ner exempel på text format "
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__file
@@ -114,7 +114,7 @@ msgstr "Fil"
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__filename
 msgid "File name"
-msgstr ""
+msgstr "Filnamn"
 
 #. module: mass_mailing_unsubscribe_af
 #: model:mail.unsubscription.reason,name:mass_mailing_unsubscribe_af.reason_no_longer_want_to_receive
@@ -154,12 +154,12 @@ msgstr "Importera"
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model,name:mass_mailing_unsubscribe_af.model_import_deregistration_file
 msgid "Import Deregistration File"
-msgstr ""
+msgstr "Importera avregistreringsfil"
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.import_deregistration_form_view
 msgid "Import file with following format:"
-msgstr ""
+msgstr "Importera fil med följande format:"
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file____last_update
@@ -179,28 +179,28 @@ msgstr "Senast uppdaterad"
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model,name:mass_mailing_unsubscribe_af.model_mail_unsubscription
 msgid "Mail unsubscription"
-msgstr ""
+msgstr "E-post avanmälan"
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.af_nyhetsbrev_unsubscribe
 msgid "Mailing Subscriptions"
-msgstr ""
+msgstr "Prenumeration av E-post utskick"
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_mail_unsubscription__mass_mailing_id
 msgid "Mass mailing"
-msgstr ""
+msgstr "Massutskick"
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,help:mass_mailing_unsubscribe_af.field_mail_unsubscription__mass_mailing_id
 msgid "Mass mailing from which he was unsubscribed."
-msgstr ""
+msgstr "Massutskick som han avregistrerade sig från."
 
 #. module: mass_mailing_unsubscribe_af
 #: code:addons/mass_mailing_unsubscribe_af/wizard/import_deregistration.py:95
 #, python-format
 msgid "Please Select an .xls, .xlsx, .txt or .csv file to Import."
-msgstr ""
+msgstr "Var god välj en .xls-, .xlsx-, .txt- eller .csv fil som ska importeras."
 
 #. module: mass_mailing_unsubscribe_af
 #: code:addons/mass_mailing_unsubscribe_af/wizard/import_deregistration.py:48
@@ -208,28 +208,30 @@ msgstr ""
 msgid "Please correct Header in file!\n"
 "Header has to contain:\n"
 ""
-msgstr ""
+msgstr "Var god korrigera rubrik i fil!\n"
+"Rubrik måste innehålla:\n"
+""
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__dwnld_txt_file
 msgid "TXT File"
-msgstr ""
+msgstr "TXT fil"
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__dwnld_txt_filename
 msgid "TXT File name"
-msgstr ""
+msgstr "TXT filnamn"
 
 #. module: mass_mailing_unsubscribe_af
 #: code:addons/mass_mailing_unsubscribe_af/wizard/import_deregistration.py:140
 #, python-format
 msgid "Unknown file ending: {}"
-msgstr ""
+msgstr "Okänd filavsluning"
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.af_nyhetsbrev_unsubscribe
 msgid "Update my subscriptions"
-msgstr ""
+msgstr "Uppdatera min prenumeration"
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.af_nyhetsbrev_unsubscribe_reason
@@ -240,12 +242,12 @@ msgstr "Vi skulle uppskatta om du kunde lämna feedback till varför du vill avr
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__dwnld_xls_file
 msgid "XLS File"
-msgstr ""
+msgstr "XLS fil"
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__dwnld_xls_filename
 msgid "XLS File name"
-msgstr ""
+msgstr "XLS filnamn"
 
 #. module: mass_mailing_unsubscribe_af
 #. openerp-web
@@ -254,45 +256,45 @@ msgstr ""
 #: code:addons/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js:254
 #, python-format
 msgid "You are not authorized to do this!"
-msgstr ""
+msgstr "Du är inte behörig att göra detta!"
 
 #. module: mass_mailing_unsubscribe_af
 #. openerp-web
 #: code:addons/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js:105
 #, python-format
 msgid "You have been <strong>successfully unsubscribed from %s</strong>."
-msgstr ""
+msgstr "Du har <strong>avslutat prenumerationen från %s</strong>."
 
 #. module: mass_mailing_unsubscribe_af
 #. openerp-web
 #: code:addons/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js:110
 #, python-format
 msgid "You have been <strong>successfully unsubscribed</strong>."
-msgstr ""
+msgstr "Du har <strong>avslutat prenumerationen</strong>."
 
 #. module: mass_mailing_unsubscribe_af
 #. openerp-web
 #: code:addons/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js:210
 #, python-format
 msgid "You have been successfully <strong>added to our blacklist</strong>. You will not be contacted anymore by our services."
-msgstr ""
+msgstr "Du har <strong>lagts till vår svartlista</strong>. Du kommer inte att kontaktas längre av våra tjänster."
 
 #. module: mass_mailing_unsubscribe_af
 #. openerp-web
 #: code:addons/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js:260
 #, python-format
 msgid "You have been successfully <strong>removed from our blacklist</strong>. You are now able to be contacted by our services."
-msgstr ""
+msgstr "Du har <strong>tagits bort från vår svartlista</strong>. Du kan nu bli kontaktad av våra tjänster."
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.af_nyhetsbrev_unsubscribed
 msgid "You have been successfully <strong>unsubscribed</strong>!"
-msgstr ""
+msgstr "Du har <strong>avslutat prenumerationen</strong>!"
 
 #. module: mass_mailing_unsubscribe_af
 #. openerp-web
 #: code:addons/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js:153
 #, python-format
 msgid "Your changes have been saved."
-msgstr ""
+msgstr "Dina ändringar har sparats."
 
