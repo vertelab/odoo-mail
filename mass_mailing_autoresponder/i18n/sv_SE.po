@@ -1,0 +1,736 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* mass_mailing_autoresponder
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20210922\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-27 13:42+0000\n"
+"PO-Revision-Date: 2021-09-27 13:42+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_kanban
+msgid "<b>Count of Sample: </b>"
+msgstr "<b>Antal prov: </b>"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_kanban
+msgid "<b>Emails Sent Totally: </b>"
+msgstr "<b>Totalt antal skickade e-post: </b>"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_kanban
+msgid "<b>Emails Sent: </b>"
+msgstr "<b>Skickade e-post: </b>"
+
+#. module: mass_mailing_autoresponder
+#: model:mail.template,body_html:mass_mailing_autoresponder.meeting_follow_up_email_template
+msgid "<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Hello,\n"
+"                        <br/><br/>\n"
+"                        Uppföljning av mötet.\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr "<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Hej,\n"
+"                        <br/><br/>\n"
+"                        Uppföljning av mötet.\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+
+#. module: mass_mailing_autoresponder
+#: model:mail.template,body_html:mass_mailing_autoresponder.meeting_invitation_email_template
+msgid "<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Hello,\n"
+"                        <br/><br/>\n"
+"                        Meeting Invitation\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr "<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Hej,\n"
+"                        <br/><br/>\n"
+"                        Mötesinbjudan\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+
+#. module: mass_mailing_autoresponder
+#: model:mail.template,body_html:mass_mailing_autoresponder.meeting_reminder_email_template
+msgid "<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Hello,\n"
+"                        <br/><br/>\n"
+"                        Reminder of the Meeting.\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr "<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Hej,\n"
+"                        <br/><br/>\n"
+"                        Påminnelse om mötet.\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+
+#. module: mass_mailing_autoresponder
+#: model:mail.template,body_html:mass_mailing_autoresponder.on_boarding_email_template
+msgid "<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Hello,\n"
+"                        <br/><br/>\n"
+"                        Welcome to us.\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr "<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Hej,\n"
+"                        <br/><br/>\n"
+"                        Välkommen till oss.\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_needaction
+msgid "Action Needed"
+msgstr "Åtgärd krävs"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.actions.act_window,help:mass_mailing_autoresponder.action_dialogue_event
+msgid "Add a new event"
+msgstr "Lägg till en ny händelse"
+
+#. module: mass_mailing_autoresponder
+#: selection:partner.event.email.schedule,interval_type:0
+msgid "After the date"
+msgstr "Efter datumet"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__all_event_mail_count
+msgid "All Event Email Count"
+msgstr "Alla händelsemailantal"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_form
+msgid "Are you sure you want to cancel this event?"
+msgstr "Är du säker på att du vill avbryta denna händelse?"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_attachment_count
+msgid "Attachment Count"
+msgstr "Antal bilagor"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_mail_mass_mailing__auto_responder
+msgid "Auto Responder"
+msgstr "Autoresponder"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model,name:mass_mailing_autoresponder.model_event_email_audit
+msgid "Autoreponder Email Audit"
+msgstr "Autoresponder e-postrevision"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.actions.act_window,name:mass_mailing_autoresponder.action_dialogue_event
+#: model:ir.model,name:mass_mailing_autoresponder.model_partner_event
+#: model:ir.ui.menu,name:mass_mailing_autoresponder.customer_dialogue_menu_id
+#: model:ir.ui.menu,name:mass_mailing_autoresponder.dialogue_event_id
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_email_audit_tree
+msgid "Autoresponder"
+msgstr "Autoresponder"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.actions.server,name:mass_mailing_autoresponder.event_close_when_end_ir_actions_server
+#: model:ir.cron,cron_name:mass_mailing_autoresponder.event_close_when_end
+#: model:ir.cron,name:mass_mailing_autoresponder.event_close_when_end
+msgid "Autoresponder : Update Autoresponder status to end when it finished."
+msgstr "Autoresponder : Uppdatera autoresponderstatus för att sluta när den är klar."
+
+#. module: mass_mailing_autoresponder
+#: model:ir.actions.act_window,name:mass_mailing_autoresponder.action_all_email_sent
+#: model:ir.actions.act_window,name:mass_mailing_autoresponder.action_schedule_line_emails
+msgid "Autoresponder Mail Audit"
+msgstr "Autoresponder postrevision"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_form
+msgid "Autoresponder Name"
+msgstr "Autoresponder namn"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__name
+msgid "Autoresponder Segment"
+msgstr "Autoresponder segment"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.actions.server,name:mass_mailing_autoresponder.customer_dialogue_event_mail_scheduler_ir_actions_server
+#: model:ir.cron,cron_name:mass_mailing_autoresponder.customer_dialogue_event_mail_scheduler
+#: model:ir.cron,name:mass_mailing_autoresponder.customer_dialogue_event_mail_scheduler
+msgid "Autoresponder: Mail Scheduler"
+msgstr "Autoresponder: E-postschemaläggare"
+
+#. module: mass_mailing_autoresponder
+#: selection:partner.event.email.schedule,interval_type:0
+msgid "Before the date"
+msgstr "Före datumet"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__bounced_info
+msgid "Bounced"
+msgstr "Studsade"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__bounced
+msgid "Bounced Email"
+msgstr "Studsade e-post"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__bounced_ratio
+msgid "Bounced Ratio"
+msgstr "Studsat förhållande"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_form
+msgid "Cancel"
+msgstr "Avbryt"
+
+#. module: mass_mailing_autoresponder
+#: selection:partner.event,state:0
+msgid "Cancelled"
+msgstr "Avbruten"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__category
+msgid "Category"
+msgstr "Kategori"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__contact_domain_count
+msgid "Contact Count"
+msgstr "Kontaktantal"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__contact_ids
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_email_audit_search
+msgid "Contacts"
+msgstr "Kontakter"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_account_invoice_send__body
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_mail_compose_message__body
+msgid "Contents"
+msgstr "Innehåll"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__country_id
+msgid "Country"
+msgstr "Land"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__create_uid
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__create_uid
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__create_date
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__create_date
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__create_date
+msgid "Created on"
+msgstr "Skapad den"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__creation_date
+msgid "Creation Date"
+msgstr "Registeringsdatum"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_kanban
+msgid "Delete"
+msgstr "Ta bort"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__received_info
+msgid "Delivered"
+msgstr "Levererad"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__received
+msgid "Delivered Email"
+msgstr "Levererad e-post"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__received_ratio
+msgid "Delivered Ratio"
+msgstr "Levererat förhållande"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__name
+msgid "Description"
+msgstr "Beskrivning"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__display_name
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__display_name
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: mass_mailing_autoresponder
+#: selection:partner.event,state:0
+msgid "Draft"
+msgstr "Utkast"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_kanban
+msgid "Dropdown menu"
+msgstr "Dropdown meny"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__email
+msgid "Email"
+msgstr "E-post"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_email_audit_search
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_email_audit_tree
+msgid "Email Audit"
+msgstr "E-postrevision"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_email_audit_pivot
+msgid "Email Audit Analysis"
+msgstr "E-post revisions analys"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__email_schedule_ids
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_form
+msgid "Email Schedule"
+msgstr "E-postschema"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__template_id
+msgid "Email Template"
+msgstr "E-postmall"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model,name:mass_mailing_autoresponder.model_mail_compose_message
+msgid "Email composition wizard"
+msgstr "E-postredigeringsguide"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__count_email_sent
+msgid "Email count"
+msgstr "Antal e-post"
+
+#. module: mass_mailing_autoresponder
+#: selection:partner.event,state:0
+msgid "End"
+msgstr "Slut"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__date_end
+msgid "End Date"
+msgstr "Slutdatum"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__event_id
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_email_audit_search
+msgid "Event"
+msgstr "Händelse"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.actions.act_window,help:mass_mailing_autoresponder.action_all_email_sent
+#: model_terms:ir.actions.act_window,help:mass_mailing_autoresponder.action_event_mail_trail
+#: model_terms:ir.actions.act_window,help:mass_mailing_autoresponder.action_schedule_line_emails
+msgid "Event Email Reminder Audit Trail"
+msgstr "Händelse e-postpåminnelse granskningsspår"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__event_line_id
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_mail_mass_mailing__event_line_id
+msgid "Event Line"
+msgstr "Händelserad"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_email_audit_form
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_form
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_tree
+msgid "Events"
+msgstr "Händelser"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__ir_model_field
+msgid "Field"
+msgstr "Fält"
+
+#. module: mass_mailing_autoresponder
+#: model:mail.template,subject:mass_mailing_autoresponder.meeting_follow_up_email_template
+msgid "Follow Up of the Meeting"
+msgstr "Uppföljning av mötet"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_follower_ids
+msgid "Followers"
+msgstr "Följare"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Följare (Kanaler)"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Följare (kontakter)"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_email_audit_search
+msgid "Group By"
+msgstr "Gruppera efter"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__id
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__id
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__id
+msgid "ID"
+msgstr "ID"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,help:mass_mailing_autoresponder.field_partner_event__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Om ikryssad nya meddelanden som kräver din uppmärksamhet"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,help:mass_mailing_autoresponder.field_partner_event__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Om den är markerad så finns det meddelanden som kräver din uppmärksamhet."
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,help:mass_mailing_autoresponder.field_partner_event__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Om markerad så har det blivit ett leveransfel för några  meddelanden."
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__interval_nbr
+msgid "Interval"
+msgstr "Intervall"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_is_follower
+msgid "Is Follower"
+msgstr "Är följare"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__color
+msgid "Kanban Color Index"
+msgstr "Kanban färgindex"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit____last_update
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event____last_update
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule____last_update
+msgid "Last Modified on"
+msgstr "Senast redigerad"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__write_uid
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__write_uid
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__write_date
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__write_date
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__address_id
+msgid "Location"
+msgstr "Lokalkontor"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.actions.act_window,name:mass_mailing_autoresponder.action_autorespond_mailing
+#: model:ir.ui.menu,name:mass_mailing_autoresponder.mass_mailing_autoresponder
+msgid "Mailing"
+msgstr "Utskick"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Huvudbilaga"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model,name:mass_mailing_autoresponder.model_mail_mass_mailing
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__mail_massmailing_ids
+msgid "Mass Mailing"
+msgstr "Massutskick per e-post"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.actions.act_window,help:mass_mailing_autoresponder.action_autorespond_mailing
+msgid "Mass Mailing background data will be generated based on schedule line content to manage\n"
+"                    statistics."
+msgstr "Massutskickets bakgrundsdata kommer att genereras baserat på schemalagd radinnehåll för\n"
+"                    att hantera statistik."
+
+#. module: mass_mailing_autoresponder
+#: model:mail.template,subject:mass_mailing_autoresponder.meeting_invitation_email_template
+msgid "Meeting Invitation"
+msgstr "Mötesinbjudan"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_has_error
+msgid "Message Delivery error"
+msgstr "Fel vid meddelandeleverans"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.actions.act_window,name:mass_mailing_autoresponder.action_event_mail_trail
+#: model:ir.ui.menu,name:mass_mailing_autoresponder.event_mail_audit_menu
+msgid "Message log"
+msgstr "Meddelandelogg"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_ids
+msgid "Messages"
+msgstr "Meddelanden"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Antal åtgärder"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_has_error_counter
+msgid "Number of error"
+msgstr "Antal fel"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,help:mass_mailing_autoresponder.field_partner_event__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Antal meddelanden som kräver en åtgärd"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,help:mass_mailing_autoresponder.field_partner_event__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Antal meddelanden med leveransfel"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,help:mass_mailing_autoresponder.field_partner_event__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Antal olästa meddelanden"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_form
+msgid "Online"
+msgstr "Online"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__is_online
+msgid "Online Event"
+msgstr "Online-händelse"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__opened
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__opened_info
+msgid "Opened"
+msgstr "Öppnad"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__opened
+msgid "Opened Email"
+msgstr "Öppnad e-post"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__opened_ratio
+msgid "Opened Ratio"
+msgstr "Öppnade förhållande"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__organizer_id
+msgid "Organizer"
+msgstr "Organisatör"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__partner_id
+msgid "Partner"
+msgstr "Samarbetspartner"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__partner_event_id
+msgid "Partner Event"
+msgstr "Samarbetspartnershändelse"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_form
+msgid "Re-Run"
+msgstr "Starta om"
+
+#. module: mass_mailing_autoresponder
+#: model:mail.template,subject:mass_mailing_autoresponder.meeting_reminder_email_template
+msgid "Reminder of the Meeting"
+msgstr "Påminnelse om mötet"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__replied_info
+msgid "Replied"
+msgstr "Besvarade"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__replied
+msgid "Replied Email"
+msgstr "Besvarade e-post"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__replied_ratio
+msgid "Replied Ratio"
+msgstr "Besvarade förhållande"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__response
+msgid "Response"
+msgstr "Svar"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__user_id
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_email_audit_search
+msgid "Responsible"
+msgstr "Ansvarig"
+
+#. module: mass_mailing_autoresponder
+#: selection:partner.event,state:0
+msgid "Running"
+msgstr "Pågående"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_email_audit_search
+msgid "Schedule Event Line"
+msgstr "Schemalägg händelsesrad"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.actions.act_window,help:mass_mailing_autoresponder.action_dialogue_event
+msgid "Schedule and organize your events efficiently:\n"
+"                    track registrations and participations, automate the confirmation emails, sell tickets, etc."
+msgstr "Schemalägg och organisera dina händelser effektivt:\n"
+"                    spåra registreringar och deltaganden, automatisera bekräftelsemailen, sälj biljetter etc."
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__contact_domain
+msgid "Search Filter"
+msgstr "Sökfilter"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__sent
+msgid "Sent"
+msgstr "Skickat"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__sent_time
+msgid "Sent Time"
+msgstr "Skickat tid"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_event_email_audit__user_id
+msgid "Sent through"
+msgstr "Skickat genom"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_form
+msgid "Start"
+msgstr "Start"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__date_begin
+msgid "Start Date"
+msgstr "Startdatum"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__state
+msgid "State"
+msgstr "Status"
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.actions.act_window,help:mass_mailing_autoresponder.action_event_mail_trail
+msgid "This screen will capture the email created for auto reminder to receipient of the event."
+msgstr "Denna skärm kommer att fånga det e-postmeddelande som skapats för automatisk påminnelse till mottagaren av händelsen."
+
+#. module: mass_mailing_autoresponder
+#: model_terms:ir.actions.act_window,help:mass_mailing_autoresponder.action_all_email_sent
+#: model_terms:ir.actions.act_window,help:mass_mailing_autoresponder.action_schedule_line_emails
+msgid "This screen will capture the email created for auto reminder to recipient of the event."
+msgstr "Denna skärm kommer att fånga det e-postmeddelande som skapats för automatisk påminnelse till mottagaren av händelsen."
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__today_event_mail_count
+msgid "Today's Email Count"
+msgstr "Dagens e-postantal"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__total
+msgid "Total"
+msgstr "Totalt"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__interval_type
+msgid "Trigger "
+msgstr "Utlösare"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__interval_unit
+msgid "Unit"
+msgstr "Enhet"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_unread
+msgid "Unread Messages"
+msgstr "Olästa meddelanden"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Räknare olästa meddelanden"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__website_message_ids
+msgid "Website Messages"
+msgstr "Webbplatsmeddelanden"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model.fields,help:mass_mailing_autoresponder.field_partner_event__website_message_ids
+msgid "Website communication history"
+msgstr "Webbplatsens kommunikationshistorik"
+
+#. module: mass_mailing_autoresponder
+#: model:mail.template,subject:mass_mailing_autoresponder.on_boarding_email_template
+msgid "Welcome to us"
+msgstr "Välkommen till oss"
+
+#. module: mass_mailing_autoresponder
+#: selection:partner.event.email.schedule,interval_unit:0
+msgid "Work Day(s)"
+msgstr "Arbetsdag(ar)"
+
+#. module: mass_mailing_autoresponder
+#: model:ir.model,name:mass_mailing_autoresponder.model_partner_event_email_schedule
+msgid "partner.event.email.schedule"
+msgstr "sammarbetspartner.händelse.e-post.schema"
+
