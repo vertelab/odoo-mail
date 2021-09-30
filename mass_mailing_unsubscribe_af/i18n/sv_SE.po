@@ -154,7 +154,7 @@ msgstr "Importera"
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model,name:mass_mailing_unsubscribe_af.model_import_deregistration_file
 msgid "Import Deregistration File"
-msgstr "Importera avregistreringsfil"
+msgstr "Importera Avregistreringsfil"
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.import_deregistration_form_view
@@ -194,7 +194,7 @@ msgstr "Massutskick"
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,help:mass_mailing_unsubscribe_af.field_mail_unsubscription__mass_mailing_id
 msgid "Mass mailing from which he was unsubscribed."
-msgstr "Massutskick som han avregistrerade sig från."
+msgstr "Massutskick som hen avregistrerade sig från."
 
 #. module: mass_mailing_unsubscribe_af
 #: code:addons/mass_mailing_unsubscribe_af/wizard/import_deregistration.py:95
@@ -208,7 +208,7 @@ msgstr "Var god välj en .xls-, .xlsx-, .txt- eller .csv fil som ska importeras.
 msgid "Please correct Header in file!\n"
 "Header has to contain:\n"
 ""
-msgstr "Var god korrigera rubrik i fil!\n"
+msgstr "Var god korrigera Sidhuvud i fil!\n"
 "Rubrik måste innehålla:\n"
 ""
 
@@ -226,7 +226,7 @@ msgstr "TXT filnamn"
 #: code:addons/mass_mailing_unsubscribe_af/wizard/import_deregistration.py:140
 #, python-format
 msgid "Unknown file ending: {}"
-msgstr "Okänd filavsluning"
+msgstr "Okänd filändelse"
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.af_nyhetsbrev_unsubscribe
@@ -277,7 +277,7 @@ msgstr "Du har <strong>avslutat prenumerationen</strong>."
 #: code:addons/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js:210
 #, python-format
 msgid "You have been successfully <strong>added to our blacklist</strong>. You will not be contacted anymore by our services."
-msgstr "Du har <strong>lagts till vår svartlista</strong>. Du kommer inte att kontaktas längre av våra tjänster."
+msgstr "Du har <strong>lagts till i vår svartlista</strong>. Du kommer inte att kontaktas längre av våra tjänster."
 
 #. module: mass_mailing_unsubscribe_af
 #. openerp-web
