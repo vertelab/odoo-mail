@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0-20210826\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-07 19:11+0000\n"
-"PO-Revision-Date: 2021-09-07 19:11+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2021-09-30 12:58+0000\n"
+"PO-Revision-Date: 2021-09-30 12:58+0000\n"
+"Last-Translator: <Heidar Selman heidar.selman@arbetsformedlingen.se>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -122,26 +122,6 @@ msgid "I no longer want to receive these emails"
 msgstr "Jag vill inte få dessa email längre"
 
 #. module: mass_mailing_unsubscribe_af
-#: model:mail.unsubscription.reason,name:mass_mailing_custom_unsubscribe.reason_not_interested
-msgid "I'm not interested"
-msgstr "Jag är inte intresserad"
-
-#. module: mass_mailing_unsubscribe_af
-#: model:mail.unsubscription.reason,name:mass_mailing_custom_unsubscribe.reason_not_requested
-msgid "I did not request this"
-msgstr "Jag har inte efterfrågat detta"
-
-#. module: mass_mailing_unsubscribe_af
-#: model:mail.unsubscription.reason,name:mass_mailing_custom_unsubscribe.reason_too_many
-msgid "I get too many emails"
-msgstr "Jag får för många mejl"
-
-#. module: mass_mailing_unsubscribe_af
-#: model:mail.unsubscription.reason,name:mass_mailing_custom_unsubscribe.reason_other
-msgid "Other reason"
-msgstr "Annan orsak"
-
-#. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__id
 msgid "ID"
 msgstr ""
@@ -211,6 +191,11 @@ msgid "Please correct Header in file!\n"
 msgstr "Var god korrigera Sidhuvud i fil!\n"
 "Rubrik måste innehålla:\n"
 ""
+
+#. module: mass_mailing_unsubscribe_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.import_deregistration_form_view
+msgid "Please upload an exportfile from Apsis with Deregistrations."
+msgstr "Vänligen ladda upp en exportfil från Apsis med Avregistreringar."
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__dwnld_txt_file
