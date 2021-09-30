@@ -16,6 +16,7 @@
         V12.0.0.0.6  added debuggin \n
         V12.0.1.0.9  Updates on sending logic \n
         V12.0.2.0.0  Changed access right for autoresponder menu \n
+        v12.0.2.1.0  Added translation to mass_mailing_autoresponder \n 
     """,
     'depends': [
         'base_setup', 'mail', 'mass_mailing',
