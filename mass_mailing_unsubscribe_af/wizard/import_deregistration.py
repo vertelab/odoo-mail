@@ -105,7 +105,7 @@ class ImportDeregistrationFile(models.TransientModel):
             csv_data = base64.b64decode(self.file)
             data_file = io.StringIO(csv_data.decode("utf-8"))
             # Read CSV
-            headers, *data = csv.reader(data_file, delimiter=',')
+            headers, *data = csv.reader(data_file, delimiter=';')
 
             # Verify Header, Force it lowercase and make a dict
             headers = self.check_header(headers)
