@@ -47,8 +47,7 @@ msgid "<div style=\"font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvet
 msgstr ""
 
 #. module: mass_mailing_autoresponder_crm
-#: model:mail.template,body_html:#. module: mass_mailing_autoresponder_crm
-.on_boarding_email_template
+#: model:mail.template,body_html:#. module: mass_mailing_autoresponder_crm.on_boarding_email_template
 msgid "<div style=\"font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;margin: 0px; padding: 0px;\">\n"
 "                    <p style=\"font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "                        Hej,\n"
