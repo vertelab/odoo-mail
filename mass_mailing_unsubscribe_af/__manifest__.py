@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.2.1",
+    "version": "12.0.1.2.2",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -14,6 +14,7 @@
      v12.0.1.1.1 AFC-2800 Bugfix for importing files in unsubscriptions.\n
      v12.0.1.2.0 AFC-2730 translated text.\n
      v12.0.1.2.1 AFC-2819 translated text.\n
+     v12.0.1.2.2 AFC-2802 Small bugfix in import.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
