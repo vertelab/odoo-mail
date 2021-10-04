@@ -129,7 +129,7 @@ class ImportDeregistrationFile(models.TransientModel):
 
             # Verify Header, Force it lowercase and make a dict
             headers = self.check_header([cell.value for cell in sheet.row(0)])
-            for row_nr in range(sheet.nrows, 1):
+            for row_nr in range(1, sheet.nrows):
                 email = sheet.cell_value(row_nr, headers['e-postadress'])
                 date = sheet.cell_value(row_nr, headers['opt out date'])
                 reason_val = sheet.cell_value(row_nr, headers['reason'])
