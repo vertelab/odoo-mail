@@ -11,9 +11,11 @@
                         <field name="file" filename="filename"/>
                     </group>
                     <br/><br/>
-                    <h2>Import file with following format:</h2>
                     <br/>
-                    <group class="oe_left">
+                    <field name="has_failed_imports" invisible="1"/>
+                    <field name="is_imported" invisible="1"/>
+                    <group class="oe_left"  attrs="{'invisible': [('is_imported', '=', True)]}">
+                        <h2>Import file with following format:</h2>
                         <field name="dwnld_xls_filename" invisible="1"/>
                         <field name="dwnld_xls_file" filename="dwnld_xls_filename" readonly="1"/>
                         <button name="download_xls_file" string="Download Sample Excel Format" type="object" class="oe_highlight"/>
@@ -26,6 +28,26 @@
                         <field name="dwnld_txt_file" filename="dwnld_txt_filename" readonly="1"/>
                         <button name="download_txt_file" string="Download Sample Text Format" type="object" class="oe_highlight"/>
                     </group>
+                    <div attrs="{'invisible': [('is_imported', '=', False)]}">
+                        <div>
+                            <label for="nr_total_rows"/>
+                            <field name="nr_total_rows" readonly="1"/>
+                            <br/>
+                            <label for="nr_imported_rows"/>
+                            <field name="nr_imported_rows" readonly="1"/>
+                            <br/>
+                            <label for="nr_failed_rows"/>
+                            <field name="nr_failed_rows" readonly="1"/>
+                        </div>
+                            <field string="Rows failed to import:" name="import_failed_knime_ids" mode="tree" attrs="{'invisible': [('has_failed_imports', '=', False)]}">
+                            <tree readonly="1" editable="0" create="0" delete="0">
+                                <field name="sokande_id"/>
+                                <field name="active_mail"/>
+                                <field name="segment_jobseeker"/>
+                                <field name="send_today" readonly="1"/>
+                            </tree>
+                        </field>
+                    </div>
                     <footer>
                         <button string="Import" name="import_data" type="object" class="oe_highlight"/>
                         <button string="Cancel" class="btn btn-default" special="cancel"/>
