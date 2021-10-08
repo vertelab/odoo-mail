@@ -9,7 +9,7 @@ from odoo.exceptions import UserError
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.modules.module import get_resource_path
 import pytz
-from xlrd import open_workbook
+from xlrd import open_workbook, xldate_as_tuple
 
 _logger = logging.getLogger(__name__)
 
@@ -32,6 +32,8 @@ class ImportDeregistrationFile(models.TransientModel):
         """Change between timezones."""
         if isinstance(date, str):
             date = datetime.strptime(date, '%Y-%m-%d %H:%M')
+        elif isinstance(date, tuple):
+            date = datetime(*date[:6])
         to_tz = pytz.timezone(to_tz)
         return pytz.timezone(from_tz).localize(date).astimezone(to_tz).replace(tzinfo=None)
 
@@ -131,7 +133,9 @@ class ImportDeregistrationFile(models.TransientModel):
             headers = self.check_header([cell.value for cell in sheet.row(0)])
             for row_nr in range(1, sheet.nrows):
                 email = sheet.cell_value(row_nr, headers['e-postadress'])
-                date = sheet.cell_value(row_nr, headers['opt out date'])
+                date = xldate_as_tuple(
+                    sheet.cell_value(row_nr, headers['opt out date']),
+                    book.datemode)
                 reason_val = sheet.cell_value(row_nr, headers['reason'])
                 self.import_row(email, date, reason_val, unsub_obj,
                                 mail_list_obj, black_list_obj, partner_obj,
