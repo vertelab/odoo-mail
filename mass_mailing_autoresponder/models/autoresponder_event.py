@@ -156,10 +156,11 @@ class Autoresponder(models.Model):
                             email_line.contact_ids = [(4, partner_id.id)]
 
     def _create_mail_campaign(self, partner, event_line):
-        partner_model = self.env['ir.model'].search([('model','=','res.partner')], limit=1)
-        name = event_line.name and event_line.name or ""
-        name += " "
-        name += partner.name
+        partner_model = self.env['ir.model'].search([('model', '=', 'res.partner')], limit=1)
+        name = event_line and \
+               event_line.template_id and \
+               event_line.template_id.name\
+               or ""
         mailing_data = {
             'name':name,
             'user_id':self.env.user.id,
