@@ -107,4 +107,12 @@
         </t>
     </template>
 
+    <record model="ir.ui.menu" id="mass_mailing_custom_unsubscribe.mail_unsubscription_menu">
+        <field name="name">(Av)anmälningar</field>
+    </record>
+
+    <record model="ir.ui.menu" id="mass_mailing_custom_unsubscribe.mail_unsubscription_reason_menu">
+        <field name="name">Skäl till avanmälan</field>
+    </record>
+
 </odoo>
