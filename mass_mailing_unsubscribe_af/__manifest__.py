@@ -13,7 +13,6 @@
      v12.0.1.1.0 AFC-2721 Fixed view in the upload page.\n
      v12.0.1.1.1 AFC-2800 Bugfix for importing files in unsubscriptions.\n
      v12.0.1.2.0 AFC-2730 translated text.\n
-     v12.0.1.2.1 AFC-2820 Add translation to menu items.\n
      v12.0.1.2.1 AFC-2819 translated text.\n
      v12.0.1.2.2 AFC-2802 Small bugfix in import.\n
      v12.0.1.2.3 AFC-2851 Added proper date handling for opt out date in xls files.\n
