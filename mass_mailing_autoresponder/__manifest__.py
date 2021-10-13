@@ -3,7 +3,7 @@
 {
     'name': 'Mail Autoresponder',
     'summary': "Adds an automatic Emailing Trigger based service",
-    'version': '12.0.2.0.0',
+    'version': '12.0.2.1.1',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
@@ -17,6 +17,7 @@
         V12.0.1.0.9  Updates on sending logic \n
         V12.0.2.0.0  Changed access right for autoresponder menu \n
         v12.0.2.1.0  Added translation to mass_mailing_autoresponder \n 
+        v12.0.2.1.1  Add translation to template name in autoresponder \n
     """,
     'depends': [
         'base_setup', 'mail', 'mass_mailing',
