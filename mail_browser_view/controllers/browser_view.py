@@ -4,7 +4,6 @@
 from odoo import http
 from odoo.http import request
 
-
 class EmailBrowserViewController(http.Controller):
 
     @http.route(['/email/view/<string:token>'],
@@ -13,4 +12,5 @@ class EmailBrowserViewController(http.Controller):
         record = request.env['mail.mail'].get_record_for_token(token)
         if not record:
             return request.not_found()
-        return request.make_response(record.body_html)
+        return request.make_response(record.body)
+
