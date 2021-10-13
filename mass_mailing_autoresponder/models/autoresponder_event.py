@@ -3,6 +3,7 @@ import datetime
 from datetime import date
 from odoo.tools.safe_eval import safe_eval
 from dateutil import rrule
+import pytz
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -96,12 +97,31 @@ class Autoresponder(models.Model):
                 if email_line.interval_type == 'after_event':
                     self.after_event(event, email_line, email_line.contact_ids)
                 if email_line.interval_type == 'before_event':
-                    print ("It's here!")
                     self.before_event(event, email_line, email_line.contact_ids)
 
+    def get_date_weekday_only(self, interval, contact_date):
+        """
+        Checks if there it's a weekend or holiday between contact date and
+        returns date that is weekday instead.
+        :param interval:
+        :param contact_date:
+        :return:
+        """
+        # Get all af holidays timezone adjusted
+        af_holidays = [self.adjust_tz(d.date_from).date() for
+                       d in
+                       self.env['resource.calendar.leaves'].search([])]
+        _datetime = contact_date
+        i = 0
+        # Add one day for every weekend day or holiday
+        while i != interval:
+            _datetime += datetime.timedelta(days=1)
+            if not (_datetime.weekday() in (5, 6) or _datetime in af_holidays):
+                i += 1
+        return _datetime
 
     def after_event(self, event, email_line, contacts):
-        today_date = datetime.datetime.today().strftime("%Y-%m-%d")
+        today_date = self.adjust_tz(datetime.datetime.today()).strftime("%Y-%m-%d")
         domain = event.contact_domain and safe_eval(event.contact_domain) or []
         for contact in self.env['res.partner'].search(domain):
             if contact.id not in contacts.ids:
@@ -110,14 +130,13 @@ class Autoresponder(models.Model):
                     if email_line.ir_model_field:
                         contact_date = contact[str(email_line.ir_model_field.name)]
                         if contact_date:
-                            _datetime = contact_date + datetime.timedelta(
-                                days=email_line.interval_nbr)
+                            _datetime = self.get_date_weekday_only(email_line.interval_nbr, contact_date)
                             week_day_date = list(rrule.rrule(rrule.DAILY,
                                                              dtstart=contact_date,
                                                              until=_datetime,
                                                              byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
                     else:
-                        _datetime = event.date_begin + datetime.timedelta(days=email_line.interval_nbr)
+                        _datetime = self.get_date_weekday_only(email_line.interval_nbr, event.date_begin)
                         week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=event.date_begin, until=_datetime,
                                                          byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
 
@@ -130,21 +149,20 @@ class Autoresponder(models.Model):
 
     def before_event(self, event, email_line, contacts):
         today_date = datetime.datetime.today().strftime("%Y-%m-%d")
-        domain = event.contact_domain and safe_eval(event.contact_domain) or  []
+        domain = event.contact_domain and safe_eval(event.contact_domain) or []
         res_ids = self.env['res.partner'].search(domain).ids
         for contact_id in res_ids:
             if contact_id not in contacts.ids:
                 if email_line.interval_unit == 'days':
                     partner_id = self.env['res.partner'].search([('id', '=', contact_id)])
                     if email_line.ir_model_field:
-                        _datetime = partner_id[str(email_line.ir_model_field.name)] - datetime.timedelta(
-                            days=email_line.interval_nbr)
+                        _datetime = self.get_date_weekday_only(email_line.interval_nbr, partner_id[str(email_line.ir_model_field.name)])
                         week_day_date = list(rrule.rrule(rrule.DAILY,
                                                          dtstart=_datetime,
                                                          until=partner_id[str(email_line.ir_model_field.name)],
                                                          byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
                     else:
-                        _datetime = event.date_begin - datetime.timedelta(days=email_line.interval_nbr)
+                        _datetime = self.get_date_weekday_only(email_line.interval_nbr, event.date_begin)
 
                         week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=_datetime, until=event.date_begin,
                                                          byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
@@ -204,6 +222,15 @@ class Autoresponder(models.Model):
 
     def button_cancel(self):
         self.state = 'cancelled'
+
+    @staticmethod
+    def adjust_tz(date, from_tz='utc', to_tz='Europe/Stockholm'):
+        """Change between timezones."""
+        if isinstance(date, str):
+            date = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M')
+        to_tz = pytz.timezone(to_tz)
+        return pytz.timezone(from_tz).localize(date).astimezone(to_tz).replace(tzinfo=None)
+
 
 class EventEmailSchedule(models.Model):
     _name = 'partner.event.email.schedule'
