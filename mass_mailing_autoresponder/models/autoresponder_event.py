@@ -101,8 +101,10 @@ class Autoresponder(models.Model):
 
     def get_date_weekday_only(self, interval, contact_date):
         """
-        Checks if there it's a weekend or holiday between contact date and
-        returns date that is weekday instead.
+        This method will check if the dates between contact_date and
+        interval is a holiday.
+        For every holiday between those dates it will add one day
+        to the returned _datetime.
         :param interval:
         :param contact_date:
         :return:
@@ -113,7 +115,8 @@ class Autoresponder(models.Model):
                        self.env['resource.calendar.leaves'].search([])]
         _datetime = contact_date
         i = 0
-        # Add one day for every weekend day or holiday
+        # Add one day to _datetime for every holiday until
+        # the interval is reached.
         while i != interval:
             _datetime += datetime.timedelta(days=1)
             if not (_datetime.weekday() in (5, 6) or _datetime in af_holidays):
