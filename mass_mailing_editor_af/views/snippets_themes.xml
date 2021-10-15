@@ -699,7 +699,7 @@
         <table anpbgcolor="#picker,transparent,#e6005c" class="o_mail_table_styles"
                width="600"
                cellspacing="0" cellpadding="0" border="0"
-               bgcolor="#00005a" align="center">
+               style="background-color:#00005a;" align="center">
             <tbody>
                 <tr valign="middle">
                     <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle;"
@@ -877,8 +877,8 @@
                         align="left">
 
                         <table anpbgcolor="#picker,transparent,#2D860A" class="rsd"
-                               style="border-radius: 1px;" height="50" cellspacing="0"
-                               cellpadding="0" border="0" bgcolor="#2d860a" align="center">
+                               style="border-radius: 1px; background-color:#2d860a;" height="50" cellspacing="0"
+                               cellpadding="0" border="0" align="center">
                             <tbody>
                                 <tr>
                                     <th style="padding:0 30px; line-height:normal; vertical-align:middle; font-size: 19px; font-family: 'Open Sans', Helvetica, Arial, sans-serif;"
@@ -910,8 +910,8 @@
                         align="left">
 
                         <table anpbgcolor="#picker,transparent,#2D860A" class="rsd"
-                               style="border-radius: 1px;" height="50" cellspacing="0"
-                               cellpadding="0" border="0" bgcolor="#2d860a" align="center">
+                               style="border-radius: 1px; background-color:#2d860a;" height="50" cellspacing="0"
+                               cellpadding="0" border="0" align="center">
                             <tbody>
                                 <tr>
                                     <th style="padding:0 30px; line-height:normal; vertical-align:middle; font-size: 19px; font-family: 'Open Sans', Helvetica, Arial, sans-serif;"

@@ -12,6 +12,7 @@
     v12.0.1.1.5 AFC-1725 Added two more sample templates and hide Odoo standard templates.\n
     v12.0.1.1.6 AFC-1725 Added dynamic links and updated some styles on sample templates.\n
     v12.0.1.1.7 Fixed typos in templates.\n
+    v12.0.1.1.8 AFC-2725 Changed some style in both templates.\n
     v12.0.1.2.0 AFC-2826 Disabled resizing snippets in editor.\n
     """,
     "license": "AGPL-3",
