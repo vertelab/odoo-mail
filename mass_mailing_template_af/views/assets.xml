@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="FieldTextHtmlInlineAF" inherit_id="mass_mailing.FieldTextHtmlInline">
+        <xpath expr="//script[@src='/mass_mailing/static/src/js/mass_mailing_editor.js']" position="replace">
+            <script type="text/javascript" src="/mass_mailing_template_af/static/src/js/mass_mailing_template_af_mass_mailing_editor.js"></script>
+        </xpath>
+    </template>
+    <template id="assets_editor_af" inherit_id="web_editor.assets_editor">
+        <xpath expr="//script[@src='/web_editor/static/src/js/editor/snippets.options.js']" position="replace">
+            <script type="text/javascript" src="/mass_mailing_template_af/static/src/js/mass_mailing_template_af_snippets.options.js"></script>
+        </xpath>
+    </template>
+</odoo>
