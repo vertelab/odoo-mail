@@ -1,13 +1,10 @@
 import base64
 import csv
-from collections import Counter
-from datetime import datetime, timedelta
 import io
 import logging
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.modules.module import get_resource_path
 import pytz
 from xlrd import open_workbook
@@ -68,41 +65,59 @@ class ImportMailingList(models.TransientModel):
         })
         return contact.id
 
-    def create_mailing_list(self, active_mails):
+    def get_mailing_list(self, active_mails):
         """
-        Creates mailing lists based on a set of ids from imported file.
+        Return mailing lists ids based on a set of ids from imported file.
         """
-        mailing_list = self.env['mail.mass_mailing.list']
+        mailing_list = self.env['mail.mass_mailing.list'].search([])
         mailing_list_ids = []
         for mail in active_mails:
-            d = self.adjust_tz(datetime.now())
-            ml = mailing_list.create({
-                # Maybe we need template name instead here.
-                'name': f'{mail} {d.strftime("%Y-%m-%d %H:%M:%S")}',
-                'is_public': True,
-                'adkd_mail_name': mail,
-            })
+            ml = mailing_list.filtered(lambda l: l.adkd_mail_name == mail)
+            if not ml:
+                ml = mailing_list.create({
+                    'name': f'{mail} placeholder name',
+                    'is_public': True,
+                    'adkd_mail_name': mail,
+                })
             mailing_list_ids.append(ml.id)
         return mailing_list_ids
 
     def insert_mail_contacts_to_mailing_lists(self,
                                               mailing_lists_ids,
                                               contacts):
+
+        # First get contacts already in list.
+        # then remove rest of the rest of the contacts
+        # maybe check for unsub.
         mailing_lists = self.env['mail.mass_mailing.list'].browse(mailing_lists_ids)
+
+        for mail_list in mailing_lists:
+
+            #Get all opt out contacts ids for this list
+            list_contact = self.env['mail.mass_mailing.list_contact_rel'].search([('list_id', '=', mail_list.id), ('opt_out', '=', True)]).contact_id.ids
+
+            #remove all contacts that is not blacklisted:
+            mail_list.write({
+                'contact_ids': [(3, c.id) for c in mail_list.contact_ids if c.id not in list_contact]
+            })
+
+
+        #mailing_lists = self.env['mail.mass_mailing.list'].browse(mailing_lists_ids)
         list_contact = self.env['mail.mass_mailing.list_contact_rel']
         for mail_name, contact_id in contacts:
             mail_list = mailing_lists.filtered(
                 lambda l: l.adkd_mail_name.upper() == mail_name)
             if mail_list:
-                try:
+                list_contact_id = list_contact.search([('contact_id', '=', contact_id), ('list_id', '=', mail_list.id)]).id
+                if not list_contact_id:
                     list_contact_id = list_contact.create({'contact_id': contact_id,
                                                            'list_id': mail_list.id}).id
-                    mail_list.write({
-                        'contact_ids': [(4, contact_id)],
-                        'subscription_contact_ids': [(4, list_contact_id)],
-                    })
-                except Exception as e:
-                    print(e)
+                mail_list.write({
+                    'contact_ids': [(4, contact_id)],
+                    'subscription_contact_ids': [(4, list_contact_id)],
+                })
+
+
             else:
                 _logger.warning('List not found')
 
@@ -157,7 +172,7 @@ class ImportMailingList(models.TransientModel):
                             })
                         )
 
-            mailing_lists = self.create_mailing_list(active_mails)
+            mailing_lists = self.get_mailing_list(active_mails)
             self.insert_mail_contacts_to_mailing_lists(mailing_lists, contacts)
 
         elif self.filename.lower().endswith(('.xls', '.xlsx')):
@@ -187,7 +202,7 @@ class ImportMailingList(models.TransientModel):
                             'active_mail': active_mail,
                         })
                     )
-            mailing_lists = self.create_mailing_list(active_mails)
+            mailing_lists = self.get_mailing_list(active_mails)
             self.insert_mail_contacts_to_mailing_lists(mailing_lists, contacts)
         else:
             raise UserError(
@@ -279,13 +294,6 @@ class ImportMailingList(models.TransientModel):
             'res_id': self.id,
         }
 
-    @staticmethod
-    def adjust_tz(date, from_tz='utc', to_tz='Europe/Stockholm'):
-        """Change between timezones."""
-        if isinstance(date, str):
-            date = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M')
-        to_tz = pytz.timezone(to_tz)
-        return pytz.timezone(from_tz).localize(date).astimezone(to_tz).replace(tzinfo=None)
 
 class ImportFailedMail(models.TransientModel):
     _name = 'import.failed.mail'
