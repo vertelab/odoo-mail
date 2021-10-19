@@ -3,7 +3,7 @@
 {
     'name': 'Mail Autoresponder',
     'summary': "Adds an automatic Emailing Trigger based service",
-    'version': '12.0.2.2.0',
+    'version': '12.0.2.3.0',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
@@ -18,6 +18,7 @@
         V12.0.2.0.0  Changed access right for autoresponder menu \n
         v12.0.2.1.0  Added translation to mass_mailing_autoresponder \n 
         v12.0.2.2.0  Added weekdays and holidays filtering \n 
+        v12.0.2.3.0  AFC-2732 Adjust access right for email marketing user \n 
     """,
     'depends': [
         'base_setup', 'mail', 'mass_mailing', 'resource',
