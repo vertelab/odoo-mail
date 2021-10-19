@@ -20,12 +20,12 @@
 ##############################################################################
 
 {
-    'name': 'Mail Message Archive',
+    'name': 'Extend mail.message',
     'version': '14.0.1',
     'category': 'other',
     'license': 'AGPL-3',
-    'summary': 'Integrates Jitsi screen sharing to Odoo discussions.',
-    'description': """ """,
+    'summary': 'Extend mail.message with an "active"-attribute.',
+    'description': """Extend mail.message with an "active"-attribute""",
     'author': 'Vertel AB',
     'website': 'https://vertel.se',
     'depends': [
