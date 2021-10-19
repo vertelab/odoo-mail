@@ -35,6 +35,6 @@ _logger = logging.getLogger(__name__)
 class active_attribute(models.Model):
     _name = 'mail.message.state'
 
-    active_attribute = fields.Boolean(string='Folded in Kanban View', help='This stage is folded in the kanban view when there are no records in that state to display.')
+    active_attribute = fields.Boolean(string='Add active attribute', help='Display an active-passive checkbox.')
     
     
