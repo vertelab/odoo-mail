@@ -1,0 +1,5 @@
+E-postadress;Segment;SendToday;ActiveMail;Sökande ID
+bbbbb@gmail.com;A;J;M01_14;1
+bbbbb@gmail.com;B;J;ONB_M1;2
+ccccc@yahoo.com;A;J;ONB_M1;3
+ddddd@live.se;A;J;ONB_M3;4

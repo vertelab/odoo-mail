@@ -11,7 +11,7 @@
         - 12.0.1.0.1  AFC-2117-2 New module for importing mailing list \n
     """,
     'website': 'http://www.vertel.se',
-    'depends': ['mass_mailing'],
+    'depends': ['mass_mailing', 'mass_mailing_unsubscribe_af'],
     'data': [
         'wizard/import_mailing_list_wizard.xml',
     ],

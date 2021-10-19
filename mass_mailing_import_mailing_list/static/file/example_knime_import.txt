@@ -1,8 +1,0 @@
-E-postadress;Segment;SendToday;ActiveMail
-aaaaa@hotmail.com;C;J;ONB_M1
-bbbbb@gmail.com;B ;J;ONB_M1
-ccccc@yahoo.com;A;J;ONB_M1
-ddddd@live.se;A;J;ONB_M3
-eeeee@hotmail.com;B ;J;ONB_M3
-ggggg@gmail.com;C;J;ONB_M3
-hhhhhh@gmail.com;A;J;ONB_M3

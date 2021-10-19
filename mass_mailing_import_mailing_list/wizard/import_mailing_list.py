@@ -85,39 +85,36 @@ class ImportMailingList(models.TransientModel):
     def insert_mail_contacts_to_mailing_lists(self,
                                               mailing_lists_ids,
                                               contacts):
-
-        # First get contacts already in list.
-        # then remove rest of the rest of the contacts
-        # maybe check for unsub.
+        """ Clears all contacts (not unsubscribed contacts) form the
+            mailing lists and adds the imported contacts """
         mailing_lists = self.env['mail.mass_mailing.list'].browse(mailing_lists_ids)
-
         for mail_list in mailing_lists:
-
-            #Get all opt out contacts ids for this list
-            list_contact = self.env['mail.mass_mailing.list_contact_rel'].search([('list_id', '=', mail_list.id), ('opt_out', '=', True)]).contact_id.ids
-
-            #remove all contacts that is not blacklisted:
+            # Get all opt out contacts ids for this list
+            list_contact = self.env['mail.mass_mailing.list_contact_rel'].search([
+                                                    ('list_id', '=', mail_list.id),
+                                                    ('opt_out', '=', True)
+                                                ]).contact_id.ids
+            # Remove all contacts that did not opt out
             mail_list.write({
                 'contact_ids': [(3, c.id) for c in mail_list.contact_ids if c.id not in list_contact]
             })
-
-
-        #mailing_lists = self.env['mail.mass_mailing.list'].browse(mailing_lists_ids)
         list_contact = self.env['mail.mass_mailing.list_contact_rel']
         for mail_name, contact_id in contacts:
             mail_list = mailing_lists.filtered(
                 lambda l: l.adkd_mail_name.upper() == mail_name)
             if mail_list:
-                list_contact_id = list_contact.search([('contact_id', '=', contact_id), ('list_id', '=', mail_list.id)]).id
+                list_contact_id = list_contact.search(
+                        [('contact_id', '=', contact_id),
+                         ('list_id', '=', mail_list.id)]
+                    ).id
                 if not list_contact_id:
-                    list_contact_id = list_contact.create({'contact_id': contact_id,
-                                                           'list_id': mail_list.id}).id
+                    list_contact_id = list_contact.create(
+                        {'contact_id': contact_id,
+                         'list_id': mail_list.id}).id
                 mail_list.write({
                     'contact_ids': [(4, contact_id)],
                     'subscription_contact_ids': [(4, list_contact_id)],
                 })
-
-
             else:
                 _logger.warning('List not found')
 
@@ -164,7 +161,6 @@ class ImportMailingList(models.TransientModel):
                     if contact:
                         contacts.append((active_mail.upper(), contact))
                     else:
-                        self.has_failed_imports = True
                         failed_imports.append(
                             self.env['import.failed.mail'].create({
                                 'sokande_id': sokande_id,
@@ -195,7 +191,6 @@ class ImportMailingList(models.TransientModel):
                 if contact:
                     contacts.append((active_mail.upper(), contact))
                 else:
-                    self.has_failed_imports = True
                     failed_imports.append(
                         self.env['import.failed.mail'].create({
                             'sokande_id': sokande_id,
@@ -210,21 +205,21 @@ class ImportMailingList(models.TransientModel):
             )
         self.nr_failed_rows = len(failed_imports)
         self.nr_imported_rows = self.nr_total_rows - self.nr_failed_rows
-        if self.has_failed_imports:
-            self.import_failed_mail_ids = [(6,
-                                            0,
-                                            [f.id for f in failed_imports]
-                                            )]
-            return {
-                'name': _('Rows failed to be imported'),
-                'view_mode': 'form',
-                'view_id': False,
-                'view_type': 'form',
-                'res_model': 'import.mailing.list',
-                'res_id': self.id,
-                'type': 'ir.actions.act_window',
-                'target': 'new',
-            }
+        self.import_failed_mail_ids = [(6,
+                                        0,
+                                        [f.id for f in failed_imports]
+                                        )]
+        self.is_imported = True
+        return {
+            'name': _('Imported rows'),
+            'view_mode': 'form',
+            'view_id': False,
+            'view_type': 'form',
+            'res_model': 'import.mailing.list',
+            'res_id': self.id,
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+        }
 
 
 
@@ -237,7 +232,7 @@ class ImportMailingList(models.TransientModel):
         with open(xls_file_path, 'rb') as file_date:
             xls_file = base64.b64encode(file_date.read())
         if xls_file:
-            self.dwnld_xls_filename = 'example_knime_import.xlsx'
+            self.dwnld_xls_filename = 'example_file.xlsx'
             self.dwnld_xls_file = xls_file
         return {
             'name': 'Import',
@@ -259,7 +254,7 @@ class ImportMailingList(models.TransientModel):
         with open(csv_file_path, 'rb') as file_date:
             csv_file = base64.b64encode(file_date.read())
         if csv_file:
-            self.dwnld_csv_filename = 'example_knime_import.csv'
+            self.dwnld_csv_filename = 'example_file.csv'
             self.dwnld_csv_file = csv_file
         return {
             'name': 'Import',
@@ -281,7 +276,7 @@ class ImportMailingList(models.TransientModel):
         with open(txt_file_path, 'rb') as file_date:
             txt_file = base64.b64encode(file_date.read())
         if txt_file:
-            self.dwnld_txt_filename = 'example_knime_import.txt'
+            self.dwnld_txt_filename = 'example_file.txt'
             self.dwnld_txt_file = txt_file
         return {
             'name': 'Import',

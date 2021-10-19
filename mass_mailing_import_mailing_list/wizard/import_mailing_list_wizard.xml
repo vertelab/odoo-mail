@@ -12,8 +12,8 @@
                     </group>
                     <br/><br/>
                     <br/>
-                    <field name="has_failed_imports" invisible="1"/>
-                    <group class="oe_left"  attrs="{'invisible': [('has_failed_imports', '=', True)]}">
+                    <field name="is_imported" invisible="1"/>
+                    <group class="oe_left"  attrs="{'invisible': [('is_imported', '=', True)]}">
                         <h2>Import file with following format:</h2>
                         <field name="dwnld_xls_filename" invisible="1"/>
                         <field name="dwnld_xls_file" filename="dwnld_xls_filename" readonly="1"/>
@@ -27,7 +27,7 @@
                         <field name="dwnld_txt_file" filename="dwnld_txt_filename" readonly="1"/>
                         <button name="download_txt_file" string="Download Sample Text Format" type="object" class="oe_highlight"/>
                     </group>
-                    <div attrs="{'invisible': [('has_failed_imports', '=', False)]}">
+                    <div attrs="{'invisible': [('is_imported', '=', False)]}">
                         <div>
                             <label for="nr_total_rows"/>
                             <field name="nr_total_rows" readonly="1"/>
@@ -38,7 +38,7 @@
                             <label for="nr_failed_rows"/>
                             <field name="nr_failed_rows" readonly="1"/>
                         </div>
-                        <field string="Rows failed to import:" name="import_failed_mail_ids" mode="tree" attrs="{'invisible': [('has_failed_imports', '=', False)]}">
+                        <field string="Rows failed to import:" name="import_failed_mail_ids" mode="tree" attrs="{'invisible': [('is_imported', '=', False)]}">
                             <tree readonly="1" editable="0" create="0" delete="0">
                                 <field name="sokande_id"/>
                                 <field name="active_mail"/>
@@ -46,8 +46,9 @@
                         </field>
                     </div>
                     <footer>
-                        <button string="Import" name="import_data" type="object" class="oe_highlight"/>
-                        <button string="Cancel" class="btn btn-default" special="cancel"/>
+                        <button string="Import" name="import_data" type="object" class="oe_highlight" attrs="{'invisible': [('is_imported', '=', True)]}"/>
+                        <button string="Ok" class="btn btn-default" special="cancel" attrs="{'invisible': [('is_imported', '=', False)]}"/>
+                        <button string="Cancel" class="btn btn-default" special="cancel" attrs="{'invisible': [('is_imported', '=', True)]}"/>
                     </footer>
                 </form>
             </field>
