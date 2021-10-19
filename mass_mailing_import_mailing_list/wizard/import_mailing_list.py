@@ -20,7 +20,7 @@ class ImportMailingList(models.TransientModel):
     nr_imported_rows = fields.Integer(string='Successful rows')
     nr_failed_rows = fields.Integer(string='Failed rows')
     import_failed_mail_ids = fields.One2many(comodel_name='import.failed.mail', inverse_name='import_id')
-    has_failed_imports = fields.Boolean()
+    is_imported = fields.Boolean()
     file = fields.Binary(string='File')
     filename = fields.Char(string='File name')
     dwnld_csv_filename = fields.Char("CSV File name")
@@ -54,6 +54,9 @@ class ImportMailingList(models.TransientModel):
         # Search as sudo so that we search on res.partner
         partner = partner_obj.sudo().search([('customer_id', '=', sokande_id)])
         if not partner:
+            return
+        in_mail_unsubscription = self.env['mail.unsubscription'].search([('email', '=', partner.email)])
+        if in_mail_unsubscription:
             return
         contact = contact_obj.search([('partner_id', '=', partner.id)])
         if contact:
