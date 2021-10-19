@@ -20,8 +20,8 @@
 ##############################################################################
 from odoo import models,  fields,  api,  _
 from datetime import timedelta
-from random import choice
-from odoo.tools.safe_eval import safe_eval
+#from random import choice
+#from odoo.tools.safe_eval import safe_eval
 from odoo.exceptions import Warning
 
 import time
@@ -32,9 +32,9 @@ import pytz
 import logging
 _logger = logging.getLogger(__name__)
 
-class active_attribute(models.Model):
-    _name = 'mail.message.state'
+class message_archive(models.Model):
+    _name = 'mail.message'
 
-    active_attribute = fields.Boolean(string='Add active attribute', help='Display an active-passive checkbox.')
+    message_archive = fields.Boolean(string='Make archive of this note.', help='Archive notes.')
     
     

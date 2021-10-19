@@ -1,1 +1,1 @@
-from . import mail_message
+from . import message_archive

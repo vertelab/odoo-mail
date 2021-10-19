@@ -20,11 +20,11 @@
 ##############################################################################
 
 {
-    'name': 'Extend mail.message',
-    'version': '14.0.1',
+    'name': 'Mail Message Archive',
+    'version': '14.0.0',
     'category': 'other',
     'license': 'AGPL-3',
-    'summary': 'Extend mail.message with an "active"-attribute.',
+    'summary': 'Makes it easy to archive information',
     'description': """Extend mail.message with an "active"-attribute""",
     'author': 'Vertel AB',
     'website': 'https://vertel.se',
