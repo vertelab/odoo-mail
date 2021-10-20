@@ -20,13 +20,17 @@
 ##############################################################################
 
 from odoo import api, models, fields
-import logging
-_logger = logging.getLogger(__name__)
 
 
-class MassMailingList(models.Model):
-    _inherit = 'mail.mass_mailing.list'
+class MailMassMailing(models.Model):
+    _inherit = "mail.mass_mailing"
 
-    adkd_mail_name = fields.Char(string='ADKd mail name')
-    is_adkd_campaign = fields.Boolean(string='ADKd Campaign')
-    parent_id = fields.Many2one(comodel_name='mail.mass_mailing.list')
+    def update_opt_out(self, email, list_ids, value):
+        """Save unsubscription reason when opting out from mailing."""
+        # Check if list has ADKd parent then use that list instead.
+        mail_list = self.env['mail.mass_mailing.list']
+        if len(list_ids) == 1:
+            mail_list = mail_list.search([('id', '=', list_ids[0])])
+        if mail_list and mail_list.parent_id and mail_list.parent_id.is_adkd_campaign:
+            list_ids[0] = mail_list.parent_id.id
+        return super().update_opt_out(email, list_ids, value)

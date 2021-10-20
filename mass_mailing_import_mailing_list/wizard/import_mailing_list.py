@@ -64,9 +64,19 @@ class ImportMailingList(models.TransientModel):
         contact = contact_obj.create({
             'partner_id': partner.id,
             'name': partner.name,
-            'email': partner.email or 'test@aaa.se',
+            'email': partner.email,
         })
         return contact.id
+
+    def get_campaign(self):
+        mailing_list = self.env['mail.mass_mailing.list'].search([('is_adkd_campaign', '=', True)])
+        if not mailing_list:
+            mailing_list = mailing_list.create(
+                {
+                    'name': _('ADKd Campaign'),
+                    'is_adkd_campaign': True
+                 })
+        return mailing_list
 
     def get_mailing_list(self, active_mails):
         """
@@ -82,42 +92,55 @@ class ImportMailingList(models.TransientModel):
                     'is_public': True,
                     'adkd_mail_name': mail,
                 })
+                ml.parent_id = self.get_campaign()
             mailing_list_ids.append(ml.id)
         return mailing_list_ids
 
     def insert_mail_contacts_to_mailing_lists(self,
                                               mailing_lists_ids,
-                                              contacts):
+                                              contacts,
+                                              adkd_mail_list):
         """ Clears all contacts (not unsubscribed contacts) form the
             mailing lists and adds the imported contacts """
         mailing_lists = self.env['mail.mass_mailing.list'].browse(mailing_lists_ids)
         for mail_list in mailing_lists:
             # Get all opt out contacts ids for this list
             list_contact = self.env['mail.mass_mailing.list_contact_rel'].search([
-                                                    ('list_id', '=', mail_list.id),
+                                                    ('list_id', '=', adkd_mail_list.id),
                                                     ('opt_out', '=', True)
                                                 ]).contact_id.ids
             # Remove all contacts that did not opt out
             mail_list.write({
-                'contact_ids': [(3, c.id) for c in mail_list.contact_ids if c.id not in list_contact]
+                'contact_ids': [(5,)]
+                #'contact_ids': [(3, c.id) for c in mail_list.contact_ids if c.id not in list_contact]
             })
         list_contact = self.env['mail.mass_mailing.list_contact_rel']
         for mail_name, contact_id in contacts:
             mail_list = mailing_lists.filtered(
                 lambda l: l.adkd_mail_name.upper() == mail_name)
-            if mail_list:
-                list_contact_id = list_contact.search(
-                        [('contact_id', '=', contact_id),
-                         ('list_id', '=', mail_list.id)]
-                    ).id
-                if not list_contact_id:
-                    list_contact_id = list_contact.create(
-                        {'contact_id': contact_id,
-                         'list_id': mail_list.id}).id
-                mail_list.write({
-                    'contact_ids': [(4, contact_id)],
-                    'subscription_contact_ids': [(4, list_contact_id)],
-                })
+            try:
+                if mail_list:
+                    list_contact_id = list_contact.search(
+                            [('contact_id', '=', contact_id),
+                             ('list_id', '=', adkd_mail_list.id)]
+                        )
+                    if list_contact_id and list_contact_id.opt_out:
+                        continue
+                    if not list_contact_id:
+                        list_contact_id = list_contact.create(
+                            {'contact_id': contact_id,
+                             'list_id': adkd_mail_list.id}).id
+                    mail_list.write({
+                        'parent_id': adkd_mail_list.id,
+                        'contact_ids': [(4, contact_id)],
+                      #   'subscription_contact_ids': [(5, )],
+                    })
+                    c = self.env['mail.mass_mailing.contact'].browse(contact_id)
+                    c.write({
+                        'subscription_contact_ids': [(3, mail_list.id)],
+                    })
+            except Exception as e:
+                print(e)
             else:
                 _logger.warning('List not found')
 
@@ -134,6 +157,10 @@ class ImportMailingList(models.TransientModel):
         failed_imports = []
         contacts = []
         active_mails = set()
+        adkd_mail_list = False
+        self.is_adkd_campaign = True
+        if self.is_adkd_campaign:
+            adkd_mail_list = self.get_campaign()
         if self.filename.lower().endswith(('.csv', '.txt')):
             # Decode data to string, Odoo supplies it as base64
             csv_data = base64.b64decode(self.file)
@@ -172,7 +199,7 @@ class ImportMailingList(models.TransientModel):
                         )
 
             mailing_lists = self.get_mailing_list(active_mails)
-            self.insert_mail_contacts_to_mailing_lists(mailing_lists, contacts)
+            self.insert_mail_contacts_to_mailing_lists(mailing_lists, contacts, adkd_mail_list)
 
         elif self.filename.lower().endswith(('.xls', '.xlsx')):
             data = base64.decodestring(self.file)
@@ -201,7 +228,7 @@ class ImportMailingList(models.TransientModel):
                         })
                     )
             mailing_lists = self.get_mailing_list(active_mails)
-            self.insert_mail_contacts_to_mailing_lists(mailing_lists, contacts)
+            self.insert_mail_contacts_to_mailing_lists(mailing_lists, contacts, adkd_mail_list)
         else:
             raise UserError(
                 _('Unknown file ending: {}').format(self.filename)
