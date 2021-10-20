@@ -21,6 +21,7 @@ class ImportMailingList(models.TransientModel):
     nr_failed_rows = fields.Integer(string='Failed rows')
     import_failed_mail_ids = fields.One2many(comodel_name='import.failed.mail', inverse_name='import_id')
     is_imported = fields.Boolean()
+    is_adkd_campaign = fields.Boolean(string=_('ADKd Campaign'))
     file = fields.Binary(string='File')
     filename = fields.Char(string='File name')
     dwnld_csv_filename = fields.Char("CSV File name")
