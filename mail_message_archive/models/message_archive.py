@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Odoo ,  Open Source Management Solution, third party addon
+#    Odoo SA,  Open Source Management Solution, third party addon
 #    Copyright (C) 2021 Vertel AB (<https://vertel.se>).
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 #    along with this program.  If not,  see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from odoo import models,  fields,  api,  _
+
+from odoo import models, fields, api, _
 from datetime import timedelta
 #from random import choice
 #from odoo.tools.safe_eval import safe_eval
@@ -32,9 +33,10 @@ import pytz
 import logging
 _logger = logging.getLogger(__name__)
 
-class message_archive(models.Model):
+class MessageArchive(models.Model):
     _name = 'mail.message'
+    _description = 'Mail Message'
 
-    message_archive = fields.Boolean(string='Make archive of this note.', help='Archive notes.')
+    active = fields.Boolean(string='Active')
     
     

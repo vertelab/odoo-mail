@@ -28,11 +28,10 @@
     'description': """Extend mail.message with an "active"-attribute""",
     'author': 'Vertel AB',
     'website': 'https://vertel.se',
-    'depends': [
-        #'mail',
-    ],
+    'depends': ['mail'],
     'data': [
         #'mail_templates.xml',
+        'views/active.xml',
     ],
     'qweb': [
         #'static/src/xml/composer.xml',
