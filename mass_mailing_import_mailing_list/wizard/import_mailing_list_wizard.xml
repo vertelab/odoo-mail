@@ -9,6 +9,8 @@
                     <group>
                         <field name="filename" invisible="1"/>
                         <field name="file" filename="filename"/>
+                        <br/>
+                        <field name="import_type" required="1"/>
                     </group>
                     <br/><br/>
                     <br/>

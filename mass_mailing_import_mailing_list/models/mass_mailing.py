@@ -31,6 +31,10 @@ class MailMassMailing(models.Model):
         mail_list = self.env['mail.mass_mailing.list']
         if len(list_ids) == 1:
             mail_list = mail_list.search([('id', '=', list_ids[0])])
-        if mail_list and mail_list.parent_id and mail_list.parent_id.is_adkd_campaign:
+        if (
+                mail_list and
+                mail_list.parent_id and
+                mail_list.parent_id.is_adkd_campaign
+        ):
             list_ids[0] = mail_list.parent_id.id
         return super().update_opt_out(email, list_ids, value)
