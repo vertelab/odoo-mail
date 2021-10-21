@@ -4,11 +4,14 @@
 {
     "name": "Mail Browser View",
     "summary": "Add 'View this email in browser' feature",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.0.1",
     "category": "Social Network",
     "website": "https://github.com/OCA/social",
     "author": "Camptocamp, Odoo Community Association (OCA)",
     "license": "AGPL-3",
+    "description": """
+        12.0.1.0.1  Fixed bug, wrong html code \n
+    """,
     "application": False,
     "installable": True,
     "depends": [

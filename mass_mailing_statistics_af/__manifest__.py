@@ -1,10 +1,11 @@
 {
     "name": "Mass mailing statistics AF",
     "summary": "This module will show number for Email tracking events in Mass Mailing.",
-    "version": "12.0.0.0.1",
+    "version": "12.0.1.0.0",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.1 AFC-2100  Added numbers for email tracking events in Mass mailing kanban and form view.\n
+	 v12.1.0.0 AFC-2867  Added fields in mass mailing list view.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",

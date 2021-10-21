@@ -1,7 +1,7 @@
 {
     "name": "AF Mass Mailing Template",
     "summary": "Adds a Mass Mailing Template Design",
-    "version": "12.0.1.1.8",
+    "version": "12.0.1.2.0",
     "category": "Email Marketing",
     "description": """
     v12.0.0.1 AFC-86  Add Mass mailing template for AF newsletters.\n
@@ -13,6 +13,7 @@
     v12.0.1.1.6 AFC-1725 Added dynamic links and updated some styles on sample templates.\n
     v12.0.1.1.7 Fixed typos in templates.\n
     v12.0.1.1.8 AFC-2725 Changed some style in both templates.\n
+    v12.0.1.2.0 AFC-2826 Disabled resizing snippets in editor.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Swedish Public Employement Service",
@@ -23,6 +24,7 @@
     ],
     'data': [
         "data/mail_template.xml",
+        "views/assets.xml",
     ],
     'installable': True,
 }
