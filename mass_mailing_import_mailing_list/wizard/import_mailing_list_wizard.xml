@@ -17,17 +17,13 @@
                     <field name="is_imported" invisible="1"/>
                     <group class="oe_left"  attrs="{'invisible': [('is_imported', '=', True)]}">
                         <h2>Import file with following format:</h2>
-                        <field name="dwnld_xls_filename" invisible="1"/>
-                        <field name="dwnld_xls_file" filename="dwnld_xls_filename" readonly="1"/>
-                        <button name="download_xls_file" string="Download Sample Excel Format" type="object" class="oe_highlight"/>
+                        <field name="example_filename" invisible="1"/>
+                        <field name="example_file" filename="example_filename" readonly="1"/>
+                        <button name="download_file" string="Download Sample Excel Format" type="object" class="oe_highlight" context="{'file_type': 'xlsx'}"/>
                         <br/>
-                        <field name="dwnld_csv_filename" invisible="1"/>
-                        <field name="dwnld_csv_file" filename="dwnld_csv_filename" readonly="1"/>
-                        <button name="download_csv_file" string="Download Sample CSV Format" type="object" class="oe_highlight"/>
+                        <button name="download_file" string="Download Sample CSV Format" type="object" class="oe_highlight" context="{'file_type': 'csv'}"/>
                         <br/>
-                        <field name="dwnld_txt_filename" invisible="1"/>
-                        <field name="dwnld_txt_file" filename="dwnld_txt_filename" readonly="1"/>
-                        <button name="download_txt_file" string="Download Sample Text Format" type="object" class="oe_highlight"/>
+                        <button name="download_file" string="Download Sample Text Format" type="object" class="oe_highlight" context="{'file_type': 'txt'}"/>
                     </group>
                     <div attrs="{'invisible': [('is_imported', '=', False)]}">
                         <div>

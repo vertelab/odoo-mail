@@ -38,12 +38,8 @@ class ImportMailingList(models.TransientModel):
     )
     file = fields.Binary(string='File')
     filename = fields.Char(string='File name')
-    dwnld_csv_filename = fields.Char("CSV File name")
-    dwnld_xls_filename = fields.Char("XLS File name")
-    dwnld_txt_filename = fields.Char("TXT File name")
-    dwnld_csv_file = fields.Binary("CSV File")
-    dwnld_xls_file = fields.Binary("XLS File")
-    dwnld_txt_file = fields.Binary("TXT File")
+    example_filename = fields.Char("File name")
+    example_file = fields.Binary("File")
 
 
     @staticmethod
@@ -64,7 +60,7 @@ class ImportMailingList(models.TransientModel):
                             '\n'.join(correct_header))
         return header
 
-    def get_contact(self, sokande_id, partner_obj, contact_obj, email):
+    def _get_contact(self, sokande_id, partner_obj, contact_obj, email):
         """Create mass_mailing_contact and tie it to res_partner"""
         # Need to do sudo here if res_partner.is_jobseeker is True
         partner = partner_obj.sudo().search(
@@ -73,10 +69,9 @@ class ImportMailingList(models.TransientModel):
         if not partner:
             return
         # Check for blacklist
-        in_mail_unsubscription = self.env['mail.unsubscription'].search(
-            [('email', '=', partner.email)]
-        )
-        if in_mail_unsubscription:
+        if self.env['mail.unsubscription'].search(
+                [('email', '=', partner.email)]
+        ):
             return
         contact = contact_obj.search([('partner_id', '=', partner.id)])
         if contact:
@@ -101,7 +96,8 @@ class ImportMailingList(models.TransientModel):
                  })
         elif len(mailing_list) > 1:
             raise UserError(
-                _('There can only be one ADKd Campaign mailing list')
+                _('There already exist a ADKd Campaign mailing list '
+                  f'"{mailing_list.name}". There can be only one at a time.')
             )
         return mailing_list
 
@@ -120,8 +116,10 @@ class ImportMailingList(models.TransientModel):
                     'is_public': True,
                     'adkd_mail_name': mail,
                 })
-            ml.parent_id = self.get_campaign() \
-                if self.import_type == 'adkd' else ''
+            if self.import_type == 'adkd':
+                ml.parent_id = self.get_campaign()
+            else:
+                ml.parent_id = ''
             mailing_list_ids.append(ml.id)
         return mailing_list_ids
 
@@ -163,104 +161,20 @@ class ImportMailingList(models.TransientModel):
 
     def import_data(self):
         """Parse and import a file."""
-        if not self.file or not \
-                self.filename.lower().endswith(
-                    ('.xls', '.xlsx', '.csv', 'txt')):
+        if self.filename.lower().endswith(('.csv', '.txt')):
+            try:
+                self.parse_csv_data()
+            except UnicodeDecodeError as e:
+                print(e)
+        elif self.filename.lower().endswith(('.xls', '.xlsx')):
+            self.parse_xlsx_data()
+        else:
             raise UserError(
                 _("Please Select an .xls, .xlsx, "
                   ".txt or .csv file to Import.")
             )
-        partner_obj = self.env['res.partner']
-        contact_obj = self.env['mail.mass_mailing.contact']
-        failed_imports = []
-        contacts = []
-        active_mails = set()
-        if self.filename.lower().endswith(('.csv', '.txt')):
-            # Decode data to string, Odoo supplies it as base64
-            csv_data = base64.b64decode(self.file)
-            try:
-                data_file = io.StringIO(csv_data.decode("ISO-8859-1"))
-            except Exception as e:
-                raise UserError('Error %s' % e)
-            # Read CSV
-            headers, *data = csv.reader(data_file, delimiter=';')
-
-            # Verify Header, Force it lowercase and make a dict
-            headers = self.check_header(headers)
-            self.nr_total_rows = len(data)
-            for row in data:
-                try:
-                    active_mail = row[headers['activemail']]
-                    sokande_id = row[headers['sökande id']]
-                    email = row[headers['e-postadress']]
-                except IndexError:
-                    # Empty or malformed row.
-                    _logger.warning(f'Could not parse the row: {row}')
-                else:
-                    # Make list of tuples with (active_mail, contact_id)
-                    contact = self.get_contact(sokande_id,
-                                               partner_obj,
-                                               contact_obj,
-                                               email)
-                    if contact:
-                        contacts.append((active_mail.upper(), contact))
-                        # Add active_mail to set to get number of letters
-                        active_mails.add(active_mail)
-                    else:
-                        failed_imports.append(
-                            self.env['import.failed.mail'].create({
-                                'sokande_id': sokande_id,
-                                'active_mail': active_mail,
-                            })
-                        )
-
-            mailing_lists = self.get_mailing_list(active_mails)
-            self.insert_mail_contacts_to_mailing_lists(mailing_lists,
-                                                       contacts)
-
-        elif self.filename.lower().endswith(('.xls', '.xlsx')):
-            data = base64.decodestring(self.file)
-            book = open_workbook(file_contents=data or b'')
-            sheet = book.sheet_by_index(0)
-
-            # Verify Header, Force it lowercase and make a dict
-            headers = self.check_header([cell.value for cell in sheet.row(0)])
-            self.nr_total_rows = sheet.nrows
-            for row_nr in range(1, sheet.nrows):
-                active_mail = sheet.cell_value(row_nr, headers['activemail'])
-                sokande_id = str(int(sheet.cell_value(row_nr,
-                                                      headers['sökande id'])))
-                email = sheet.cell_value(row_nr,
-                                         headers['e-postadress'])
-                # Add active_mail to set to get number of letters
-                active_mails.add(active_mail)
-                # Make list of tuples with (active_mail, contact_id)
-                contact = self.get_contact(sokande_id,
-                                           partner_obj,
-                                           contact_obj,
-                                           email)
-                if contact:
-                    contacts.append((active_mail.upper(), contact))
-                else:
-                    failed_imports.append(
-                        self.env['import.failed.mail'].create({
-                            'sokande_id': sokande_id,
-                            'active_mail': active_mail,
-                        })
-                    )
-            mailing_lists = self.get_mailing_list(active_mails)
-            self.insert_mail_contacts_to_mailing_lists(mailing_lists,
-                                                       contacts)
-        else:
-            raise UserError(
-                _('Unknown file ending: {}').format(self.filename)
-            )
-        self.nr_failed_rows = len(failed_imports)
+        self.nr_failed_rows = len(self.import_failed_mail_ids)
         self.nr_imported_rows = self.nr_total_rows - self.nr_failed_rows
-        self.import_failed_mail_ids = [(6,
-                                        0,
-                                        [f.id for f in failed_imports]
-                                        )]
         self.is_imported = True
         return {
             'name': _('Imported rows'),
@@ -273,63 +187,112 @@ class ImportMailingList(models.TransientModel):
             'target': 'new',
         }
 
+    def parse_csv_data(self):
+        # Decode data to string, Odoo supplies it as base64
+        csv_data = base64.b64decode(self.file)
+        try:
+            data_file = io.StringIO(csv_data.decode("ISO-8859-1"))
+        except UnicodeDecodeError as e:
+            raise UserError(f'Error {e}')
+        # Read CSV
+        headers, *data = csv.reader(data_file, delimiter=';')
 
+        # Verify Header, Force it lowercase and make a dict
+        headers = self.check_header(headers)
+        partner_obj = self.env['res.partner']
+        contact_obj = self.env['mail.mass_mailing.contact']
+        contacts = []
+        active_mails = set()
+        self.nr_total_rows = len(data)
+        for row in data:
+            try:
+                active_mail = row[headers['activemail']]
+                sokande_id = row[headers['sökande id']]
+                email = row[headers['e-postadress']]
+            except IndexError:
+                # Empty or malformed row.
+                _logger.warning(f'Could not parse the row: {row}')
+                raise UserError(_(f'Could not parse the row: {row}'))
+            else:
+                # Make list of tuples with (active_mail, contact_id)
+                contact = self._get_contact(sokande_id,
+                                            partner_obj,
+                                            contact_obj,
+                                            email)
+                if contact:
+                    contacts.append((active_mail.upper(), contact))
+                    # Add active_mail to set to get number of letters
+                    active_mails.add(active_mail)
+                else:
+                    failed_import_id = self.env['import.failed.mail'].create({
+                        'sokande_id': sokande_id,
+                        'active_mail': active_mail,
+                    }).id
+                    self.write({
+                        'import_failed_mail_ids': [(4, failed_import_id)]
+                    })
 
-    def download_xls_file(self):
-        xls_file_path = get_resource_path(
+        mailing_lists = self.get_mailing_list(active_mails)
+        self.insert_mail_contacts_to_mailing_lists(mailing_lists,
+                                                   contacts)
+
+    def parse_xlsx_data(self):
+        data = base64.decodestring(self.file)
+        book = open_workbook(file_contents=data or b'')
+        sheet = book.sheet_by_index(0)
+        partner_obj = self.env['res.partner']
+        contact_obj = self.env['mail.mass_mailing.contact']
+        contacts = []
+        active_mails = set()
+        # Verify Header, Force it lowercase and make a dict
+        headers = self.check_header([cell.value for cell in sheet.row(0)])
+        self.nr_total_rows = sheet.nrows
+        for row_nr in range(1, sheet.nrows):
+            active_mail = sheet.cell_value(row_nr, headers['activemail'])
+            sokande_id = str(int(sheet.cell_value(row_nr,
+                                                  headers['sökande id'])))
+            email = sheet.cell_value(row_nr,
+                                     headers['e-postadress'])
+            # Add active_mail to set to get number of letters
+            active_mails.add(active_mail)
+            # Make list of tuples with (active_mail, contact_id)
+            contact = self._get_contact(sokande_id,
+                                        partner_obj,
+                                        contact_obj,
+                                        email)
+            if contact:
+                contacts.append((active_mail.upper(), contact))
+            else:
+                failed_import_id = self.env['import.failed.mail'].create({
+                    'sokande_id': sokande_id,
+                    'active_mail': active_mail,
+                }).id
+                self.write({
+                    'import_failed_mail_ids': [(4, failed_import_id)]
+                })
+        mailing_lists = self.get_mailing_list(active_mails)
+        self.insert_mail_contacts_to_mailing_lists(mailing_lists,
+                                                   contacts)
+
+    def download_file(self):
+        # Get file type from context
+        file_type = self._context.get('file_type')
+        if file_type == 'csv':
+            file_extension = '.csv'
+        elif file_type == 'txt':
+            file_extension = '.txt'
+        elif file_type == 'xlsx':
+            file_extension = '.xlsx'
+        file_path = get_resource_path(
             'mass_mailing_import_mailing_list',
             'static/file',
-            'example_file.xlsx')
-        xls_file = False
-        with open(xls_file_path, 'rb') as file_date:
-            xls_file = base64.b64encode(file_date.read())
-        if xls_file:
-            self.dwnld_xls_filename = 'example_file.xlsx'
-            self.dwnld_xls_file = xls_file
-        return {
-            'name': 'Import',
-            'view_type': 'form',
-            'view_mode': 'form',
-            'view_id': False,
-            'res_model': 'import.mailing.list',
-            'type': 'ir.actions.act_window',
-            'target': 'new',
-            'res_id': self.id,
-        }
-
-    def download_csv_file(self):
-        csv_file_path = get_resource_path(
-            'mass_mailing_import_mailing_list',
-            'static/file',
-            'example_file.csv')
-        csv_file = False
-        with open(csv_file_path, 'rb') as file_date:
-            csv_file = base64.b64encode(file_date.read())
-        if csv_file:
-            self.dwnld_csv_filename = 'example_file.csv'
-            self.dwnld_csv_file = csv_file
-        return {
-            'name': 'Import',
-            'view_type': 'form',
-            'view_mode': 'form',
-            'view_id': False,
-            'res_model': 'import.mailing.list',
-            'type': 'ir.actions.act_window',
-            'target': 'new',
-            'res_id': self.id,
-        }
-
-    def download_txt_file(self):
-        txt_file_path = get_resource_path(
-            'mass_mailing_import_mailing_list',
-            'static/file',
-            'example_file.txt')
-        txt_file = False
-        with open(txt_file_path, 'rb') as file_date:
-            txt_file = base64.b64encode(file_date.read())
-        if txt_file:
-            self.dwnld_txt_filename = 'example_file.txt'
-            self.dwnld_txt_file = txt_file
+            f'example_file{file_extension}')
+        file = False
+        with open(file_path, 'rb') as file_date:
+            file = base64.b64encode(file_date.read())
+        if file:
+            self.example_filename = f'example_file{file_extension}'
+            self.example_file = file
         return {
             'name': 'Import',
             'view_type': 'form',
