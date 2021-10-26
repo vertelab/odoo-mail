@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing Matomo statistics AF",
     "summary": "This module will add snippet in Mass Mailing mail body to add Matomo image for email tracking.",
-    "version": "12.0.0.0.1",
+    "version": "12.0.0.0.2",
     "category": "Email Marketing",
     "description": """
     After installation of this module, Go to Setting >> Technical >> Parameter >> System Parameter. \n
@@ -10,6 +10,7 @@
     2. Search key 'mass_mailing_matomo_statistics.website_id' for Website ID. Update value with Matomo website ID.  \n\n
     
 	 v12.0.0.1 AFC-2100c  Added snippet in Mass Mailing mail body to add Matomo image for email tracking.\n
+	 v12.0.0.2 AFC-2984  Show opt_out field in the list view.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
