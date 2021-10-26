@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mail_unsubscription,Newsletter manual users can create unsubscritopns,mass_mailing_custom_unsubscribe.model_mail_unsubscription,af_security.af_newsletter_manual,1,1,1,1
