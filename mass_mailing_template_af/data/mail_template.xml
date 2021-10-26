@@ -360,8 +360,8 @@
                             <table anpbgcolor="#picker,transparent,#e6005c" class="o_mail_table_styles"
                                    width="600"
                                    cellspacing="0" cellpadding="0" border="0"
-                                   style="background-color:#00005a;" align="center">
-                                <tbody>
+                                   align="center">
+                                <tbody style="background-color:#00005a;" >
                                     <tr valign="middle">
                                         <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle;"
                                             class="footer-text" height="26" align="Center">
@@ -667,8 +667,8 @@
                 </table>
                 <table anpbgcolor="#picker,transparent,#e6005c" class="rsd" width="600" cellspacing="0"
                        cellpadding="0"
-                       border="0" style="background-color:#00005a;" align="center">
-                    <tbody>
+                       border="0" align="center">
+                    <tbody style="background-color: #00005a;">
                         <tr valign="middle">
                             <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle;"
                                 class="footer-text" height="26" align="Center">
