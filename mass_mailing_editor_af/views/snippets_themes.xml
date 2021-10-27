@@ -5,6 +5,15 @@
     <template id="s_mail_block_pre_header_af" name="Af Pre Header - Gör smarta val till höstens utbildningar">
         <div style="background-color:#f7f7f7;padding:0;margin:0;-webkit-text-size-adjust:none;width:100%;
         background-color:#f7f7f7;" class="body-div">
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f7f7f7" align="center">
                 <tbody>
                     <tr>
@@ -56,11 +65,29 @@
                     </tr>
                 </tbody>
             </table>
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </template>
 
     <template id="s_mail_block_header_af_with_view_in_browser"
               name="Af Pre Header - Välj bland flera sätt att nå dina mål, Visa i webbläsaren">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles"
                style="background-color: #F1F1F1;">
             <tbody>
@@ -84,10 +111,28 @@
                 </tr>
             </tbody>
         </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <template id="s_mail_block_header_2_af_with_view_in_browser"
               name="Af Pre Header - Gör vårt intressanta test!, Visa i webbläsaren">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles"
                style="background-color: #F1F1F1;">
             <tbody>
@@ -111,6 +156,15 @@
                 </tr>
             </tbody>
         </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
 
@@ -118,6 +172,15 @@
     <template id="s_mail_block_header_af" name="Af Header Blue">
         <div style="background-color:#05055d">
             <div>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
                        border="0" bgcolor="#05055d" align="center" style="background-color:#05055d">
                     <tbody>
@@ -204,12 +267,30 @@
                         </tr>
                     </tbody>
                 </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </template>
 
     <!-- AF White header snippet -->
     <template id="s_mail_block_white_header_top_af" name="Af Header White">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table anpbgcolor="#picker,transparent,#e6005c" class="rsd" width="600"
                cellspacing="0"
                cellpadding="0" border="0" bgcolor="#e6005c" align="center">
@@ -238,11 +319,29 @@
                 </tr>
             </tbody>
         </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <!-- Af Full With Image Snippet -->
     <template id="s_mail_block_full_width_image_af" name="Af Full Width Image">
         <div>
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table anpbgcolor="#picker,transparent,#ffffff" class="rsd" width="600" cellspacing="0" cellpadding="0"
                    border="0" bgcolor="#ffffff" align="center" style="background-color:#ffffff">
                 <tbody>
@@ -260,12 +359,30 @@
                     </tr>
                 </tbody>
             </table>
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </template>
 
     <!-- Af Blue Header Text Block Snippet -->
     <template id="s_mail_block_blue_header_text_block_af" name="Af Blue Header Text Block">
         <div style="background-color:#05055d">
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table anpbgcolor="#picker,transparent,#ffffff,#05055d" class="rsd" width="600"
                    style="background-color:#05055d"
                    cellspacing="0" cellpadding="0" border="0" bgcolor="#05055d" align="center">
@@ -307,12 +424,30 @@
                     </tr>
                 </tbody>
             </table>
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </template>
 
     <!-- Af Blue Text Block with two Columns Snippet -->
     <template id="s_mail_block_blue_text_block_two_col_af" name="Af Blue Text Block With Two Columns">
         <div style="background-color:#05055d">
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
                    cellpadding="0" border="0" bgcolor="#ffffff" align="center">
                 <tbody>
@@ -441,12 +576,30 @@
                     </tr>
                 </tbody>
             </table>
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </template>
 
     <!-- Af White text box with two column snippet -->
     <template id="s_mail_block_image_text_af" name="Af White Text Block with Two Columns">
         <div>
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
                    cellpadding="0" border="0" bgcolor="#ffffff" align="center">
                 <tbody>
@@ -508,12 +661,30 @@
                     </tr>
                 </tbody>
             </table>
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </template>
 
     <!-- Af White text box with one column snippet -->
     <template id="s_mail_block_text_af" name="Af White Text with One Columns">
         <div>
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
                    cellpadding="0"
                    border="0" bgcolor="#ffffff" align="center">
@@ -587,12 +758,30 @@
                     </tr>
                 </tbody>
             </table>
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </template>
 
     <!-- Af Blue Page footer snippet -->
     <template id="s_mail_block_blue_page_footer_af" name="Af Blue Page Footer">
         <div style="background-color:#05055d">
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
                    style="background-color:#05055d"
                    border="0" bgcolor="#05055d" align="center">
@@ -615,11 +804,29 @@
                     </tr>
                 </tbody>
             </table>
+            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                   cellpadding="0" border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td style="line-height:1px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </template>
 
     <!-- Af White Page Footer Snippet-->
     <template id="s_mail_block_white_page_footer_af" name="Af White Page Footer">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
                style="background-color:#f7f7f7" border="0" bgcolor="#f7f7f7" align="center">
             <tbody>
@@ -641,10 +848,28 @@
                 </tr>
             </tbody>
         </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <!-- AF White Text Box Content -->
     <template id="s_mail_block_white_text_box_content" name="Af White Text Box Content">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
                cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff"
                align="center">
@@ -692,10 +917,28 @@
                 </tr>
             </tbody>
         </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <!-- AF Blue Small Header -->
     <template id="s_mail_block_blue_small_footer" name="Af Blue Small Footer">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table anpbgcolor="#picker,transparent,#e6005c" class="o_mail_table_styles"
                width="600"
                cellspacing="0" cellpadding="0" border="0"
@@ -730,10 +973,28 @@
                 </tr>
             </tbody>
         </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <!-- AF White Small Footer -->
     <template id="s_mail_block_white_small_footer" name="Af White Small Footer">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table anpbgcolor="#picker,transparent,#e6005c" class="rsd"
                width="600"
                cellspacing="0" cellpadding="0" border="0"
@@ -773,10 +1034,28 @@
                 </tr>
             </tbody>
         </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <!-- AF White Text Box Two columns -->
     <template id="s_mail_block_white_text_two_col" name="Af White Text Box Two Columns">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
                cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
             <tbody>
@@ -865,10 +1144,28 @@
                 </tr>
             </tbody>
         </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <!-- AF button Snippets -->
     <template id="s_mail_block_to_the_guide" name="Af Button - Till guiden!">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
                cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
             <tbody>
@@ -899,9 +1196,27 @@
                 </tr>
             </tbody>
         </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <template id="s_mail_block_to_the_tips" name="Af Button - Till tipsen!">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table anpbgcolor="#picker,transparent,#ffffff" class="rsd" width="600" cellspacing="0"
                cellpadding="0" border="0" bgcolor="#ffffff" align="center">
             <tbody>
@@ -929,6 +1244,15 @@
                             </tbody>
                         </table>
                     </th>
+                </tr>
+            </tbody>
+        </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
                 </tr>
             </tbody>
         </table>

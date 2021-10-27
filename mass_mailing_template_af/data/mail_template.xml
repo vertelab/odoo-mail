@@ -118,6 +118,15 @@
     <template id="sample_mail_template_2" name="Sample Template 2">
         <div class="o_mail_block_title_text">
             <div class="o_mail_snippet_general">
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles"
                        style="background-color: #F1F1F1;">
                     <tbody>
@@ -139,11 +148,20 @@
                         </tr>
                     </tbody>
                 </table>
-                <table anpbgcolor="#picker,transparent,#e6005c" class="o_mail_table_styles" width="600" cellspacing="0"
-                       cellpadding="0" border="0" bgcolor="#e6005c" align="center">
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
                     <tbody>
                         <tr>
-                            <td style="padding:0 0 20px; line-height:1px;" bgcolor="#ffffff">
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
                             </td>
                         </tr>
                     </tbody>
@@ -166,11 +184,20 @@
                         </tr>
                     </tbody>
                 </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table anpbgcolor="#picker,transparent,#e6005c" class="o_mail_table_styles" width="600" cellspacing="0"
                        cellpadding="0" border="0" bgcolor="#e6005c" align="center">
                     <tbody>
                         <tr>
-                            <td style="padding:0 0 20px; line-height:1px;" bgcolor="#ffffff">
+                            <td style="line-height:1px;" bgcolor="#ffffff">
                             </td>
                         </tr>
                     </tbody>
@@ -222,6 +249,24 @@
                         </tr>
                     </tbody>
                 </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
                        cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
                     <tbody>
@@ -252,6 +297,24 @@
                         </tr>
                     </tbody>
                 </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
                        cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
                     <tbody>
@@ -266,6 +329,24 @@
                                          border="" align="middle"/>
                                 </div>
                             </th>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -313,7 +394,6 @@
                                                        target="_blank"/>
                                                 </div>
                                             </th>
-                                            <th class="nomob" width="20" valign="top"/>
                                             <th class="db" style="font-weight:normal;" width="270"
                                                 valign="top" align="left">
                                                 <div style="font: 16px Arial, Verdana, sans-serif; font-weight:bold; color:#000000; text-decoration:none;"
@@ -355,15 +435,32 @@
                                 </table>
                             </th>
                         </tr>
-
+                        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                               cellpadding="0" border="0" align="center">
+                            <tbody>
+                                <tr>
+                                    <td style="line-height:1px;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                               cellpadding="0" border="0" align="center">
+                            <tbody>
+                                <tr>
+                                    <td style="line-height:1px;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <tr>
-                            <table anpbgcolor="#picker,transparent,#e6005c" class="o_mail_table_styles"
+                            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles"
                                    width="600"
                                    cellspacing="0" cellpadding="0" border="0"
                                    align="center">
-                                <tbody style="background-color:#00005a;" >
+                                <tbody style="background-color: #00005a;">
                                     <tr valign="middle">
-                                        <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle;"
+                                        <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle; background-color: #00005a;"
                                             class="footer-text" height="26" align="Center">
                                             <font style="color:rgb(255, 255, 255);">
                                                 <a href="" name=""
@@ -388,6 +485,24 @@
                                                    data-original-color="" target="_blank"/>
                                             </font>
                                         </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                                   cellpadding="0" border="0" align="center">
+                                <tbody>
+                                    <tr>
+                                        <td style="line-height:1px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                                   cellpadding="0" border="0" align="center">
+                                <tbody>
+                                    <tr>
+                                        <td style="line-height:1px;">
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -418,6 +533,15 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                                   cellpadding="0" border="0" align="center">
+                                <tbody>
+                                    <tr>
+                                        <td style="line-height:1px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </tr>
                     </tbody>
                 </table>
@@ -428,6 +552,15 @@
     <template id="sample_mail_template_3" name="Sample Template 2">
         <div class="o_mail_block_title_text">
             <div class="o_mail_snippet_general">
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles"
                        style="background-color: #F1F1F1;">
                     <tbody>
@@ -449,11 +582,29 @@
                         </tr>
                     </tbody>
                 </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table anpbgcolor="#picker,transparent,#e6005c" class="o_mail_table_styles" width="600" cellspacing="0"
                        cellpadding="0" border="0" bgcolor="#e6005c" align="center">
                     <tbody>
                         <tr>
-                            <td style="padding:0 0 20px; line-height:1px;" bgcolor="#ffffff">
+                            <td style="line-height:1px;" bgcolor="#ffffff">
                             </td>
                         </tr>
                     </tbody>
@@ -476,11 +627,20 @@
                         </tr>
                     </tbody>
                 </table>
-                <table anpbgcolor="#picker,transparent,#e6005c" class="rsd" width="600" cellspacing="0"
-                       cellpadding="0" border="0" bgcolor="#e6005c" align="center">
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
                     <tbody>
                         <tr>
-                            <td style="padding:0 0 20px; line-height:1px;" bgcolor="#ffffff">
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
                             </td>
                         </tr>
                     </tbody>
@@ -527,8 +687,25 @@
                                         </span>
                                     </span>
                                 </div>
-
                             </th>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -562,6 +739,24 @@
                         </tr>
                     </tbody>
                 </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table anpbgcolor="#picker,transparent,#ffffff" class="rsd" width="600" cellspacing="0"
                        cellpadding="0" border="0" bgcolor="#ffffff" align="center">
                     <tbody>
@@ -576,6 +771,24 @@
                                          border="" align="middle"/>
                                 </div>
                             </th>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -623,7 +836,6 @@
                                                        target="_blank"/>
                                                 </div>
                                             </th>
-                                            <th class="nomob" width="20" valign="top"/>
                                             <th class="db" style="font-weight:normal;" width="270"
                                                 valign="top" align="left">
                                                 <div style="font: 16px Arial, Verdana, sans-serif; font-weight:bold; color:#000000; text-decoration:none;"
@@ -665,12 +877,30 @@
                         </tr>
                     </tbody>
                 </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <table anpbgcolor="#picker,transparent,#e6005c" class="rsd" width="600" cellspacing="0"
                        cellpadding="0"
                        border="0" align="center">
                     <tbody style="background-color: #00005a;">
                         <tr valign="middle">
-                            <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle;"
+                            <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle; background-color: #00005a;"
                                 class="footer-text" height="26" align="Center">
                                 <font style="color:rgb(255, 255, 255);">
                                     <a href="" name=""
@@ -692,6 +922,24 @@
                                        target="_blank"/>
                                 </font>
                             </th>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -721,6 +969,15 @@
                                     </tbody>
                                 </table>
                             </th>
+                        </tr>
+                    </tbody>
+                </table>
+                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+                       cellpadding="0" border="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td style="line-height:1px;">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
