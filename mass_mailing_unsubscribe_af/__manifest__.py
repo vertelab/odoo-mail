@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.2.4",
+    "version": "12.0.1.3.0",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -17,6 +17,8 @@
      v12.0.1.2.2 AFC-2802 Small bugfix in import.\n
      v12.0.1.2.3 AFC-2851 Added proper date handling for opt out date in xls files.\n
      v12.0.1.2.4 AFC-2820 Add translation to menu items.\n
+     v12.0.1.2.5 AFC-2912 Add security for mail.unsubscribe model.\n
+     v12.0.1.3.0 AFC-2890 Add email to blacklist also.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
@@ -27,6 +29,7 @@
     ],
     "external_dependencies": {"python": ['pytz', 'xlrd']},
     "data": [
+        'security/ir.model.access.csv',
         'data/mail_unsubscription_reason.xml',
         'views/unsubsribe_views.xml',
         'views/assets.xml',
