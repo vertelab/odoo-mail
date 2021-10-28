@@ -10,3 +10,4 @@ class MassMailingContact(models.Model):
     def opt_out_all(self, name):
         for mass_mail in self.subscription_list_ids:
             mass_mail.opt_out = True
+            
