@@ -1,3 +1,4 @@
+
 {
     "name": "AF Mass Mailing Sender Logs",
     "summary": "This module adds logger in Email Marketing >> Mailing.",
