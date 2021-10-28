@@ -170,114 +170,111 @@
 
     <!-- Af Header Snippet -->
     <template id="s_mail_block_header_af" name="Af Header Blue">
-        <div style="background-color:#05055d">
-            <div>
-                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                       cellpadding="0" border="0" align="center">
-                    <tbody>
-                        <tr>
-                            <td style="line-height:1px;">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
-                       border="0" bgcolor="#05055d" align="center" style="background-color:#05055d">
-                    <tbody>
-                        <tr>
-                            <th style="padding:20px 20px 20px; font-weight:normal;" class="p_b">
-                                <table width="100%" cellspacing="0" cellpadding="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <th class="db p_b" style="font-weight:normal;" width="250" valign="top"
-                                                align="left">
-                                                <div id="align-wrapper" style="text-align:center;">
-                                                    <a target="_blank"
-                                                       href="https://arbetsformedlingen.se/">
-                                                        <img src="/mass_mailing_editor_af/static/src/img/blocks/logo-vit.png"
-                                                             link="https://arbetsformedlingen.se/"
-                                                             style="display:block;" title="" alt="" width="200"
-                                                             border=""
-                                                             align="middle"/>
-                                                    </a>
-                                                </div>
-                                            </th>
-                                            <th class="nomob" width="20" valign="top"/>
-                                            <th class="db" style="font-weight:normal;text-align:right" width="80"
-                                                valign="top" align="right">
-                                                <table class="rsd" cellspacing="0" cellpadding="0" border="0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th align="left">
-                                                                <table cellspacing="0" cellpadding="0" border="0">
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <th style="vertical-align: middle;"
-                                                                                valign="middle">
-                                                                                <table cellspacing="0" cellpadding="0"
-                                                                                       border="0" align="center">
-                                                                                    <tbody>
-                                                                                        <tr>
-                                                                                            <th style="vertical-align: middle; line-height:normal;"
-                                                                                                class="icons"
-                                                                                                valign="middle"
-                                                                                                height="14">
-                                                                                                <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-white.png"
-                                                                                                     width="6"/>
-                                                                                            </th>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </th>
-                                                                            <th width="5" height="10"/>
-                                                                            <th style="vertical-align: middle;"
-                                                                                valign="middle">
-                                                                                <table width="100%" cellspacing="0"
-                                                                                       cellpadding="0" border="0"
-                                                                                       align="center">
-                                                                                    <tbody>
-                                                                                        <tr>
-                                                                                            <th style="font-size:15px;font-family:Arial, Helvetica, sans-serif; color:#ffffff; text-decoration:none; vertical-align: middle;font-weight:normal"
-                                                                                                class="bodytext"
-                                                                                                valign="middle"
-                                                                                                align="center">
-                                                                                                <div style="font-size:0; line-height:0;"/>
-                                                                                                <a href="#"
-                                                                                                   style="color:#ffffff;text-decoration: none;"
-                                                                                                   class="view_in_browser_url">
-                                                                                                    Visa i webbläsaren
-                                                                                                </a>
-                                                                                            </th>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </th>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </th>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </th>
-                        </tr>
-                    </tbody>
-                </table>
-                <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                       cellpadding="0" border="0" align="center">
-                    <tbody>
-                        <tr>
-                            <td style="line-height:1px;">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
+               border="0" bgcolor="#05055d" align="center">
+            <tbody>
+                <tr>
+                    <th style="padding:20px 20px 20px; font-weight:normal; background-color:#05055d;"
+                        class="p_b">
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <th class="db p_b" style="font-weight:normal;" width="250" valign="top"
+                                        align="left">
+                                        <div id="align-wrapper" style="text-align:center;">
+                                            <a target="_blank"
+                                               href="https://arbetsformedlingen.se/">
+                                                <img src="/mass_mailing_editor_af/static/src/img/blocks/logo-vit.png"
+                                                     link="https://arbetsformedlingen.se/"
+                                                     style="display:block;" title="" alt="" width="200"
+                                                     border=""
+                                                     align="middle"/>
+                                            </a>
+                                        </div>
+                                    </th>
+                                    <th class="nomob" width="20" valign="top"/>
+                                    <th class="db" style="font-weight:normal;text-align:right" width="80"
+                                        valign="top" align="right">
+                                        <table class="rsd" cellspacing="0" cellpadding="0" border="0">
+                                            <tbody>
+                                                <tr>
+                                                    <th align="left">
+                                                        <table cellspacing="0" cellpadding="0" border="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th style="vertical-align: middle;"
+                                                                        valign="middle">
+                                                                        <table cellspacing="0" cellpadding="0"
+                                                                               border="0" align="center">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th style="vertical-align: middle; line-height:normal;"
+                                                                                        class="icons"
+                                                                                        valign="middle"
+                                                                                        height="14">
+                                                                                        <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-white.png"
+                                                                                             width="6"/>
+                                                                                    </th>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </th>
+                                                                    <th width="5" height="10"/>
+                                                                    <th style="vertical-align: middle;"
+                                                                        valign="middle">
+                                                                        <table width="100%" cellspacing="0"
+                                                                               cellpadding="0" border="0"
+                                                                               align="center">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th style="font-size:15px;font-family:Arial, Helvetica, sans-serif; color:#ffffff; text-decoration:none; vertical-align: middle;font-weight:normal"
+                                                                                        class="bodytext"
+                                                                                        valign="middle"
+                                                                                        align="center">
+                                                                                        <div style="font-size:0; line-height:0;"/>
+                                                                                        <a href="#"
+                                                                                           style="color:#ffffff;text-decoration: none;"
+                                                                                           class="view_in_browser_url">
+                                                                                            Visa i webbläsaren
+                                                                                        </a>
+                                                                                    </th>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </th>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <!-- AF White header snippet -->
@@ -291,12 +288,11 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#e6005c" class="rsd" width="600"
-               cellspacing="0"
-               cellpadding="0" border="0" bgcolor="#e6005c" align="center">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
             <tbody>
                 <tr>
-                    <td style="padding:20px 0 0 0; line-height:1px;" bgcolor="#ffffff">
+                    <td style="line-height:1px;">
                     </td>
                 </tr>
             </tbody>
@@ -373,219 +369,205 @@
 
     <!-- Af Blue Header Text Block Snippet -->
     <template id="s_mail_block_blue_header_text_block_af" name="Af Blue Header Text Block">
-        <div style="background-color:#05055d">
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
-                <tbody>
-                    <tr>
-                        <td style="line-height:1px;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table anpbgcolor="#picker,transparent,#ffffff,#05055d" class="rsd" width="600"
-                   style="background-color:#05055d"
-                   cellspacing="0" cellpadding="0" border="0" bgcolor="#05055d" align="center">
-                <tbody>
-                    <tr>
-                        <th style="padding:20px 20px;" class="p_lr p_b30" align="left">
-                            <div style="font-size:24px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table anpbgcolor="#picker,transparent,#ffffff,#05055d" class="rsd" width="600"
+               style="background-color:#05055d"
+               cellspacing="0" cellpadding="0" border="0" bgcolor="#05055d" align="center">
+            <tbody>
+                <tr>
+                    <th style="padding:20px 20px; background-color:#05055d;" class="p_lr p_b30" align="left">
+                        <div style="font-size:24px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;
                             font-weight:normal;padding-bottom:20px; border-width:0;"
-                                 class="headline">
-                                <span style="">Det är aldrig för sent att ställa om</span>
-                            </div>
-                            <table style="width:100%" cellspacing="0" cellpadding="0" border="0">
-                                <tbody>
-                                    <tr valign="top">
-                                        <th align="left">
-                                            <div align="left">
-                                                <table style="width:67px;" cellspacing="0" cellpadding="0"
-                                                       border="0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th anpbgcolor="#picker,transparent,#ffffff,#b7ee4a"
-                                                                style="width:67px; height:4px; line-height:1px; font-size:1px;background-color:#b7ee4a"
-                                                                bgcolor="#b7ee4a" align="left">
-                                                                <img src="/mass_mailing_editor_af/static/src/img/blocks/pixel.gif"
-                                                                     link=""
-                                                                     style="display:block; width:100%!important; height:4px;"
-                                                                     title="" alt="" width="1" height="4" border=""
-                                                                     align="middle"/>
-                                                            </th>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
-                <tbody>
-                    <tr>
-                        <td style="line-height:1px;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </template>
-
-    <!-- Af Blue Text Block with two Columns Snippet -->
-    <template id="s_mail_block_blue_text_block_two_col_af" name="Af Blue Text Block With Two Columns">
-        <div style="background-color:#05055d">
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
-                <tbody>
-                    <tr>
-                        <td style="line-height:1px;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
-                   cellpadding="0" border="0" bgcolor="#ffffff" align="center">
-                <tbody>
-                    <tr>
-                        <th style="padding:0 0 30px;" class="p_b">
-                            <table anpbgcolor="#picker,transparent,#ffffff,#05055d" class="rsd" width="600"
-                                   style="background-color:#05055d"
-                                   cellspacing="0" cellpadding="0" border="0" bgcolor="#05055d" align="center">
-                                <tbody>
-                                    <tr>
-                                        <th style="padding:0px 20px 60px;" class="p_lr p_b30" align="left">
-                                            <table style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+                             class="headline">
+                            <span style="">Det är aldrig för sent att ställa om</span>
+                        </div>
+                        <table style="width:100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr valign="top">
+                                    <th align="left">
+                                        <div align="left">
+                                            <table style="width:67px;" cellspacing="0" cellpadding="0"
+                                                   border="0">
                                                 <tbody>
                                                     <tr>
-                                                        <th style="width:270px; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;font-weight:normal"
-                                                            class="db" valign="top" align="left">
-                                                            <div class="bodytext">
-                                                                <span style="">Har du svårt att få jobb inom den bransch
-                                                                    där du har kompetens och erfarenhet? Då kan en
-                                                                    utbildning vara vägen till ett jobb.
-                                                                </span>
-                                                            </div>
-                                                        </th>
-                                                        <th style="width:20px; height:20px;" class="db">‌</th>
-                                                        <th style="width:270px; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;font-weight:normal"
-                                                            class="db" valign="top" align="left">
-                                                            <div style="padding:0 0 20px; border-width:0;"
-                                                                 class="bodytext">
-                                                                <span style="">– Att söka till högskolan kan vara en
-                                                                    bra väg om du fastnat. Det är aldrig för sent att
-                                                                    ställa om, det finns många fördelar att plugga när
-                                                                    man är lite äldre,
-                                                                    säger Arbetsförmedlingens jobbsökarexpert Charlotte
-                                                                    Lindman.
-                                                                    <br/>
-                                                                    <br/>
-                                                                </span>
-                                                            </div>
-                                                            <div align="left" style="background-color:#b7ee4a">
-                                                                <table cellspacing="0" cellpadding="0" border="0"
-                                                                       align="left">
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <th anpbgcolor="#picker,transparent,#ffffff,#b7ee4a"
-                                                                                style="padding:10px 30px; vertical-align:middle; border-radius: 25px;background-color:#b7ee4a"
-                                                                                valign="middle"
-                                                                                align="center">
-                                                                                <table cellspacing="0" cellpadding="0"
-                                                                                       border="0">
-                                                                                    <tbody>
-                                                                                        <tr>
-                                                                                            <th style="vertical-align: middle;"
-                                                                                                valign="middle">
-                                                                                                <table cellspacing="0"
-                                                                                                       cellpadding="0"
-                                                                                                       border="0">
-                                                                                                    <tbody>
-                                                                                                        <tr>
-                                                                                                            <th style="font-size:12px;font-family:Arial, Helvetica, sans-serif; text-decoration:none; vertical-align: middle; color: #00005a; font-weight: bold;"
-                                                                                                                class="bodytext"
-                                                                                                                valign="middle"
-                                                                                                                align="center">
-                                                                                                                <font style="color:rgb(0, 0, 90);">
-                                                                                                                    <a href="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb"
-                                                                                                                       name=""
-                                                                                                                       style="color:rgb(0, 0, 90); text-decoration:none;"
-                                                                                                                       data-original-color="">
-                                                                                                                        Läs
-                                                                                                                        mer
-                                                                                                                        om
-                                                                                                                        hur
-                                                                                                                        du
-                                                                                                                        kan
-                                                                                                                        tänka
-                                                                                                                    </a>
-                                                                                                                </font>
-                                                                                                            </th>
-                                                                                                        </tr>
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </th>
-                                                                                            <th width="10"
-                                                                                                height="10"/>
-                                                                                            <th style="vertical-align: middle;"
-                                                                                                valign="middle">
-                                                                                                <table cellspacing="0"
-                                                                                                       cellpadding="0"
-                                                                                                       border="0"
-                                                                                                       align="center">
-                                                                                                    <tbody>
-                                                                                                        <tr>
-                                                                                                            <th style="vertical-align: middle; line-height:normal;"
-                                                                                                                class="icons"
-                                                                                                                valign="middle"
-                                                                                                                height="12">
-                                                                                                                <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png"
-                                                                                                                     link=""
-                                                                                                                     style=""
-                                                                                                                     title=""
-                                                                                                                     alt=""
-                                                                                                                     width="6"
-                                                                                                                     border=""
-                                                                                                                     align=""/>
-                                                                                                            </th>
-                                                                                                        </tr>
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </th>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </th>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
+                                                        <th anpbgcolor="#picker,transparent,#ffffff,#b7ee4a"
+                                                            style="width:67px; height:4px; line-height:1px; font-size:1px;background-color:#b7ee4a"
+                                                            bgcolor="#b7ee4a" align="left">
+                                                            <img src="/mass_mailing_editor_af/static/src/img/blocks/pixel.gif"
+                                                                 link=""
+                                                                 style="display:block; width:100%!important; height:4px;"
+                                                                 title="" alt="" width="1" height="4" border=""
+                                                                 align="middle"/>
                                                         </th>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
-                <tbody>
-                    <tr>
-                        <td style="line-height:1px;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+    <!-- Af Blue Text Block with two Columns Snippet -->
+    <template id="s_mail_block_blue_text_block_two_col_af" name="Af Blue Text Block With Two Columns">
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
+               cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+            <tbody>
+                <tr>
+                    <th style="padding:0px 20px 60px; background-color:#05055d;" class="p_lr p_b30" align="left">
+                        <table style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <th style="width:270px; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;font-weight:normal"
+                                        class="db" valign="top" align="left">
+                                        <div class="bodytext">
+                                            <span style="">Har du svårt att få jobb inom den bransch
+                                                där du har kompetens och erfarenhet? Då kan en
+                                                utbildning vara vägen till ett jobb.
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th style="width:20px; height:20px;" class="db">‌</th>
+                                    <th style="width:270px; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;font-weight:normal"
+                                        class="db" valign="top" align="left">
+                                        <div style="padding:0 0 20px; border-width:0;"
+                                             class="bodytext">
+                                            <span style="">– Att söka till högskolan kan vara en
+                                                bra väg om du fastnat. Det är aldrig för sent att
+                                                ställa om, det finns många fördelar att plugga när
+                                                man är lite äldre,
+                                                säger Arbetsförmedlingens jobbsökarexpert Charlotte
+                                                Lindman.
+                                                <br/>
+                                                <br/>
+                                            </span>
+                                        </div>
+                                        <div align="left" style="background-color:#b7ee4a">
+                                            <table cellspacing="0" cellpadding="0" border="0"
+                                                   align="left">
+                                                <tbody>
+                                                    <tr>
+                                                        <th anpbgcolor="#picker,transparent,#ffffff,#b7ee4a"
+                                                            style="padding:10px 30px; vertical-align:middle; border-radius: 25px;background-color:#b7ee4a"
+                                                            valign="middle"
+                                                            align="center">
+                                                            <table cellspacing="0" cellpadding="0"
+                                                                   border="0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th style="vertical-align: middle;"
+                                                                            valign="middle">
+                                                                            <table cellspacing="0"
+                                                                                   cellpadding="0"
+                                                                                   border="0">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th style="font-size:12px;font-family:Arial, Helvetica, sans-serif; text-decoration:none; vertical-align: middle; color: #00005a; font-weight: bold;"
+                                                                                            class="bodytext"
+                                                                                            valign="middle"
+                                                                                            align="center">
+                                                                                            <font style="color:rgb(0, 0, 90);">
+                                                                                                <a href="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb"
+                                                                                                   name=""
+                                                                                                   style="color:rgb(0, 0, 90); text-decoration:none;"
+                                                                                                   data-original-color="">
+                                                                                                    Läs
+                                                                                                    mer
+                                                                                                    om
+                                                                                                    hur
+                                                                                                    du
+                                                                                                    kan
+                                                                                                    tänka
+                                                                                                </a>
+                                                                                            </font>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </th>
+                                                                        <th width="10"
+                                                                            height="10"/>
+                                                                        <th style="vertical-align: middle;"
+                                                                            valign="middle">
+                                                                            <table cellspacing="0"
+                                                                                   cellpadding="0"
+                                                                                   border="0"
+                                                                                   align="center">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th style="vertical-align: middle; line-height:normal;"
+                                                                                            class="icons"
+                                                                                            valign="middle"
+                                                                                            height="12">
+                                                                                            <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png"
+                                                                                                 link=""
+                                                                                                 style=""
+                                                                                                 title=""
+                                                                                                 alt=""
+                                                                                                 width="6"
+                                                                                                 border=""
+                                                                                                 align=""/>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </th>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <!-- Af White text box with two column snippet -->
@@ -772,48 +754,46 @@
 
     <!-- Af Blue Page footer snippet -->
     <template id="s_mail_block_blue_page_footer_af" name="Af Blue Page Footer">
-        <div style="background-color:#05055d">
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
-                <tbody>
-                    <tr>
-                        <td style="line-height:1px;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
-                   style="background-color:#05055d"
-                   border="0" bgcolor="#05055d" align="center">
-                <tbody>
-                    <tr>
-                        <th style="padding:20px 20px 40px; font-weight:normal; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;"
-                            align="left">
-                            <div class="bodytext">
-                                <span style="">Du får detta informationsbrev eftersom din epost,
-                                    email-recipient registrerats när du skapat ett konto hos
-                                    Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från
-                                    Arbetsförmedlingen kan du
-                                </span>
-                                <a href="/unsubscribe_from_list" name=""
-                                   style="color:rgb(255, 255, 255); font-weight:normal; text-decoration:underline;"
-                                   data-original-color="">avanmäla dig här.
-                                </a>
-                            </div>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
-                <tbody>
-                    <tr>
-                        <td style="line-height:1px;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
+               style="background-color:#05055d"
+               border="0" bgcolor="#05055d" align="center">
+            <tbody>
+                <tr>
+                    <th style="padding:20px 20px 40px; font-weight:normal; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;"
+                        align="left">
+                        <div class="bodytext">
+                            <span style="">Du får detta informationsbrev eftersom din epost,
+                                email-recipient registrerats när du skapat ett konto hos
+                                Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från
+                                Arbetsförmedlingen kan du
+                            </span>
+                            <a href="/unsubscribe_from_list" name=""
+                               style="color:rgb(255, 255, 255); font-weight:normal; text-decoration:underline;"
+                               data-original-color="">avanmäla dig här.
+                            </a>
+                        </div>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
+               cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td style="line-height:1px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </template>
 
     <!-- Af White Page Footer Snippet-->
@@ -828,10 +808,10 @@
             </tbody>
         </table>
         <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
-               style="background-color:#f7f7f7" border="0" bgcolor="#f7f7f7" align="center">
+               border="0" bgcolor="#f7f7f7" align="center">
             <tbody>
                 <tr>
-                    <th style="padding:20px 20px 40px; font-weight:normal; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#000000;"
+                    <th style="padding:20px 20px 40px; background-color:#f7f7f7; font-weight:normal; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#000000;"
                         align="left">
                         <div class="bodytext">
                             <span style="">Du får detta informationsbrev eftersom din epost,
@@ -942,10 +922,10 @@
         <table anpbgcolor="#picker,transparent,#e6005c" class="o_mail_table_styles"
                width="600"
                cellspacing="0" cellpadding="0" border="0"
-               style="background-color:#00005a;" align="center">
+               align="center">
             <tbody>
                 <tr valign="middle">
-                    <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle;"
+                    <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle; background-color: #00005a;"
                         class="footer-text" height="26" align="Center">
                         <font style="color:rgb(255, 255, 255);">
                             <a href="" name=""

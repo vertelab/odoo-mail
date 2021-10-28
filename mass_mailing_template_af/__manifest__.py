@@ -1,7 +1,7 @@
 {
     "name": "AF Mass Mailing Template",
     "summary": "Adds a Mass Mailing Template Design",
-    "version": "12.0.1.3.0",
+    "version": "12.0.1.3.1",
     "category": "Email Marketing",
     "description": """
     v12.0.0.1 AFC-86  Add Mass mailing template for AF newsletters.\n
@@ -16,6 +16,7 @@
     v12.0.1.2.0 AFC-2826 Disabled resizing snippets in editor.\n
     v12.0.1.2.1 AFC-2977 Changed style in templates, moved background color for mail client to render correctly.\n
     v12.0.1.3.0 AFC-2829 Added empty snippets above and below all snippets for moving vertically.\n
+    v12.0.1.3.1 AFC-2830 changed background color to skip inherit color when snippet moving.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Swedish Public Employement Service",
