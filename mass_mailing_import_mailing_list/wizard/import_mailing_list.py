@@ -30,11 +30,12 @@ class ImportMailingList(models.TransientModel):
     import_failed_mail_ids = fields.One2many(
                                     comodel_name='import.failed.mail',
                                     inverse_name='import_id')
+    list_name = fields.Char(string='Mailing list name')
     is_imported = fields.Boolean()
     import_type = fields.Selection(
         string="Import type",
         selection=[("adkd", "ADKd Campaign"),
-                   ("single_use", "Single-use mailing")],
+                   ("micro", "Micro campaigns")],
     )
     file = fields.Binary(string='File')
     filename = fields.Char(string='File name')
@@ -43,17 +44,21 @@ class ImportMailingList(models.TransientModel):
 
 
     @staticmethod
-    def check_header(header):
+    def check_header(header, import_type):
         """
         Verify that header has the required columns as well as create
          a dict with indexes.
          """
         # Verify Header, Force it lowercase
         header = {x.lower(): index for index, x in enumerate(header)}
-        correct_header = [
-            'activemail',
-            'sökande id'
-        ]
+        correct_header = []
+        if import_type == 'adkd':
+            correct_header = [
+                'activemail' or '',
+                'sökande id'
+            ]
+        elif import_type:
+            correct_header = ['sökande id']
         if not all(item in header for item in correct_header):
             raise UserError(_('Please correct Header in file!\n'
                               'Header has to contain:\n') +
@@ -84,21 +89,40 @@ class ImportMailingList(models.TransientModel):
         })
         return contact.id
 
-    def get_campaign(self):
-        mailing_list = self.env['mail.mass_mailing.list'].search(
-            [('is_adkd_campaign', '=', True)]
-        )
-        if not mailing_list:
-            mailing_list = mailing_list.create(
-                {
-                    'name': _('ADKd Campaign'),
-                    'is_adkd_campaign': True
-                 })
-        elif len(mailing_list) > 1:
-            raise UserError(
-                _('There already exist a ADKd Campaign mailing list '
-                  f'"{mailing_list.name}". There can be only one at a time.')
+    def get_campaign(self, campaign):
+        mailing_list = False
+        if campaign == 'adkd':
+            mailing_list = self.env['mail.mass_mailing.list'].search(
+                [('is_adkd_campaign', '=', True)]
             )
+            if not mailing_list:
+                mailing_list = mailing_list.create(
+                    {
+                        'name': _('ADKd Campaign'),
+                        'is_adkd_campaign': True,
+                        'list_type': 'ADKd',
+                     })
+            elif len(mailing_list) > 1:
+                raise UserError(
+                    _('There already exist a ADKd Campaign mailing list '
+                      f'"{mailing_list.name}". There can be only one at a time.')
+                )
+        elif campaign == 'micro':
+            mailing_list = self.env['mail.mass_mailing.list'].search(
+                [('list_type', '=', 'Micro Campaign')]
+            )
+            if not mailing_list:
+                mailing_list = mailing_list.create(
+                    {
+                        'name': _('Micro Campaign'),
+                        'is_adkd_campaign': False,
+                        'list_type': _('Micro Campaign'),
+                    })
+            elif len(mailing_list) > 1:
+                raise UserError(
+                    _('There already exist a Micro Campaign mailing list '
+                      f'"{mailing_list.name}". There can be only one at a time.')
+                )
         return mailing_list
 
     def get_mailing_list(self, active_mails):
@@ -106,22 +130,34 @@ class ImportMailingList(models.TransientModel):
         Return mailing lists ids based on a set of
         ids from imported file.
         """
-        mailing_list = self.env['mail.mass_mailing.list'].search([])
-        mailing_list_ids = []
-        for mail in active_mails:
-            ml = mailing_list.filtered(lambda l: l.adkd_mail_name == mail)
-            if not ml:
-                ml = mailing_list.create({
-                    'name': f'{mail} placeholder name',
+        campaign_id = self.get_campaign(self.import_type)
+        if self.import_type == 'adkd':
+            mailing_list = self.env['mail.mass_mailing.list'].search([])
+            mailing_list_ids = []
+            for mail in active_mails:
+                ml = mailing_list.filtered(lambda l: l.adkd_mail_name == mail)
+                if not ml:
+                    ml = mailing_list.create({
+                        'name': f'{mail} placeholder name',
+                        'is_public': True,
+                        'adkd_mail_name': mail,
+                        'list_type': 'ADKd'
+                    })
+                    ml.parent_id = campaign_id
+                mailing_list_ids.append(ml.id)
+            return mailing_list_ids
+        elif self.import_type == 'micro':
+            mailing_list = self.env['mail.mass_mailing.list'].search([('adkd_mail_name', '=', self.list_name)])
+            if not mailing_list:
+                mailing_list = mailing_list.create({
+                    'name': self.list_name,
                     'is_public': True,
-                    'adkd_mail_name': mail,
+                    'adkd_mail_name': self.list_name,
+                    'list_type': _('Micro Campaign'),
                 })
-            if self.import_type == 'adkd':
-                ml.parent_id = self.get_campaign()
-            else:
-                ml.parent_id = ''
-            mailing_list_ids.append(ml.id)
-        return mailing_list_ids
+                mailing_list.parent_id = campaign_id
+            return mailing_list.id
+
 
     def insert_mail_contacts_to_mailing_lists(self,
                                               mailing_lists_ids,
@@ -140,27 +176,33 @@ class ImportMailingList(models.TransientModel):
             })
         list_contact = self.env['mail.mass_mailing.list_contact_rel']
         for mail_name, contact_id in contacts:
-            mail_list = mailing_lists.filtered(
-                lambda l: l.adkd_mail_name.upper() == mail_name)
+            mail_list = False
+            if self.import_type == 'adkd':
+                mail_list = mailing_lists.filtered(
+                    lambda l: l.adkd_mail_name.upper() == mail_name)
+            elif self.import_type == 'micro':
+                mail_list = mailing_lists[0]
             if mail_list:
                 list_contact_id = list_contact.search(
                         [('contact_id', '=', contact_id),
-                         ('list_id', '=', mail_list.parent_id.id
-                         if self.import_type == 'adkd'
-                         else mail_list.id)]
+                         ('list_id', '=', mail_list.parent_id.id)]
                     )
                 if list_contact_id and list_contact_id.opt_out:
                     continue
                 mail_list.write({
                     'contact_ids': [(4, contact_id)],
                 })
-                if self.import_type == 'adkd':
-                    mail_list.parent_id.write({
-                        'contact_ids': [(4, contact_id)],
-                    })
+                # Write the same ids to parent campaign
+                mail_list.parent_id.write({
+                    'contact_ids': [(4, contact_id)],
+                })
 
     def import_data(self):
         """Parse and import a file."""
+        if not self.file:
+            raise UserError(_('You must upload a file to import'))
+        if self.import_type == 'micro' and not self.list_name:
+            raise UserError(_('You must specify a name for mailing list'))
         if self.filename.lower().endswith(('.csv', '.txt')):
             try:
                 self.parse_csv_data()
@@ -198,7 +240,7 @@ class ImportMailingList(models.TransientModel):
         headers, *data = csv.reader(data_file, delimiter=';')
 
         # Verify Header, Force it lowercase and make a dict
-        headers = self.check_header(headers)
+        headers = self.check_header(headers, self.import_type)
         partner_obj = self.env['res.partner']
         contact_obj = self.env['mail.mass_mailing.contact']
         contacts = []
@@ -206,7 +248,10 @@ class ImportMailingList(models.TransientModel):
         self.nr_total_rows = len(data)
         for row in data:
             try:
-                active_mail = row[headers['activemail']]
+                if self.import_type == 'adkd':
+                    active_mail = row[headers['activemail']]
+                else:
+                    active_mail = ''
                 sokande_id = row[headers['sökande id']]
                 email = row[headers['e-postadress']]
             except IndexError:
@@ -214,12 +259,12 @@ class ImportMailingList(models.TransientModel):
                 _logger.warning(f'Could not parse the row: {row}')
                 raise UserError(_(f'Could not parse the row: {row}'))
             else:
-                # Make list of tuples with (active_mail, contact_id)
                 contact = self._get_contact(sokande_id,
                                             partner_obj,
                                             contact_obj,
                                             email)
                 if contact:
+                    # Make list of tuples with (active_mail, contact_id)
                     contacts.append((active_mail.upper(), contact))
                     # Add active_mail to set to get number of letters
                     active_mails.add(active_mail)
@@ -245,7 +290,7 @@ class ImportMailingList(models.TransientModel):
         contacts = []
         active_mails = set()
         # Verify Header, Force it lowercase and make a dict
-        headers = self.check_header([cell.value for cell in sheet.row(0)])
+        headers = self.check_header([cell.value for cell in sheet.row(0)], self.import_type)
         self.nr_total_rows = sheet.nrows
         for row_nr in range(1, sheet.nrows):
             active_mail = sheet.cell_value(row_nr, headers['activemail'])
