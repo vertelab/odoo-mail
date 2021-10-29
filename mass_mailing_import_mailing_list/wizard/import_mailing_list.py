@@ -93,13 +93,12 @@ class ImportMailingList(models.TransientModel):
         mailing_list = False
         if campaign == 'adkd':
             mailing_list = self.env['mail.mass_mailing.list'].search(
-                [('is_adkd_campaign', '=', True)]
+                [('list_type', '=', 'adkd'), ('parent_id', '=', False)]
             )
             if not mailing_list:
                 mailing_list = mailing_list.create(
                     {
                         'name': _('ADKd Campaign'),
-                        'is_adkd_campaign': True,
                         'list_type': 'ADKd',
                      })
             elif len(mailing_list) > 1:
@@ -109,13 +108,12 @@ class ImportMailingList(models.TransientModel):
                 )
         elif campaign == 'micro':
             mailing_list = self.env['mail.mass_mailing.list'].search(
-                [('list_type', '=', 'Micro Campaign')]
+                [('list_type', '=', 'Micro Campaign'), ('parent_id', '=', False)]
             )
             if not mailing_list:
                 mailing_list = mailing_list.create(
                     {
                         'name': _('Micro Campaign'),
-                        'is_adkd_campaign': False,
                         'list_type': _('Micro Campaign'),
                     })
             elif len(mailing_list) > 1:

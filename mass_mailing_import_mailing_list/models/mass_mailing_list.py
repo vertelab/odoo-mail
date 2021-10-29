@@ -28,6 +28,5 @@ class MassMailingList(models.Model):
     _inherit = 'mail.mass_mailing.list'
 
     adkd_mail_name = fields.Char(string='ADKd mail name')
-    is_adkd_campaign = fields.Boolean(string='ADKd Campaign') # Will not be needed
     list_type = fields.Char(string='List type')
     parent_id = fields.Many2one(comodel_name='mail.mass_mailing.list')

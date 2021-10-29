@@ -34,7 +34,7 @@ class MailMassMailing(models.Model):
         if (
                 mail_list and
                 mail_list.parent_id and
-                mail_list.parent_id.is_adkd_campaign
+                mail_list.parent_id.list_type in ('adkd', 'micro')
         ):
             list_ids[0] = mail_list.parent_id.id
         return super().update_opt_out(email, list_ids, value)
