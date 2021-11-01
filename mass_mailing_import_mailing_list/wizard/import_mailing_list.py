@@ -246,10 +246,9 @@ class ImportMailingList(models.TransientModel):
         self.nr_total_rows = len(data)
         for row in data:
             try:
+                active_mail = ''
                 if self.import_type == 'adkd':
                     active_mail = row[headers['activemail']]
-                else:
-                    active_mail = ''
                 sokande_id = row[headers['sökande id']]
                 email = row[headers['e-postadress']]
             except IndexError:
@@ -289,9 +288,11 @@ class ImportMailingList(models.TransientModel):
         active_mails = set()
         # Verify Header, Force it lowercase and make a dict
         headers = self.check_header([cell.value for cell in sheet.row(0)], self.import_type)
-        self.nr_total_rows = sheet.nrows
+        self.nr_total_rows = sheet.nrows - 1
         for row_nr in range(1, sheet.nrows):
-            active_mail = sheet.cell_value(row_nr, headers['activemail'])
+            active_mail = ''
+            if self.import_type == 'adkd':
+                active_mail = sheet.cell_value(row_nr, headers['activemail'])
             sokande_id = str(int(sheet.cell_value(row_nr,
                                                   headers['sökande id'])))
             email = sheet.cell_value(row_nr,
