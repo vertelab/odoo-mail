@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.3.0",
+    "version": "12.0.1.4.0",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -19,6 +19,7 @@
      v12.0.1.2.4 AFC-2820 Add translation to menu items.\n
      v12.0.1.2.5 AFC-2912 Add security for mail.unsubscribe model.\n
      v12.0.1.3.0 AFC-2890 Add email to blacklist also.\n
+     v12.0.1.4.0 AFC-3028 Created new access group ADKD manual guest and adjusted access right \n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
