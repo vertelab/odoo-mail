@@ -5,6 +5,7 @@
 
             <!-- Custom JS Loading -->
             <script type="text/javascript" src="/jt_qweb_editor/static/src/js/fields.js"></script>
+            <script type="text/javascript" src="/mass_mailing_autoresponder/static/src/js/fields.js"></script>
 
             <!-- Custom CSS Loading -->
             <link rel="stylesheet" type="text/scss" href="/mass_mailing_autoresponder/static/src/scss/event.scss"/>

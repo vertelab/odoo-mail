@@ -25,7 +25,7 @@
         v12.0.2.4.0  AFC-3028 Created new access group ADKD manual guest and adjusted access right \n 
     """,
     'depends': [
-        'base_setup', 'mail', 'mass_mailing', 'resource',
+        'base_setup', 'mail', 'mass_mailing', 'resource','af_security'
         ],
     'data': [
         'security/ir.model.access.csv',
