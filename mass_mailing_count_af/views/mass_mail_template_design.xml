@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_mail_mass_mailing_form_inherit">
+    <field name="name">mail.mass_mailing.form.inherit</field>
+    <field name="model">mail.mass_mailing</field>
+    <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"></field>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='mailing_domain']" position="attributes">
+            <attribute name="options" add="method:search_count_extended" separator=" "/>
+        </xpath>
+    </field>
+    </record>>
+</odoo>

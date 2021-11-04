@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mass_mailing_allowed_search_groups_res_partner" model="ir.config_parameter">
+        <field name="key">mass_mailing_allowed_search_groups_res_partner</field>
+        <field name="value">af_newsletter_automatic,af_newsletter_automatic,af_newsletter_manual</field>
+    </record>
+</odoo>
