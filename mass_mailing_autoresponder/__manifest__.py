@@ -3,7 +3,7 @@
 {
     'name': 'Mail Autoresponder',
     'summary': "Adds an automatic Emailing Trigger based service",
-    'version': '12.0.2.3.1',
+    'version': '12.0.2.4.0',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
@@ -21,10 +21,11 @@
         v12.0.2.2.0  Added weekdays and holidays filtering \n
         v12.0.2.2.1  Add translation to template name in autoresponder \n
         v12.0.2.3.0  AFC-2732 Adjust access right for email marketing user \n 
-        v12.0.2.3.1  AFC-3027 Adjust access right for ADKD manuel user \n 
+        v12.0.2.3.1  AFC-3027 Adjust access right for ADKD manual user \n 
+        v12.0.2.4.0  AFC-3028 Created new access group ADKD manual guest and adjusted access right \n 
     """,
     'depends': [
-        'base_setup', 'mail', 'mass_mailing', 'resource',
+        'base_setup', 'mail', 'mass_mailing', 'resource','af_security'
         ],
     'data': [
         'security/ir.model.access.csv',

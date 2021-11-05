@@ -43,6 +43,8 @@
         </record>
 
         <menuitem name="Deregistration" id="menu_import_deregistration"
-                  action="action_import_deregistration" parent="mass_mailing.mass_mailing_menu_root"/>
+                  action="action_import_deregistration" parent="mass_mailing.mass_mailing_menu_root"
+                  groups="af_security.af_newsletter_manual"/>
+
     </data>
 </odoo>
