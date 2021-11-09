@@ -13,7 +13,6 @@
         of the Newsletter-Manual-group\n
         - 12.0.1.0.6  AFC-2117 Added new model for adkd campaign, added m2m adkd campaign field to res_partner \n
         - 12.0.1.0.7 AFC-2817 Removed incorrect linebreak \n 
-        - 12.0.1.1.0 AFC-3028 Created new access group ADKD manual guest and adjusted access right \n 
     """,
     'website': 'http://www.vertel.se',
     'depends': ['base_setup', 'mail', 'mass_mailing_autoresponder', 'partner_daily_notes', 'af_security'
