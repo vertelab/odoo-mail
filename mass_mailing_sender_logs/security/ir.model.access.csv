@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+mass_mailing_link_track_clicks,Mass mailing users can use bounce categories,model_link_tracker_click_user_clicks_per_link,mass_mailing.group_mass_mailing_user,1,1,1,1
