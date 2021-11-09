@@ -6,8 +6,8 @@
     <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"></field>
     <field name="arch" type="xml">
         <xpath expr="//field[@name='mailing_domain']" position="attributes">
-            <attribute name="options" add="method:search_count_extended" separator=" "/>
+            <attribute name="options">{'model': 'mailing_model_real', 'method':'search_count_extended'}</attribute>
         </xpath>
     </field>
-    </record>>
+    </record>
 </odoo>

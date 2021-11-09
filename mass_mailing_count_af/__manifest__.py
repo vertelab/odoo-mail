@@ -9,7 +9,8 @@
     "maintainer": "Vertel AB",
     "author": "Vertel AB",
     "contributors": ["Nils Nyman-Waara",],
-    "depends": ["mass_mailing_count"
+    "depends": ["mass_mailing_count",
+                "mass_mailing"
     ],
     "data": ["data/groups.xml",
              "views/mass_mail_template_design.xml"
