@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_mail_mass_mailing_contact_tree_inherit" model="ir.ui.view">
+            <field name="name">mail_contact_add_bounce_categories</field>
+            <field name="model">mail.mass_mailing.contact</field>
+            <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_contact_tree"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='message_bounce']" position="after">
+                    <field name="bouncing_categories"/>
+                    <button name="action_bounce_categories_tree_view" string="Bounce_categories" type="object"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_categories_tree" model="ir.ui.view">
+            <field name="name">mail.bounce.category.tree</field>
+            <field name="model">mail.bounce.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="description"/>
+                    <field name="bounces"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>
