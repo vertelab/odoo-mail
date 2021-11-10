@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="import_mailing_list_wizard_form_view" model="ir.ui.view">
+            <field name="name">import.mailing.list.wizard.form.view</field>
+            <field name="model">import.mailing.list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="filename" invisible="1"/>
+                        <field name="file" filename="filename"/>
+                        <br/>
+                        <field name="import_type" required="1"/>
+                        <field name="list_name" attrs="{'invisible': [('import_type', '!=', 'micro')]}"/>
+                    </group>
+                    <br/><br/>
+                    <br/>
+                    <field name="is_imported" invisible="1"/>
+                    <group class="oe_left"  attrs="{'invisible': [('is_imported', '=', True)]}">
+                        <h2>Import file with following format:</h2>
+                        <field name="example_filename" invisible="1"/>
+                        <field name="example_file" filename="example_filename" readonly="1"/>
+                        <button name="download_file" string="Download Sample Excel Format" type="object" class="oe_highlight" context="{'file_type': 'xlsx'}"/>
+                        <br/>
+                        <button name="download_file" string="Download Sample CSV Format" type="object" class="oe_highlight" context="{'file_type': 'csv'}"/>
+                        <br/>
+                        <button name="download_file" string="Download Sample Text Format" type="object" class="oe_highlight" context="{'file_type': 'txt'}"/>
+                    </group>
+                    <div attrs="{'invisible': [('is_imported', '=', False)]}">
+                        <div>
+                            <label for="nr_total_rows"/>
+                            <field name="nr_total_rows" readonly="1"/>
+                            <br/>
+                            <label for="nr_imported_rows"/>
+                            <field name="nr_imported_rows" readonly="1"/>
+                            <br/>
+                            <label for="nr_failed_rows"/>
+                            <field name="nr_failed_rows" readonly="1"/>
+                        </div>
+                        <field string="Rows failed to import:" name="import_failed_mail_ids" mode="tree" attrs="{'invisible': [('is_imported', '=', False)]}">
+                            <tree readonly="1" editable="0" create="0" delete="0">
+                                <field name="sokande_id"/>
+                                <field name="active_mail"/>
+                            </tree>
+                        </field>
+                    </div>
+                    <footer>
+                        <button string="Import" name="import_data" type="object" class="oe_highlight" attrs="{'invisible': [('is_imported', '=', True)]}"/>
+                        <button string="Ok" class="btn btn-default" special="cancel" attrs="{'invisible': [('is_imported', '=', False)]}"/>
+                        <button string="Cancel" class="btn btn-default" special="cancel" attrs="{'invisible': [('is_imported', '=', True)]}"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="import_mailing_list_wizard_action">
+            <field name="name">Import mailing list</field>
+            <field name="res_model">import.mailing.list</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{}</field>
+        </record>
+        <menuitem id="menu_import_mailing_list_wizard"
+                  name="Import mailing list"
+                  action="import_mailing_list_wizard_action"
+                  parent="mass_mailing.mass_mailing_mailing_list_menu"
+        />
+    </data>
+</odoo>

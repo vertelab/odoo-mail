@@ -74,6 +74,8 @@ class ImportDeregistrationFile(models.TransientModel):
                         'reason_id': reason.id if reason else '',
                         'details': details,
                 })
+                if not black_list_obj.search([('email', '=', email)]):
+                    black_list_obj.create({'email': email})
                 for mail_list in contact.subscription_list_ids:
                     mail_list.opt_out = True
             if not contact_list:
