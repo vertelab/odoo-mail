@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+mass_mailing_user_bounce_category,Allows mailing users to use bounce categories,model_mail_bounce_category,mass_mailing.group_mass_mailing_user,1,1,1,1

@@ -74,7 +74,7 @@ class MassMailingContact(models.AbstractModel):
     bouncing_categories = fields.One2many(comodel_name='mail.bounce.category', inverse_name='mailing_contact', string='')
     @api.multi
     def action_bounce_categories_tree_view(self):
-        tree_view_id = self.env.ref('mass_mailing_bouncing_categories.view_categories_tree').id
+        tree_view_id = self.env.ref('mass_mailing_matomo_statistics.view_categories_tree').id
         return {
             'name': _('Bouncing Categories'),
             'type': 'ir.actions.act_window',
