@@ -5,21 +5,21 @@ from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
-class ResPartner(models.Model):
-    _inherit = "res.partner"
+class MassMailing(models.Model):
+    _inherit = "mail.mass_mailing"
 
     @api.model
-    def search_count_extended(self, domain=None):
+    def search_count_extended(self, domain, domain_model):
         groups = self.env['ir.config_parameter'].get_param(
-            'mass_mailing_allowed_search_groups_res_partner', '')
+            'mass_mailing_allowed_search_groups', '')
         # Split and filter groups in to a list of groups with extra
         # spaces removed.
         groups = [x.strip() for x in groups.split(',') if x.strip()]
         # Make sure there are any groups and raise error if parameter is not set.
         if not groups:
-            raise UserError(_('Config parameter mass_mailing_allowed_search_groups_res_partner'
+            raise UserError(_('Config parameter mass_mailing_allowed_search_groups'
                               ' is not set contact your administrator'))
         if any([self.env.user.has_group(group) for group in groups]):
             domain = domain or []
-            return self.sudo().search_count(domain)
-        raise UserError(_('You have to be member of the group(s) {groups}.'.format(groups=groups)))
+            return self.env[domain_model].sudo().search_count(domain)
+        raise UserError(_('You have to be member of the group(s) {groups}.').format(groups=groups))

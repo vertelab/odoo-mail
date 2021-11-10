@@ -1,9 +1,10 @@
 {
     "name": "Search Count Extension",
     "summary": "Sets config parameter to correct AF-Groups.",
-    "version": "12.0.0.0.1",
+    "version": "12.0.1.0.0",
     "category": "Email Marketing",
     "description": """
+    1. 12.0.1.0.0 AFC-2879-Count-Extention - Add valid groups for AF
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
