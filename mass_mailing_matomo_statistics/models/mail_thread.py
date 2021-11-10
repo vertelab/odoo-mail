@@ -93,24 +93,3 @@ class MassMailingBounceCategories(models.Model):
     bounces = fields.Integer(string='')
     code = fields.Char(string='')
     description = fields.Char(string='')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
