@@ -272,11 +272,11 @@
                                 align="left">
 
                                 <table anpbgcolor="#picker,transparent,#2D860A" class="rsd"
-                                       style="border-radius: 1px; background-color:#2d860a;" height="50" cellspacing="0"
+                                       style="border-radius: 1px; " height="50" cellspacing="0"
                                        cellpadding="0" border="0" align="center">
                                     <tbody style="pointer-events:none;">
                                         <tr>
-                                            <th style="padding:0 30px; line-height:normal; vertical-align:middle; font-size: 19px; font-family: 'Open Sans', Helvetica, Arial, sans-serif;"
+                                            <th style="background-color:#2d860a; padding:0 30px; line-height:normal; vertical-align:middle; font-size: 19px; font-family: 'Open Sans', Helvetica, Arial, sans-serif;"
                                                 class="p_n" valign="middle" align="center">
                                                 <div style="color:#ffffff!important;">
                                                     <a href="https://arbetsformedlingen.se/for-arbetssokande/yrken-och-studier/intresseguide/?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_1_AG1"
@@ -722,11 +722,11 @@
                                 align="left">
 
                                 <table anpbgcolor="#picker,transparent,#2D860A" class="rsd"
-                                       style="border-radius: 1px; background-color:#2d860a;" height="50" cellspacing="0"
+                                       style="border-radius: 1px; " height="50" cellspacing="0"
                                        cellpadding="0" border="0" align="center">
                                     <tbody style="pointer-events:none;">
                                         <tr>
-                                            <th style="padding:0 30px; line-height:normal; vertical-align:middle; font-size: 19px; font-family: 'Open Sans', Helvetica, Arial, sans-serif;"
+                                            <th style="background-color:#2d860a; padding:0 30px; line-height:normal; vertical-align:middle; font-size: 19px; font-family: 'Open Sans', Helvetica, Arial, sans-serif;"
                                                 class="p_n" valign="middle" align="center">
                                                 <div style="color:#ffffff!important;">
                                                     <a href="https://arbetsformedlingen.se/For-arbetssokande/Yrken-och-studier/Utbildning/Att-valja-utbildning?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_2_AG1"
