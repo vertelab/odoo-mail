@@ -21,3 +21,4 @@ class PerMailMassMailController(MassMailController):
         country_code = request.session.get('geoip', False) and request.session.geoip.get('country_code', False)
         request.env['link.tracker.click'].add_click(code, request.httprequest.remote_addr, country_code, stat_id=stat_id)
         return werkzeug.utils.redirect(request.env['link.tracker'].get_url_from_code(code), 307)
+    
