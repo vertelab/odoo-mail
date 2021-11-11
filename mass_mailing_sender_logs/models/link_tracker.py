@@ -98,3 +98,4 @@ class LinkTrackerClick(models.Model):
                       })]
             })
         return res
+    
