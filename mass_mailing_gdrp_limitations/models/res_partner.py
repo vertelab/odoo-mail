@@ -8,6 +8,6 @@ class ResPartner(models.Model):
     def _compute_ssyk(self):
         for partner in self:
             ssyk = []
-            #for job in partner.job_ids:
-            #    ssyk.append(job.ssyk_code)
+            for job in partner.job_ids:
+                ssyk.append(job.ssyk_code)
             partner.ssyk_codes = ','.join(ssyk)
