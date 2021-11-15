@@ -25,7 +25,7 @@
     'category': 'other',
     'license': 'AGPL-3',
     'summary': 'Makes it easy to archive information',
-    'description': """Extend mail.message with an "active"-attribute""",
+    'description': """Extend mail.message with an active-attribute""",
     'author': 'Vertel AB',
     'website': 'https://vertel.se',
     'depends': ['mail'],
