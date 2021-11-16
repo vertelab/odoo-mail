@@ -12,9 +12,7 @@ class MassMailing(models.Model):
     def search_count_extended(self, domain, domain_model):
         valid_models = [('model', '=', domain_model)] + self._fields['mailing_model_id'].domain
         if not self.env['ir.model'].search_count(valid_models):
-            msg = f'Faulty model: {domain_model}'
-            _logger.error(msg)
-            raise UserError(msg)
+            return 0
         groups = self.env['ir.config_parameter'].get_param(
             'mass_mailing_allowed_search_groups', '')
         # Split and filter groups in to a list of groups with extra
