@@ -12,5 +12,15 @@ class EmailBrowserViewController(http.Controller):
         record = request.env['mail.mail'].get_record_for_token(token)
         if not record:
             return request.not_found()
+        if len(record.recipient_ids) == 1:
+            unsubscribe_url = record._get_unsubscribe_url(
+                record.recipient_ids.email)
+            base_url = http.request.env['ir.config_parameter'].sudo().get_param(
+                'web.base.url').rstrip('/')
+            link_to_replace = base_url + '/unsubscribe_from_list'
+            if link_to_replace in record['body']:
+                record['body'] = record['body'].replace(link_to_replace,
+                                                        unsubscribe_url
+                                                        if unsubscribe_url
+                                                        else '#')
         return request.make_response(record.body)
-
