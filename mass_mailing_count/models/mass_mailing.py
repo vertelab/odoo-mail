@@ -13,7 +13,7 @@ class MassMailing(models.Model):
         valid_models = [('model', '=', domain_model)] + self._fields['mailing_model_id'].domain
         if not self.env['ir.model'].search_count(valid_models):
             return 0
-        groups = self.env['ir.config_parameter'].get_param(
+        groups = self.env['ir.config_parameter'].sudo().get_param(
             'mass_mailing_allowed_search_groups', '')
         # Split and filter groups in to a list of groups with extra
         # spaces removed.
