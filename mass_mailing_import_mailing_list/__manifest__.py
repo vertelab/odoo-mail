@@ -3,12 +3,13 @@
 {
     'name': 'Import mailing list',
     'summary': "Import mailing list for mass mailing",
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.1',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
     'description': """
         - 12.0.1.0.0  AFC-2968 New module for importing mailing list \n
+        - 12.0.1.0.1  AFC-2874 Some error handling \n
     """,
     'website': 'http://www.vertel.se',
     'depends': ['mass_mailing', 'mass_mailing_unsubscribe_af'],
