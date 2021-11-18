@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record model="ir.ui.view" id="inherit_mail_mass_mailing_form_af_logger">
         <field name="name">inherit.mail.mass.mailing.form.af.logger</field>
         <field name="model">mail.mass_mailing</field>

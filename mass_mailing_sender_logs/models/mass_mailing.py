@@ -7,7 +7,8 @@ class MassMailing(models.Model):
     _inherit = ['mail.mass_mailing', 'mail.thread', 'mail.activity.mixin']
 
     email_from = fields.Char(string='From', required=True,
-        default=lambda self: self.env['mail.message']._get_default_from(), track_visibility='onchange')
+                             default=lambda self: self.env['mail.message']._get_default_from(),
+                             track_visibility='onchange')
 
     @api.model
     def create(self, vals):
