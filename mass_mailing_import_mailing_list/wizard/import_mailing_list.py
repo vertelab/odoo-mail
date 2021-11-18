@@ -236,7 +236,8 @@ class ImportMailingList(models.TransientModel):
             raise UserError(f'Error {e}')
         # Read CSV
         headers, *data = csv.reader(data_file, delimiter=';')
-
+        if len(data) == 0:
+            raise UserError(f'File is empty')
         # Verify Header, Force it lowercase and make a dict
         headers = self.check_header(headers, self.import_type)
         partner_obj = self.env['res.partner']
@@ -250,11 +251,15 @@ class ImportMailingList(models.TransientModel):
                 if self.import_type == 'adkd':
                     active_mail = row[headers['activemail']]
                 sokande_id = row[headers['sökande id']]
-                email = row[headers['e-postadress']]
+                if 'e-postadress' in headers:
+                    email = row[headers['e-postadress']]
+                else:
+                    email = ''
             except IndexError:
                 # Empty or malformed row.
-                _logger.warning(f'Could not parse the row: {row}')
-                raise UserError(_(f'Could not parse the row: {row}'))
+                msg = 'Could not parse the row: {row}'
+                _logger.warning(msg.format(row=row))
+                raise UserError(_(msg).format(row=row))
             else:
                 contact = self._get_contact(sokande_id,
                                             partner_obj,
@@ -286,6 +291,8 @@ class ImportMailingList(models.TransientModel):
         contact_obj = self.env['mail.mass_mailing.contact']
         contacts = []
         active_mails = set()
+        if sheet.nrows == 0:
+            raise UserError(f'File is empty')
         # Verify Header, Force it lowercase and make a dict
         headers = self.check_header([cell.value for cell in sheet.row(0)], self.import_type)
         self.nr_total_rows = sheet.nrows - 1
@@ -295,8 +302,11 @@ class ImportMailingList(models.TransientModel):
                 active_mail = sheet.cell_value(row_nr, headers['activemail'])
             sokande_id = str(int(sheet.cell_value(row_nr,
                                                   headers['sökande id'])))
-            email = sheet.cell_value(row_nr,
-                                     headers['e-postadress'])
+            if 'e-postadress' in headers:
+                email = sheet.cell_value(row_nr,
+                                         headers['e-postadress'])
+            else:
+                email = ''
             # Add active_mail to set to get number of letters
             active_mails.add(active_mail)
             # Make list of tuples with (active_mail, contact_id)
