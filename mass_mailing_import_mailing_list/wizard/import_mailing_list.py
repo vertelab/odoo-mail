@@ -257,9 +257,9 @@ class ImportMailingList(models.TransientModel):
                     email = ''
             except IndexError:
                 # Empty or malformed row.
-                msg = ('Could not parse the row: {row}').format(row=row)
-                _logger.warning(msg)
-                raise UserError(_(msg))
+                msg = 'Could not parse the row: {row}'
+                _logger.warning(msg.format(row=row))
+                raise UserError(_(msg).format(row=row))
             else:
                 contact = self._get_contact(sokande_id,
                                             partner_obj,
