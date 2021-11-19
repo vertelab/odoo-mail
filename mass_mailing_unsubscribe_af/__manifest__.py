@@ -20,6 +20,7 @@
      v12.0.1.2.5 AFC-2912 Add security for mail.unsubscribe model.\n
      v12.0.1.3.0 AFC-2890 Add email to blacklist also.\n
      v12.0.1.3.0 AFC-3112 Buggfix, handle more dateformats.\n
+     v12.0.1.3.1 AFC-3112 Buggfix, remove debuging raise.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",

@@ -144,7 +144,6 @@ class ImportDeregistrationFile(models.TransientModel):
                 else:
                     raise UserError(f'Unsupported date format: {date} of the type {type(date)}')
                 reason_val = sheet.cell_value(row_nr, headers['reason'])
-                raise UserError(date)
                 self.import_row(email, date, reason_val, unsub_obj,
                                 mail_list_obj, black_list_obj, partner_obj,
                                 reason_obj)
