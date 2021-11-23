@@ -9,3 +9,7 @@ class MailUnsubscription(models.Model):
         "Mass mailing",
         required=False,
         help="Mass mailing from which he was unsubscribed.")
+
+    customer_id = fields.Char(help="Customer reference ID.", compute='_compute_customer_id')
+    def _compute_customer_id(self):
+        self.customer_id = getattr(self.sudo().unsubscriber_id, 'customer_id', '')
