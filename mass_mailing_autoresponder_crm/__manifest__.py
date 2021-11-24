@@ -3,7 +3,7 @@
 {
     'name': 'Mail Autoresponder CRM',
     'summary': "Adds an automatic emailing trigger based service",
-    'version': '12.0.1.0.7',
+    'version': '12.0.1.1.0',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
