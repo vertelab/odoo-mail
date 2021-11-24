@@ -12,4 +12,5 @@ class MailUnsubscription(models.Model):
 
     customer_id = fields.Char(help="Customer reference ID.", compute='_compute_customer_id')
     def _compute_customer_id(self):
-        self.customer_id = getattr(self.sudo().unsubscriber_id, 'customer_id', '')
+        for rec in self:
+            rec.customer_id = getattr(rec.sudo().unsubscriber_id, 'customer_id', '')
