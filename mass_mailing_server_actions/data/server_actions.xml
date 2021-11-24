@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_process_mass_mailing_queue_now" model="ir.actions.server">
+            <field name="name">Process mass mailing queue</field>
+            <field name="model_id" ref="mass_mailing.model_mail_mass_mailing"/>
+            <field name="binding_model_id" ref="mass_mailing.model_mail_mass_mailing"/>
+            <field name="state">code</field>
+            <field name="code">
+env.ref('mail.ir_cron_mail_scheduler_action').method_direct_trigger()
+            </field>
+        </record>
+    </data>
+</odoo>

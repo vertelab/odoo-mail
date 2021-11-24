@@ -3,7 +3,7 @@ from odoo import models
 class MassMailing(models.Model):
     _inherit = 'mail.mass_mailing'
 
-    # Overwrite mass mainling method to show different list view from smart buttons
+    # Overwrite mass mailing method to show different list view from smart buttons
     def _action_view_documents_filtered(self, view_filter):
         if view_filter in ('sent', 'opened', 'replied', 'bounced', 'clicked'):
             opened_stats = self.statistics_ids.filtered(lambda stat: stat[view_filter])

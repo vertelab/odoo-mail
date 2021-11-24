@@ -11,5 +11,45 @@
                 </xpath>
             </field>
         </record>
+        <record id="link_tracker_tree_inherit_show_clicks" model="ir.ui.view">
+            <field name="name">link_tracker_tree_inherit_show_clicks"</field>
+            <field name="model">link.tracker</field>
+            <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_links_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='count']" position="after">
+                    <button name="action_individual_unique_clicks_tree_view" string="Unique Clicks" type="object"/>
+                    <field name="count_user_clicks_per_link"/>
+                    <button name="action_individual_clicks_tree_view" string="Clicks" type="object"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_link_tracker_unique_click_tree" model="ir.ui.view">
+            <field name="name">link.tracker.individual.unique.clicks.tree.view</field>
+            <field name="model">link.tracker.click</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="link_id"/>
+                    <field name="mail_stat_id"/>
+                    <field name="display_name"/>
+                    <field name="ip"/>
+                    <field name="mass_mailing_id"/>
+                    <field name="customer_id"/>
+                    <field name="click_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_link_tracker_click_tree" model="ir.ui.view">
+            <field name="name">link.tracker.individual.clicks.tree.view</field>
+            <field name="model">link.tracker.click.user.clicks.per.link</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="link_tracker_id"/>
+                    <field name="customer_id"/>
+                    <field name="ip"/>
+                    <field name="country_id"/>
+                    <field name="click_date"/>
+                </tree>
+            </field>
+        </record>
     </data>
 </odoo>

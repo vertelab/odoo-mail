@@ -19,6 +19,9 @@
      v12.0.1.2.4 AFC-2820 Add translation to menu items.\n
      v12.0.1.2.5 AFC-2912 Add security for mail.unsubscribe model.\n
      v12.0.1.3.0 AFC-2890 Add email to blacklist also.\n
+     v12.0.1.3.0 AFC-3112 Buggfix, handle more dateformats.\n
+     v12.0.1.3.1 AFC-3112 Buggfix, remove debuging raise.\n
+     v12.0.1.3.2 AFC-3111 Buggfix, Do not access forbidden data.\n
      v12.0.1.4.0 AFC-3028 Created new access group ADKD manual guest and adjusted access right \n
     """,
     "license": "AGPL-3",

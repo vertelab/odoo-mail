@@ -1,6 +1,6 @@
 import base64
-from datetime import datetime, timedelta
 import csv
+from datetime import datetime, timedelta
 import io
 import logging
 
@@ -135,9 +135,14 @@ class ImportDeregistrationFile(models.TransientModel):
             headers = self.check_header([cell.value for cell in sheet.row(0)])
             for row_nr in range(1, sheet.nrows):
                 email = sheet.cell_value(row_nr, headers['e-postadress'])
-                date = xldate_as_tuple(
-                    sheet.cell_value(row_nr, headers['opt out date']),
-                    book.datemode)
+                date = sheet.cell_value(row_nr, headers['opt out date'])
+                # Excel can store a date in different ways, handle two common ones.
+                if isinstance(date, str):
+                    date = datetime.strptime(date, '%Y-%m-%d %H:%M')
+                elif isinstance(date, float):
+                    date = xldate_as_tuple(date, book.datemode)
+                else:
+                    raise UserError(f'Unsupported date format: {date} of the type {type(date)}')
                 reason_val = sheet.cell_value(row_nr, headers['reason'])
                 self.import_row(email, date, reason_val, unsub_obj,
                                 mail_list_obj, black_list_obj, partner_obj,

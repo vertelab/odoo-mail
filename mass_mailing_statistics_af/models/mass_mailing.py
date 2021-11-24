@@ -42,7 +42,7 @@ class MassMailing(models.Model):
             row['opened_ratio'] = 100.0 * row['opened'] / total
             row['opened'] = row['opened']
             row['clicks_ratio'] = 100.0 * row['clicked'] / total
-            row['clicks'] = 100.0 * row['clicked'] / total
+            row['clicks'] = row['clicked']
             row['replied_ratio'] = 100.0 * row['replied'] / total
             row['replied'] = row['replied']
             row['bounced_ratio'] = 100.0 * row['bounced'] / total
