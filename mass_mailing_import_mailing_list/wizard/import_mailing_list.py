@@ -244,7 +244,7 @@ class ImportMailingList(models.TransientModel):
                 headers = self.check_header(headers, self.import_type)
             except UnicodeDecodeError:
                 pass
-            except (UserError) as e:
+            except UserError as e:
                 caught = e
                 # Could not find the correct header try again with a
                 # different encoding.
