@@ -3,6 +3,7 @@ import csv
 from datetime import datetime, timedelta
 import io
 import logging
+import os
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
@@ -103,6 +104,7 @@ class ImportDeregistrationFile(models.TransientModel):
         if not self.file or not \
                 self.filename.lower().endswith(('.xls', '.xlsx', '.csv', 'txt')):
             raise UserError(_("Please Select an .xls, .xlsx, .txt or .csv file to Import."))
+        extention = os.path.splitext(self.filename)[1].lower()
         unsub_obj = self.env['mail.unsubscription']
         mail_list_obj = self.env['mail.mass_mailing.contact']
         black_list_obj = self.env['mail.blacklist']
@@ -114,7 +116,8 @@ class ImportDeregistrationFile(models.TransientModel):
             csv_data = base64.b64decode(self.file)
             data_file = io.StringIO(csv_data.decode("utf-8"))
             # Read CSV
-            headers, *data = csv.reader(data_file, delimiter=',')
+            delimiter = ',' if extention == '.csv' else '\t'
+            headers, *data = csv.reader(data_file, delimiter=delimiter)
 
             # Verify Header, Force it lowercase and make a dict
             headers = self.check_header(headers)
