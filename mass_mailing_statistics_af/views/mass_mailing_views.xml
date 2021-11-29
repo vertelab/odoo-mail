@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    
+    <record model="ir.ui.view" id="view_mail_mass_mailing_links_total_tree">
+        <field name="name">link.tracker.tree</field>
+        <field name="model">link.tracker</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <tree string="Mailing Statistics of Total Clicks">
+                <field name="title"/>
+                <field name="url"/>
+                    <field name="count_user_clicks_per_link"/>
+                    <button name="action_individual_clicks_tree_view" string="Clicks" type="object"/>
+            </tree>
+        </field>
+    </record>
 
     <record model="ir.ui.view" id="inherit_mail_mass_mailing_form_af_statistics">
         <field name="name">inherit.mail.mass.mailing.form.af.statistics</field>
@@ -91,7 +105,7 @@
                 <div class="row">
                     <div class="col-6">
                         <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
-                           type="action">Clicks
+                           type="action">Click frequency
                         </a>
                     </div>
                     <div class="col-6 text-right">
@@ -101,6 +115,18 @@
                         (
                         <field name="clicks_ratio"/>
                         %)
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[4]" position="replace">
+                <div class="row">
+                    <div class="col-6">
+                        <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
+                           type="action">Total clicks
+                        </a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <field name="total_clicks"/>
                     </div>
                 </div>
             </xpath>
@@ -117,8 +143,10 @@
                 <field name="bounced"/>
                 <field name="clicks"/>
                 <field name="clicks_ratio"/>
+                <field name="total_clicks"/>
             </field>
         </field>
     </record>
 
 </odoo>
+

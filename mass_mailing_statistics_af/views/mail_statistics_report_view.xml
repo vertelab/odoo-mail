@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record model="ir.ui.view" id="view_mail_statistics_report_pivot_inherit">
+            <field name="name">view_mail_statistics_report_pivot_inherit</field>
+            <field name="model">mail.statistics.report</field>
+            <field name="inherit_id" ref="mass_mailing.view_mail_statistics_report_pivot"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='clicked']" position="after">
+                        <field name="clicks_ratio" type="measure"/>
+                        <field name="total_clicks" type="measure"/>
+                </xpath>
+            </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_mail_statistics_report_graph_inherit">
+            <field name="name">view_mail_statistics_report_graph_inherit</field>
+            <field name="model">mail.statistics.report</field>
+            <field name="inherit_id" ref="mass_mailing.view_mail_statistics_report_graph"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sent']" position="after">
+                        <field name="clicks_ratio" type="measure"/>
+<!--
+                        <field name="total_clicks" type="measure"/>
+-->
+                </xpath>
+            </field>
+    </record>
+
+
+<!--
+        <record id="view_mail_statistics_report_graph" model="ir.ui.view">
+            <field name="name">mail.statistics.report.graph</field>
+            <field name="model">mail.statistics.report</field>
+            <field name="arch" type="xml">
+                <graph string="Mass Mailing Statistics">
+                    <field name="campaign"/>
+                    <field name="sent" type="measure"/>
+                </graph>
+            </field>
+        </record>
+-->
+
+</odoo>
+

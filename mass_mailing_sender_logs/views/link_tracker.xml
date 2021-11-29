@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        
         <record id="link_tracker_form_view_inherit" model="ir.ui.view">
             <field name="name">link.tracker.add.mass.mailing.id</field>
             <field name="model">link.tracker</field>
@@ -11,6 +12,7 @@
                 </xpath>
             </field>
         </record>
+        
         <record id="link_tracker_tree_inherit_show_clicks" model="ir.ui.view">
             <field name="name">link_tracker_tree_inherit_show_clicks"</field>
             <field name="model">link.tracker</field>
@@ -23,6 +25,7 @@
                 </xpath>
             </field>
         </record>
+        
         <record id="view_link_tracker_unique_click_tree" model="ir.ui.view">
             <field name="name">link.tracker.individual.unique.clicks.tree.view</field>
             <field name="model">link.tracker.click</field>

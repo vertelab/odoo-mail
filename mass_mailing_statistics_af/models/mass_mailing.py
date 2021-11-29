@@ -7,8 +7,9 @@ class MassMailing(models.Model):
     opened = fields.Integer("Opened", compute='_compute_statistics')
     replied = fields.Integer("Replied", compute='_compute_statistics')
     bounced = fields.Integer("Bounced", compute='_compute_statistics')
-    clicks = fields.Integer("Clicks", compute='_compute_statistics')
-
+    clicks = fields.Integer("Clicked", compute='_compute_statistics', help="Number of mails where atleast one link was clicked" )
+    total_clicks = fields.Integer("Total Clicks", compute='_compute_statistics', help="Everytime a link is clicked")
+    clicks_ratio = fields.Integer(string="Click frequency", compute='_compute_statistics', help="Is the number of mails sent divided by the number of mails where atleast one link was clicked" ) # Already exists in core, is redefined here since the orignal string is "Number of click" which it is wrong
     def _compute_statistics(self):
         """ Compute statistics of the mass mailing """
         self.env.cr.execute("""
@@ -22,6 +23,7 @@ class MassMailing(models.Model):
                    COUNT(CASE WHEN s.sent is not null AND s.bounced is null THEN 1 ELSE null END) AS delivered,
                    COUNT(CASE WHEN s.opened is not null THEN 1 ELSE null END) AS opened,
                    COUNT(CASE WHEN s.clicked is not null THEN 1 ELSE null END) AS clicked,
+                   SUM(s.total_clicks) AS total_clicks,
                    COUNT(CASE WHEN s.replied is not null THEN 1 ELSE null END) AS replied,
                    COUNT(CASE WHEN s.bounced is not null THEN 1 ELSE null END) AS bounced,
                    COUNT(CASE WHEN s.exception is not null THEN 1 ELSE null END) AS failed
@@ -47,4 +49,6 @@ class MassMailing(models.Model):
             row['replied'] = row['replied']
             row['bounced_ratio'] = 100.0 * row['bounced'] / total
             row['bounced'] = row['bounced']
+            row['total_clicks'] = row['total_clicks']
             self.browse(row.pop('mailing_id')).update(row)
+            

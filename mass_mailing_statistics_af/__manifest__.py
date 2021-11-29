@@ -13,10 +13,13 @@
     "author": "Vertel AB",
     "contributors": ["Vertel AB"],
     "depends": [
-        "mass_mailing"
+        "mass_mailing",
+        'mass_mailing_sender_logs',#until the link tracker logic is moved from mass_mailing_sender_logs, then this module needs to depend on it.
+        
     ],
     "data": [
         'views/mass_mailing_views.xml',
+        'views/mail_statistics_report_view.xml',
     ],
     "qweb": [
         'static/src/xml/base.xml',
