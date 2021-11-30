@@ -204,7 +204,7 @@ class ImportMailingList(models.TransientModel):
             raise UserError(_('You must specify a name for mailing list'))
         if self.filename.lower().endswith(('.csv', '.txt')):
             try:
-                self.parse_csv_data(os.path.splitext(self.filename)[0].lower())
+                self.parse_csv_data(os.path.splitext(self.filename)[1].lower())
             except UnicodeDecodeError as e:
                 print(e)
         elif self.filename.lower().endswith(('.xls', '.xlsx')):
