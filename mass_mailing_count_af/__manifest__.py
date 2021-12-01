@@ -1,17 +1,15 @@
 {
     "name": "Search Count Extension",
     "summary": "Sets config parameter to correct AF-Groups.",
-    "version": "12.0.1.0.2",
+    "version": "12.0.1.1.0",
     "category": "Email Marketing",
-    "description": """
-    1. 12.0.1.0.0 AFC-2879-Count-Extention - Add valid groups for AF
-    2. 12.0.1.0.1 AFC-2879-Count-Extention - Security fix.
-    2. 12.0.1.0.2 AFC-2879-Bux-fixes
-    """,
+    "description": """""",
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
     "author": "Vertel AB",
-    "contributors": ["Nils Nyman-Waara",],
+    "contributors": ["Nils Nyman-Waara",
+                     "Sinan Özbek",
+                     ],
     "depends": ["mass_mailing_count",
                 "mass_mailing"
     ],
