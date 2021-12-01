@@ -18,3 +18,4 @@ class MassMailing(models.Model):
             domain_list.append(email_is_set)
             self.mailing_domain = repr(domain_list)
             _logger.debug(f"Updated mailing domain to: {self.mailing_domain}.")
+            
