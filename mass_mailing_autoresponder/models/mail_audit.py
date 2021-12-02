@@ -49,6 +49,15 @@ class MailMassMailing(models.Model):
                     node.set('import', 'false'),
                     node.set('create', 'false')
             result['arch'] = etree.tostring(doc)
+        elif view_type == 'form':
+            doc = etree.XML(result['arch'])
+            if not self.env.user.has_group('af_security.af_newsletter_manual'):
+                # When the user is not part of the import group
+                for node in doc.xpath("//form"):
+                    # Set the import to false
+                    node.set('edit', 'false'),
+                    node.set('create', 'false')
+            result['arch'] = etree.tostring(doc)
 
         return result
 
