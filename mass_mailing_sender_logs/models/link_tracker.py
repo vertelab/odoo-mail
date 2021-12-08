@@ -87,8 +87,7 @@ class LinkTrackerClick(models.Model):
             receiver_id = statistics.res_id
             statistics.total_clicks += 1
             if receiver_model == 'mail.mass_mailing.contact':
-                #customer_id = self.env[receiver_model].browse(receiver_id).partner_id.customer_id utv12 code, should be removed
-                customer_id = self.env[receiver_model].browse(receiver_id).email
+                customer_id = self.env[receiver_model].browse(receiver_id).partner_id.customer_id
             elif receiver_model == 'res.partner':
                 customer_id = self.env[receiver_model].browse(receiver_id).customer_id
             else:
