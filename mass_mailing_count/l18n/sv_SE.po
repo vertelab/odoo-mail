@@ -30,5 +30,5 @@ msgstr "Massutskick per e-post"
 #: code:addons/mass_mailing_count/models/mass_mailing.py:28
 #, python-format
 msgid "You have to be member of the group(s) {groups}."
-msgstr "Du måste vara medlem i grupperna "
+msgstr "Du måste vara medlem i grupperna {groups}"
 
