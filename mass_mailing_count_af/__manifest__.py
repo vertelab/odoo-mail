@@ -1,9 +1,10 @@
 {
     "name": "Search Count Extension",
     "summary": "Sets config parameter to correct AF-Groups.",
-    "version": "12.0.1.1.0",
+    "version": "12.0.1.1.1",
     "category": "Email Marketing",
-    "description": """""",
+    "description": """
+    v 12.0.1.1.1 - AFC-3158 - Deleted repeated group name.\n """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
     "author": "Vertel AB",
