@@ -19,7 +19,7 @@ msgstr ""
 #: code:addons/mass_mailing_count/models/mass_mailing.py:23
 #, python-format
 msgid "Config parameter mass_mailing_allowed_search_groups is not set contact your administrator"
-msgstr ""
+msgstr "Konfigurationsparametern mass_mailing_allowed_search_groups är inte satt, kontakta din administratör"
 
 #. module: mass_mailing_count
 #: model:ir.model,name:mass_mailing_count.model_mail_mass_mailing
