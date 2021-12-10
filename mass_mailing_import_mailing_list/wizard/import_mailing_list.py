@@ -48,7 +48,7 @@ class ImportMailingList(models.TransientModel):
     def check_header(header, import_type):
         """
         Verify that header has the required columns as well as create
-         a dict with indexes.
+        a dict with indexes.
          """
         # Verify Header, Force it lowercase
         header = {x.lower(): index for index, x in enumerate(header)}
