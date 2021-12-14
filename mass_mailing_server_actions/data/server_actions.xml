@@ -7,7 +7,7 @@
             <field name="binding_model_id" ref="mass_mailing.model_mail_mass_mailing"/>
             <field name="state">code</field>
             <field name="code">
-env.ref('mail.ir_cron_mail_scheduler_action').method_direct_trigger()
+env.ref('mail.ir_cron_mail_scheduler_action').sudo().method_direct_trigger()
             </field>
         </record>
     </data>
