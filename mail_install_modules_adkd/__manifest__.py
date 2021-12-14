@@ -34,10 +34,9 @@
         "mass_mailing_editor_af",           # odoo-mail This adds new snippets for mass mailing templates.
         "partner_mail_client",              # odoo-base This adds a tab on the Employee form for messages sent to and from that partner.
         "mass_mailing_count_af",            # Extends the standard search_count widget with Sudo search.
-        "mass_mailing_multi_per_address_af", # Extends the standard mass_mailing to fix the bug when contact share the same email address.
+        "mass_mailing_multi_per_address", # Extends the standard mass_mailing to fix the bug when contact share the same email address.
         # "snailmail",                      # Odoo standard-module that is not used in our implementation.
     ],
     "application": False,
     "installable": True,
 }
-
