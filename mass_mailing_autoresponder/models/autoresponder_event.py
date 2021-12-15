@@ -95,11 +95,11 @@ class Autoresponder(models.Model):
         for event in event_ids:
             for email_line in event.email_schedule_ids:
                 if email_line.interval_type == 'after_event':
-                    self.after_event(event, email_line, email_line.contact_ids)
+                    event.after_event(email_line)
                 if email_line.interval_type == 'before_event':
-                    self.before_event(event, email_line, email_line.contact_ids)
+                    event.before_event(email_line)
 
-    def get_date_weekday_only(self, interval, contact_date):
+    def get_date_weekday_only(self, interval, contact_date, before = False):
         """
         This method will check if the dates between contact_date and
         interval is a holiday.
@@ -118,75 +118,84 @@ class Autoresponder(models.Model):
         # Add one day to _datetime for every holiday until
         # the interval is reached.
         while i != interval:
-            _datetime += datetime.timedelta(days=1)
+            if before:
+                _datetime -= datetime.timedelta(days=1)
+            else:
+                _datetime += datetime.timedelta(days=1)
             if not (_datetime.weekday() in (5, 6) or _datetime in af_holidays):
                 i += 1
         return _datetime
 
-    def after_event(self, event, email_line, contacts):
+    def after_event(self, email_line):
         today_date = self.adjust_tz(datetime.datetime.today()).strftime("%Y-%m-%d")
-        domain = event.contact_domain and safe_eval(event.contact_domain) or []
+        domain = self.contact_domain and safe_eval(self.contact_domain) or []
+        domain.append(('id', 'not in', email_line.contact_ids.ids))
+        mailing_list = []
         for contact in self.env['res.partner'].search(domain):
-            if contact.id not in contacts.ids:
-                week_day_date = False
-                if email_line.interval_unit == 'days':
-                    if email_line.ir_model_field:
-                        contact_date = contact[str(email_line.ir_model_field.name)]
-                        if contact_date:
-                            _datetime = self.get_date_weekday_only(email_line.interval_nbr, contact_date)
-                            week_day_date = list(rrule.rrule(rrule.DAILY,
-                                                             dtstart=contact_date,
-                                                             until=_datetime,
-                                                             byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
-                    else:
-                        _datetime = self.get_date_weekday_only(email_line.interval_nbr, event.date_begin)
-                        week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=event.date_begin, until=_datetime,
-                                                         byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
-
-                    if week_day_date:
-                        partner_comp_date = week_day_date[-1].strftime("%Y-%m-%d")
-                        if partner_comp_date == today_date:
-                            self._create_mail_campaign(contact, email_line)
-                            # self._email_to_contacts(contact, event, email_line)
-                            email_line.contact_ids = [(4, contact.id)]
-
-    def before_event(self, event, email_line, contacts):
-        today_date = datetime.datetime.today().strftime("%Y-%m-%d")
-        domain = event.contact_domain and safe_eval(event.contact_domain) or []
-        res_ids = self.env['res.partner'].search(domain).ids
-        for contact_id in res_ids:
-            if contact_id not in contacts.ids:
-                if email_line.interval_unit == 'days':
-                    partner_id = self.env['res.partner'].search([('id', '=', contact_id)])
-                    if email_line.ir_model_field:
-                        _datetime = self.get_date_weekday_only(email_line.interval_nbr, partner_id[str(email_line.ir_model_field.name)])
+            week_day_date = False
+            if email_line.interval_unit == 'days':
+                if email_line.ir_model_field:
+                    contact_date = contact[str(email_line.ir_model_field.name)]
+                    partner_id = self.env['res.partner'].search([('id', '=', contact)])
+                    if contact_date:
+                        _datetime = self.get_date_weekday_only(email_line.interval_nbr, contact_date)
                         week_day_date = list(rrule.rrule(rrule.DAILY,
-                                                         dtstart=_datetime,
-                                                         until=partner_id[str(email_line.ir_model_field.name)],
+                                                         dtstart=contact_date,
+                                                         until=_datetime,
                                                          byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
-                    else:
-                        _datetime = self.get_date_weekday_only(email_line.interval_nbr, event.date_begin)
+                else:
+                    _datetime = self.get_date_weekday_only(email_line.interval_nbr, self.date_begin)
+                    week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=self.date_begin, until=_datetime,
+                                                     byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
 
-                        week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=_datetime, until=event.date_begin,
-                                                         byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
+                if week_day_date:
+                    partner_comp_date = week_day_date[-1].strftime("%Y-%m-%d")
+                    if partner_comp_date == today_date:
+                        mailing_list.append(partner_id.email)
+                        # self._email_to_contacts(contact, event, email_line)
+                        email_line.contact_ids = [(4, contact.id)]
+        self._create_mail_campaign(contact, email_line, mailing_list)
 
-                    if week_day_date:
-                        if week_day_date[-1].strftime("%Y-%m-%d") == today_date:
-                            self._create_mail_campaign(partner_id, email_line)
-                            # self._email_to_contacts(partner_id, event, email_line)
-                            email_line.contact_ids = [(4, partner_id.id)]
+    def before_event(self, email_line):
+        today_date = datetime.datetime.today().strftime("%Y-%m-%d")
+        domain = self.contact_domain and safe_eval(self.contact_domain) or []
+        domain.append(('id', 'not in', email_line.contact_ids.ids))
+        res_ids = self.env['res.partner'].search(domain).ids
+        mailing_list = []
+        for contact_id in res_ids:
+            if email_line.interval_unit == 'days':
+                partner_id = self.env['res.partner'].search([('id', '=', contact_id)])
+                if email_line.ir_model_field:
+                    _datetime = self.get_date_weekday_only(email_line.interval_nbr, partner_id[str(email_line.ir_model_field.name)])
+                    week_day_date = list(rrule.rrule(rrule.DAILY,
+                                                     dtstart=_datetime,
+                                                     until=partner_id[str(email_line.ir_model_field.name)],
+                                                     byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
+                else:
+                    _datetime = self.get_date_weekday_only(email_line.interval_nbr, self.date_begin, True)
 
-    def _create_mail_campaign(self, partner, event_line):
+                    week_day_date = list(rrule.rrule(rrule.DAILY, dtstart=_datetime, until=self.date_begin,
+                                                     byweekday=(rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR)))
+
+                if week_day_date:
+                    if week_day_date[0].strftime("%Y-%m-%d") == today_date:
+                        mailing_list.append(partner_id.email)
+                        # self._email_to_contacts(partner_id, event, email_line)
+                        email_line.contact_ids = [(4, partner_id.id)]
+        if mailing_list:
+            self._create_mail_campaign(partner_id, email_line, mailing_list)
+
+    def _create_mail_campaign(self, partner, event_line, mailing_list):
         partner_model = self.env['ir.model'].search([('model', '=', 'res.partner')], limit=1)
         name = event_line and \
                event_line.template_id and \
-               event_line.template_id.name\
+               event_line.template_id.name \
                or ""
         mailing_data = {
             'name':name,
             'user_id':self.env.user.id,
             'mailing_model_id':partner_model and partner_model.id or False,
-            'mailing_domain': '%s' % [('email', 'in', [partner.email])],
+            'mailing_domain': '%s' % [('email', 'in', mailing_list)],
             'body_html':event_line.template_id and event_line.template_id.body_html or False,
             'event_line_id':event_line.id,
             'auto_responder':True,
