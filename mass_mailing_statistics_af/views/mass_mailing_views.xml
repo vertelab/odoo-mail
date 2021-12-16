@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    
-    <record model="ir.ui.view" id="view_mail_mass_mailing_links_total_tree">
-        <field name="name">link.tracker.tree</field>
-        <field name="model">link.tracker</field>
-        <field name="priority">10</field>
-        <field name="arch" type="xml">
-            <tree string="Mailing Statistics of Total Clicks">
-                <field name="title"/>
-                <field name="url"/>
-                    <field name="count_user_clicks_per_link"/>
-                    <button name="action_individual_clicks_tree_view" string="Clicks" type="object"/>
-            </tree>
-        </field>
-    </record>
 
     <record model="ir.ui.view" id="inherit_mail_mass_mailing_form_af_statistics">
         <field name="name">inherit.mail.mass.mailing.form.af.statistics</field>
