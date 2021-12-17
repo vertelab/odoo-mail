@@ -3,7 +3,14 @@
     <data noupdate="1">
         <record id="mass_mailing_allowed_search_groups" model="ir.config_parameter">
             <field name="key">mass_mailing_allowed_search_groups</field>
-            <field name="value">af_security.af_newsletter_automatic,af_security.af_newsletter_manual</field>
+            <field name="value">af_security.af_newsletter_automatic,af_security.af_newsletter_manual,af_security.af_newsletter_manual_guest</field>
         </record>
+    </data>
+
+    <data noupdate="0">
+        <function model= "ir.config_parameter"
+                  name = "set_param"
+                  eval="('mass_mailing_allowed_search_groups','af_security.af_newsletter_automatic,af_security.af_newsletter_manual,af_security.af_newsletter_manual_guest')"
+        />
     </data>
 </odoo>
