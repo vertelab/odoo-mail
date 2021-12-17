@@ -4,8 +4,7 @@
     "version": "12.0.1.1.1",
     "category": "Email Marketing",
     "description": """
-    v 12.0.1.1.1 - AFC-3158 - Deleted repeated group name.\n 
-    v 12.0.1.1.2 - AFC-3259 - Fixed group problem.\n """,
+    v 12.0.1.1.1 - AFC-3158 - Deleted repeated group name.\n """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
     "author": "Vertel AB",
