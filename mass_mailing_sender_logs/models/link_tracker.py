@@ -62,7 +62,7 @@ class LinkTrackerClickUserClicks(models.Model):
     country_id = fields.Many2one('res.country', 'Country')
     customer_id = fields.Char(string="Kundnummer")
     link_tracker_id = fields.Many2one('link.tracker', 'Link Tracker', required=True, ondelete='cascade')
-
+    mail_stat_id = fields.Many2one('mail.mail.statistics', string='Mail Statistics')
 
 class LinkTrackerClick(models.Model):
     _inherit = "link.tracker.click"
@@ -85,7 +85,7 @@ class LinkTrackerClick(models.Model):
             statistics = self.env['mail.mail.statistics'].search([('id', '=', stat_id)])
             receiver_model = statistics.model
             receiver_id = statistics.res_id
-
+            statistics.total_clicks += 1
             if receiver_model == 'mail.mass_mailing.contact':
                 customer_id = self.env[receiver_model].browse(receiver_id).partner_id.customer_id
             elif receiver_model == 'res.partner':
@@ -108,4 +108,7 @@ class LinkTrackerClick(models.Model):
                       })]
             })
         return res
-    
+        
+class MailMailStatistics(models.Model):
+        _inherit = "mail.mail.statistics"
+        total_clicks = fields.Integer()
