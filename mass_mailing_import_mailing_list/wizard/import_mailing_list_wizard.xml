@@ -63,6 +63,7 @@
                   name="Import mailing list"
                   action="import_mailing_list_wizard_action"
                   parent="mass_mailing.mass_mailing_mailing_list_menu"
+                  groups="af_security.af_newsletter_manual"
         />
     </data>
 </odoo>

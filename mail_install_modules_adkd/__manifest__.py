@@ -2,7 +2,7 @@
 
 {
     "name": "Af ADKD Install modules",
-    "version": "12.0.1.0.5",
+    "version": "12.0.1.0.6",
     "author": "Swedish Public Employement Service",
     "license": "AGPL-3",
     "website": "https://arbetsformedlingen.se/",
@@ -10,6 +10,8 @@
     This module is maintained here https://github.com/vertelab/odoo-mail/blob/Dev-12.0/mail_install_modules_adkd
     v12.0.1.0.4 AFC-2658 Added ',' between depends modules
     v12.0.1.0.5 AFC-2658 Corrected wrong module name
+    v12.0.1.0.6 AFC-3282 Deleted mass_mailing_multi_per_address from depends for testing.
+    
     """,
     "category": "Tools",
     "depends": [
@@ -34,9 +36,9 @@
         "mass_mailing_editor_af",           # odoo-mail This adds new snippets for mass mailing templates.
         "partner_mail_client",              # odoo-base This adds a tab on the Employee form for messages sent to and from that partner.
         "mass_mailing_count_af",            # Extends the standard search_count widget with Sudo search.
+        # "mass_mailing_multi_per_address", # Extends the standard mass_mailing to fix the bug when contact share the same email address.
         # "snailmail",                      # Odoo standard-module that is not used in our implementation.
     ],
     "application": False,
     "installable": True,
 }
-

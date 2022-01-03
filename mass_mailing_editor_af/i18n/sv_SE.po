@@ -1,0 +1,289 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* mass_mailing_editor_af
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20211011\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-08 15:47+0000\n"
+"PO-Revision-Date: 2021-12-08 15:47+0000\n"
+"Last-Translator: Nils Nyman-Waara <nils.nyman-waara@vertel.se>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_text_two_col
+msgid "<b>\n"
+"                                                            <span style=\"color: rgb(22, 22, 178);\">\n"
+"                                                                <u>Facebook, Instagram,\n"
+"                                                                    Linkedin och Twitter\n"
+"                                                                </u>\n"
+"                                                            </span>\n"
+"                                                        </b>\n"
+"                                                        <u/>."
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_text_two_col
+msgid "<b>\n"
+"                                                            <u>\n"
+"                                                                <span style=\"color: rgb(22, 22, 178);\">\n"
+"                                                                    <u>I Platsbanken!</u>\n"
+"                                                                </span>\n"
+"                                                            </u>\n"
+"                                                        </b>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_to_the_guide
+msgid "<b>Till guiden!</b>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_to_the_tips
+msgid "<b>Till tipsen!</b>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.af_add_email_designer_snippets
+msgid "<i class=\"fa fa-columns\"/>\n"
+"                Af Snippets"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_text_af
+msgid "<span style=\"\">\n"
+"                                                    <span class=\"nomob\">|</span>\n"
+"                                                    Detta mejl går inte att svara på\n"
+"                                                </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_text_two_col
+msgid "<span style=\"\">\n"
+"                                                <span style=\"font-size: 16px;\">Hitta jobb\n"
+"                                                    med sociala medier\n"
+"                                                </span>\n"
+"                                            </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_text_two_col
+msgid "<span style=\"\">\n"
+"                                                <span style=\"font-size: 16px;\">Sök jobb där\n"
+"                                                    de flesta annonserna finns-\n"
+"                                                </span>\n"
+"                                            </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_text_box_content
+msgid "<span style=\"\">\n"
+"                                <span style=\"font-size: 14px;\">Har du en bild av vad\n"
+"                                    ditt drömjobb är? Det finns en massa olika jobb\n"
+"                                    som passar dig. Många\n"
+"                                    fler än vad du tror och kanske till och med inom\n"
+"                                    helt andra branscher än\n"
+"                                    vad du tror.\n"
+"                                    <br/>\n"
+"                                    <br/>\n"
+"                                    Svara på 12 enkla frågor i vår intresseguide och\n"
+"                                    få förslag på jobb som\n"
+"                                    skulle kunna passa dig baserat på dina\n"
+"                                    intressen. Förhoppningsvis får du\n"
+"                                    nya insikter om dig själv och ditt jobbsökande.\n"
+"                                    Insikter som skulle\n"
+"                                    kunna leda till en helt ny karriär.\n"
+"                                </span>\n"
+"                            </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_text_box_content
+msgid "<span style=\"\">\n"
+"                                <span>\n"
+"                                    <span style=\"font-size: 24px;\">Drömjobbet -\n"
+"                                        kanske något helt annat än det du tror\n"
+"                                    </span>\n"
+"                                    <span>\n"
+"                                        <br/>\n"
+"                                        <br/>\n"
+"                                    </span>\n"
+"                                </span>\n"
+"                            </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_small_footer
+msgid "<span style=\"\">Besök oss på</span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_header_text_block_af
+msgid "<span style=\"\">Det är aldrig för sent att ställa om</span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_page_footer_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_page_footer_af
+msgid "<span style=\"\">Du får detta informationsbrev eftersom din epost,\n"
+"                                email-recipient registrerats när du skapat ett konto hos\n"
+"                                Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från\n"
+"                                Arbetsförmedlingen kan du\n"
+"                            </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_pre_header_af
+msgid "<span style=\"\">Gör smarta val till höstens\n"
+"                                                                        utbildningar\n"
+"                                                                    </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_text_block_two_col_af
+msgid "<span style=\"\">Har du svårt att få jobb inom den bransch\n"
+"                                                där du har kompetens och erfarenhet? Då kan en\n"
+"                                                utbildning vara vägen till ett jobb.\n"
+"                                            </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_image_text_af
+msgid "<span style=\"\">Om en vecka stänger anmäla till höstens\n"
+"                                                    utbildningar. Gör din anmälan redan idag för att inte missa chansen.\n"
+"                                                    På Antagning.se kan du både hitta utbildningar och skicka in din\n"
+"                                                    ansökan\n"
+"                                                </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_image_text_af
+msgid "<span style=\"\">Sista ansökningsdag 15 april</span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_small_footer
+msgid "<span style=\"\">| Detta mejl går inte att svara\n"
+"                            på\n"
+"                        </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_text_block_two_col_af
+msgid "<span style=\"\">– Att söka till högskolan kan vara en\n"
+"                                                bra väg om du fastnat. Det är aldrig för sent att\n"
+"                                                ställa om, det finns många fördelar att plugga när\n"
+"                                                man är lite äldre,\n"
+"                                                säger Arbetsförmedlingens jobbsökarexpert Charlotte\n"
+"                                                Lindman.\n"
+"                                                <br/>\n"
+"                                                <br/>\n"
+"                                            </span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_header_2_af_with_view_in_browser
+msgid "<span style=\"float:left;\">Gör vårt intressanta test!</span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_header_af_with_view_in_browser
+msgid "<span style=\"float:left;\">Välj bland flera sätt att nå dina mål</span>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_header_2_af_with_view_in_browser
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_header_af_with_view_in_browser
+msgid "<u>Visa i webbläsaren</u>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_small_footer
+msgid "<u>här</u>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_text_af
+msgid "Besök oss på\n"
+"                                                                                    www.arbetsformedlingen.se"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_small_footer
+msgid "Du\n"
+"                                            får detta informationsbrev\n"
+"                                            eftersom din epost,\n"
+"                                            ##SubscriberEmail##\n"
+"                                            registrerats när du skapat\n"
+"                                            ett konto hos\n"
+"                                            Arbetsförmedlingen. Vill du\n"
+"                                            inte ta emot fler\n"
+"                                            informationsbrev från\n"
+"                                            Arbetsförmedlingen kan du\n"
+"                                            avanmäla dig"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_text_two_col
+msgid "Här får du\n"
+"                                                    tips på hur du söker jobb via"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.inherit_mail_mass_mailing_internal_name
+msgid "Internal Name"
+msgstr "Internt Namn"
+
+#. module: mass_mailing_editor_af
+#: model:ir.model.fields,field_description:mass_mailing_editor_af.field_mail_mass_mailing__internal_name
+msgid "Internal name"
+msgstr "Internt namn"
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_text_block_two_col_af
+msgid "Läs\n"
+"                                                                                                    mer\n"
+"                                                                                                    om\n"
+"                                                                                                    hur\n"
+"                                                                                                    du\n"
+"                                                                                                    kan\n"
+"                                                                                                    tänka"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model:ir.model,name:mass_mailing_editor_af.model_mail_mass_mailing
+msgid "Mass Mailing"
+msgstr "Massutskick per e-post"
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_text_two_col
+msgid "Skräddarsy din sökning med hjälp av\n"
+"                                                    sökord och filter. Givetvis kan du spara\n"
+"                                                    dina sökningar och intressanta annonser."
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_image_text_af
+msgid "Till antagning.se"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_header_af
+msgid "Visa i webbläsaren"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_page_footer_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_page_footer_af
+msgid "avanmäla dig här."
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_small_footer
+msgid "www.arbetsformedlingen.se"
+msgstr ""

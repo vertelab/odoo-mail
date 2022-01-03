@@ -2,6 +2,7 @@ import base64
 import csv
 import io
 import logging
+import os
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
@@ -47,14 +48,14 @@ class ImportMailingList(models.TransientModel):
     def check_header(header, import_type):
         """
         Verify that header has the required columns as well as create
-         a dict with indexes.
+        a dict with indexes.
          """
         # Verify Header, Force it lowercase
         header = {x.lower(): index for index, x in enumerate(header)}
         correct_header = []
         if import_type == 'adkd':
             correct_header = [
-                'activemail' or '',
+                'activemail',
                 'sökande id'
             ]
         elif import_type:
@@ -203,7 +204,7 @@ class ImportMailingList(models.TransientModel):
             raise UserError(_('You must specify a name for mailing list'))
         if self.filename.lower().endswith(('.csv', '.txt')):
             try:
-                self.parse_csv_data()
+                self.parse_csv_data(os.path.splitext(self.filename)[1].lower())
             except UnicodeDecodeError as e:
                 print(e)
         elif self.filename.lower().endswith(('.xls', '.xlsx')):
@@ -227,19 +228,41 @@ class ImportMailingList(models.TransientModel):
             'target': 'new',
         }
 
-    def parse_csv_data(self):
+    def parse_csv_data(self, extention):
         # Decode data to string, Odoo supplies it as base64
+        delimiter = ';' if extention == '.csv' else '\t'
         csv_data = base64.b64decode(self.file)
-        try:
-            data_file = io.StringIO(csv_data.decode("ISO-8859-1"))
-        except UnicodeDecodeError as e:
-            raise UserError(f'Error {e}')
-        # Read CSV
-        headers, *data = csv.reader(data_file, delimiter=';')
-        if len(data) == 0:
-            raise UserError(f'File is empty')
-        # Verify Header, Force it lowercase and make a dict
-        headers = self.check_header(headers, self.import_type)
+        caught = False
+        for encoding in ('ISO-8859-1', 'cp1252', 'utf-8'):
+            try:
+                # Read CSV
+                data_file = io.StringIO(csv_data.decode(encoding))
+                headers, *data = csv.reader(data_file, delimiter=delimiter)
+                if len(data) == 0:
+                    raise UserError(f'File is empty')
+                # Verify Header, Force it lowercase and make a dict
+                headers = self.check_header(headers, self.import_type)
+            except UnicodeDecodeError:
+                pass
+            except UserError as e:
+                caught = e
+                # Could not find the correct header try again with a
+                # different encoding.
+                pass
+            else:
+                # We have found an encoding that at least parses the
+                # header correct.
+                break
+        else:
+            # Failed to find a correct header re raise last error
+            # from check header.
+            if caught:
+                raise caught
+            else:
+                # We hid encoding errors but as we have no UserErrors
+                # all has failed with UnicodeDecodeError.
+                raise UserError(_('File has an unknown encoding'))
+
         partner_obj = self.env['res.partner']
         contact_obj = self.env['mail.mass_mailing.contact']
         contacts = []
@@ -293,18 +316,24 @@ class ImportMailingList(models.TransientModel):
         active_mails = set()
         if sheet.nrows == 0:
             raise UserError(f'File is empty')
-        # Verify Header, Force it lowercase and make a dict
-        headers = self.check_header([cell.value for cell in sheet.row(0)], self.import_type)
+        # Verify Header, Force it lowercase and make a dict.
+        headers = self.check_header(
+            [cell.value for cell in sheet.row(0)], self.import_type)
         self.nr_total_rows = sheet.nrows - 1
         for row_nr in range(1, sheet.nrows):
             active_mail = ''
             if self.import_type == 'adkd':
                 active_mail = sheet.cell_value(row_nr, headers['activemail'])
-            sokande_id = str(int(sheet.cell_value(row_nr,
-                                                  headers['sökande id'])))
+            try:
+                value = sheet.cell_value(row_nr, headers['sökande id'])
+                sokande_id = str(int(value))
+            except ValueError:
+                msg = _('Faulty value for sökande id: "{value}" on row {row_nr}.')
+                local_vars = locals()
+                _logger.exception(msg.format(**local_vars))
+                raise UserError(msg.format(**local_vars))
             if 'e-postadress' in headers:
-                email = sheet.cell_value(row_nr,
-                                         headers['e-postadress'])
+                email = sheet.cell_value(row_nr, headers['e-postadress'])
             else:
                 email = ''
             # Add active_mail to set to get number of letters

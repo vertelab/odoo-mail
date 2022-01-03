@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.3.1",
+    "version": "12.0.1.5.0",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -21,13 +21,16 @@
      v12.0.1.3.0 AFC-2890 Add email to blacklist also.\n
      v12.0.1.3.0 AFC-3112 Buggfix, handle more dateformats.\n
      v12.0.1.3.1 AFC-3112 Buggfix, remove debuging raise.\n
+     v12.0.1.3.2 AFC-3111 Buggfix, Do not access forbidden data.\n
+     v12.0.1.4.0 AFC-3028 Created new access group ADKD manual guest and adjusted access right \n
+     v12.0.1.5.0 AFC-3124 Changed from email to sökande id for matching unsubscribe contact \n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
     "author": "Vertel AB",
     "contributors": ["Vertel AB"],
     "depends": [
-        "mass_mailing_custom_unsubscribe"
+        "mass_mailing_custom_unsubscribe",'af_security'
     ],
     "external_dependencies": {"python": ['pytz', 'xlrd']},
     "data": [
