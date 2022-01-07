@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.6.0",
+    "version": "12.0.1.6.1",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -25,6 +25,7 @@
      v12.0.1.4.0 AFC-3028 Created new access group ADKD manual guest and adjusted access right \n
      v12.0.1.5.0 AFC-3124 Changed from email to sökande id for matching unsubscribe contact \n
      v12.0.1.6.0 AFC-3305 Changed from email to sökande id for matching blacklist contact \n
+     v12.0.1.6.1 AFC-3179 Change border color of textarea in unsubscription form \n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
