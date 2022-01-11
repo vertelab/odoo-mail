@@ -72,7 +72,7 @@
     <template inherit_id="mass_mailing_custom_unsubscribe.reason_form" id="af_nyhetsbrev_unsubscribe_reason_form">
         <xpath expr="//form/div" position="replace">
             <div class="form-group mb16 mt16" align="right">
-                <button type="submit" class="button" align="right"
+                <button onclick="return confirm('Är du säker på avsluta prenumerationen?')" type="submit" class="button" align="right"
                         style="border-color:#00005a;color:#00005a;font-size:17px;border-radius:6px">
                     <b>Unsubscribe now</b>
                 </button>

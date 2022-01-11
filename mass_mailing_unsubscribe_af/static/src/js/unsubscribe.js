@@ -278,3 +278,9 @@ function toggle_opt_out_section(value) {
         $('[name="button_subscription"]').removeClass('clickable');
     }
 }
+
+function clicked(e) {
+    if(!confirm) {
+        e.preventDefault();
+    }
+}
