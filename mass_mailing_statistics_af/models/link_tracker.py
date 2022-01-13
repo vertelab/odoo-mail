@@ -22,7 +22,7 @@ class LinkTracker(models.Model):
 
     @api.multi
     def action_individual_unique_clicks_tree_view(self):
-        tree_view_id = self.env.ref('mass_mailing_sender_logs.view_link_tracker_unique_click_tree').id
+        tree_view_id = self.env.ref('mass_mailing_statistics_af.view_link_tracker_unique_click_tree').id
         return {
             'name': 'Individual Clicks',
             'type': 'ir.actions.act_window',
@@ -38,7 +38,7 @@ class LinkTracker(models.Model):
 
     @api.multi
     def action_individual_clicks_tree_view(self):
-        tree_view_id = self.env.ref('mass_mailing_sender_logs.view_link_tracker_click_tree').id
+        tree_view_id = self.env.ref('mass_mailing_statistics_af.view_link_tracker_click_tree').id
         return {
             'name': 'Individual Clicks',
             'type': 'ir.actions.act_window',
