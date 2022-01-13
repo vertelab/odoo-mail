@@ -135,14 +135,4 @@
             </field>
         </field>
     </record>
-    <record model="ir.ui.view" id="mail_unsubscription_inherited_form">
-        <field name="name">mail.unsubscription.inherited_remove_unsubscriber_id_form</field>
-        <field name="model">mail.unsubscription</field>
-        <field name="inherit_id" ref="mass_mailing_custom_unsubscribe.mail_unsubscription_view_form"/>
-        <field name="arch" type="xml">
-            <field name="unsubscriber_id" position="replace">
-                <field name="customer_id"/>
-            </field>
-        </field>
-    </record>
 </odoo>

@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.6.2",
+    "version": "12.0.1.6.3",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -27,6 +27,7 @@
      v12.0.1.6.0 AFC-3305 Changed from email to sökande id for matching blacklist contact \n
      v12.0.1.6.1 AFC-3179 Change border color of textarea in unsubscription form \n
      v12.0.1.6.2 AFC-3203 Added some js to make a popup when clicking on unsubscription button \n
+     v12.0.1.6.3 AFC-3136 Bugfix, can now access unsubscriber_id when creating unsubscription. \n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
