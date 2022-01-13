@@ -67,6 +67,10 @@
                 </t>
             </div>
         </xpath>
+        <xpath expr="//div[@id='custom_div_feedback']/textarea" position="replace">
+            <label style="color:#00005a;" for="other_reason">Om du har valt annan orsak, beskriv orsaken här: </label>
+            <textarea id="other_reason" class="form-control" name="details" cols="60" rows="3"></textarea>
+        </xpath>
     </template>
 
     <template inherit_id="mass_mailing_custom_unsubscribe.reason_form" id="af_nyhetsbrev_unsubscribe_reason_form">
