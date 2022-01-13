@@ -86,6 +86,12 @@
         </xpath>
     </template>
 
+    <template id="web_layout_title_custom" name="change title" inherit_id="web.layout">
+        <xpath expr="//title" position="replace">
+            <title>Arbetsförmedlingen - Avanmälan</title>
+        </xpath>
+    </template>
+
     <template id="mass_mailing.layout" name="Mass Mailing Layout">
         <t t-call="web.layout">
             <t t-set="head">
