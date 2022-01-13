@@ -1,7 +1,7 @@
 {
     "name": "AF Mass Mailing Snippets",
     "summary": "This version is used to customize the Odoo standard mail body widgets in accordance to 'Af' mail template.",
-    "version": "12.0.0.2.0",
+    "version": "12.0.0.2.1",
     "category": "Email Marketing",
     "description": """
     v12.0.0.0.1 AFC-2067  Added snippets in Mass mailing body.\n
@@ -16,6 +16,7 @@
     V12.0.0.1.2 AFC-3009 It is unable now to come across and drag out the content of snippets.\n
     V12.0.0.1.3 AFC-3066 Fixed a minor bug for background color (till guiden) and (till tipset) snippets.\n
     V12.0.0.2.0 AFC-3208 Added field for internal name of massmailings.\n
+    v12.0.0.2.1 AFC-3182 Change text color on link to ensure level of contrast.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",

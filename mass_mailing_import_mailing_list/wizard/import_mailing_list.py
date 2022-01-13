@@ -316,18 +316,24 @@ class ImportMailingList(models.TransientModel):
         active_mails = set()
         if sheet.nrows == 0:
             raise UserError(f'File is empty')
-        # Verify Header, Force it lowercase and make a dict
-        headers = self.check_header([cell.value for cell in sheet.row(0)], self.import_type)
+        # Verify Header, Force it lowercase and make a dict.
+        headers = self.check_header(
+            [cell.value for cell in sheet.row(0)], self.import_type)
         self.nr_total_rows = sheet.nrows - 1
         for row_nr in range(1, sheet.nrows):
             active_mail = ''
             if self.import_type == 'adkd':
                 active_mail = sheet.cell_value(row_nr, headers['activemail'])
-            sokande_id = str(int(sheet.cell_value(row_nr,
-                                                  headers['sökande id'])))
+            try:
+                value = sheet.cell_value(row_nr, headers['sökande id'])
+                sokande_id = str(int(value))
+            except ValueError:
+                msg = _('Faulty value for sökande id: "{value}" on row {row_nr}.')
+                local_vars = locals()
+                _logger.exception(msg.format(**local_vars))
+                raise UserError(msg.format(**local_vars))
             if 'e-postadress' in headers:
-                email = sheet.cell_value(row_nr,
-                                         headers['e-postadress'])
+                email = sheet.cell_value(row_nr, headers['e-postadress'])
             else:
                 email = ''
             # Add active_mail to set to get number of letters

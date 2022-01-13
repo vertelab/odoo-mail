@@ -3,6 +3,7 @@
     <template id="unsubscribe_af_assets_backend" name="mass_mailing unsubscribe assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <script type="text/javascript" src="/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js"/>
+            <link rel="stylesheet" type="text/css" href="/mass_mailing_unsubscribe_af/static/src/css/style.css"/>
         </xpath>
     </template>
 </odoo>
