@@ -4,20 +4,19 @@
     <!-- Af Pre Header Snippet -->
     <template id="s_mail_block_pre_header_af" name="Af Pre Header - Gör smarta val till höstens utbildningar">
         <div style="padding:0;margin:0;-webkit-text-size-adjust:none;width:100%;" class="body-div">
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
+            <table class="o_mail_table_styles" style="border-spacing:0;">
                 <tbody>
                     <tr>
-                        <td style="line-height:1px;">
+                        <td style="line-height:1px; padding:0;">
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f7f7f7" align="center">
+            <table style="border-spacing:0; width:100%; background-color:#f7f7f7;">
                 <tbody>
                     <tr>
-                        <th style="mso-line-height-rule:exactly;font-size: 13px;font-family:Arial, Verdana, sans-serif;
-                         color:#000000; background-color:#f7f7f7;" align="center">
+                        <th style="mso-line-height-rule:exactly;padding:0;font-size: 13px;font-family:Arial, Verdana, sans-serif;
+                         color:#000000; background-color:#f7f7f7;">
                             <div/>
                             <div style="display:none; white-space:nowrap; line-height:0px; letter-spacing:0px;
                                  font-size:15px; font-family: Courier New,Courier,Lucida Sans Typewriter,
@@ -26,29 +25,25 @@
 
                             <div>
                                 <div>
-                                    <table class="rsd" width="600" cellspacing="0" cellpadding="0" border="0"
-                                           align="center">
+                                    <table class="rsd" style="border-spacing:0; width:100%;">
                                         <tbody>
                                             <tr>
                                                 <th style="padding:15px 0;" class="p_lr">
-                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                    <table style="border-spacing:0; width:100%;">
                                                         <tbody>
                                                             <tr>
-                                                                <th style="font-size:10px;font-family:Arial, Verdana, sans-serif; font-weight:normal; color: #000000; pointer-events:none;"
-                                                                    class="nomob" align="left">
+                                                                <th style="padding:0; font-size:10px; font-family:Arial, Verdana, sans-serif; font-weight:normal; color: #000000; pointer-events:none;"
+                                                                    class="nomob">
                                                                     <span style="">Gör smarta val till höstens
-                                                                        utbildningar
-                                                                    </span>
+                                                                        utbildningar</span>
                                                                     <div style="color:#f7f7f7; font-size:1px; line-height:1px;"/>
                                                                 </th>
-                                                                <th style="font-size:10px;font-family:Arial, Verdana, sans-serif; font-weight:normal; color: #000000;"
-                                                                    class="a_left" valign="top" align="right">
-                                                                    <font style="color: #000000 !important;">
-                                                                        <span style=""/>
-                                                                        <a href="" name=""
-                                                                           style="color:rgb(0, 0, 0); text-decoration: underline;"
-                                                                           data-original-color="" target="_blank"/>
-                                                                    </font>
+                                                                <th style="padding:0;font-size:10px;font-family:Arial, Verdana, sans-serif; font-weight:normal; color: #000000;"
+                                                                    class="a_left">
+                                                                    <span style=""/>
+                                                                    <a href=""
+                                                                       style="color:rgb(0, 0, 0); text-decoration: underline;"
+                                                                       data-original-color="" target="_blank"/>
                                                                 </th>
                                                             </tr>
                                                         </tbody>
@@ -63,11 +58,10 @@
                     </tr>
                 </tbody>
             </table>
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
+            <table class="o_mail_table_styles" style="border-spacing:0;">
                 <tbody>
                     <tr>
-                        <td style="line-height:1px;">
+                        <td style="line-height:1px; padding:0;">
                         </td>
                     </tr>
                 </tbody>
@@ -77,20 +71,18 @@
 
     <template id="s_mail_block_header_af_with_view_in_browser"
               name="Af Pre Header - Välj bland flera sätt att nå dina mål, Visa i webbläsaren">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles"
-               style="background-color: #F1F1F1;">
+        <table class="o_mail_table_styles" style="background-color: #F1F1F1; border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="padding-top:10px;padding-bottom:20px;font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;"
+                    <td style="padding:10px 0 20px 0;font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;"
                         class="nomob">
                         <span style="float:left;">Välj bland flera sätt att nå dina mål</span>
                         <span style="float:right;">
@@ -104,11 +96,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -117,19 +108,18 @@
 
     <template id="s_mail_block_header_2_af_with_view_in_browser"
               name="Af Pre Header - Gör vårt intressanta test!, Visa i webbläsaren">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table align="center" cellspacing="0" cellpadding="0" border="0" class="o_mail_table_styles">
+        <table style="border-spacing:0;" class="o_mail_table_styles">
             <tbody>
                 <tr>
-                    <td style="padding-top:10px;padding-bottom:20px;font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000; background-color: #F1F1F1;"
+                    <td style="padding:10px 0 20px 0;font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000; background-color: #F1F1F1;"
                         class="nomob">
                         <span style="float:left;">Gör vårt intressanta test!</span>
                         <span style="float:right;">
@@ -143,11 +133,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -157,76 +146,60 @@
 
     <!-- Af Header Snippet -->
     <template id="s_mail_block_header_af" name="Af Header Blue">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
-               border="0" bgcolor="#05055d" align="center">
+        <table class="rsd" style="border-spacing:0; background-color:#05055d; width:100%;">
             <tbody>
                 <tr>
                     <th style="padding:20px 20px 20px; font-weight:normal; background-color:#05055d;"
                         class="p_b">
-                        <table width="100%" cellspacing="0" cellpadding="0" border="0" style="pointer-events:none;">
+                        <table style="pointer-events:none; border-spacing:0; width:100%;">
                             <tbody>
                                 <tr>
-                                    <th class="db p_b" style="font-weight:normal;" width="250" valign="top"
-                                        align="left">
+                                    <th class="db p_b" style="font-weight:normal; width:250px; padding:0;">
                                         <div id="align-wrapper" style="text-align:center;">
                                             <a target="_blank"
                                                href="https://arbetsformedlingen.se/">
                                                 <img src="/mass_mailing_editor_af/static/src/img/blocks/logo-vit.png"
-                                                     link="https://arbetsformedlingen.se/"
-                                                     style="display:block;" title="" alt="Arbetsförmedlingen logotyp (Till startsidan)" width="200"
-                                                     border=""
-                                                     align="middle"/>
+                                                     style="display:block;" alt="Arbetsförmedlingen logotyp (Till startsidan)" width="200"/>
                                             </a>
                                         </div>
                                     </th>
-                                    <th class="nomob" width="20" valign="top"/>
-                                    <th class="db" style="font-weight:normal;text-align:right" width="80"
-                                        valign="top" align="right">
-                                        <table class="rsd" cellspacing="0" cellpadding="0" border="0">
+                                    <th class="nomob" style="width:20px; padding:0;"/>
+                                    <th class="db" style="font-weight:normal;text-align:right; width:80px; padding:0;">
+                                        <table class="rsd" style="border-spacing:0;">
                                             <tbody>
                                                 <tr>
-                                                    <th align="left">
-                                                        <table cellspacing="0" cellpadding="0" border="0">
+                                                    <th style="padding:0;">
+                                                        <table style="border-spacing:0;">
                                                             <tbody>
                                                                 <tr>
-                                                                    <th style="vertical-align: middle;"
-                                                                        valign="middle">
-                                                                        <table cellspacing="0" cellpadding="0"
-                                                                               border="0" align="center">
+                                                                    <th style="vertical-align: middle; padding:0;">
+                                                                        <table style="border-spacing:0;">
                                                                             <tbody>
                                                                                 <tr>
-                                                                                    <th style="vertical-align: middle; line-height:normal;"
-                                                                                        class="icons"
-                                                                                        valign="middle"
-                                                                                        height="14">
-                                                                                        <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-white.png"
+                                                                                    <th style="vertical-align: middle; line-height:normal; padding:0; height:14px;"
+                                                                                        class="icons">
+                                                                                        <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-white.png" alt=""
                                                                                              width="6"/>
                                                                                     </th>
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
                                                                     </th>
-                                                                    <th width="5" height="10"/>
-                                                                    <th style="vertical-align: middle;"
-                                                                        valign="middle">
-                                                                        <table width="100%" cellspacing="0"
-                                                                               cellpadding="0" border="0"
-                                                                               align="center">
+                                                                    <th style="padding:0; width:5px; height:10px;"/>
+                                                                    <th style="vertical-align: middle; padding:0;">
+                                                                        <table style="width:100%; border-spacing:0;">
                                                                             <tbody>
                                                                                 <tr>
-                                                                                    <th style="font-size:15px;font-family:Arial, Helvetica, sans-serif; color:#ffffff; text-decoration:none; vertical-align: middle;font-weight:normal"
-                                                                                        class="bodytext"
-                                                                                        valign="middle"
-                                                                                        align="center">
+                                                                                    <th style="font-size:15px;font-family:Arial, Helvetica, sans-serif; color:#ffffff; text-decoration:none; vertical-align: middle;font-weight:normal; padding:0;"
+                                                                                        class="bodytext">
                                                                                         <div style="font-size:0; line-height:0;"/>
                                                                                         <a href="#"
                                                                                            style="color:#ffffff;text-decoration: none;"
@@ -253,11 +226,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -266,87 +238,66 @@
 
     <!-- AF White header snippet -->
     <template id="s_mail_block_white_header_top_af" name="Af Header White">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
-            <tbody>
-                <tr>
-                    <td style="line-height:1px;">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table anpbgcolor="#picker,transparent,#ffffff" width="100%"
-               cellspacing="0"
-               cellpadding="0" class="o_mail_table_styles"
-               border="0" bgcolor="#ffffff" align="center">
+        <table style="border-spacing:0; width:100%; background-color:#ffffff;" class="o_mail_table_styles">
             <tbody>
                 <tr>
                     <th style="padding:0 20px 30px;" class="rsd p_b">
-                        <div id="align-wrapper" style="text-align:center; pointer-events:none;">
+                        <div class="align-wrapper" style="text-align:center; pointer-events:none;">
                             <img src="/mass_mailing_template_af/static/img/Af_logo_rgb_270.png"
-                                 link=""
-                                 style="display:block;width:50%" title="" alt="" width="280"
-                                 border=""
-                                 align="middle"/>
+                                 style="display:block;width:50%" alt="Arbetsförmedlingen logotyp" width="280"/>
                         </div>
                     </th>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
     </template>
 
-    <!-- Af Full With Image Snippet -->
+    <!-- Af Full Width Image Snippet -->
     <template id="s_mail_block_full_width_image_af" name="Af Full Width Image">
         <div>
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
+            <table class="o_mail_table_styles" style="border-spacing:0;">
                 <tbody>
                     <tr>
-                        <td style="line-height:1px;">
+                        <td style="line-height:1px; padding:0;">
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <table anpbgcolor="#picker,transparent,#ffffff" class="rsd" width="600" cellspacing="0" cellpadding="0"
-                   border="0" bgcolor="#ffffff" align="center" style="background-color:#ffffff">
+            <table class="rsd" style="background-color:#ffffff; border-spacing:0;">
                 <tbody>
                     <tr>
-                        <th class="rsd">
-                            <div id="align-wrapper" style="text-align:center; pointer-events:none;">
+                        <th class="rsd" style="padding:0;">
+                            <div class="align-wrapper" style="text-align:center; pointer-events:none;">
                                 <a target="_blank"
                                    href="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb">
                                     <img src="/mass_mailing_editor_af/static/src/img/blocks/kvinna-beslutsam.jpg"
-                                         link="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb"
-                                         style="display:block;" title="" alt="Bild på kvinna (länken fungerar inte förtillfället)" width="600" border="" align="middle"/>
+                                         style="display:block;" alt="Bild på kvinna (länken fungerar inte förtillfället)" width="600"/>
                                 </a>
                             </div>
                         </th>
                     </tr>
                 </tbody>
             </table>
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
+            <table class="o_mail_table_styles" style="border-spacing:0;">
                 <tbody>
                     <tr>
-                        <td style="line-height:1px;">
+                        <td style="line-height:1px; padding:0;">
                         </td>
                     </tr>
                 </tbody>
@@ -356,43 +307,35 @@
 
     <!-- Af Blue Header Text Block Snippet -->
     <template id="s_mail_block_blue_header_text_block_af" name="Af Blue Header Text Block">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#ffffff,#05055d" class="rsd" width="600"
-               style="background-color:#05055d"
-               cellspacing="0" cellpadding="0" border="0" bgcolor="#05055d" align="center">
+        <table class="rsd" style="background-color:#05055d; border-spacing:0; width:100%;">
             <tbody>
                 <tr>
-                    <th style="padding:20px 20px; background-color:#05055d;" class="p_lr p_b30" align="left">
+                    <th style="padding:20px 20px; background-color:#05055d;" class="p_lr p_b30">
                         <div style="font-size:24px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;
                             font-weight:normal;padding-bottom:20px; border-width:0;"
                              class="headline">
                             <span style="">Det är aldrig för sent att ställa om</span>
                         </div>
-                        <table style="width:100%" cellspacing="0" cellpadding="0" border="0">
+                        <table style="border-spacing:0; width:100%;">
                             <tbody>
-                                <tr valign="top">
-                                    <th align="left">
-                                        <div align="left">
-                                            <table style="width:67px;" cellspacing="0" cellpadding="0"
-                                                   border="0">
+                                <tr>
+                                    <th style="padding:0;">
+                                        <div>
+                                            <table style="width:67px; border-spacing:0;">
                                                 <tbody>
                                                     <tr>
-                                                        <th anpbgcolor="#picker,transparent,#ffffff,#b7ee4a"
-                                                            style="width:67px; height:4px; line-height:1px; font-size:1px;background-color:#b7ee4a"
-                                                            bgcolor="#b7ee4a" align="left">
+                                                        <th style="width:67px; height:4px; line-height:1px; font-size:1px;background-color:#b7ee4a; padding:0;">
                                                             <img src="/mass_mailing_editor_af/static/src/img/blocks/pixel.gif"
-                                                                 link=""
-                                                                 style="display:block; width:100%!important; height:4px;"
-                                                                 title="" alt="" width="1" height="4" border=""
-                                                                 align="middle"/>
+                                                                 style="display:block; width:100%!important; height:4px; width:1px;"
+                                                                 alt=""/>
                                                         </th>
                                                     </tr>
                                                 </tbody>
@@ -406,11 +349,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -419,25 +361,23 @@
 
     <!-- Af Blue Text Block with two Columns Snippet -->
     <template id="s_mail_block_blue_text_block_two_col_af" name="Af Blue Text Block With Two Columns">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
-               cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+        <table class="rsd" style="border-spacing:0; background-color:#ffffff;">
             <tbody>
                 <tr>
-                    <th style="padding:0px 20px 60px; background-color:#05055d;" class="p_lr p_b30" align="left">
-                        <table style="width:100%; pointer-events:none;" cellspacing="0" cellpadding="0" border="0">
+                    <th style="padding:0px 20px 60px; background-color:#05055d;" class="p_lr p_b30">
+                        <table style="width:100%; pointer-events:none; border-spacing:0;">
                             <tbody>
                                 <tr>
-                                    <th style="width:270px; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;font-weight:normal"
-                                        class="db" valign="top" align="left">
+                                    <th style="vertical-align:top;width:270px; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;font-weight:normal;padding:0;"
+                                        class="db">
                                         <div class="bodytext">
                                             <span style="">Har du svårt att få jobb inom den bransch
                                                 där du har kompetens och erfarenhet? Då kan en
@@ -445,9 +385,9 @@
                                             </span>
                                         </div>
                                     </th>
-                                    <th style="width:20px; height:20px;" class="db">‌</th>
-                                    <th style="width:270px; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;font-weight:normal"
-                                        class="db" valign="top" align="left">
+                                    <th style="width:20px; height:20px; padding:0;" class="db">‌</th>
+                                    <th style="width:270px; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;font-weight:normal;padding:0;"
+                                        class="db">
                                         <div style="padding:0 0 20px; border-width:0;"
                                              class="bodytext">
                                             <span style="">– Att söka till högskolan kan vara en
@@ -460,71 +400,39 @@
                                                 <br/>
                                             </span>
                                         </div>
-                                        <div align="left" style="background-color:#b7ee4a">
-                                            <table cellspacing="0" cellpadding="0" border="0"
-                                                   align="left">
+                                        <div>
+                                            <table style="border-spacing:0;">
                                                 <tbody>
                                                     <tr>
-                                                        <th anpbgcolor="#picker,transparent,#ffffff,#b7ee4a"
-                                                            style="padding:10px 30px; vertical-align:middle; border-radius: 25px;background-color:#b7ee4a"
-                                                            valign="middle"
-                                                            align="center">
-                                                            <table cellspacing="0" cellpadding="0"
-                                                                   border="0">
+                                                        <th style="padding:10px 30px; vertical-align:middle; border-radius: 25px;background-color:#b7ee4a">
+                                                            <table style="border-spacing:0;">
                                                                 <tbody>
                                                                     <tr>
-                                                                        <th style="vertical-align: middle;"
-                                                                            valign="middle">
-                                                                            <table cellspacing="0"
-                                                                                   cellpadding="0"
-                                                                                   border="0">
+                                                                        <th style="vertical-align: middle; padding:0;">
+                                                                            <table style="border-spacing:0;">
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <th style="font-size:12px;font-family:Arial, Helvetica, sans-serif; text-decoration:none; vertical-align: middle; color: #00005a; font-weight: bold;"
-                                                                                            class="bodytext"
-                                                                                            valign="middle"
-                                                                                            align="center">
-                                                                                            <font style="color:rgb(0, 0, 90);">
-                                                                                                <a href="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb"
-                                                                                                   name=""
-                                                                                                   style="color:rgb(0, 0, 90); text-decoration:none;"
-                                                                                                   data-original-color="">
-                                                                                                    Läs
-                                                                                                    mer
-                                                                                                    om
-                                                                                                    hur
-                                                                                                    du
-                                                                                                    kan
-                                                                                                    tänka
-                                                                                                </a>
-                                                                                            </font>
+                                                                                        <th style="padding:0;font-size:12px;font-family:Arial, Helvetica, sans-serif; text-decoration:none; vertical-align: middle; color: #00005a; font-weight: bold;"
+                                                                                            class="bodytext">
+                                                                                            <a href="https://arbetsformedlingen.se/for-arbetssokande/sa-hittar-du-jobbet/tips-inspiration-och-nyheter/artiklar/2021-03-26-studier-kan-bli-vagen-tillbaka-till-jobb"
+                                                                                               style="color:rgb(0, 0, 90); text-decoration:none;"
+                                                                                               data-original-color="">
+                                                                                                Läs mer om hur du kan tänka
+                                                                                            </a>
                                                                                         </th>
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>
                                                                         </th>
-                                                                        <th width="10"
-                                                                            height="10"/>
-                                                                        <th style="vertical-align: middle;"
-                                                                            valign="middle">
-                                                                            <table cellspacing="0"
-                                                                                   cellpadding="0"
-                                                                                   border="0"
-                                                                                   align="center">
+                                                                        <th style="width:10px; height:10px; padding:0;"/>
+                                                                        <th style="vertical-align: middle; padding:0;">
+                                                                            <table style="border-spacing:0;">
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <th style="vertical-align: middle; line-height:normal;"
-                                                                                            class="icons"
-                                                                                            valign="middle"
-                                                                                            height="12">
+                                                                                        <th style="vertical-align: middle; line-height:normal; height:12px; padding:0;"
+                                                                                            class="icons">
                                                                                             <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png"
-                                                                                                 link=""
-                                                                                                 style=""
-                                                                                                 title=""
-                                                                                                 alt=""
-                                                                                                 width="6"
-                                                                                                 border=""
-                                                                                                 align=""/>
+                                                                                                 alt="" width="6"/>
                                                                                         </th>
                                                                                     </tr>
                                                                                 </tbody>
@@ -546,11 +454,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -560,35 +467,32 @@
     <!-- Af White text box with two column snippet -->
     <template id="s_mail_block_image_text_af" name="Af White Text Block with Two Columns">
         <div>
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
+            <table class="o_mail_table_styles" style="border-spacing:0;">
                 <tbody>
                     <tr>
-                        <td style="line-height:1px;">
+                        <td style="line-height:1px; padding:0;">
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
-                   cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+            <table class="rsd" style="border-spacing:0; background-color:#ffffff;">
                 <tbody>
                     <tr>
                         <th style="padding:0 20px 30px;" class="p_lr p_b">
-                            <table style="width:100%; pointer-events:none;" cellspacing="0" cellpadding="0" border="0">
+                            <table style="width:100%; pointer-events:none; border-spacing:0;">
                                 <tbody>
                                     <tr>
-                                        <th style="width:270px;" class="imgfix db rsd" valign="top" align="left">
-                                            <div id="align-wrapper" style="text-align:center;">
+                                        <th style="width:270px; padding:0;" class="imgfix db rsd">
+                                            <div class="align-wrapper" style="text-align:center;">
                                                 <a target="_blank" href="https://www.antagning.se/">
                                                     <img src="/mass_mailing_editor_af/static/src/img/blocks/AdobeStock_297582499_.jpeg"
-                                                         link="https://www.antagning.se/" style="" title="" alt="bild på laptop (Till antagning.se)"
-                                                         width="270" border="" align="middle"/>
+                                                         alt="bild på laptop (Till antagning.se)" width="270"/>
                                                 </a>
                                             </div>
                                         </th>
-                                        <th style="width:20px; height:20px;" class="db">‌</th>
-                                        <th style="width:270px; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#303030;font-weight:normal"
-                                            class="db" valign="top" align="left">
+                                        <th style="width:20px; height:20px; padding:0;" class="db">‌</th>
+                                        <th style="width:270px; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#303030;font-weight:normal; padding:0;"
+                                            class="db">
                                             <div style="font-size:20px;font-family:Arial, Helvetica, sans-serif; color:#000000; padding-bottom:10px; border-width:0;font-weight:normal"
                                                  class="headline">
                                                 <span style="">Sista ansökningsdag 15 april</span>
@@ -600,23 +504,19 @@
                                                     ansökan
                                                 </span>
                                             </div>
-                                            <div align="left">
-                                                <table cellspacing="0" cellpadding="0" border="0">
+                                            <div>
+                                                <table style="border-spacing:0;">
                                                     <tbody>
                                                         <tr>
-                                                            <th anpbgcolor="#picker,transparent,#ffffff,#00005a"
-                                                                style="font-size:12px;font-family:Arial, Helvetica, sans-serif;
+                                                            <th style="font-size:12px;font-family:Arial, Helvetica, sans-serif;
                                                                 color: #ffffff; text-decoration:none; padding:8px 20px;
                                                                 vertical-align:middle; border-radius: 6px; font-weight: bold;
                                                                 background-color:#00005a"
-                                                                class="bodytext" valign="middle" bgcolor="#00005a"
-                                                                align="center">
-                                                                <font style="color:rgb(255, 255, 255);">
-                                                                    <a href="https://www.antagning.se/" name=""
-                                                                       style="color:rgb(255, 255, 255); text-decoration:none;"
-                                                                       data-original-color="">Till antagning.se
-                                                                    </a>
-                                                                </font>
+                                                                class="bodytext">
+                                                                <a href="https://www.antagning.se/"
+                                                                   style="color:rgb(255, 255, 255); text-decoration:none;"
+                                                                   data-original-color="">Till antagning.se
+                                                                </a>
                                                             </th>
                                                         </tr>
                                                     </tbody>
@@ -630,11 +530,10 @@
                     </tr>
                 </tbody>
             </table>
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
+            <table class="o_mail_table_styles" style="border-spacing:0;">
                 <tbody>
                     <tr>
-                        <td style="line-height:1px;">
+                        <td style="line-height:1px; padding:0;">
                         </td>
                     </tr>
                 </tbody>
@@ -645,62 +544,51 @@
     <!-- Af White text box with one column snippet -->
     <template id="s_mail_block_text_af" name="Af White Text with One Columns">
         <div>
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
+            <table class="o_mail_table_styles" style="border-spacing:0;">
                 <tbody>
                     <tr>
-                        <td style="line-height:1px;">
+                        <td style="line-height:1px; padding:0;">
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <table anpbgcolor="#picker,transparent,#ffffff,#000000" class="rsd" width="600" cellspacing="0"
-                   cellpadding="0"
-                   border="0" bgcolor="#ffffff" align="center">
+            <table class="rsd" style="border-spacing:0; background-color:#ffffff; width:100%;">
                 <tbody>
-                    <tr valign="top">
-                        <th style="padding:14px 20px;" class="p_lr" align="left">
-                            <table cellspacing="0" cellpadding="0" border="0" style="pointer-events:none;">
+                    <tr>
+                        <th style="padding:14px 20px;" class="p_lr">
+                            <table style="pointer-events:none; border-spacing:0;">
                                 <tbody>
                                     <tr>
-                                        <th style="font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#1616b2;"
-                                            class="db"
-                                            valign="top" align="left">
-                                            <table cellspacing="0" cellpadding="0" border="0">
+                                        <th style="font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#1616b2; padding:0;"
+                                            class="db">
+                                            <table style="border-spacing:0;">
                                                 <tbody>
                                                     <tr>
-                                                        <th style="vertical-align: middle;" valign="middle">
-                                                            <table cellspacing="0" cellpadding="0" border="0"
-                                                                   align="center">
+                                                        <th style="vertical-align: middle; padding:0;">
+                                                            <table style="border-spacing:0;">
                                                                 <tbody>
                                                                     <tr>
-                                                                        <th style="vertical-align: middle; line-height:normal;"
-                                                                            class="icons" valign="middle" height="12">
+                                                                        <th style="vertical-align: middle; line-height:normal; height:12px; padding:0;"
+                                                                            class="icons">
                                                                             <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-blue.png"
-                                                                                 width="4"/>
+                                                                                 alt="" width="4"/>
                                                                         </th>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
                                                         </th>
-                                                        <th width="5" height="10"/>
-                                                        <th style="vertical-align: middle;" valign="middle">
-                                                            <table width="100%" cellspacing="0" cellpadding="0"
-                                                                   border="0"
-                                                                   align="center">
+                                                        <th style="width:5px; height:10px; padding:0;"/>
+                                                        <th style="vertical-align: middle; padding:0;">
+                                                            <table style="border-spacing:0; width:100%;">
                                                                 <tbody>
                                                                     <tr>
-                                                                        <th style="font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#1616b2; text-decoration:none; vertical-align: middle;font-weight:normal"
-                                                                            class="bodytext" valign="middle"
-                                                                            align="center">
-                                                                            <font style="color:rgb(22, 22, 178);">
-                                                                                <a href="https://arbetsformedlingen.se/"
-                                                                                   name=""
-                                                                                   style="color:rgb(22, 22, 178); text-decoration:none;"
-                                                                                   data-original-color="">Besök oss på
-                                                                                    www.arbetsformedlingen.se
-                                                                                </a>
-                                                                            </font>
+                                                                        <th style="padding:0;font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#1616b2; text-decoration:none; vertical-align: middle;font-weight:normal"
+                                                                            class="bodytext">
+                                                                            <a href="https://arbetsformedlingen.se/"
+                                                                               style="color:rgb(22, 22, 178); text-decoration:none;"
+                                                                               data-original-color="">Besök oss på
+                                                                                www.arbetsformedlingen.se
+                                                                            </a>
                                                                         </th>
                                                                     </tr>
                                                                 </tbody>
@@ -710,9 +598,9 @@
                                                 </tbody>
                                             </table>
                                         </th>
-                                        <th class="db" width="10" valign="top" height="10"/>
-                                        <th style="font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#000000;font-weight:normal"
-                                            class="db a_l" valign="top" align="left">
+                                        <th class="db" style="width:10px; height:10px; padding:0;"/>
+                                        <th style="font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#000000;font-weight:normal;padding:0;"
+                                            class="db a_l">
                                             <div class="bodytext">
                                                 <span style="">
                                                     <span class="nomob">|</span>
@@ -727,11 +615,10 @@
                     </tr>
                 </tbody>
             </table>
-            <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-                   cellpadding="0" border="0" align="center">
+            <table class="o_mail_table_styles" style="border-spacing:0;">
                 <tbody>
                     <tr>
-                        <td style="line-height:1px;">
+                        <td style="line-height:1px; padding:0;">
                         </td>
                     </tr>
                 </tbody>
@@ -741,28 +628,25 @@
 
     <!-- Af Blue Page footer snippet -->
     <template id="s_mail_block_blue_page_footer_af" name="Af Blue Page Footer">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
-               border="0" bgcolor="#05055d" align="center">
+        <table class="rsd" style="border-spacing:0; background-color:#05055d;">
             <tbody>
                 <tr>
-                    <th style="padding:20px 20px 40px; font-weight:normal; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;background-color:#05055d;"
-                        align="left">
+                    <th style="padding:20px 20px 40px; font-weight:normal; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#ffffff;background-color:#05055d;">
                         <div class="bodytext">
                             <span style="">Du får detta informationsbrev eftersom din epost,
                                 email-recipient registrerats när du skapat ett konto hos
                                 Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från
                                 Arbetsförmedlingen kan du
                             </span>
-                            <a href="/unsubscribe_from_list" name=""
+                            <a href="/unsubscribe_from_list"
                                style="color:rgb(255, 255, 255); font-weight:normal; text-decoration:underline;"
                                data-original-color="">avanmäla dig här.
                             </a>
@@ -771,11 +655,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -784,28 +667,25 @@
 
     <!-- Af White Page Footer Snippet-->
     <template id="s_mail_block_white_page_footer_af" name="Af White Page Footer">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#05055d" class="rsd" width="600" cellspacing="0" cellpadding="0"
-               border="0" bgcolor="#f7f7f7" align="center">
+        <table class="rsd" style="border-spacing:0; background-color:#f7f7f7;">
             <tbody>
                 <tr>
-                    <th style="padding:20px 20px 40px; background-color:#f7f7f7; font-weight:normal; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#000000;"
-                        align="left">
+                    <th style="padding:20px 20px 40px; background-color:#f7f7f7; font-weight:normal; font-size:12px;font-family:Arial, Helvetica, sans-serif; color:#000000;">
                         <div class="bodytext">
                             <span style="">Du får detta informationsbrev eftersom din epost,
                                 email-recipient registrerats när du skapat ett konto hos
                                 Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från
                                 Arbetsförmedlingen kan du
                             </span>
-                            <a href="/unsubscribe_from_list" name=""
+                            <a href="/unsubscribe_from_list"
                                style="color:#000000; font-weight:normal; text-decoration:underline;"
                                data-original-color="">avanmäla dig här.
                             </a>
@@ -814,11 +694,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -827,23 +706,18 @@
 
     <!-- AF White Text Box Content -->
     <template id="s_mail_block_white_text_box_content" name="Af White Text Box Content">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
-               cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff"
-               align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0; background-color:#ffffff;">
             <tbody>
-                <tr valign="top">
-                    <th style="padding:0 20px 30px; font-weight:normal;" class="p_b"
-                        align="left">
-
+                <tr>
+                    <th style="padding:0 20px 30px; font-weight:normal;" class="p_b">
                         <div style="font: 16px Arial, Verdana, sans-serif; font-weight:bold; color:#000000; text-decoration:none;"
                              class="headline">
                             <span style="">
@@ -859,7 +733,7 @@
                             </span>
                         </div>
 
-                        <div style="font-weight:none;color:#000000;" class="bodytext">
+                        <div style="color:#000000;" class="bodytext">
                             <span style="">
                                 <span style="font-size: 14px;">Har du en bild av vad
                                     ditt drömjobb är? Det finns en massa olika jobb
@@ -883,11 +757,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -896,54 +769,42 @@
 
     <!-- AF Blue Small Header -->
     <template id="s_mail_block_blue_small_footer" name="Af Blue Small Footer">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#e6005c" class="o_mail_table_styles"
-               width="600"
-               cellspacing="0" cellpadding="0" border="0"
-               align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
-                <tr valign="middle">
-                    <th style="font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle; background-color: #00005a;"
-                        class="footer-text" height="26" align="Center">
-                        <font style="color:rgb(255, 255, 255);">
-                            <a href="" name=""
-                               style="color:rgb(255, 255, 255); text-decoration:none;"
-                               data-original-color="" target="_blank"/>
-                        </font>
+                <tr>
+                    <th style="height:26px; font:13px Arial, Verdana, sans-serif; color:#ffffff; padding:5px 20px; font-weight:normal; vertical-align:middle; background-color: #00005a;"
+                        class="footer-text">
+                        <a href=""
+                           style="color:rgb(255, 255, 255); text-decoration:none;"
+                           data-original-color="" target="_blank"/>
                         <span style="">Besök oss på</span>
-                        <font style="color:rgb(255, 255, 255);">
-                            <a href="https://www.arbetsformedlingen.se/?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_1_AG1"
-                               name=""
-                               style="color:rgb(255, 255, 255); text-decoration:none;"
-                               data-original-color="">
-                                www.arbetsformedlingen.se
-                            </a>
-                        </font>
+                        <a href="https://www.arbetsformedlingen.se/?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_1_AG1"
+                           style="color:rgb(255, 255, 255); text-decoration:none;"
+                           data-original-color="">
+                            www.arbetsformedlingen.se
+                        </a>
                         <span style="">| Detta mejl går inte att svara
                             på
                         </span>
-                        <font style="color:rgb(255, 255, 255);">
-                            <a href="tel:0771-416 416" name=""
-                               style="color:rgb(255, 255, 255); text-decoration:none;"
-                               data-original-color="" target="_blank"/>
-                        </font>
+                        <a href="tel:+46771416416"
+                           style="color:rgb(255, 255, 255); text-decoration:none;"
+                           data-original-color="" target="_blank"/>
                     </th>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -952,40 +813,28 @@
 
     <!-- AF White Small Footer -->
     <template id="s_mail_block_white_small_footer" name="Af White Small Footer">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#e6005c" class="rsd"
-               width="600"
-               cellspacing="0" cellpadding="0" border="0"
-               bgcolor="transparent"
-               align="center">
+        <table class="rsd" style="border-spacing:0; background-color:transparent">
             <tbody>
                 <tr>
                     <th style="padding:15px 0;" class="p_lr">
-                        <table width="100%" cellspacing="0"
-                               cellpadding="0" border="0">
+                        <table style="border-spacing:0; width:100%;">
                             <tbody>
                                 <tr>
-                                    <th style="font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;"
-                                        align="left">
-                                        <span style="">Du
-                                            får detta informationsbrev
-                                            eftersom din epost,
-                                            ##SubscriberEmail##
-                                            registrerats när du skapat
-                                            ett konto hos
-                                            Arbetsförmedlingen. Vill du
-                                            inte ta emot fler
-                                            informationsbrev från
-                                            Arbetsförmedlingen kan du
-                                            avanmäla dig
+                                    <th style="padding:0;font:10px/1.5 Arial, Verdana, sans-serif; font-weight:normal; color: #000000;">
+                                        <span style="">Du får detta informationsbrev
+                                            eftersom din epost, ##SubscriberEmail##
+                                            registrerats när du skapat ett konto hos
+                                            Arbetsförmedlingen. Vill du inte ta emot
+                                            fler informationsbrev från Arbetsförmedlingen
+                                            kan du avanmäla dig
                                             <a href="/unsubscribe_from_list" style="color: #645974; font-weight: bold;">
                                                 <u>här</u>
                                             </a>
@@ -1000,11 +849,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -1013,25 +861,22 @@
 
     <!-- AF White Text Box Two columns -->
     <template id="s_mail_block_white_text_two_col" name="Af White Text Box Two Columns">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
-               cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0; background-color:#ffffff;">
             <tbody>
                 <tr>
                     <th style="padding:0 20px 30px;" class="p_b">
-                        <table width="100%" cellspacing="0" cellpadding="10" border="0" style="pointer-events:none;">
+                        <table style="pointer-events:none; border-spacing:0; width:100%;">
                             <tbody>
                                 <tr>
-                                    <th class="db p_b" style="font-weight:normal;"
-                                        width="270" valign="top" align="left">
+                                    <th class="db p_b" style="font-weight:normal; width:270px; padding:10px; vertical-align:top;">
                                         <div style="font: 16px Arial, Verdana, sans-serif; font-weight:bold; color:#000000; text-decoration:none;"
                                              class="headline">
                                             <span style="">
@@ -1040,7 +885,7 @@
                                                 </span>
                                             </span>
                                         </div>
-                                        <div style="font-weight:none; padding:0 0 15px; border-width:0;color:#000000"
+                                        <div style="padding:0 0 15px; border-width:0;color:#000000"
                                              class="bodytext">
                                             <span style="">
                                                 <span style="font-size: 13.5px;">Här får du
@@ -1058,17 +903,16 @@
                                                 </span>
                                             </span>
                                         </div>
-                                        <div style="color:#999999;" align="right">
-                                            <a href="" name=""
+                                        <div style="color:#999999;">
+                                            <a href=""
                                                style="color:rgb(153, 153, 153); font:  13px Arial, Verdana, sans-serif; color:#999999; text-decoration:underline;"
                                                class="link"
                                                data-original-color="rgb(153, 153, 153)"
                                                target="_blank"/>
                                         </div>
                                     </th>
-                                    <th class="nomob" width="20" valign="top"/>
-                                    <th class="db" style="font-weight:normal;" width="270"
-                                        valign="top" align="left">
+                                    <th class="nomob" style="width:20px; padding:0;"/>
+                                    <th class="db" style="font-weight:normal; width:270px; padding:10px;">
                                         <div style="font: 16px Arial, Verdana, sans-serif; font-weight:bold; color:#000000; text-decoration:none;"
                                              class="headline">
                                             <span style="">
@@ -1077,7 +921,7 @@
                                                 </span>
                                             </span>
                                         </div>
-                                        <div style="font-weight:none; padding:0 0 15px; border-width:0;color:#000000"
+                                        <div style="padding:0 0 15px; border-width:0;color:#000000"
                                              class="bodytext">
                                             <span style="">
                                                 <span style="font-size: 13.5px;">
@@ -1096,8 +940,8 @@
                                                 </span>
                                             </span>
                                         </div>
-                                        <div style="color:#999999;" align="right">
-                                            <a href="" name=""
+                                        <div style="color:#999999;">
+                                            <a href=""
                                                style="color:rgb(153, 153, 153); font:  13px Arial, Verdana, sans-serif; color:#999999; text-decoration:underline;"
                                                class="link" data-original-color=""
                                                target="_blank"/>
@@ -1110,11 +954,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -1123,33 +966,26 @@
 
     <!-- AF button Snippets -->
     <template id="s_mail_block_to_the_guide" name="Af Button - Till guiden!">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#ffffff" class="o_mail_table_styles" width="600"
-               cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0; background-color:#ffffff">
             <tbody>
-                <tr valign="top">
-                    <th style="padding:0 20px 30px; font-weight:normal;" class="p_b"
-                        align="left">
-
-                        <table anpbgcolor="#picker,transparent,#2D860A" class="rsd"
-                               style="border-radius: 1px;" height="50" cellspacing="0"
-                               cellpadding="0" border="0" align="center">
+                <tr>
+                    <th style="padding:0 20px 30px; font-weight:normal;" class="p_b">
+                        <table class="rsd" style="border-radius: 1px; border-spacing:0; height:50px; margin-right:auto; margin-left:auto;">
                             <tbody style="pointer-events:none;">
                                 <tr>
                                     <th style="background-color:#2d860a; padding:0 30px; line-height:normal; vertical-align:middle; font-size: 19px; font-family: 'Open Sans', Helvetica, Arial, sans-serif;"
-                                        class="p_n" valign="middle" align="center">
+                                        class="p_n">
                                         <div style="color:#ffffff!important;">
                                             <a href="https://arbetsformedlingen.se/for-arbetssokande/yrken-och-studier/intresseguide/?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_1_AG1"
-                                               name=""
-                                               style="color:rgb(255, 255, 255); background-color:#2d860a; border-color: #2d860a; line-height:normal; text-decoration:none; font-weight:none;"
+                                               style="color:rgb(255, 255, 255); background-color:#2d860a; border-color: #2d860a; line-height:normal; text-decoration:none;"
                                                class="btn btn-primary" data-original-color="">
                                                 <b>Till guiden!</b>
                                             </a>
@@ -1162,11 +998,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
@@ -1174,33 +1009,27 @@
     </template>
 
     <template id="s_mail_block_to_the_tips" name="Af Button - Till tipsen!">
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent,#ffffff" class="rsd" width="600" cellspacing="0"
-               cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+        <table class="rsd" style="border-spacing:0; background-color:#ffffff; width:100%;">
             <tbody>
-                <tr valign="top">
-                    <th style="padding:0 20px 30px; font-weight:normal;" class="p_b"
-                        align="left">
-
-                        <table anpbgcolor="#picker,transparent,#2D860A" class="rsd"
-                               style="border-radius: 1px;" height="50" cellspacing="0"
-                               cellpadding="0" border="0" align="center">
+                <tr>
+                    <th style="padding:0 20px 30px; font-weight:normal;" class="p_b">
+                        <table class="rsd"
+                               style="border-radius: 1px; border-spacing:0; height:50px; margin-right:auto; margin-left:auto;">
                             <tbody style="pointer-events:none;">
                                 <tr>
                                     <th style="background-color:#2d860a; padding:0 30px; line-height:normal; vertical-align:middle; font-size: 19px; font-family: 'Open Sans', Helvetica, Arial, sans-serif;"
-                                        class="p_n" valign="middle" align="center">
+                                        class="p_n">
                                         <div style="color:#ffffff!important;">
                                             <a href="https://arbetsformedlingen.se/For-arbetssokande/Yrken-och-studier/Utbildning/Att-valja-utbildning?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_2_AG1"
-                                               name=""
-                                               style="color:rgb(255, 255, 255); background-color:#2d860a; border-color: #2d860a; line-height:normal; text-decoration:none; font-weight:none;"
+                                               style="color:rgb(255, 255, 255); background-color:#2d860a; border-color: #2d860a; line-height:normal; text-decoration:none;"
                                                class="btn btn-primary" data-original-color="">
                                                 <b>Till tipsen!</b>
                                             </a>
@@ -1213,11 +1042,10 @@
                 </tr>
             </tbody>
         </table>
-        <table anpbgcolor="#picker,transparent" class="o_mail_table_styles" width="600" cellspacing="0"
-               cellpadding="0" border="0" align="center">
+        <table class="o_mail_table_styles" style="border-spacing:0;">
             <tbody>
                 <tr>
-                    <td style="line-height:1px;">
+                    <td style="line-height:1px; padding:0;">
                     </td>
                 </tr>
             </tbody>
