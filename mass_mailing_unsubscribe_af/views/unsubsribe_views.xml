@@ -104,9 +104,16 @@
                     <t t-raw="0"/>
                 </main>
             </body>
-            <xpath expr="//footer" position="replace">
-            </xpath>
         </t>
+    </template>
+
+    <template id="web_layout_custom" inherit_id="web.layout">
+        <xpath expr="//meta[@http-equiv='X-UA-Compatible']" position="attributes">
+            <attribute name="content">IE=edge</attribute>
+        </xpath>
+        <xpath expr="//html" position="attributes">
+            <attribute name="lang">sv</attribute>
+        </xpath>
     </template>
 
     <record model="ir.ui.menu" id="mass_mailing_custom_unsubscribe.mail_unsubscription_menu">
