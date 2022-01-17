@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.6.4",
+    "version": "12.0.1.6.5",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -29,6 +29,7 @@
      v12.0.1.6.2 AFC-3203 Added some js to make a popup when clicking on unsubscription button \n
      v12.0.1.6.3 AFC-3136 Bugfix, can now access unsubscriber_id when creating unsubscription. \n
      v12.0.1.6.4 AFC-3199 Added label to textarea \n
+     v12.0.1.6.5 AFC-3204 Change code to pass validation.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",

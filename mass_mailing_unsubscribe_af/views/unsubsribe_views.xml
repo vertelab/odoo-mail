@@ -75,9 +75,9 @@
 
     <template inherit_id="mass_mailing_custom_unsubscribe.reason_form" id="af_nyhetsbrev_unsubscribe_reason_form">
         <xpath expr="//form/div" position="replace">
-            <div class="form-group mb16 mt16" align="right">
-                <button onclick="return confirm('Är du säker på att du vill avsluta prenumerationen?')" type="submit" class="button" align="right"
-                        style="border-color:#00005a;color:#00005a;font-size:17px;border-radius:6px">
+            <div class="form-group mb16 mt16">
+                <button onclick="return confirm('Är du säker på att du vill avsluta prenumerationen?')" type="submit" class="button"
+                        style="float:right;border-color:#00005a;color:#00005a;font-size:17px;border-radius:6px">
                     <b>Unsubscribe now</b>
                 </button>
             </div>
@@ -92,13 +92,11 @@
             </t>
             <body class="o_white_body">
                 <header>
-                    <div>
-                        <title>Odoo</title>
-                    </div>
                     <div class="text-center">
                         <br/>
                         <br/>
-                        <img style="width:15%" src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"/>
+                        <img style="width:15%" src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"
+                             alt="Arbetsförmedlingen logotyp"/>
                     </div>
                 </header>
                 <div id="wrap" class="oe_structure oe_empty"/>
@@ -106,9 +104,16 @@
                     <t t-raw="0"/>
                 </main>
             </body>
-            <xpath expr="//footer" position="replace">
-            </xpath>
         </t>
+    </template>
+
+    <template id="web_layout_custom" inherit_id="web.layout">
+        <xpath expr="//meta[@http-equiv='X-UA-Compatible']" position="attributes">
+            <attribute name="content">IE=edge</attribute>
+        </xpath>
+        <xpath expr="//html" position="attributes">
+            <attribute name="lang">sv</attribute>
+        </xpath>
     </template>
 
     <record model="ir.ui.menu" id="mass_mailing_custom_unsubscribe.mail_unsubscription_menu">
