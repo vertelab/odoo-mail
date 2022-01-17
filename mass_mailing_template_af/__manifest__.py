@@ -1,7 +1,7 @@
 {
     "name": "AF Mass Mailing Template",
     "summary": "Adds a Mass Mailing Template Design",
-    "version": "12.0.1.3.4",
+    "version": "12.0.1.3.3",
     "category": "Email Marketing",
     "description": """
     v12.0.0.1 AFC-86  Add Mass mailing template for AF newsletters.\n
@@ -19,7 +19,6 @@
     v12.0.1.3.1 AFC-2830 Changed background color to skip inherit color when snippet moving.\n
     v12.0.1.3.2 AFC-3009 It is unable now to come across and drag out the content of snippets.\n
     v12.0.1.3.3 AFC-3066 Fixed a minor bug for background color (till guiden) and (till tipset) snippets.\n
-    v12.0.1.3.4 AFC-3204 Change code to pass validation.\n
     """,
     "license": "AGPL-3",
     "maintainer": "Swedish Public Employement Service",
