@@ -52,6 +52,21 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
         }
     };
 
+    $(document).ready(function() {
+        $("#other_reason").hide();
+        let radio_button = document.getElementsByClassName('opt')
+        $(".opt").change(function(){
+            if(radio_button[4].checked)
+            {
+                $("#other_reason").show();
+            }
+            else
+            {
+                $("#other_reason").hide();
+            }
+        });
+    });
+
     $mailing_lists.change(function (e) {
         toggle_reasons();
         $('#info_state').addClass('invisible');

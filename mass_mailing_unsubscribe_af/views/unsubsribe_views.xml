@@ -59,7 +59,7 @@
                 <t t-foreach="reasons" t-as="reason">
                     <div class="radio" style="color:#00005a">
                         <label>
-                            <input type="radio" name="reason_id" t-att-data-details-required="reason.details_required"
+                            <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
                                    t-att-value="reason.id" required="required"/>
                             <t t-esc="reason.display_name"/>
                         </label>
@@ -68,8 +68,10 @@
             </div>
         </xpath>
         <xpath expr="//div[@id='custom_div_feedback']/textarea" position="replace">
-            <label style="color:#00005a;" for="other_reason">Om du har valt annan orsak, beskriv orsaken här: </label>
-            <textarea id="other_reason" class="form-control" name="details" cols="60" rows="3"></textarea>
+            <div id="other_reason">
+                <label style="color:#00005a;" for="other_reason_textfield">Om du har valt annan orsak, beskriv orsaken här: </label>
+                <textarea id="other_reason_textfield" class="form-control" name="details" cols="60" rows="3"></textarea>
+            </div>
         </xpath>
     </template>
 
