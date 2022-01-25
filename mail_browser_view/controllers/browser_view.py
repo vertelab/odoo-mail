@@ -23,4 +23,5 @@ class EmailBrowserViewController(http.Controller):
                                                         unsubscribe_url
                                                         if unsubscribe_url
                                                         else '#')
-        return request.make_response(record.body)
+        record._add_title()
+        return request.make_response(record.body_html)
