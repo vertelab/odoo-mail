@@ -2,13 +2,14 @@
 <odoo>
     <template id="assets_backend" name="jt_qweb_editor assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
-
             <!-- Custom JS Loading -->
-            <script type="text/javascript" src="/jt_qweb_editor/static/src/js/fields.js"></script>
             <script type="text/javascript" src="/mass_mailing_autoresponder/static/src/js/fields.js"></script>
+            <script type="text/javascript" src="/mass_mailing_autoresponder/static/src/js/import_buttons.js"></script>
 
             <!-- Custom CSS Loading -->
-            <link rel="stylesheet" type="text/scss" href="/mass_mailing_autoresponder/static/src/scss/event.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/mass_mailing_autoresponder/static/src/scss/event.scss"/>'
+            <link rel="stylesheet" type="text/scss" href="/base_import/static/src/scss/base_import.scss"/>
         </xpath>
     </template>
+
 </odoo>
