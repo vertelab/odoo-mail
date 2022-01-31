@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.6.7",
+    "version": "12.0.1.6.8",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -31,7 +31,9 @@
      v12.0.1.6.4 AFC-3199 Added label to textarea \n
      v12.0.1.6.5 AFC-3204 Change code to pass validation.\n
      v12.0.1.6.6 AFC-3363 Addes js to hide and show textarea based on radio button choice.\n
-     v12.0.1.6.7 AFC-3188 Add title tag into html head \n
+     v12.0.1.6.7 AFC-3173 Introduce ARIA-landmarks and add fieldset and legend to form \n
+     v12.0.1.6.8 AFC-3188 Add title tag into html head \n
+
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
