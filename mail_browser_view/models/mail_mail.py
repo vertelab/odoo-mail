@@ -134,3 +134,18 @@ class Mail(models.Model):
                 )
         else:
             self.update({'is_token_alive': True})
+
+    def _add_title(self):
+        root_html = lxml.html.fromstring(self.body_html)
+        if root_html.find('.//title') is None:
+            title_string = '<title>Arbetsförmedlingen</title>'
+            title = lxml.html.fromstring(title_string).find('.//title')
+            root_html.find('.//head').insert(0, title)
+
+        self.body_html = lxml.html.tostring(
+            root_html,
+            pretty_print=False,
+            method='html',
+            encoding='unicode',
+            doctype='<!DOCTYPE html>'
+        )

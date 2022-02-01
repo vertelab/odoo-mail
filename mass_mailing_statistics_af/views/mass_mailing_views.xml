@@ -91,7 +91,7 @@
                 <div class="row">
                     <div class="col-6">
                         <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
-                           type="action">Clicks
+                           type="action">Click frequency
                         </a>
                     </div>
                     <div class="col-6 text-right">
@@ -101,6 +101,18 @@
                         (
                         <field name="clicks_ratio"/>
                         %)
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[4]" position="replace">
+                <div class="row">
+                    <div class="col-6">
+                        <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
+                           type="action">Total clicks
+                        </a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <field name="total_clicks"/>
                     </div>
                 </div>
             </xpath>
@@ -117,8 +129,10 @@
                 <field name="bounced"/>
                 <field name="clicks"/>
                 <field name="clicks_ratio"/>
+                <field name="total_clicks"/>
             </field>
         </field>
     </record>
 
 </odoo>
+

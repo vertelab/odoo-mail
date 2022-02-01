@@ -7,7 +7,6 @@ import os
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.modules.module import get_resource_path
 import pytz
 from xlrd import open_workbook, xldate_as_tuple
@@ -44,7 +43,7 @@ class ImportDeregistrationFile(models.TransientModel):
         Verify that header has the required columns as well as create
          a dict with indexes.
          """
-        # Verify Header, Force it lowercase
+        # Verify Header, Force lowercase.
         header = {x.lower(): index for index, x in enumerate(header)}
         correct_header = ['opt out date', 'reason', 'sokande_id']
         if not all(item in header for item in correct_header):
@@ -66,38 +65,41 @@ class ImportDeregistrationFile(models.TransientModel):
             partner_id = partner_obj.sudo().search([
                 ('customer_id', '=', sokande_id)
             ])
+            unsub_id = 'res.partner,' + str(partner_id.id)
             contact = mail_list_obj.search([('partner_id', '=', partner_id.id)])
             if contact:
                 unsub_obj.create({
-                        'date': date,
-                        'mailing_list_ids':
-                            [(4, lst.list_id.id) for lst in
-                             contact.subscription_list_ids],
-                        'email': partner_id.email,
-                        'action': 'unsubscription',
-                        'reason_id': reason.id if reason else '',
-                        'details': details,
+                    'date': date,
+                    'mailing_list_ids': [(4, lst.list_id.id) for lst in
+                                         contact.subscription_list_ids],
+                    'email': partner_id.email,
+                    'action': 'unsubscription',
+                    'reason_id': reason.id if reason else '',
+                    'details': details,
+                    'unsubscriber_id': unsub_id,
                 })
-                if not black_list_obj.search([
-                    ('email', '=', partner_id.email)
-                ]):
-                    black_list_obj.create({'email': partner_id.email})
+                if not black_list_obj.search([('unsubscriber_id', '=', unsub_id)]):
+                    black_list_obj.create({'email': partner_id.email,
+                                           'unsubscriber_id': unsub_id,
+                                           })
                 for mail_list in contact.subscription_list_ids:
                     mail_list.opt_out = True
             else:
                 unsub_obj.create({
-                        'date': date,
-                        'email': partner_id.email,
-                        'action': 'unsubscription',
-                        'reason_id': reason.id if reason else '',
-                        'details': details,
-                        'unsubscriber_id': 'res.partner,' + str(partner_id.id)
+                    'date': date,
+                    'email': partner_id.email,
+                    'action': 'unsubscription',
+                    'reason_id': reason.id if reason else '',
+                    'details': details,
+                    'unsubscriber_id': unsub_id,
                 })
                 if not black_list_obj.search([
-                    ('email', '=', partner_id.email)
+                    ('unsubscriber_id', '=', unsub_id)
                 ]):
-                    black_list_obj.create({'email': partner_id.email})
-
+                    black_list_obj.create({
+                        'email': partner_id.email,
+                        'unsubscriber_id': unsub_id,
+                                           })
 
     def import_data(self):
         """Parse and import a file."""
@@ -119,7 +121,7 @@ class ImportDeregistrationFile(models.TransientModel):
             delimiter = ',' if extention == '.csv' else '\t'
             headers, *data = csv.reader(data_file, delimiter=delimiter)
 
-            # Verify Header, Force it lowercase and make a dict
+            # Verify Header, Force lowercase and make a dict.
             headers = self.check_header(headers)
             for row in data:
                 try:
@@ -131,7 +133,7 @@ class ImportDeregistrationFile(models.TransientModel):
                     _logger.warning(f'Could not parse the row: {row}')
                 else:
                     self.import_row(date, reason_val, unsub_obj,
-                                    mail_list_obj,black_list_obj, partner_obj,
+                                    mail_list_obj, black_list_obj, partner_obj,
                                     reason_obj, sokande_id)
 
         elif self.filename.lower().endswith(('.xls', '.xlsx')):
@@ -139,13 +141,13 @@ class ImportDeregistrationFile(models.TransientModel):
             book = open_workbook(file_contents=data or b'')
             sheet = book.sheet_by_index(0)
 
-            # Verify Header, Force it lowercase and make a dict
+            # Verify Header, Force lowercase and make a dict.
             headers = self.check_header([cell.value for cell in sheet.row(0)])
             for row_nr in range(1, sheet.nrows):
                 sokande_id = sheet.cell_value(row_nr, headers['sokande_id'])
-                if isinstance(sokande_id, (float, int)):
+                try:
                     sokande_id = int(sokande_id)
-                else:
+                except ValueError:
                     raise UserError(
                         _("Sökande ID has to be an integer!"
                           " Imported value was: {sokande_id}").format(

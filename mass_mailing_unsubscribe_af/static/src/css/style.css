@@ -1,0 +1,7 @@
+textarea.form-control {
+    border: 1px solid #949494;
+}
+
+textarea.form-control:focus {
+    outline: 2px solid #949494;
+}

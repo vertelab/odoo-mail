@@ -3,7 +3,7 @@
 {
     'name': 'Mail Autoresponder',
     'summary': "Adds an automatic Emailing Trigger based service",
-    'version': '12.0.2.4.3',
+    'version': '12.0.2.4.5',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
@@ -24,11 +24,14 @@
         v12.0.2.3.1  AFC-3027 Adjust access right for ADKD manual user \n 
         v12.0.2.4.0  AFC-3028 Created new access group ADKD manual guest and adjusted access right \n 
         v12.0.2.4.1  AFC-3159 Hide create and import button for ADKD guest group \n 
-        v12.0.2.4.2  AFC-3170 Hide button for ADKD guest group \n
-        v12.0.2.4.3  AFC-3103 Autoresponder doesnt create a mass_mailing per contact anymore \n 
+        v12.0.2.4.2  AFC-3170 Hide button for ADKD guest group \n 
+        v12.0.2.4.3  AFC-3146 Hide import button for all users \n 
+        v12.0.2.4.4  AFC-3351 Hide actions dropdown menu for ADKD guest group \n 
+        v12.0.2.4.5  AFC-3103 Autoresponder doesnt create a mass_mailing per contact anymore \n 
+
     """,
     'depends': [
-        'base_setup', 'mail', 'mass_mailing', 'resource','af_security'
+        'base_setup', 'mail', 'mass_mailing', 'resource', 'af_security',
         ],
     'data': [
         'security/ir.model.access.csv',
@@ -42,6 +45,7 @@
         'views/mail_template_views.xml',
         'wizard/mail_compose_message_view.xml',
     ],
+    'qweb': ['static/src/xml/base_import.xml'],
     'auto_install': False,
     'installable': True,
 }

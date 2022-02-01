@@ -46,37 +46,48 @@
     </template>
 
     <template inherit_id="mass_mailing_custom_unsubscribe.reason" id="af_nyhetsbrev_unsubscribe_reason">
-        <xpath expr="//div[@id='custom_div_feedback']" position="attributes">
-            <attribute name="t-attf-class">mt-4 #{extra_class or ''}</attribute>
-        </xpath>
-        <xpath expr="//div[@id='custom_div_feedback']/p" position="replace">
-            <p style="color:#00005a;">We would appreciate if you provide feedback about why you updated your
-                subscriptions.
-            </p>
-        </xpath>
-        <xpath expr="//div[@id='custom_div_feedback']/div" position="replace">
-            <div class="col-md-12 mb16">
-                <t t-foreach="reasons" t-as="reason">
-                    <div class="radio" style="color:#00005a">
-                        <label>
-                            <input type="radio" name="reason_id" t-att-data-details-required="reason.details_required"
-                                   t-att-value="reason.id" required="required"/>
-                            <t t-esc="reason.display_name"/>
-                        </label>
-                    </div>
-                </t>
-            </div>
-        </xpath>
+        <xpath expr="//div[@id='custom_div_feedback']" position="replace"/>
     </template>
 
     <template inherit_id="mass_mailing_custom_unsubscribe.reason_form" id="af_nyhetsbrev_unsubscribe_reason_form">
-        <xpath expr="//form/div" position="replace">
-            <div class="form-group mb16 mt16" align="right">
-                <button type="submit" class="button" align="right"
-                        style="border-color:#00005a;color:#00005a;font-size:17px;border-radius:6px">
-                    <b>Unsubscribe now</b>
-                </button>
-            </div>
+        <xpath expr="//form" position="attributes">
+            <attribute name="role">form</attribute>
+            <attribute name="aria-labelledby">legend</attribute>
+        </xpath>
+        <xpath expr="//form" position="inside">
+            <fieldset style="margin-top:18px;">
+                <legend id="legend" style="color:#00005a; font-size: 14px; margin-bottom: 12px;">
+                    Vi skulle uppskatta om du kunde lämna feedback till varför du vill avregistrera dig.
+                </legend>
+                <div class="col-md-12 mb16">
+                    <t t-foreach="reasons" t-as="reason">
+                        <div class="radio" style="color:#00005a">
+                            <label>
+                                <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
+                                       t-att-value="reason.id" required="required"/>
+                                <t t-esc="reason.display_name"/>
+                            </label>
+                        </div>
+                    </t>
+                </div>
+                <div id="other_reason">
+                    <label style="color:#00005a;" for="other_reason_textfield">Om du har valt annan orsak, beskriv orsaken här: </label>
+                    <textarea id="other_reason_textfield" class="form-control" name="details" cols="60" rows="3"></textarea>
+                </div>
+                <div class="form-group mb16 mt16">
+                    <button onclick="return confirm('Är du säker på att du vill avsluta prenumerationen?')" type="submit" class="button"
+                            style="float:right;border-color:#00005a;color:#00005a;font-size:17px;border-radius:6px">
+                        <b>Unsubscribe now</b>
+                    </button>
+                </div>
+            </fieldset>
+        </xpath>
+        <xpath expr="//form/div" position="replace"/>
+    </template>
+
+    <template id="web_layout_title_custom" name="change title" inherit_id="web.layout">
+        <xpath expr="//title" position="replace">
+            <title>Arbetsförmedlingen - Avanmälan</title>
         </xpath>
     </template>
 
@@ -87,24 +98,28 @@
                 <t t-call-assets="mass_mailing.assets_backend"/>
             </t>
             <body class="o_white_body">
-                <header>
-                    <div>
-                        <title>Odoo</title>
-                    </div>
+                <header role="banner">
                     <div class="text-center">
                         <br/>
                         <br/>
-                        <img style="width:15%" src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"/>
+                        <img style="width:15%" src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"
+                             alt="Arbetsförmedlingen logotyp"/>
                     </div>
                 </header>
-                <div id="wrap" class="oe_structure oe_empty"/>
-                <main>
+                <main role="main">
                     <t t-raw="0"/>
                 </main>
             </body>
-            <xpath expr="//footer" position="replace">
-            </xpath>
         </t>
+    </template>
+
+    <template id="web_layout_custom" inherit_id="web.layout">
+        <xpath expr="//meta[@http-equiv='X-UA-Compatible']" position="attributes">
+            <attribute name="content">IE=edge</attribute>
+        </xpath>
+        <xpath expr="//html" position="attributes">
+            <attribute name="lang">sv</attribute>
+        </xpath>
     </template>
 
     <record model="ir.ui.menu" id="mass_mailing_custom_unsubscribe.mail_unsubscription_menu">
@@ -129,16 +144,6 @@
         <field name="name">mail.unsubscription.inherited_remove_unsubscriber_id_search</field>
         <field name="model">mail.unsubscription</field>
         <field name="inherit_id" ref="mass_mailing_custom_unsubscribe.mail_unsubscription_view_search"/>
-        <field name="arch" type="xml">
-            <field name="unsubscriber_id" position="replace">
-                <field name="customer_id"/>
-            </field>
-        </field>
-    </record>
-    <record model="ir.ui.view" id="mail_unsubscription_inherited_form">
-        <field name="name">mail.unsubscription.inherited_remove_unsubscriber_id_form</field>
-        <field name="model">mail.unsubscription</field>
-        <field name="inherit_id" ref="mass_mailing_custom_unsubscribe.mail_unsubscription_view_form"/>
         <field name="arch" type="xml">
             <field name="unsubscriber_id" position="replace">
                 <field name="customer_id"/>
