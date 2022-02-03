@@ -85,9 +85,20 @@
         <xpath expr="//form/div" position="replace"/>
     </template>
 
+
     <template id="web_layout_title_custom" name="change title" inherit_id="web.layout">
         <xpath expr="//title" position="replace">
             <title>Arbetsförmedlingen - Avanmälan</title>
+        </xpath>
+    </template>
+
+    <template inherit_id="mass_mailing_custom_unsubscribe.reason_form" id="af_nyhetsbrev_unsubscribe_reason_form">
+        <xpath expr="//form/div" position="replace">
+            <div class="form-group mb16 mt16">
+                <button id ="unsubscribe" type="submit" class="button" onclick="return openDialog(event)">
+                    <b>Unsubscribe now</b>
+                </button>
+            </div>
         </xpath>
     </template>
 
@@ -109,6 +120,21 @@
                 <main role="main">
                     <t t-raw="0"/>
                 </main>
+                <div id="dialog" aria-labelledby="dialogName" role="dialog" tabindex="-1" hidden="">
+                    <div role="document" id="container">
+                        <h1 id="dialogName" tabindex="-1">Bekräfta avanmälan</h1>
+                        <div id="elementDetail" tabindex="0" role="region" aria-labelledby="dialogName">
+                            <p>
+                                Är du säker på att du vill avsluta prenumerationen?
+                            </p>
+                            <div id="button_container">
+                                <button type="button" id="dialogSubmit">Avsluta prenumeration</button>
+                                <button type="button" id="dialogClose">Avbryt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="overlay"></div>
             </body>
         </t>
     </template>

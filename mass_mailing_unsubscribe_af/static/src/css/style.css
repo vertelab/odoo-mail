@@ -12,3 +12,97 @@ img {
     min-width: 160px;
 }
 
+#overlay {
+    position: absolute;
+    z-index: 150;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.40);
+    display: none;
+}
+
+[aria-hidden="true"], [aria-hidden="1"] {
+    display: inline !important;
+}
+
+#dialog {
+    position: absolute;
+    z-index: 200;
+    top: 30vh;
+    left: 10vw;
+    right: 10vw;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    box-shadow: 0 0 2em rgba(0,0,0,.5);
+    background: #fefefe;
+    border-radius: 10px;
+    visibility: visible;
+    padding:15px;
+}
+
+#dialog p{
+    #color: #00005a;
+}
+
+#dialog [hidden] {
+    display: block;
+    visibility: hidden;
+    transform: scale(.5);
+    opacity: .6;
+    padding: 10px;
+}
+
+#dialog div[role=document] {
+    display: inline;
+}
+
+#dialog div[role=document] div {
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+#dialog button {
+    border-radius: 5px;
+    padding: 0;
+    line-height: 0;
+    border: none;
+    height: 1.5em;
+    overflow: hidden;
+    padding: 17px;
+    cursor: pointer;
+}
+#button_container {
+    float: right;
+}
+
+#dialogClose {
+    margin-left: 15px;
+}
+
+#elementDetail {
+    padding: 0;
+    border-top: 1px solid gray;
+}
+
+#elementDetail p {
+    margin-top: 12px;
+}
+
+#container h1 {
+    font-size: 20px !important;
+    font-weight: normal;
+    color: #00005a;
+}
+
+#unsubscribe {
+    float:right;
+    border-color:#00005a;
+    color:#00005a;
+    font-size:17px;
+    border-radius:6px;
+    cursor:pointer;
+}
