@@ -61,7 +61,14 @@
                 </legend>
                 <div class="col-md-12 mb16">
                     <t t-foreach="reasons" t-as="reason">
-                        <div class="radio" style="color:#00005a">
+                        <div t-if="reason_index == 0" class="radio" style="color:#00005a; display:none;">
+                            <label>
+                                <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
+                                       t-att-value="reason.id" required="required"/>
+                                <t t-esc="reason.display_name"/>
+                            </label>
+                        </div>
+                        <div t-else="" class="radio" style="color:#00005a">
                             <label>
                                 <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
                                        t-att-value="reason.id" required="required"/>
@@ -75,52 +82,18 @@
                     <textarea id="other_reason_textfield" class="form-control" name="details" cols="60" rows="3"></textarea>
                 </div>
                 <div class="form-group mb16 mt16">
-                    <button onclick="return confirm('Är du säker på att du vill avsluta prenumerationen?')" type="submit" class="button"
-                            style="float:right;border-color:#00005a;color:#00005a;font-size:17px;border-radius:6px">
+                    <button id ="unsubscribe" type="submit" class="button" onclick="return openDialog(event)">
                         <b>Unsubscribe now</b>
                     </button>
                 </div>
             </fieldset>
         </xpath>
-
-        <xpath expr="//div[@id='custom_div_feedback']/div" position="replace">
-            <div class="col-md-12 mb16">
-                <t t-foreach="reasons" t-as="reason">
-
-                    <div t-if="reason_index == 0" class="radio" style="color:#00005a; display:none;">
-                        <label>
-                            <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
-                                   t-att-value="reason.id" required="required"/>
-                            <t t-esc="reason.display_name"/>
-                        </label>
-                    </div>
-                    <div t-else="" class="radio" style="color:#00005a">
-                        <label>
-                            <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
-                                   t-att-value="reason.id" required="required"/>
-                            <t t-esc="reason.display_name"/>
-                        </label>
-                    </div>
-                </t>
-            </div>
-        </xpath>
         <xpath expr="//form/div" position="replace"/>
     </template>
-
 
     <template id="web_layout_title_custom" name="change title" inherit_id="web.layout">
         <xpath expr="//title" position="replace">
             <title>Arbetsförmedlingen - Avanmälan</title>
-        </xpath>
-    </template>
-
-    <template inherit_id="mass_mailing_custom_unsubscribe.reason_form" id="af_nyhetsbrev_unsubscribe_reason_form">
-        <xpath expr="//form/div" position="replace">
-            <div class="form-group mb16 mt16">
-                <button id ="unsubscribe" type="submit" class="button" onclick="return openDialog(event)">
-                    <b>Unsubscribe now</b>
-                </button>
-            </div>
         </xpath>
     </template>
 
