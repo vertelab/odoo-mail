@@ -56,7 +56,7 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
         $("#other_reason").hide();
         let radio_button = document.getElementsByClassName('opt')
         $(".opt").change(function(){
-            if(radio_button[4].checked)
+            if(radio_button[5].checked)
             {
                 $("#other_reason").show();
             }
@@ -358,6 +358,17 @@ function closeDialog(eID, submit= false) {
     triggerBtn.focus();
 
     if (submit){
+        if(!$('input[type=radio]:checked').size() > 0){
+            let radio = document.getElementsByName('reason_id');
+            let isChecked = 0;
+            for(let i=0; i<radio.length;i++) {
+                if(radio[i].checked) isChecked = 1;
+            }
+
+            if(isChecked == 0){
+                radio[0].checked = "checked";
+            }
+        }
         form.submit();
     }
 }

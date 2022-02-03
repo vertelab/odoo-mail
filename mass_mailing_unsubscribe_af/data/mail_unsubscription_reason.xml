@@ -8,5 +8,12 @@
         <field name="sequence">10</field>
         <field name="details_required" eval="False"/>
     </record>
+    <record id="reason_no_reason"
+            model="mail.unsubscription.reason"
+            forcecreate="False">
+        <field name="name">No reason given</field>
+        <field name="sequence">5</field>
+        <field name="details_required" eval="False"/>
+    </record>
 
 </data>

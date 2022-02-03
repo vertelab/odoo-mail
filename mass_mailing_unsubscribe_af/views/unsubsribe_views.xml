@@ -82,6 +82,28 @@
                 </div>
             </fieldset>
         </xpath>
+
+        <xpath expr="//div[@id='custom_div_feedback']/div" position="replace">
+            <div class="col-md-12 mb16">
+                <t t-foreach="reasons" t-as="reason">
+
+                    <div t-if="reason_index == 0" class="radio" style="color:#00005a; display:none;">
+                        <label>
+                            <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
+                                   t-att-value="reason.id" required="required"/>
+                            <t t-esc="reason.display_name"/>
+                        </label>
+                    </div>
+                    <div t-else="" class="radio" style="color:#00005a">
+                        <label>
+                            <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
+                                   t-att-value="reason.id" required="required"/>
+                            <t t-esc="reason.display_name"/>
+                        </label>
+                    </div>
+                </t>
+            </div>
+        </xpath>
         <xpath expr="//form/div" position="replace"/>
     </template>
 
