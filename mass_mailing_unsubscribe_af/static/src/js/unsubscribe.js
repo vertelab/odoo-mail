@@ -56,7 +56,7 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
         $("#other_reason").hide();
         let radio_button = document.getElementsByClassName('opt')
         $(".opt").change(function(){
-            if(radio_button[4].checked)
+            if(radio_button[5].checked)
             {
                 $("#other_reason").show();
             }
@@ -297,5 +297,78 @@ function toggle_opt_out_section(value) {
 function clicked(e) {
     if(!confirm) {
         e.preventDefault();
+    }
+}
+
+
+document.onkeydown = function(evt) {
+    let isEscape;
+    if ("key" in evt) {
+        isEscape = evt.key == "Escape" || evt.key == "Esc";
+    } else {
+        isEscape = evt.keyCode == 27;
+    }
+    if (isEscape) {
+        closeDialog("unsubscribe");
+    }
+};
+
+function openDialog(e){
+    e.preventDefault()
+    let btnID = "unsubscribe"
+    let body = document.getElementsByTagName("body");
+    let landmarks = document.querySelectorAll("header, main");
+    let overlay = document.getElementById("overlay");
+    let dialog = document.getElementById("dialog");
+    let closeBtn = document.getElementById("dialogClose");
+    let submitBtn = document.getElementById("dialogSubmit");
+    let focusElm = document.getElementById("dialogSubmit");
+
+    for (let i = 0; i < landmarks.length; i++) {
+        landmarks[i].setAttribute("aria-hidden","true");
+    }
+
+    body[0].style.overflow = "hidden";
+    overlay.style.display = "block";
+    overlay.setAttribute("onclick","closeDialog('" + btnID + "');");
+    dialog.setAttribute("aria-modal","true");
+    dialog.removeAttribute("hidden");
+    closeBtn.setAttribute("onclick","closeDialog('" + btnID + "');");
+    submitBtn.setAttribute("onclick", "closeDialog('" + btnID + "', true)");
+    focusElm.focus();
+}
+
+function closeDialog(eID, submit= false) {
+    let body = document.getElementsByTagName("body");
+    let landmarks = document.querySelectorAll("header, main");
+    let overlay = document.getElementById("overlay");
+    let dialog = document.getElementById("dialog");
+    let triggerBtn = document.getElementById(eID);
+    let form = document.getElementById("reason_form");
+
+    for (let i = 0; i < landmarks.length; i++) {
+        landmarks[i].removeAttribute("aria-hidden");
+    }
+
+    body[0].style.overflow = "auto";
+    overlay.style.display = "none";
+    dialog.removeAttribute("aria-modal");
+    dialog.removeAttribute("data-id");
+    dialog.setAttribute("hidden","");
+    triggerBtn.focus();
+
+    if (submit){
+        if(!$('input[type=radio]:checked').size() > 0){
+            let radio = document.getElementsByName('reason_id');
+            let isChecked = 0;
+            for(let i=0; i<radio.length;i++) {
+                if(radio[i].checked) isChecked = 1;
+            }
+
+            if(isChecked == 0){
+                radio[0].checked = "checked";
+            }
+        }
+        form.submit();
     }
 }
