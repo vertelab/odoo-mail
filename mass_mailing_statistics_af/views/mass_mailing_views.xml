@@ -28,10 +28,8 @@
                 <field name="opened" widget="statinfo"/>
                 <span style="color:#ffffff">1</span>
             </xpath>
-            <xpath expr="//button[@name='action_view_replied']/field[@name='replied_ratio']" position="before">
-                <span style="color:#ffffff">123</span>
-                <field name="replied" widget="statinfo"/>
-                <span style="color:#ffffff">1</span>
+            <xpath expr="//button[@name='action_view_replied']/field[@name='replied_ratio']" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
             <xpath expr="//button[@name='action_view_clicked']/field[@name='clicks_ratio']" position="before">
                 <span style="color:#ffffff">12</span>
@@ -54,55 +52,40 @@
             <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[1]" position="replace">
                 <div class="row">
                     <div class="col-6">
-                        <a name="%(mass_mailing.action_view_mail_mail_statistics_mailing)d"
-                           context="{'search_default_filter_opened': True}"
-                           type="action">Opened
+                        <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
+                           type="action">Sent
                         </a>
                     </div>
                     <div class="col-6 text-right">
-                        <field name="opened"/>
-                        /
-                        <field name="total"/>
-                        (
-                        <field name="opened_ratio"/>
-                        %)
+                        <field name="sent"/>
                     </div>
                 </div>
             </xpath>
             <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[2]" position="replace">
                 <div class="row">
                     <div class="col-6">
-                        <a name="%(mass_mailing.action_view_mail_mail_statistics_mailing)d"
-                           context="{'search_default_filter_replied': True}"
-                           type="action">Replied
+                        <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
+                           type="action">Delivered
                         </a>
                     </div>
                     <div class="col-6 text-right">
-                        <field name="replied"/>
-                        /
-                        <field name="total"/>
-                        (
-                        <field name="replied_ratio"/>
-                        %)
+                        <field name="delivered_ratio" widget="percentpie"/>
                     </div>
                 </div>
             </xpath>
             <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[3]" position="replace">
                 <div class="row">
                     <div class="col-6">
-                        <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
-                           type="action">Click frequency
+                        <a name="%(mass_mailing.action_view_mail_mail_statistics_mailing)d"
+                           context="{'search_default_filter_opened': True}"
+                           type="action">Opened
                         </a>
                     </div>
                     <div class="col-6 text-right">
-                        <field name="clicks"/>
-                        /
-                        <field name="total"/>
-                        (
-                        <field name="clicks_ratio"/>
-                        %)
+                        <field name="opened_ratio" widget="percentpie"/>
                     </div>
                 </div>
+
             </xpath>
             <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[4]" position="replace">
                 <div class="row">
@@ -124,7 +107,7 @@
         <field name="model">mail.mass_mailing</field>
         <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_tree"/>
         <field name="arch" type="xml">
-            <field name="replied" position="after">
+            <field name="replied" position="replace">
                 <field name="sent_date"/>
                 <field name="bounced"/>
                 <field name="clicks"/>

@@ -9,6 +9,7 @@ class MassMailing(models.Model):
     bounced = fields.Integer("Bounced", compute='_compute_statistics')
     clicks = fields.Integer("Clicked", compute='_compute_statistics', help="Number of mails where atleast one link was clicked" )
     total_clicks = fields.Integer("Total Clicks", compute='_compute_statistics', help="Everytime a link is clicked")
+    delivered_ratio = fields.Integer(string="Delivered range", compute='_compute_statistics', help="Is the number of mails sent divided by the number delivered and sent")
     clicks_ratio = fields.Integer(string="Click frequency", compute='_compute_statistics', help="Is the number of mails sent divided by the number of mails where atleast one link was clicked" ) # Already exists in core, is redefined here since the orignal string is "Number of click" which it is wrong
     def _compute_statistics(self):
         """ Compute statistics of the mass mailing """
@@ -40,6 +41,7 @@ class MassMailing(models.Model):
         for row in self.env.cr.dictfetchall():
             total = row['expected'] = (row['expected'] - row['ignored']) or 1
             row['received_ratio'] = 100.0 * row['delivered'] / total
+            row['delivered_ratio'] = 100.0 * row['delivered'] / total
             row['received'] = row['delivered']
             row['opened_ratio'] = 100.0 * row['opened'] / total
             row['opened'] = row['opened']
