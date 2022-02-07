@@ -1,0 +1,219 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* mass_mailing_statistics_af
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20191201\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-07 12:57+0000\n"
+"PO-Revision-Date: 2022-02-07 12:57+0000\n"
+"Last-Translator: <Haze Lidman haze.lidman@arbetsformedlingen.se>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mass_mailing_statistics_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_form_af_statistics
+msgid "<span style=\"color:#ffffff\">1234</span>"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_form_af_statistics
+msgid "<span style=\"color:#ffffff\">123</span>"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_form_af_statistics
+msgid "<span style=\"color:#ffffff\">12</span>"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__bounced
+msgid "Bounced"
+msgstr "Studsade"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__clicks_ratio
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
+msgid "Click frequency"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__clicks
+msgid "Clicked"
+msgstr "Klickat"
+
+#. module: mass_mailing_statistics_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.link_tracker_tree_inherit_show_clicks
+msgid "Clicks"
+msgstr "Klickar"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_statistics_report__clicks_ratio
+msgid "Clicks Ratio"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__country_id
+msgid "Country"
+msgstr "Land"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__click_date
+msgid "Create Date"
+msgstr "Skapat datum"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__create_date
+msgid "Created on"
+msgstr "Skapad den"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model,name:mass_mailing_statistics_af.model_mail_mail_statistics
+msgid "Email Statistics"
+msgstr "E-post Statistik"
+
+#. module: mass_mailing_statistics_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_form_af_statistics
+msgid "Emails Sent"
+msgstr "Skickade e-postmeddelanden"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,help:mass_mailing_statistics_af.field_mail_mass_mailing__total_clicks
+msgid "Everytime a link is clicked"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__id
+msgid "ID"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__ip
+msgid "Internet Protocol"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,help:mass_mailing_statistics_af.field_mail_mass_mailing__clicks_ratio
+msgid "Is the number of mails sent divided by the number of mails where atleast one link was clicked"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click__customer_id
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__customer_id
+msgid "Kundnummer"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link____last_update
+msgid "Last Modified on"
+msgstr "Senast redigerad"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model,name:mass_mailing_statistics_af.model_link_tracker
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__link_tracker_id
+msgid "Link Tracker"
+msgstr "Länkspårare"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model,name:mass_mailing_statistics_af.model_link_tracker_click
+msgid "Link Tracker Click"
+msgstr "Länkspårare klick"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__mail_stat_id
+msgid "Mail Statistics"
+msgstr "Mailstatistik"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model,name:mass_mailing_statistics_af.model_mail_mass_mailing
+msgid "Mass Mailing"
+msgstr "Massutskick per e-post"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model,name:mass_mailing_statistics_af.model_mail_statistics_report
+msgid "Mass Mailing Statistics"
+msgstr "Massutskickstatistik"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker__user_clicks_per_link
+msgid "Non unique clicks"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker__count_user_clicks_per_link
+msgid "Number of Clicks"
+msgstr "Antal klick"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker__count
+msgid "Number of Unique Clicks"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,help:mass_mailing_statistics_af.field_mail_mass_mailing__clicks
+msgid "Number of mails where atleast one link was clicked"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__opened
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
+msgid "Opened"
+msgstr "Öppnad"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__received
+msgid "Received"
+msgstr "Mottagen"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__replied
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
+msgid "Replied"
+msgstr "Besvarade"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mail_statistics__total_clicks
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__total_clicks
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_statistics_report__total_clicks
+msgid "Total Clicks"
+msgstr "Totala Klick"
+
+#. module: mass_mailing_statistics_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
+msgid "Total clicks"
+msgstr "Totala klick"
+
+#. module: mass_mailing_statistics_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.link_tracker_tree_inherit_show_clicks
+msgid "Unique Clicks"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model,name:mass_mailing_statistics_af.model_link_tracker_click_user_clicks_per_link
+msgid "link.tracker.click.user.clicks.per.link"
+msgstr ""
+
