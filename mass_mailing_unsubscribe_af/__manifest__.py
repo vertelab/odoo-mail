@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.6.9",
+    "version": "12.0.1.7.1",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -35,13 +35,14 @@
      v12.0.1.6.8 AFC-3188 Add title tag into html head \n
      v12.0.1.6.9 AFC-3178 Fix size of logo \n
      v12.0.1.7.0 AFC-3411 Add custom popup, change feedback to optional \n
+     v12.0.1.7.1 AFC-3284 Changed the values of mass_mailing_id field with mass_mailing_internal_name field \n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
     "author": "Vertel AB",
     "contributors": ["Vertel AB"],
     "depends": [
-        "mass_mailing_custom_unsubscribe",'af_security'
+        "mass_mailing_custom_unsubscribe",'af_security', "mass_mailing_editor_af"
     ],
     "external_dependencies": {"python": ['pytz', 'xlrd']},
     "data": [
