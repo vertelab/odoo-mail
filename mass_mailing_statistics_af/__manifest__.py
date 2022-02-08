@@ -11,6 +11,7 @@
 	 time a link has been pressed in a mail, and added that to the report.
 	 v12.1.0.3 AFC-3125 Moved link tracker code to mass_mailing_statistics_af module.
 	 v12.1.0.4 AFC-3474 Translated total clicks to totala klick.
+	 v12.1.0.5 AFC-3470 Hide replied view and changed filed in the kanban view.
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
