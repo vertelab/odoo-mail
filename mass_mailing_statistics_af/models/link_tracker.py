@@ -12,8 +12,8 @@ _logger = logging.getLogger(__name__)
 class LinkTracker(models.Model):
     _inherit = 'link.tracker'
     user_clicks_per_link = fields.One2many('link.tracker.click.user.clicks.per.link', 'link_tracker_id', string='Non unique clicks')
-    count_user_clicks_per_link = fields.Integer(string='Number of Clicks', compute='_compute_count_user_clicks_per_link', store=True)
-    count = fields.Integer(string='Number of Unique Clicks', compute='_compute_count', store=True)
+    count_user_clicks_per_link = fields.Integer(string='Totala klick', compute='_compute_count_user_clicks_per_link', store=True)
+    count = fields.Integer(string='Unika Klick per länk', compute='_compute_count', store=True)
 
     @api.one
     @api.depends('user_clicks_per_link')
