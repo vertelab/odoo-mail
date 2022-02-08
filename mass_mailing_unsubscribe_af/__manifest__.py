@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.6.9",
+    "version": "12.0.1.7.1",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -35,6 +35,7 @@
      v12.0.1.6.8 AFC-3188 Add title tag into html head \n
      v12.0.1.6.9 AFC-3178 Fix size of logo \n
      v12.0.1.7.0 AFC-3411 Add custom popup, change feedback to optional \n
+     v12.0.1.7.1 AFC-3494 Add id to img \n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
