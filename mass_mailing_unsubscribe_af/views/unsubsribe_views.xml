@@ -64,14 +64,14 @@
                         <div t-if="reason_index == 0" class="radio" style="color:#00005a; display:none;">
                             <label>
                                 <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
-                                       t-att-value="reason.id" required="required"/>
+                                       t-att-value="reason.id"/>
                                 <t t-esc="reason.display_name"/>
                             </label>
                         </div>
                         <div t-else="" class="radio" style="color:#00005a">
                             <label>
                                 <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
-                                       t-att-value="reason.id" required="required"/>
+                                       t-att-value="reason.id"/>
                                 <t t-esc="reason.display_name"/>
                             </label>
                         </div>

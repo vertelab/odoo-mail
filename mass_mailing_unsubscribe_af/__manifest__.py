@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.7.1",
+    "version": "12.0.1.7.2",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -36,6 +36,8 @@
      v12.0.1.6.9 AFC-3178 Fix size of logo \n
      v12.0.1.7.0 AFC-3411 Add custom popup, change feedback to optional \n
      v12.0.1.7.1 AFC-3284 Changed the values of mass_mailing_id field with mass_mailing_internal_name field \n
+     v12.0.1.7.2 AFC-3489 Fix bug for submitting empty text field \n
+
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
