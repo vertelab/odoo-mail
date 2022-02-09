@@ -10,6 +10,8 @@ class MassMailing(models.Model):
     clicks = fields.Integer("Clicked", compute='_compute_statistics', help="Number of mails where atleast one link was clicked" )
     total_clicks = fields.Integer("Total Clicks", compute='_compute_statistics', help="Everytime a link is clicked")
     clicks_ratio = fields.Integer(string="Click frequency", compute='_compute_statistics', help="Is the number of mails sent divided by the number of mails where atleast one link was clicked" ) # Already exists in core, is redefined here since the orignal string is "Number of click" which it is wrong
+    clicks_ratio_percentage = fields.Char(compute='_compute_clicks_ratio_percentage')
+
     def _compute_statistics(self):
         """ Compute statistics of the mass mailing """
         self.env.cr.execute("""
@@ -46,3 +48,8 @@ class MassMailing(models.Model):
                 row['replied_ratio'] = 100.0 * row['replied'] / total
                 row['bounced_ratio'] = 100.0 * row['bounced'] / total
             self.browse(row.pop('mailing_id')).update(row)
+
+    def _compute_clicks_ratio_percentage(self):
+        for rec in self:
+            rec.clicks_ratio_percentage = "{0} {1}".format(rec.clicks_ratio, "%")
+

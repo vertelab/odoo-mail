@@ -128,7 +128,7 @@
                 <field name="sent_date"/>
                 <field name="bounced"/>
                 <field name="clicks"/>
-                <field name="clicks_ratio"/>
+                <field name="clicks_ratio_percentage"/>
                 <field name="total_clicks"/>
             </field>
         </field>
