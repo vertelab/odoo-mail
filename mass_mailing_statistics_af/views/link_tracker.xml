@@ -19,9 +19,9 @@
             <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_links_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='count']" position="after">
-                    <button name="action_individual_unique_clicks_tree_view" string="Unique Clicks" type="object"/>
+                    <button name="action_individual_unique_clicks_tree_view" string="Detaljer" type="object"/>
                     <field name="count_user_clicks_per_link"/>
-                    <button name="action_individual_clicks_tree_view" string="Clicks" type="object"/>
+                    <button name="action_individual_clicks_tree_view" string="Detaljer" type="object"/>
                 </xpath>
             </field>
         </record>

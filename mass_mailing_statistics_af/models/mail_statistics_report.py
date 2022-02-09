@@ -25,7 +25,7 @@ class MassMailing(models.Model):
                     count(ms.opened) as opened,
                     count(ms.replied) as replied,
                     count(ms.clicked) as clicked,
-                    sum(ms.total_clicks) as total_clicks ,
+                    count(ms.total_clicks) as total_clicks,
                     (((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.sent)),0)) * 100)  as clicks_ratio,
                     mm.state,
                     mm.email_from
