@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-
     <template id="matomo_image_email_tracking_snippet" name="Matomo Email Tracking Image">
         <div class="o_mail_snippet_general">
             <table align="center">
@@ -23,7 +21,6 @@
         </div>
     </template>
 
-
     <!-- Inherit main template to add snippet -->
     <template id="af_add_matomo_image_email_tracking_snippets" inherit_id="mass_mailing.email_designer_snippets">
         <xpath expr="//div[@id='email_designer_default_footer']/div[2]" position="inside">
@@ -31,5 +28,4 @@
                t-thumbnail="/mass_mailing_matomo_statistics/static/src/img/matomo_img.jpeg"/>
         </xpath>
     </template>
-
 </odoo>
