@@ -108,7 +108,7 @@
                     <div class="text-center">
                         <br/>
                         <br/>
-                        <img src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"
+                        <img id="af_logo" src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"
                              alt="Arbetsförmedlingen logotyp"/>
                     </div>
                 </header>

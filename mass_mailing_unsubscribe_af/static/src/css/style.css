@@ -6,7 +6,7 @@ textarea.form-control:focus {
     outline: 2px solid #949494;
 }
 
-img {
+#af_logo {
     width: 15%;
     max-width: 250px;
     min-width: 160px;
