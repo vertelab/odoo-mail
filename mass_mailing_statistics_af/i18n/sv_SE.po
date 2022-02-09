@@ -39,7 +39,7 @@ msgstr "Studsade"
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__clicks_ratio
 #: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
 msgid "Click frequency"
-msgstr ""
+msgstr "CTR"
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__clicks
@@ -54,7 +54,7 @@ msgstr "Klickar"
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_statistics_report__clicks_ratio
 msgid "Clicks Ratio"
-msgstr ""
+msgstr "CTR"
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__country_id
