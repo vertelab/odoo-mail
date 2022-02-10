@@ -14,6 +14,7 @@
      v12.1.0.5 AFC-3471 Cleaned up calculations.
      v12.1.0.6 AFC-3469 Translate fields to CTR 
      v12.1.0.7 AFC-3361 Add percentage sign to entries in tree view
+     v12.1.0.8 AFC-3502 Change translation to field
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
