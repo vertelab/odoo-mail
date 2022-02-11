@@ -41,6 +41,7 @@ class MassMailing(models.Model):
                    m.id
            """, (tuple(self.ids),))
         for row in self.env.cr.dictfetchall():
+            total = row['expected'] = (row['expected'] - row['ignored'])
             if total != 0:
                 row['clicks_ratio'] = 100.0 * row['clicks'] / total
                 row['received_ratio'] = 100.0 * row['received'] / total
