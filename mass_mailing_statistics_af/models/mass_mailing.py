@@ -11,6 +11,8 @@ class MassMailing(models.Model):
     total_clicks = fields.Integer("Total Clicks", compute='_compute_statistics', help="Everytime a link is clicked")
     delivered_ratio = fields.Integer(string="Delivered range", compute='_compute_statistics', help="Is the number of mails sent divided by the number delivered and sent")
     clicks_ratio = fields.Integer(string="Click frequency", compute='_compute_statistics', help="Is the number of mails sent divided by the number of mails where atleast one link was clicked" ) # Already exists in core, is redefined here since the orignal string is "Number of click" which it is wrong
+    clicks_ratio_percentage = fields.Char(compute='_compute_clicks_ratio_percentage')
+
     def _compute_statistics(self):
         """ Compute statistics of the mass mailing """
         self.env.cr.execute("""
@@ -21,9 +23,9 @@ class MassMailing(models.Model):
                    COUNT(CASE WHEN s.scheduled is not null AND s.sent is null AND s.exception is null AND s.ignored is null THEN 1 ELSE null END) AS scheduled,
                    COUNT(CASE WHEN s.scheduled is not null AND s.sent is null AND s.exception is not null THEN 1 ELSE null END) AS failed,
                    COUNT(CASE WHEN s.scheduled is not null AND s.sent is null AND s.exception is null AND s.ignored is not null THEN 1 ELSE null END) AS ignored,
-                   COUNT(CASE WHEN s.sent is not null AND s.bounced is null THEN 1 ELSE null END) AS delivered,
+                   COUNT(CASE WHEN s.sent is not null AND s.bounced is null THEN 1 ELSE null END) AS received,
                    COUNT(CASE WHEN s.opened is not null THEN 1 ELSE null END) AS opened,
-                   COUNT(CASE WHEN s.clicked is not null THEN 1 ELSE null END) AS clicked,
+                   COUNT(CASE WHEN s.clicked is not null THEN 1 ELSE null END) AS clicks,
                    SUM(s.total_clicks) AS total_clicks,
                    COUNT(CASE WHEN s.replied is not null THEN 1 ELSE null END) AS replied,
                    COUNT(CASE WHEN s.bounced is not null THEN 1 ELSE null END) AS bounced,
@@ -39,21 +41,15 @@ class MassMailing(models.Model):
                    m.id
            """, (tuple(self.ids),))
         for row in self.env.cr.dictfetchall():
-            total = row['expected'] = (row['expected'] - row['ignored']) or 1
-            row['received_ratio'] = 100.0 * row['delivered'] / total
-            row['delivered_ratio'] = 100.0 * row['delivered'] / total
-            row['received'] = row['delivered']
-            row['opened_ratio'] = 100.0 * row['opened'] / total
-            row['opened'] = row['opened']
             if total != 0:
-                row['clicks_ratio'] = 100.0 * row['clicked'] / total
-            else:
-                row['clicks_ratio'] = 1
-            row['clicks'] = row['clicked']
-            row['replied_ratio'] = 100.0 * row['replied'] / total
-            row['replied'] = row['replied']
-            row['bounced_ratio'] = 100.0 * row['bounced'] / total
-            row['bounced'] = row['bounced']
-            row['total_clicks'] = row['total_clicks']
+                row['clicks_ratio'] = 100.0 * row['clicks'] / total
+                row['received_ratio'] = 100.0 * row['received'] / total
+                row['opened_ratio'] = 100.0 * row['opened'] / total
+                row['replied_ratio'] = 100.0 * row['replied'] / total
+                row['bounced_ratio'] = 100.0 * row['bounced'] / total
             self.browse(row.pop('mailing_id')).update(row)
-            
+
+    def _compute_clicks_ratio_percentage(self):
+        for rec in self:
+            rec.clicks_ratio_percentage = "{0} {1}".format(rec.clicks_ratio, "%")
+

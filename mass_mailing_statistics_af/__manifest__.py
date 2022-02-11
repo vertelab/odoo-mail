@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing statistics AF",
     "summary": "This module will show number for Email tracking events in Mass Mailing.",
-    "version": "12.0.1.0.5",
+    "version": "12.0.1.0.8",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.1 AFC-2100  Added numbers for email tracking events in Mass mailing kanban and form view.\n
@@ -11,7 +11,10 @@
 	 time a link has been pressed in a mail, and added that to the report.
 	 v12.1.0.3 AFC-3125 Moved link tracker code to mass_mailing_statistics_af module.
 	 v12.1.0.4 AFC-3474 Translated total clicks to totala klick.
-	 v12.1.0.5 AFC-3470 Hide replied view and changed filed in the kanban view.
+   v12.1.0.5 AFC-3471 Cleaned up calculations.
+   v12.1.0.6 AFC-3469 Translate fields to CTR 
+   v12.1.0.7 AFC-3361 Add percentage sign to entries in tree view
+   v12.1.0.8 AFC-3470 Hide replied view and changed filed in the kanban view.
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",

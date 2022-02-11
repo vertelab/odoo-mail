@@ -345,6 +345,9 @@ function closeDialog(eID, submit= false) {
     let dialog = document.getElementById("dialog");
     let triggerBtn = document.getElementById(eID);
     let form = document.getElementById("reason_form");
+    let radio_buttons = document.getElementsByClassName('opt');
+    let radio = document.querySelectorAll('input[type="radio"]:checked');
+    let text_area = document.getElementById("other_reason_textfield");
 
     for (let i = 0; i < landmarks.length; i++) {
         landmarks[i].removeAttribute("aria-hidden");
@@ -358,16 +361,11 @@ function closeDialog(eID, submit= false) {
     triggerBtn.focus();
 
     if (submit){
-        if(!$('input[type=radio]:checked').size() > 0){
-            let radio = document.getElementsByName('reason_id');
-            let isChecked = 0;
-            for(let i=0; i<radio.length;i++) {
-                if(radio[i].checked) isChecked = 1;
-            }
-
-            if(isChecked == 0){
-                radio[0].checked = "checked";
-            }
+        if(radio.length === 0){
+            radio_buttons[0].checked = "checked";
+        }
+        else if(radio_buttons[5].checked && text_area.value.length === 0){
+            text_area.value = " ";
         }
         form.submit();
     }

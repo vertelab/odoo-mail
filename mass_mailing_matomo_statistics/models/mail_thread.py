@@ -1,47 +1,25 @@
-from odoo import models, fields, api, _
-from odoo.exceptions import Warning, ValidationError
-from odoo import tools
-import uuid
-import re
-from email.message import Message
 import logging
-import base64
-import datetime
-import dateutil
-import email
-import hashlib
-import hmac
-import lxml
-import logging
-import pytz
-import re
-import socket
-import time
-import re
+
 try:
     from xmlrpc import client as xmlrpclib
 except ImportError:
     import xmlrpclib
-from collections import namedtuple
-from email.message import Message
-from lxml import etree
-from werkzeug import url_encode
-from werkzeug import urls
-from odoo import _, api, exceptions, fields, models, tools
-from odoo.tools import pycompat, ustr, formataddr
-from odoo.tools.misc import clean_context
-from odoo.tools.safe_eval import safe_eval
+
+from odoo import _, api, fields, models, tools
+
 _logger = logging.getLogger(__name__)
+
 
 class MailThread(models.AbstractModel):
     _inherit = 'mail.thread'
+
     @api.multi
     def message_receive_bounce(self, email, partner, mail_id=None):
         """Called by ``message_process`` when a bounce email (such as Undelivered
         Mail Returned to Sender) is received for an existing thread. The default
         behavior is to check is an integer  ``message_bounce`` column exists.
         If it is the case, its content is incremented.
-        :param mail_id: ID of the sent email that bounced. It may not exist anymore
+        :param mail_id: ID of the sent email that bounced. It may not exist anymore,
                         but it could be usefull if the information was kept. This is
                         used notably in mass mailing.
         :param RecordSet partner: partner matching the bounced email address, if any
@@ -58,23 +36,34 @@ class MailThread(models.AbstractModel):
                             category.bounces = category.bounces + 1
                             found = True
                     if not found:
-                        bounce_category = self.env['mail.bounce.category'].create({'bounces': 1, 'code': code, 'mailing_contact': record.id, 'description':description})
-                        # record.write({'bouncing_categories': [(0, 0, {'bounces': 1, 'code': code})]})
+                        self.env['mail.bounce.category'].create(
+                            {'bounces': 1,
+                             'code': code,
+                             'mailing_contact': record.id,
+                             'description': description})
                 record.message_bounce = record.message_bounce + 1
+
     @api.model
-    def message_route(self, message, message_dict, model=None, thread_id=None, custom_values=None):
-        """ Override to udpate mass mailing statistics based on bounce emails """
+    def message_route(self, message, message_dict, model=None,
+                      thread_id=None, custom_values=None):
+        """ Override to update mass mailing statistics based on bounce emails """
         context_copy = self.env.context.copy()
         context_copy.update({'message': message})
         self.env.context = context_copy
-        return super(MailThread, self.with_context(context_copy)).message_route(message, message_dict, model, thread_id, custom_values)
+        return super(MailThread, self.with_context(context_copy)).message_route(
+            message, message_dict, model, thread_id, custom_values)
         # ~ message._payload[1]._payload[1]._headers[-1]
+
+
 class MassMailingContact(models.AbstractModel):
     _inherit = 'mail.mass_mailing.contact'
-    bouncing_categories = fields.One2many(comodel_name='mail.bounce.category', inverse_name='mailing_contact', string='')
+    bouncing_categories = fields.One2many(
+        comodel_name='mail.bounce.category', inverse_name='mailing_contact', string='')
+
     @api.multi
     def action_bounce_categories_tree_view(self):
-        tree_view_id = self.env.ref('mass_mailing_matomo_statistics.view_categories_tree').id
+        tree_view_id = self.env.ref(
+            'mass_mailing_matomo_statistics.view_categories_tree').id
         return {
             'name': _('Bouncing Categories'),
             'type': 'ir.actions.act_window',
@@ -87,9 +76,12 @@ class MassMailingContact(models.AbstractModel):
             'context': False,
             'target': 'new',
         }
+
+
 class MassMailingBounceCategories(models.Model):
     _name = 'mail.bounce.category'
-    mailing_contact = fields.Many2one(comodel_name='mail.mass_mailing.contact', string='')
+    mailing_contact = fields.Many2one(
+        comodel_name='mail.mass_mailing.contact', string='')
     bounces = fields.Integer(string='')
     code = fields.Char(string='')
     description = fields.Char(string='')

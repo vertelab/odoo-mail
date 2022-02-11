@@ -64,14 +64,14 @@
                         <div t-if="reason_index == 0" class="radio" style="color:#00005a; display:none;">
                             <label>
                                 <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
-                                       t-att-value="reason.id" required="required"/>
+                                       t-att-value="reason.id"/>
                                 <t t-esc="reason.display_name"/>
                             </label>
                         </div>
                         <div t-else="" class="radio" style="color:#00005a">
                             <label>
                                 <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
-                                       t-att-value="reason.id" required="required"/>
+                                       t-att-value="reason.id"/>
                                 <t t-esc="reason.display_name"/>
                             </label>
                         </div>
@@ -108,7 +108,7 @@
                     <div class="text-center">
                         <br/>
                         <br/>
-                        <img src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"
+                        <img id="af_logo" src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"
                              alt="Arbetsförmedlingen logotyp"/>
                     </div>
                 </header>
@@ -168,6 +168,26 @@
         <field name="arch" type="xml">
             <field name="unsubscriber_id" position="replace">
                 <field name="customer_id"/>
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="inherit_mail_unsubscription_view_tree">
+        <field name="name">inherit.Mail Unsubscription Tree</field>
+        <field name="model">mail.unsubscription</field>
+        <field name="inherit_id" ref="mass_mailing_custom_unsubscribe.mail_unsubscription_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="mass_mailing_id" position="replace">
+                <field name="mass_mailing_internal_name"/>
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="inherit_mail_unsubscription_view_form">
+        <field name="name">inherit.Mail Unsubscription Form</field>
+        <field name="model">mail.unsubscription</field>
+        <field name="inherit_id" ref="mass_mailing_custom_unsubscribe.mail_unsubscription_view_form"/>
+        <field name="arch" type="xml">
+            <field name="mass_mailing_id" position="replace">
+                <field name="mass_mailing_internal_name"/>
             </field>
         </field>
     </record>
