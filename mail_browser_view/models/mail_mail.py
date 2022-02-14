@@ -48,6 +48,7 @@ class Mail(models.Model):
             * Record ID
         Returns a record matching the token or empty recordset if not found
         """
+        res = False
         try:
             token = urlsafe_b64decode(token).decode()
             access_token, rec_id = token[:32], token[32:]
@@ -57,7 +58,7 @@ class Mail(models.Model):
             ])
             res = rec.is_token_alive and rec
         except (ValueError, MissingError, binascii.Error):
-            res = False
+            pass
         finally:
             return res or self.browse()
 
