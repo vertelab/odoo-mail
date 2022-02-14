@@ -1,15 +1,19 @@
 # Copyright 2018 Camptocamp
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, models, fields
-from odoo.exceptions import MissingError
-from uuid import uuid4
 from base64 import urlsafe_b64encode, urlsafe_b64decode
 import binascii
-import lxml
-from werkzeug.urls import url_parse
 from datetime import date
 from dateutil.relativedelta import relativedelta
+import logging
+import lxml
+from uuid import uuid4
+from werkzeug.urls import url_parse
+
+from odoo import api, models, fields
+from odoo.exceptions import MissingError
+
+_logger = logging.getLogger(__name__)
 
 
 class Mail(models.Model):
@@ -28,6 +32,8 @@ class Mail(models.Model):
         "Is Token alive",
         compute="_compute_token_alive"
     )
+
+    sent_body = fields.Text('The actual sent body')
 
     @api.model
     def create(self, vals):
@@ -82,10 +88,8 @@ class Mail(models.Model):
         the placeholders will be removed.
         """
         self.ensure_one()
-
         root_html = lxml.html.fromstring(self.body_html)
         link_nodes = root_html.xpath("//a[hasclass('view_in_browser_url')]")
-
         if link_nodes:
             if self.auto_delete:
                 for node in link_nodes:
@@ -135,13 +139,14 @@ class Mail(models.Model):
         else:
             self.update({'is_token_alive': True})
 
-    def _add_title(self):
-        root_html = lxml.html.fromstring(self.body_html)
+    def _add_title(self, body=None):
+        root_html = body or lxml.html.fromstring(self.body_html)
         if root_html.find('.//title') is None:
             title_string = '<title>Arbetsförmedlingen</title>'
             title = lxml.html.fromstring(title_string).find('.//title')
             root_html.find('.//head').insert(0, title)
-
+        if body:
+            return root_html
         self.body_html = lxml.html.tostring(
             root_html,
             pretty_print=False,
