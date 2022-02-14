@@ -4,7 +4,7 @@
 {
     "name": "Mail Browser View",
     "summary": "Add 'View this email in browser' feature",
-    "version": "12.0.1.0.3",
+    "version": "12.0.2.0.0",
     "category": "Social Network",
     "website": "https://github.com/OCA/social",
     "author": "Camptocamp, Odoo Community Association (OCA)",
@@ -13,6 +13,7 @@
         12.0.1.0.1  Fixed bug, wrong html code \n
         12.0.1.0.2  Generate proper unsubscribe url into html body \n
         12.0.1.0.3  Add title tag into html head \n
+        12.0.2.0.0  Added tracking links to view in browser, no longer modifies record.\n
     """,
     "application": False,
     "installable": True,
