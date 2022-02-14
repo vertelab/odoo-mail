@@ -33,8 +33,6 @@ class Mail(models.Model):
         compute="_compute_token_alive"
     )
 
-    sent_body = fields.Text('The actual sent body')
-
     @api.model
     def create(self, vals):
         rec = super(Mail, self).create(vals)
@@ -152,6 +150,7 @@ class Mail(models.Model):
             encoding='unicode',
             doctype='<!DOCTYPE html>'
         )
-        if body:
-            return body_html
-        self.body_html = body_html
+        # Only save to self.body_html if it's our source.
+        if not body:
+            self.body_html = body_html
+        return body_html
