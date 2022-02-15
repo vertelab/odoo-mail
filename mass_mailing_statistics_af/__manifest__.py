@@ -15,7 +15,10 @@
      v12.1.0.6 AFC-3469 Translate fields to CTR 
      v12.1.0.7 AFC-3361 Add percentage sign to entries in tree view
      v12.1.0.8 AFC-3502 Change translation to field
+<<<<<<< HEAD
      v12.1.0.9 AFC-3470 Hide replied view and changed filed in the kanban view.
+=======
+>>>>>>> 5ce982d0fa746d8dcf6deaf97bf776d9c2f88b3c
      v12.1.1.0 AFC-3473 Calculate CTOR and add field to views
     """,
     "license": "AGPL-3",
