@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='clicked']" position="after">
                         <field name="clicks_ratio" type="measure"/>
+                        <field name="ctor" type="measure"/>
                         <field name="total_clicks" type="measure"/>
                 </xpath>
             </field>
@@ -20,6 +21,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='sent']" position="after">
                         <field name="clicks_ratio" type="measure"/>
+                        <field name="ctor" type="measure"/>
                         <field name="total_clicks" type="measure"/>
                 </xpath>
             </field>

@@ -11,6 +11,8 @@ class MassMailing(models.Model):
     total_clicks = fields.Integer("Total Clicks", compute='_compute_statistics', help="Everytime a link is clicked")
     clicks_ratio = fields.Integer(string="Click frequency", compute='_compute_statistics', help="Is the number of mails sent divided by the number of mails where atleast one link was clicked" ) # Already exists in core, is redefined here since the orignal string is "Number of click" which it is wrong
     clicks_ratio_percentage = fields.Char(compute='_compute_clicks_ratio_percentage')
+    ctor = fields.Integer(compute='_compute_statistics', help="Number of mails where at least one link is clicked divided by the number of unique opened mails")
+    ctor_percentage = fields.Char("CTOR", compute='_compute_ctor_percentage')
 
     def _compute_statistics(self):
         """ Compute statistics of the mass mailing """
@@ -47,9 +49,15 @@ class MassMailing(models.Model):
                 row['opened_ratio'] = 100.0 * row['opened'] / total
                 row['replied_ratio'] = 100.0 * row['replied'] / total
                 row['bounced_ratio'] = 100.0 * row['bounced'] / total
+            if row['opened'] != 0:
+                row['ctor'] = 100.0 * row['clicks'] / row['opened']
             self.browse(row.pop('mailing_id')).update(row)
 
     def _compute_clicks_ratio_percentage(self):
         for rec in self:
             rec.clicks_ratio_percentage = "{0} {1}".format(rec.clicks_ratio, "%")
+
+    def _compute_ctor_percentage(self):
+        for rec in self:
+            rec.ctor_percentage = "{0} {1}".format(rec.ctor, "%")
 
