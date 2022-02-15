@@ -9,6 +9,7 @@ _logger = logging.getLogger(__name__)
 # Overriding default valid models with those we want.
 MASS_MAILING_BUSINESS_MODELS = ['res.partner', 'mail.mass_mailing.list']
 
+
 class MassMailing(models.Model):
     _inherit = "mail.mass_mailing"
     internal_name = fields.Char(string='Internt namn')
