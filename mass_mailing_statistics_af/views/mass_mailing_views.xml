@@ -34,15 +34,41 @@
                 <span style="color:#ffffff">1</span>
             </xpath>
             <xpath expr="//button[@name='action_view_clicked']/field[@name='clicks_ratio']" position="before">
-                <span style="color:#ffffff">12</span>
-                <field name="clicks" widget="statinfo"/>
-                <span style="color:#ffffff">1234</span>
+                <div class="o_field_widget o_stat_info o_readonly_modifier">
+                    <span class="o_stat_value">
+                        <field name="clicks" nolabel="1"/>
+                    </span>
+                    <span class="o_stat_text">
+                        Klickade brev (CTR)
+                    </span>
+                </div>
+            </xpath>
+            <xpath expr="//button[@name='action_view_clicked']" position="attributes">
+                <attribute name="style">width:177px !important;</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_view_clicked']" position="before">
+                <button name="action_view_clicked"
+                        type="object"
+                        attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
+                        class="oe_stat_button"
+                        style="width:192px !important;">
+                    <div class="o_field_widget o_stat_info o_readonly_modifier">
+                        <span class="o_stat_value">
+                            <field name="clicks" nolabel="1"/>
+                        </span>
+                        <span class="o_stat_text">
+                            Klickade brev (CTOR)
+                        </span>
+                    </div>
+                    <field name="ctor" widget="percentpie"/>
+                </button>
             </xpath>
             <xpath expr="//button[@name='action_view_bounced']/field[@name='bounced_ratio']" position="before">
                 <span style="color:#ffffff">12</span>
                 <field name="bounced" widget="statinfo"/>
                 <span style="color:#ffffff">1</span>
             </xpath>
+
         </field>
     </record>
 
@@ -129,6 +155,7 @@
                 <field name="bounced"/>
                 <field name="clicks"/>
                 <field name="clicks_ratio_percentage"/>
+                <field name="ctor_percentage"/>
                 <field name="total_clicks"/>
             </field>
         </field>

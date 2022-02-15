@@ -6,6 +6,8 @@ class MassMailing(models.Model):
     
     clicks_ratio = fields.Float(readonly=True, group_operator="avg")
     total_clicks = fields.Integer(readonly=True)
+    ctor = fields.Float(string="CTOR", readonly=True, group_operator="avg")
+
     @api.model_cr
     def init(self):
         """Mass Mail Statistical Report: based on mail.mail.statistics that models the various
@@ -26,7 +28,8 @@ class MassMailing(models.Model):
                     count(ms.replied) as replied,
                     count(ms.clicked) as clicked,
                     count(ms.total_clicks) as total_clicks,
-                    (((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.sent)),0)) * 100)  as clicks_ratio,
+                    (((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.sent)),0)) * 100) as clicks_ratio,
+                    (((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.opened)),0)) * 100) as ctor,
                     mm.state,
                     mm.email_from
                 FROM
