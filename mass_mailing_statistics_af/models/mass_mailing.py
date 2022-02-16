@@ -55,9 +55,9 @@ class MassMailing(models.Model):
 
     def _compute_clicks_ratio_percentage(self):
         for rec in self:
-            rec.clicks_ratio_percentage = "{0} {1}".format(rec.clicks_ratio, "%")
+            rec.clicks_ratio_percentage = f"{rec.clicks_ratio} %"
 
     def _compute_ctor_percentage(self):
         for rec in self:
-            rec.ctor_percentage = "{0} {1}".format(rec.ctor, "%")
+            rec.ctor_percentage = f"{rec.ctor} %"
 
