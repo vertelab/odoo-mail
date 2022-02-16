@@ -187,7 +187,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__opened
 #: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
 msgid "Opened"
-msgstr "Öppnad"
+msgstr "Öppnade brev"
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__received
