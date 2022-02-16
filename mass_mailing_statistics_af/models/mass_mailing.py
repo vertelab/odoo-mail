@@ -4,7 +4,7 @@ class MassMailing(models.Model):
     _inherit = 'mail.mass_mailing'
 
     received = fields.Integer("Received", compute='_compute_statistics')
-    opened = fields.Integer("Öppnade brev", compute='_compute_statistics')
+    opened = fields.Integer("Opened", compute='_compute_statistics')
     replied = fields.Integer("Replied", compute='_compute_statistics')
     bounced = fields.Integer("Bounced", compute='_compute_statistics')
     clicks = fields.Integer("Clicked", compute='_compute_statistics', help="Number of mails where atleast one link was clicked" )
@@ -65,5 +65,5 @@ class MassMailing(models.Model):
 
     def _compute_opened_ratio_percentage(self):
         for rec in self:
-            rec.opened_ratio_percentage = "{0} {1}".format(rec.opened_ratio, "%")
+            rec.opened_ratio_percentage = f"{rec.opened_ratio} %"
 

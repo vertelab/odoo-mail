@@ -30,9 +30,9 @@ class MassMailing(models.Model):
                     count(ms.replied) as replied,
                     count(ms.clicked) as clicked,
                     sum(ms.total_clicks) as total_clicks,
-                    (((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.sent)),0)))  as clicks_ratio,
-                    (((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.opened)),0))) as ctor,
-                    (((1.0 * count(ms.opened)) / nullif((1.0 * (count(ms.sent) - (count(ms.bounced)))),0)))  as opened_ratio,
+                    ((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.sent)),0))  as clicks_ratio,
+                    ((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.opened)),0)) as ctor,
+                    ((1.0 * count(ms.opened)) / nullif((1.0 * (count(ms.sent) - (count(ms.bounced)))),0))  as opened_ratio,
                     mm.state,
                     mm.email_from
                 FROM
