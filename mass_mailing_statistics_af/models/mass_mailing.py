@@ -1,4 +1,7 @@
 from odoo import api, fields, models
+import logging
+_logger = logging.getLogger(__name__)
+
 
 class MassMailing(models.Model):
     _inherit = 'mail.mass_mailing'
@@ -13,6 +16,26 @@ class MassMailing(models.Model):
     clicks_ratio_percentage = fields.Char(compute='_compute_clicks_ratio_percentage')
     ctor = fields.Integer(compute='_compute_statistics', help="Number of mails where at least one link is clicked divided by the number of unique opened mails")
     ctor_percentage = fields.Char("CTOR", compute='_compute_ctor_percentage')
+    total_unsubscribers = fields.Integer(string="total unsubscribers.", compute='_compute_unsubscribe_id')
+    unsubscription_ratio = fields.Float(string="unsubscription ratio", compute='_compute_unsubscribe_id')
+    unsubscription_ratio_percent = fields.Char(string="unsubscription ratio percent", compute='_compute_unsubscribe_id')
+
+    def _compute_unsubscribe_id(self):
+        for record in self:
+            res = self.env['mail.unsubscription'].search\
+                (['&','|',('mass_mailing_id', '=', record.id),
+                  ("action", "=", 'blacklist_add'),
+                  ("action", "=", 'unsubscription')])
+
+            record.total_unsubscribers = len(res)
+            _logger.warning("Haze self: %s" %self)
+            _logger.warning("Haze res: %s" %res)
+            _logger.warning("Haze res total: %s" %record.total_unsubscribers)
+
+            if record.sent != 0:
+                record.unsubscription_ratio = 100 * record.total_unsubscribers / record.sent
+                record.unsubscription_ratio_percent = f"{record.unsubscription_ratio} %"
+
 
     def _compute_statistics(self):
         """ Compute statistics of the mass mailing """
