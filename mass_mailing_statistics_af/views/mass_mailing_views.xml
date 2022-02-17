@@ -138,6 +138,7 @@
                 <field name="bounced"/>
                 <field name="clicks"/>
                 <field name="clicks_ratio_percentage"/>
+                <field name="opened_ratio_percentage"/>
                 <field name="ctor_percentage"/>
                 <field name="total_clicks"/>
             </field>

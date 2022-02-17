@@ -13,6 +13,7 @@ class MassMailing(models.Model):
     clicks_ratio_percentage = fields.Char(compute='_compute_clicks_ratio_percentage')
     ctor = fields.Integer(compute='_compute_statistics', help="Number of mails where at least one link is clicked divided by the number of unique opened mails")
     ctor_percentage = fields.Char("CTOR", compute='_compute_ctor_percentage')
+    opened_ratio_percentage = fields.Char(string="OR", compute='_compute_opened_ratio_percentage')
 
     def _compute_statistics(self):
         """ Compute statistics of the mass mailing """
@@ -45,7 +46,8 @@ class MassMailing(models.Model):
             total = row['expected'] = (row['expected'] - row['ignored'])
             if total != 0:
                 row['received_ratio'] = 100.0 * row['received'] / total
-                row['opened_ratio'] = 100.0 * row['opened'] / total
+            if row['received'] != 0:
+                row['opened_ratio'] = 100.0 * row['opened'] / row['received']
                 row['replied_ratio'] = 100.0 * row['replied'] / total
                 row['bounced_ratio'] = 100.0 * row['bounced'] / total
             if row['opened'] != 0:
@@ -61,4 +63,8 @@ class MassMailing(models.Model):
     def _compute_ctor_percentage(self):
         for rec in self:
             rec.ctor_percentage = f"{rec.ctor} %"
+
+    def _compute_opened_ratio_percentage(self):
+        for rec in self:
+            rec.opened_ratio_percentage = f"{rec.opened_ratio} %"
 
