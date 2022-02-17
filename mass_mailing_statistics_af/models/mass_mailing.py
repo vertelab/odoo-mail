@@ -45,7 +45,6 @@ class MassMailing(models.Model):
         for row in self.env.cr.dictfetchall():
             total = row['expected'] = (row['expected'] - row['ignored'])
             if total != 0:
-                row['clicks_ratio'] = 100.0 * row['clicks'] / total
                 row['received_ratio'] = 100.0 * row['received'] / total
             if row['received'] != 0:
                 row['opened_ratio'] = 100.0 * row['opened'] / row['received']
@@ -53,6 +52,8 @@ class MassMailing(models.Model):
                 row['bounced_ratio'] = 100.0 * row['bounced'] / total
             if row['opened'] != 0:
                 row['ctor'] = 100.0 * row['clicks'] / row['opened']
+            if row['received'] != 0:
+                row['clicks_ratio'] = 100.0 * row['clicks'] / row['received']
             self.browse(row.pop('mailing_id')).update(row)
 
     def _compute_clicks_ratio_percentage(self):
