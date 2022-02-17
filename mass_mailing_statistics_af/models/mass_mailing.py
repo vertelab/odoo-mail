@@ -62,11 +62,3 @@ class MassMailing(models.Model):
         for rec in self:
             rec.ctor_percentage = f"{rec.ctor} %"
 
-    def _compute_ctor_percentage(self):
-        for rec in self:
-            rec.ctor_percentage = "{0} {1}".format(rec.ctor, "%")
-
-    def _compute_ctor_percentage(self):
-        for rec in self:
-            rec.ctor_percentage = "{0} {1}".format(rec.ctor, "%")
-
