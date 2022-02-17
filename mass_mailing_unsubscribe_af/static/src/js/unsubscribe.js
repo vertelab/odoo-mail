@@ -1,3 +1,10 @@
+/* Copyright 2016 Jairo Llopis <jairo.llopis@tecnativa.com>
+ * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
+
+/* This JS module replaces core AJAX submission because it is impossible
+ * to extend it as it is currently designed. It is almost a copy+paste from
+ * upstream, to allow easier version/patch updates, so linter is disabled. */
+/* eslint-disable */
 odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
     'use strict';
     var ajax = require('web.ajax');
@@ -52,21 +59,6 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
         }
     };
 
-    $(document).ready(function() {
-        $("#other_reason").hide();
-        let radio_button = document.getElementsByClassName('opt')
-        $(".opt").change(function(){
-            if(radio_button[5].checked)
-            {
-                $("#other_reason").show();
-            }
-            else
-            {
-                $("#other_reason").hide();
-            }
-        });
-    });
-
     $mailing_lists.change(function (e) {
         toggle_reasons();
         $('#info_state').addClass('invisible');
@@ -93,12 +85,12 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
                     toggle_opt_out_section(true);
                 }
                 else {
-                    $('#subscription_info').html(_t('An error occured. Please try again later or contact us.'));
+                    $('#subscription_info').html(_t('Ett fel inträffade. Försök igen senare eller kontakta oss.'));
                     $info_state.removeClass('alert-success').removeClass('alert-info').removeClass('alert-warning').addClass('alert-error');
                 }
             })
             .fail(function () {
-                $('#subscription_info').html(_t('An error occured. Please try again later or contact us.'));
+                $('#subscription_info').html(_t('Ett fel inträffade. Försök igen senare eller kontakta oss.'));
                 $info_state.removeClass('alert-success').removeClass('alert-info').removeClass('alert-warning').addClass('alert-error');
             });
     }
@@ -112,7 +104,6 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
             _t("Du har blivit <strong>avanmäld från %s</strong>."),
             unsubscribed_list
         ));
-
 
     }
     else{
@@ -153,13 +144,13 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
             .then(function (result) {
                 if (result == 'unauthorized') {
                     $('#info_state').removeClass('invisible');
-                    $('#subscription_info').html(_t('You are not authorized to do this!'));
+                    $('#subscription_info').html(_t('Du är inte behörig att göra detta!'));
                     $info_state.removeClass('alert-success').removeClass('alert-info').removeClass('alert-error').addClass('alert-warning');
                 }
                 else if (result == true) {
                     $('#info_state').removeClass('invisible');
-                    $('#subscription_info').html(_t('Your changes have been saved.'));
-                    $info_state.removeClass('alert').removeClass('alert-info').removeClass('alert-success');
+                    $('#subscription_info').html(_t('Dina ändringar har sparats.'));
+                    $info_state.removeClass('alert').removeClass('alert-info').removeClass('alert-warning').addClass('alert-success');
                     // Store checked status, to enable further changes
                     $mailing_lists.each(function () {
                         var $this = $(this);
@@ -169,13 +160,13 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
                 }
                 else {
                     $('#info_state').removeClass('invisible');
-                    $('#subscription_info').html(_t('An error occurred. Your changes have not been saved, try again later.'));
+                    $('#subscription_info').html(_t('Ett fel inträffade. Dina ändringar har inte sparats, försök igen senare.'));
                     $info_state.removeClass('alert-info').addClass('alert-warning');
                 }
             })
             .fail(function () {
                 $('#info_state').removeClass('invisible');
-                $('#subscription_info').html(_t('An error occurred. Your changes have not been saved, try again later.'));
+                $('#subscription_info').html(_t('Ett fel inträffade. Dina ändringar har inte sparats, försök igen senare.'));
                 $info_state.removeClass('alert-info').addClass('alert-warning');
             });
     });
@@ -205,14 +196,13 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
             .then(function (result) {
                 if (result == 'unauthorized') {
                     $('#info_state').removeClass('invisible');
-                    $('#subscription_info').html(_t('You are not authorized to do this!'));
+                    $('#subscription_info').html(_t('Du är inte behörig att göra detta!'));
                     $info_state.removeClass('alert-success').removeClass('alert-info').removeClass('alert-error').addClass('alert-warning');
                 }
                 else {
                     if (result) {
                         $('#info_state').removeClass('invisible');
-                        $('#subscription_info').html(_t('You have been successfully <strong>added to our blacklist</strong>. '
-                            + 'You will not be contacted anymore by our services.'));
+                        $('#subscription_info').html(_t('Du har <strong>lagts till på vår svartlista</strong>. Du kommer inte längre att kontaktas av våra tjänster.'));
                         $info_state.removeClass('alert').removeClass('alert-warning').removeClass('alert-info').removeClass('alert-error').removeClass('alert-success');
                         toggle_opt_out_section(false);
                         // set mailing lists checkboxes to previous state
@@ -227,7 +217,7 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
                     }
                     else {
                         $('#info_state').removeClass('invisible');
-                        $('#subscription_info').html(_t('An error occured. Please try again later or contact us.'));
+                        $('#subscription_info').html(_t('Ett fel inträffade. Försök igen senare eller kontakta oss.'));
                         $info_state.removeClass('alert-success').removeClass('alert-info').removeClass('alert-warning').addClass('alert-error');
                     }
                     $('#button_add_blacklist').hide();
@@ -236,7 +226,7 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
                 }
             })
             .fail(function () {
-                $('#subscription_info').html(_t('An error occured. Please try again later or contact us.'));
+                $('#subscription_info').html(_t('Ett fel inträffade. Försök igen senare eller kontakta oss.'));
                 $info_state.removeClass('alert-success').removeClass('alert-info').removeClass('alert-warning').addClass('alert-error');
             });
     });
@@ -253,20 +243,19 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
             .then(function (result) {
                 if (result == 'unauthorized') {
                     $('#info_state').removeClass('invisible');
-                    $('#subscription_info').html(_t('You are not authorized to do this!'));
+                    $('#subscription_info').html(_t('Du är inte behörig att göra detta!'));
                     $info_state.removeClass('alert-success').removeClass('alert-info').removeClass('alert-error').addClass('alert-warning');
                 }
                 else {
                     if (result) {
                         $('#info_state').removeClass('alert').removeClass('alert-warning').removeClass('alert-info').removeClass('alert-error').removeClass('alert-success').removeClass('invisible');
-                        $('#subscription_info').html(_t("You have been successfully <strong>removed from our blacklist</strong>. "
-                            + "You are now able to be contacted by our services."));
+                        $('#subscription_info').html(_t("Du har <strong>tagits bort från vår svartlista</strong>. Du kan nu bli kontaktad av våra tjänster."));
                         $info_state.removeClass('alert').removeClass('alert-warning').removeClass('alert-info').removeClass('alert-error').removeClass('alert-success');
                         toggle_opt_out_section(true);
                     }
                     else {
                         $('#info_state').removeClass('invisible');
-                        $('#subscription_info').html(_t('An error occured. Please try again later or contact us.'));
+                        $('#subscription_info').html(_t('Ett fel inträffade. Försök igen senare eller kontakta oss.'));
                         $info_state.removeClass('alert-success').removeClass('alert-info').removeClass('alert-warning').addClass('alert-error');
                     }
                     $('#button_add_blacklist').show();
@@ -276,7 +265,7 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
             })
             .fail(function () {
                 $('#info_state').removeClass('invisible');
-                $('#subscription_info').html(_t('An error occured. Please try again later or contact us.'));
+                $('#subscription_info').html(_t('Ett fel inträffade. Försök igen senare eller kontakta oss.'));
                 $info_state.removeClass('alert-success').removeClass('alert-info').removeClass('alert-warning').addClass('alert-error');
             });
     });
@@ -293,82 +282,5 @@ function toggle_opt_out_section(value) {
     }
     else {
         $('[name="button_subscription"]').removeClass('clickable');
-    }
-}
-
-function clicked(e) {
-    if(!confirm) {
-        e.preventDefault();
-    }
-}
-
-
-document.onkeydown = function(evt) {
-    let isEscape;
-    if ("key" in evt) {
-        isEscape = evt.key == "Escape" || evt.key == "Esc";
-    } else {
-        isEscape = evt.keyCode == 27;
-    }
-    if (isEscape) {
-        closeDialog("unsubscribe");
-    }
-};
-
-function openDialog(e){
-    e.preventDefault()
-    let btnID = "unsubscribe"
-    let body = document.getElementsByTagName("body");
-    let landmarks = document.querySelectorAll("header, main");
-    let overlay = document.getElementById("overlay");
-    let dialog = document.getElementById("dialog");
-    let closeBtn = document.getElementById("dialogClose");
-    let submitBtn = document.getElementById("dialogSubmit");
-    let focusElm = document.getElementById("dialogSubmit");
-
-    for (let i = 0; i < landmarks.length; i++) {
-        landmarks[i].setAttribute("aria-hidden","true");
-    }
-
-    body[0].style.overflow = "hidden";
-    overlay.style.display = "block";
-    overlay.setAttribute("onclick","closeDialog('" + btnID + "');");
-    dialog.setAttribute("aria-modal","true");
-    dialog.removeAttribute("hidden");
-    closeBtn.setAttribute("onclick","closeDialog('" + btnID + "');");
-    submitBtn.setAttribute("onclick", "closeDialog('" + btnID + "', true)");
-    focusElm.focus();
-}
-
-function closeDialog(eID, submit= false) {
-    let body = document.getElementsByTagName("body");
-    let landmarks = document.querySelectorAll("header, main");
-    let overlay = document.getElementById("overlay");
-    let dialog = document.getElementById("dialog");
-    let triggerBtn = document.getElementById(eID);
-    let form = document.getElementById("reason_form");
-    let radio_buttons = document.getElementsByClassName('opt');
-    let radio = document.querySelectorAll('input[type="radio"]:checked');
-    let text_area = document.getElementById("other_reason_textfield");
-
-    for (let i = 0; i < landmarks.length; i++) {
-        landmarks[i].removeAttribute("aria-hidden");
-    }
-
-    body[0].style.overflow = "auto";
-    overlay.style.display = "none";
-    dialog.removeAttribute("aria-modal");
-    dialog.removeAttribute("data-id");
-    dialog.setAttribute("hidden","");
-    triggerBtn.focus();
-
-    if (submit){
-        if(radio.length === 0){
-            radio_buttons[0].checked = "checked";
-        }
-        else if(radio_buttons[5].checked && text_area.value.length === 0){
-            text_area.value = " ";
-        }
-        form.submit();
     }
 }
