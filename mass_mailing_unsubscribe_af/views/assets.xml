@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="unsubscribe_af_assets_backend" name="mass_mailing unsubscribe assets" inherit_id="web.assets_backend">
-        <xpath expr="." position="inside">
+        <xpath expr="//script[@src='/mass_mailing_custom_unsubscribe/static/src/js/unsubscribe.js']" position="replace">
             <script type="text/javascript" src="/mass_mailing_unsubscribe_af/static/src/js/unsubscribe.js"/>
+            <script type="text/javascript" src="/mass_mailing_unsubscribe_af/static/src/js/af_unsubscribe.js"/>
             <link rel="stylesheet" type="text/css" href="/mass_mailing_unsubscribe_af/static/src/css/style.css"/>
         </xpath>
     </template>
