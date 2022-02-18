@@ -202,10 +202,6 @@
                 <div>
                     <field name="total_unsubscribers" id="total_unsubscribers_field"/>
                 </div>
-                <label for="unsubscription_ratio_percent" string="total unsubscribers rate "/>
-                <div>
-                    <field name="unsubscription_ratio_percent"/>
-                </div>
             </xpath>
         </field>
     </record>

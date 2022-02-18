@@ -252,7 +252,7 @@ msgstr "Okänd filändelse"
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.inherit_mail_mass_mailing_kanban_af_statistics_unsubscription
 msgid "Unsubscription Rate"
-msgstr ""
+msgstr "Avregistreringar"
 
 #. module: mass_mailing_unsubscribe_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_unsubscribe_af.af_nyhetsbrev_unsubscribe
