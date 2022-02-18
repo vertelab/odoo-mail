@@ -40,4 +40,4 @@ class MassMailing(models.Model):
 
             if record.sent != 0:
                 record.unsubscription_ratio_percent = 100 * record.total_unsubscribers / record.sent
-                _logger.warning("Haze ratio rate %s " %record.unsubscription_ratio_percent)
+                
