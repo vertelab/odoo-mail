@@ -24,7 +24,7 @@ class MassMailing(models.Model):
     _inherit = "mail.mass_mailing"
 
     total_unsubscribers = fields.Integer(string="total unsubscribers.", compute='_compute_unsubscribe_id')
-    unsubscription_ratio_percent = fields.Integer(string="unsubscription ratio rate", compute='_compute_unsubscribe_id')
+    unsubscription_ratio_percent = fields.Float(string="unsubscription ratio rate", compute='_compute_unsubscribe_id')
 
     def _compute_unsubscribe_id(self):
         for record in self:
