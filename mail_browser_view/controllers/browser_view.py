@@ -18,7 +18,9 @@ class EmailBrowserViewController(http.Controller):
         if not record:
             return request.not_found()
         body = record._send_prepare_body()
-        email = record.email_to
+        # Mailing lists uses email_to and selections uses recipient_ids
+        email = (record.email_to or
+                 len(record.recipient_ids) == 1 and record.recipient_ids[0])
         if email:
             unsubscribe_url = record._get_unsubscribe_url(email)
             base_url = http.request.env['ir.config_parameter'].sudo().get_param(

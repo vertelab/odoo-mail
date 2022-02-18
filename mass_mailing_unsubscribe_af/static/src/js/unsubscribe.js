@@ -109,12 +109,14 @@ odoo.define('mass_mailing_unsubscribe_af.unsubscribe', function (require) {
     var unsubscribed_list = $("input[name='unsubscribed_list']").val();
     if (unsubscribed_list){
         $('#subscription_info').html(_.str.sprintf(
-            _t("You have been <strong>successfully unsubscribed from %s</strong>."),
+            _t("Du har blivit <strong>avanmäld från %s</strong>."),
             unsubscribed_list
         ));
+
+
     }
     else{
-        $('#subscription_info').html(_t('You have been <strong>successfully unsubscribed</strong>.'));
+        $('#subscription_info').html(_t('Du har blivit <strong>avanmäld</strong>.'));
     }
 
     $('#unsubscribe_form').on('submit', function (e) {

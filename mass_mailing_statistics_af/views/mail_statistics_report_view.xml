@@ -7,9 +7,10 @@
             <field name="inherit_id" ref="mass_mailing.view_mail_statistics_report_pivot"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='clicked']" position="after">
-                        <field name="clicks_ratio" type="measure"/>
-                        <field name="ctor" type="measure"/>
+                        <field name="clicks_ratio" type="measure" widget="percentage"/>
+                        <field name="ctor" type="measure" widget="percentage"/>
                         <field name="total_clicks" type="measure"/>
+                        <field name="opened_ratio" type="measure" widget="percentage"/>
                 </xpath>
             </field>
     </record>
@@ -23,6 +24,7 @@
                         <field name="clicks_ratio" type="measure"/>
                         <field name="ctor" type="measure"/>
                         <field name="total_clicks" type="measure"/>
+                        <field name="opened_ratio" type="measure"/>
                 </xpath>
             </field>
     </record>
