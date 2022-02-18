@@ -8,8 +8,6 @@ class MassMailing(models.Model):
     clicks_ratio = fields.Float(readonly=True, group_operator="avg")
     total_clicks = fields.Integer(readonly=True)
     ctor = fields.Float(string="CTOR", readonly=True, group_operator="avg")
-    total_unsubscribers = fields.Integer( readonly=True)
-    unsubscription_ratio = fields.Float(string="Unsubscription Ratio", readonly=True, group_operator="avg")
 
     @api.model_cr
     def init(self):
@@ -30,11 +28,9 @@ class MassMailing(models.Model):
                     count(ms.opened) as opened,
                     count(ms.replied) as replied,
                     count(ms.clicked) as clicked,
-                    count(mm.total_unsubscribers) as total_unsubscribers,
                     sum(ms.total_clicks) as total_clicks,
                     (((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.sent)),0)) * 100)  as clicks_ratio,
                     (((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.opened)),0)) * 100) as ctor,
-                    (((1.0 * count(mm.total_unsubscribers)) / nullif((1.0 * count(ms.sent)),0)) * 100) as unsubscription_ratio,
                     mm.state,
                     mm.email_from
                 FROM

@@ -22,7 +22,6 @@
                 <xpath expr="//field[@name='sent']" position="after">
                         <field name="clicks_ratio" type="measure"/>
                         <field name="ctor" type="measure"/>
-                        <field name="unsubscription_ratio" type="measure"/>
                         <field name="total_clicks" type="measure"/>
                 </xpath>
             </field>
