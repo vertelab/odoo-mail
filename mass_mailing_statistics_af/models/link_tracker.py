@@ -108,7 +108,9 @@ class LinkTrackerClick(models.Model):
                       })]
             })
         return res
-        
+
+
 class MailMailStatistics(models.Model):
-        _inherit = "mail.mail.statistics"
-        total_clicks = fields.Integer()
+    _inherit = "mail.mail.statistics"
+
+    total_clicks = fields.Integer()

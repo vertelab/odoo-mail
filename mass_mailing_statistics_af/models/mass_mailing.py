@@ -1,4 +1,7 @@
 from odoo import api, fields, models
+import logging
+_logger = logging.getLogger(__name__)
+
 
 class MassMailing(models.Model):
     _inherit = 'mail.mass_mailing'
@@ -68,4 +71,5 @@ class MassMailing(models.Model):
     def _compute_opened_ratio_percentage(self):
         for rec in self:
             rec.opened_ratio_percentage = f"{rec.opened_ratio} %"
+
 

@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.1.7.4",
+    "version": "12.0.2.0.0",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -39,8 +39,7 @@
      v12.0.1.7.2 AFC-3494 Add id to img \n
      v12.0.1.7.3 AFC-3489 Fix bug for submitting empty text field \n
      v12.0.1.7.4 AFC-3162 Translate phrases into Swedish \n
-
- Dev-12.0
+     v12.0.2.0.0 AFC-3480 added unsubscriptions rate in the kanban view \n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
