@@ -4,11 +4,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0-20191201\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-07 12:57+0000\n"
-"PO-Revision-Date: 2022-02-07 12:57+0000\n"
-"Last-Translator: <Haze Lidman haze.lidman@arbetsformedlingen.se>\n"
+"POT-Creation-Date: 2022-02-18 12:53+0000\n"
+"PO-Revision-Date: 2022-02-18 12:53+0000\n"
+"Last-Translator: <Hannah Bergenroth hannah.bergenroth@arbetsformedlingen.se>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,16 @@ msgstr ""
 
 #. module: mass_mailing_statistics_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_form_af_statistics
-msgid "<span style=\"color:#ffffff\">1234</span>"
+msgid "<span class=\"o_stat_text\">\n"
+"                            Klickade brev (CTOR)\n"
+"                        </span>"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_form_af_statistics
+msgid "<span class=\"o_stat_text\">\n"
+"                        Klickade brev (CTR)\n"
+"                    </span>"
 msgstr ""
 
 #. module: mass_mailing_statistics_af
@@ -36,8 +45,13 @@ msgid "Bounced"
 msgstr "Studsade"
 
 #. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__ctor_percentage
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_statistics_report__ctor
+msgid "CTOR"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__clicks_ratio
-#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
 msgid "Click frequency"
 msgstr "CTR"
 
@@ -45,11 +59,6 @@ msgstr "CTR"
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__clicks
 msgid "Clicked"
 msgstr "Klickat"
-
-#. module: mass_mailing_statistics_af
-#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.link_tracker_tree_inherit_show_clicks
-msgid "Clicks"
-msgstr "Klickar"
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_statistics_report__clicks_ratio
@@ -80,6 +89,21 @@ msgstr "Skapad av"
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__create_date
 msgid "Created on"
 msgstr "Skapad den"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__ctor
+msgid "Ctor"
+msgstr "CTOR"
+
+#. module: mass_mailing_statistics_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
+msgid "Delivered"
+msgstr "Levererade"
+
+#. module: mass_mailing_statistics_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.link_tracker_tree_inherit_show_clicks
+msgid "Detaljer"
+msgstr ""
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker_click_user_clicks_per_link__display_name
@@ -169,13 +193,8 @@ msgid "Non unique clicks"
 msgstr ""
 
 #. module: mass_mailing_statistics_af
-#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker__count_user_clicks_per_link
-msgid "Number of Clicks"
-msgstr "Totala Klick per länk"
-
-#. module: mass_mailing_statistics_af
-#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker__count
-msgid "Number of Unique Clicks"
+#: model:ir.model.fields,help:mass_mailing_statistics_af.field_mail_mass_mailing__ctor
+msgid "Number of mails where at least one link is clicked divided by the number of unique opened mails"
 msgstr ""
 
 #. module: mass_mailing_statistics_af
@@ -184,10 +203,20 @@ msgid "Number of mails where atleast one link was clicked"
 msgstr ""
 
 #. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__opened_ratio_percentage
+msgid "OR"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__opened
 #: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
 msgid "Opened"
-msgstr "Öppnade brev"
+msgstr "Öppnade"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_statistics_report__opened_ratio
+msgid "Opened Ratio"
+msgstr "Öppnade förhållande"
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__received
@@ -196,9 +225,14 @@ msgstr "Mottagen"
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__replied
-#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
 msgid "Replied"
 msgstr "Besvarade"
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__sent
+#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
+msgid "Sent"
+msgstr "Skickade"
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mail_statistics__total_clicks
@@ -213,8 +247,13 @@ msgid "Total clicks"
 msgstr "Totala klick"
 
 #. module: mass_mailing_statistics_af
-#: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.link_tracker_tree_inherit_show_clicks
-msgid "Unique Clicks"
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker__count_user_clicks_per_link
+msgid "Totala klick"
+msgstr ""
+
+#. module: mass_mailing_statistics_af
+#: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_link_tracker__count
+msgid "Unika Klick per länk"
 msgstr ""
 
 #. module: mass_mailing_statistics_af
