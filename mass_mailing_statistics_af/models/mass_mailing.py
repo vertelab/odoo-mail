@@ -71,5 +71,3 @@ class MassMailing(models.Model):
     def _compute_opened_ratio_percentage(self):
         for rec in self:
             rec.opened_ratio_percentage = f"{rec.opened_ratio} %"
-
-
