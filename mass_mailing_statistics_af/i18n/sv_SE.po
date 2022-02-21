@@ -93,7 +93,7 @@ msgstr "Skapad den"
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__ctor
 msgid "Ctor"
-msgstr ""
+msgstr "CTOR"
 
 #. module: mass_mailing_statistics_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_kanban_af_statistics
