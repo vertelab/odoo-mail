@@ -12,9 +12,12 @@ class MassMailing(models.Model):
 
     @api.model_cr
     def init(self):
-        """Mass Mail Statistical Report: based on mail.mail.statistics that models the various
-        statistics collected for each mailing, and mail.mass_mailing model that models the
-        various mailing performed. """
+        """
+        Mass Mail Statistical Report: based on mail.mail.statistics
+        that models the various statistics collected for each mailing,
+        and mail.mass_mailing model that models the various mailing
+        performed.
+        """
         tools.drop_view_if_exists(self.env.cr, 'mail_statistics_report')
         self.env.cr.execute("""
             CREATE OR REPLACE VIEW mail_statistics_report AS (
@@ -30,9 +33,9 @@ class MassMailing(models.Model):
                     count(ms.replied) as replied,
                     count(ms.clicked) as clicked,
                     sum(ms.total_clicks) as total_clicks,
-                    ((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.sent)),0))  as clicks_ratio,
-                    ((1.0 * count(ms.clicked)) / nullif((1.0 * count(ms.opened)),0)) as ctor,
-                    ((1.0 * count(ms.opened)) / nullif((1.0 * (count(ms.sent) - (count(ms.bounced)))),0))  as opened_ratio,
+                    ((1.00000 * count(ms.clicked)) / nullif((1.00000 * count(ms.sent)),0)) as clicks_ratio,
+                    ((1.00000 * count(ms.clicked)) / nullif((1.00000 * count(ms.opened)),0)) as ctor,
+                    ((1.00000 * count(ms.opened)) / nullif((1.00000 * (count(ms.sent) - (count(ms.bounced)))),0)) as opened_ratio,
                     mm.state,
                     mm.email_from
                 FROM
