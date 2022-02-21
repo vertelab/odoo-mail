@@ -191,4 +191,39 @@
             </field>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="inherit_mail_mass_mailing_total_unsubscribers">
+        <field name="name">inherit.mail.mass.mailing.total.unsubscribers</field>
+        <field name="model">mail.mass_mailing</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/label[@for='name']" position="before">
+                <label for="total_unsubscribers" string="total unsubscribers " id="total_unsubscribers_label"/>
+                <div>
+                    <field name="total_unsubscribers" id="total_unsubscribers_field"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="inherit_mail_mass_mailing_kanban_af_statistics_unsubscription">
+        <field name="name">inherit.mail.mass.mailing.kanban.af.statistics.unsubscription</field>
+        <field name="model">mail.mass_mailing</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[4]" position="replace">
+                <div class="row">
+                    <div class="col-6">
+                        <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
+                           type="action">Unsubscription Rate
+                        </a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <field name="unsubscription_ratio_percent" widget="percentpie"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

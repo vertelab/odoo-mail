@@ -142,6 +142,9 @@
                 <field name="ctor_percentage"/>
                 <field name="total_clicks"/>
             </field>
+            <field name="delivered" position="replace">
+                <field name="received"/>
+            </field>
         </field>
     </record>
 
