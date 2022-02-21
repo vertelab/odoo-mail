@@ -3,7 +3,7 @@
 {
     'name': 'Mail Autoresponder',
     'summary': "Adds an automatic Emailing Trigger based service",
-    'version': '12.0.2.4.5',
+    'version': '12.0.2.4.6',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
@@ -28,6 +28,7 @@
         v12.0.2.4.3  AFC-3146 Hide import button for all users \n 
         v12.0.2.4.4  AFC-3351 Hide actions dropdown menu for ADKD guest group \n 
         v12.0.2.4.5  AFC-3103 Autoresponder doesnt create a mass_mailing per contact anymore \n 
+        v12.0.2.4.6  AFC-3528 Added translation \n 
 
     """,
     'depends': [

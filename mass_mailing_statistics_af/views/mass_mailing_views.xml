@@ -24,9 +24,14 @@
                 <span style="color:#ffffff">1</span>
             </xpath>
             <xpath expr="//button[@name='action_view_opened']/field[@name='opened_ratio']" position="before">
-                <span style="color:#ffffff">12</span>
-                <field name="opened" widget="statinfo"/>
-                <span style="color:#ffffff">1</span>
+                <div class="o_field_widget o_stat_info o_readonly_modifier">
+                    <span class="o_stat_value">
+                        <field name="opened" nolabel="1"/>
+                    </span>
+                    <span class="o_stat_text">
+                        Öppningsfrekvens (OR)
+                    </span>
+                </div>
             </xpath>
             <xpath expr="//button[@name='action_view_replied']/field[@name='replied_ratio']" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -104,7 +109,7 @@
                     <div class="col-6">
                         <a name="%(mass_mailing.action_view_mail_mail_statistics_mailing)d"
                            context="{'search_default_filter_opened': True}"
-                           type="action">Opened
+                           type="action">OR
                         </a>
                     </div>
                     <div class="col-6 text-right">
