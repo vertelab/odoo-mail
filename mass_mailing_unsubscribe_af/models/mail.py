@@ -39,5 +39,5 @@ class MassMailing(models.Model):
             record.total_unsubscribers = len(res_blacklist) + len(res_unsubscritption)
 
             if record.sent != 0:
-                record.unsubscription_ratio_percent = 100 * record.total_unsubscribers / record.sent
+                record.unsubscription_ratio_percent = 100 * record.total_unsubscribers / int(record.sent)
                 
