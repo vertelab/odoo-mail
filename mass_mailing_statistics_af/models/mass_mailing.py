@@ -11,13 +11,27 @@ class MassMailing(models.Model):
     opened = fields.Char("Opened", compute='_compute_statistics')
     replied = fields.Integer("Replied", compute='_compute_statistics')
     bounced = fields.Char("Bounced", compute='_compute_statistics')
-    clicks = fields.Char("Clicked", compute='_compute_statistics', help="Number of mails where atleast one link was clicked" )
-    total_clicks = fields.Integer("Total Clicks", compute='_compute_statistics', help="Everytime a link is clicked")
-    clicks_ratio = fields.Integer(string="Click frequency", compute='_compute_statistics', help="Is the number of mails sent divided by the number of mails where atleast one link was clicked" ) # Already exists in core, is redefined here since the orignal string is "Number of click" which it is wrong
+    clicks = fields.Char("Clicked",
+                         compute='_compute_statistics',
+                         help="Number of mails where atleast one link was clicked" )
+    total_clicks = fields.Integer("Total Clicks",
+                                  compute='_compute_statistics',
+                                  help="Everytime a link is clicked")
+
+    # Already exists in core, is redefined here since the orignal string is
+    # "Number of click" which it is wrong.
+    clicks_ratio = fields.Integer(string="Click frequency",
+                                  compute='_compute_statistics',
+                                  help="Is the number of mails sent divided by the"
+                                       " number of mails where at least one link was "
+                                       "clicked")
     clicks_ratio_percentage = fields.Char(compute='_compute_clicks_ratio_percentage')
-    ctor = fields.Integer(compute='_compute_statistics', help="Number of mails where at least one link is clicked divided by the number of unique opened mails")
+    ctor = fields.Integer(compute='_compute_statistics',
+                          help="Number of mails where at least one link is clicked"
+                               " divided by the number of unique opened mails")
     ctor_percentage = fields.Char("CTOR", compute='_compute_ctor_percentage')
-    opened_ratio_percentage = fields.Char(string="OR", compute='_compute_opened_ratio_percentage')
+    opened_ratio_percentage = fields.Char(string="OR",
+                                          compute='_compute_opened_ratio_percentage')
 
     def _compute_statistics(self):
         """ Compute statistics of the mass mailing """
