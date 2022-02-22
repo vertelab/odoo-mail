@@ -129,7 +129,7 @@ msgstr "Filnamn"
 #. module: mass_mailing_unsubscribe_af
 #: model:mail.unsubscription.reason,name:mass_mailing_unsubscribe_af.reason_no_longer_want_to_receive
 msgid "I no longer want to receive these emails"
-msgstr "Jag vill inte få dessa email längre"
+msgstr "Jag är inte längre intresserad av att få epostmeddelanden av denna typ"
 
 #. module: mass_mailing_unsubscribe_af
 #: model:ir.model.fields,field_description:mass_mailing_unsubscribe_af.field_import_deregistration_file__id
