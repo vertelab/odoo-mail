@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>341310C5-0BA2-4B8E-9CF7-C09EA99887EF@2x</title>
+    <defs>
+        <polygon id="path-1" points="51.4221543 8 56 12.5778457 36.577 32 56 51.4221543 51.4221543 56 32 36.577 12.5778457 56 8 51.4221543 27.422 32 8 12.5778457 12.5778457 8 32 27.422"></polygon>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Comunication/Cross">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Icon" fill="#1616B2" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

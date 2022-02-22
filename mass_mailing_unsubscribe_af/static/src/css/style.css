@@ -1,3 +1,13 @@
+@media (max-width: 610px) {
+    #dialog {
+        padding: 25px 15px !important;
+    }
+    #button_container {
+        flex-wrap: wrap;
+        justify-content: center !important;
+    }
+}
+
 textarea.form-control {
     border: 1px solid #949494;
 }
@@ -19,7 +29,7 @@ textarea.form-control:focus {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0,0,0,.40);
+    background-color: rgba(0,0,0,.30);
     display: none;
 }
 
@@ -31,21 +41,28 @@ textarea.form-control:focus {
     position: absolute;
     z-index: 200;
     top: 30vh;
-    left: 10vw;
-    right: 10vw;
-    max-width: 36rem;
+    left: 8vw;
+    right: 8vw;
+    max-width: 45rem;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
-    box-shadow: 0 0 2em rgba(0,0,0,.5);
     background: #fefefe;
-    border-radius: 10px;
     visibility: visible;
-    padding:15px;
+    padding: 25px;
 }
 
-#dialog p{
-    #color: #00005a;
+#dialog p {
+    color: #333333;
+    font-size: 16px;
+    font-family: 'Open Sans';
+}
+
+#dialog h2 {
+    color: #333333;
+    font-family: 'Open Sans Semibold';
+    font-size: 22px;
+    font-weight: 600;
 }
 
 #dialog [hidden] {
@@ -66,36 +83,38 @@ textarea.form-control:focus {
 }
 
 #dialog button {
-    border-radius: 5px;
     padding: 0;
     line-height: 0;
-    border: none;
     height: 1.5em;
     overflow: hidden;
     padding: 17px;
     cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #00005a;
+    font-family: 'Open Sans Semibold';
+    font-weight: 600;
+    font-size: 14px;
 }
 #button_container {
-    float: right;
+    display: flex;
+    margin-top: 25px;
+    justify-content: space-between;
 }
 
 #dialogClose {
-    margin-left: 15px;
-}
-
-#elementDetail {
-    padding: 0;
-    border-top: 1px solid gray;
-}
-
-#elementDetail p {
-    margin-top: 12px;
-}
-
-#container h1 {
-    font-size: 20px !important;
-    font-weight: normal;
+    background: #FFFFFF;
     color: #00005a;
+}
+
+#dialogClose:hover {
+    background: #f1f8fe;
+}
+#dialogSubmit {
+    background: #00005a;
+    color: #FFFFFF;
+}
+#dialogSubmit:hover {
+    background: #1616b2;
 }
 
 #unsubscribe {
@@ -105,4 +124,24 @@ textarea.form-control:focus {
     font-size:17px;
     border-radius:6px;
     cursor:pointer;
+}
+
+#closeDiv {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: #333333;
+    font-size: 16px;
+    font-family: 'Open Sans';
+}
+
+#closeDiv img {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0);
+    opacity: 0.7;
+    margin-left: 5px;
 }
