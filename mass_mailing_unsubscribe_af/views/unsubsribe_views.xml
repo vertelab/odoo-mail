@@ -55,9 +55,11 @@
             <attribute name="aria-labelledby">legend</attribute>
         </xpath>
         <xpath expr="//form" position="inside">
+            <h2>Hjälp oss bli bättre!</h2>
+            <p>Hjälp oss erbjuda relevant och intressant information genom att berätta varför du vill avsluta din prenumeration</p>
             <fieldset style="margin-top:18px;">
                 <legend id="legend" style="color:#00005a; font-size: 14px; margin-bottom: 12px;">
-                    Vi skulle uppskatta om du kunde lämna feedback till varför du vill avregistrera dig.
+                    Varför vill du avsluta din prenumeration? (frivilligt)
                 </legend>
                 <div class="col-md-12 mb16">
                     <t t-foreach="reasons" t-as="reason">
@@ -78,7 +80,7 @@
                     </t>
                 </div>
                 <div id="other_reason">
-                    <label style="color:#00005a;" for="other_reason_textfield">Om du har valt annan orsak, beskriv orsaken här: </label>
+                    <label style="color:#00005a;" for="other_reason_textfield">Beskriv annan orsak</label>
                     <textarea id="other_reason_textfield" class="form-control" name="details" cols="60" rows="3"></textarea>
                 </div>
                 <div class="form-group mb16 mt16">
@@ -105,7 +107,7 @@
             </t>
             <body class="o_white_body">
                 <header role="banner">
-                    <div class="text-center">
+                    <div class="">
                         <br/>
                         <br/>
                         <img id="af_logo" src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"
