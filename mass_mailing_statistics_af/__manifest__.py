@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing statistics AF",
     "summary": "This module will show number for Email tracking events in Mass Mailing.",
-    "version": "12.0.1.1.5",
+    "version": "12.0.1.1.6",
     "category": "Email Marketing",
     "description": """
      v12.0.0.1 AFC-2100  Added numbers for email tracking events in Mass mailing kanban and form view.\n
@@ -22,6 +22,7 @@
      v12.1.1.3 AFC-3507 separated the columns that displayed very close to each other, repleaced delivered field with recived field in the list table.
      v12.1.1.4 AFC-3521 Add translation
      v12.1.1.5 AFC-3471 Fixing CTR calculations.
+     v12.1.1.6 AFC-3471 Bugfix of CTR and CTOR calculations.
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
