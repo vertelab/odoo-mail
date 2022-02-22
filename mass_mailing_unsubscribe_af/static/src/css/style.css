@@ -9,11 +9,11 @@
 }
 
 textarea.form-control {
-    border: 1px solid #949494;
+    border: 1px solid rgb(102, 102, 102);
 }
 
 textarea.form-control:focus {
-    outline: 2px solid #949494;
+    outline: 1px solid rgb(102, 102, 102);
 }
 
 #af_logo {
