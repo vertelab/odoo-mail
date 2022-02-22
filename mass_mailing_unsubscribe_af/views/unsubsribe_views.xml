@@ -115,16 +115,20 @@
                 <main role="main">
                     <t t-raw="0"/>
                 </main>
-                <div id="dialog" aria-labelledby="dialogName" role="dialog" tabindex="-1" hidden="">
+                <div id="dialog" aria-labelledby="dialogName" role="dialog" hidden="" >
+                    <div id="closeDiv" onclick="closeDialog('unsubscribe')" aria-label="Close dialog" tabindex="0">
+                        <span>Stäng</span>
+                        <img src = "/mass_mailing_unsubscribe_af/static/img/IkonerComunication_Cross.svg" alt=""/>
+                    </div>
                     <div role="document" id="container">
-                        <h1 id="dialogName" tabindex="-1">Bekräfta avanmälan</h1>
+                        <h2 id="dialogName">Är du säker på att du vill avsluta din prenumeration?</h2>
                         <div id="elementDetail" tabindex="0" role="region" aria-labelledby="dialogName">
                             <p>
-                                Är du säker på att du vill avsluta prenumerationen?
+                                Du kommer inte längre ta emot informationsbrev från Arbetsförmedlingen. Är du säker på att du vill avsluta prenumerationen?
                             </p>
                             <div id="button_container">
-                                <button type="button" id="dialogSubmit">Avsluta prenumeration</button>
-                                <button type="button" id="dialogClose">Avbryt</button>
+                                <button type="button" id="dialogClose">Nej, gå tillbaka till formuläret</button>
+                                <button type="button" id="dialogSubmit">Ja, avsluta prenumerationen</button>
                             </div>
                         </div>
                     </div>
