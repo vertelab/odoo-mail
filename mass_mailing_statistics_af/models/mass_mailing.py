@@ -18,7 +18,7 @@ class MassMailing(models.Model):
                                   compute='_compute_statistics',
                                   help="Everytime a link is clicked")
 
-    # Already exists in core, is redefined here since the orignal string is
+    # Already exists in core, is redefined here since the original string is
     # "Number of click" which it is wrong.
     clicks_ratio = fields.Integer(string="Click frequency",
                                   compute='_compute_statistics',
