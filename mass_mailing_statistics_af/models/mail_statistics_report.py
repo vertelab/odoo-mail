@@ -15,7 +15,6 @@ class MassMailing(models.Model):
 
     @api.model_cr
     def init(self):
-        _logger.warning(f'NILS: {"*"*100}')
         """
         Mass Mail Statistical Report: based on mail.mail.statistics
         that models the various statistics collected for each mailing,
@@ -31,7 +30,7 @@ class MassMailing(models.Model):
                 count(ms.sent) as sent,
                 count(ms.bounced) as bounced,
                 count(ms.clicked) as clicked,
-                ((1.00000 * count(ms.clicked)) / nullif((1.00000 * (count(ms.sent) - count(ms.bounced))), 0)) as clicks_ratio
+                CAST(count(ms.clicked) AS FLOAT) / nullif(count(ms.sent) - count(ms.bounced), 0) as clicks_ratio
             FROM
                     mail_mail_statistics as ms
                     left join mail_mass_mailing as mm ON (ms.mass_mailing_id=mm.id)
@@ -57,9 +56,9 @@ class MassMailing(models.Model):
                     count(ms.replied) as replied,
                     count(ms.clicked) as clicked,
                     sum(ms.total_clicks) as total_clicks,
-                    ((1.00000 * count(ms.clicked)) / nullif((1.00000 * (count(ms.sent) - count(ms.bounced))), 0)) as clicks_ratio,
-                    ((1.00000 * count(ms.clicked)) / nullif((1.00000 * count(ms.opened)), 0)) as ctor,
-                    ((1.00000 * count(ms.opened)) / nullif((1.00000 * (count(ms.sent) - count(ms.bounced))), 0)) as opened_ratio,
+                    CAST(count(ms.clicked) AS FLOAT) / nullif(count(ms.sent) - count(ms.bounced), 0) as clicks_ratio,
+                    CAST(count(ms.clicked) AS FLOAT) / nullif(count(ms.opened), 0) as ctor,
+                    CAST(count(ms.opened) AS FLOAT) / nullif(count(ms.sent) - count(ms.bounced), 0) as opened_ratio,
                     mm.state,
                     mm.email_from
                 FROM
