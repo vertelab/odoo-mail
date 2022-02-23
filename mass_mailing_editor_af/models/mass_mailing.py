@@ -13,14 +13,13 @@ MASS_MAILING_BUSINESS_MODELS = ['res.partner', 'mail.mass_mailing.list']
 class MassMailing(models.Model):
     _inherit = "mail.mass_mailing"
     internal_name = fields.Char(string='Internt namn')
-    mailing_model_id = fields.Many2one('ir.model', string='Recipients Model', domain=[('model', 'in', MASS_MAILING_BUSINESS_MODELS)])
+    mailing_model_id = fields.Many2one(
+        'ir.model', string='Recipients Model',
+        domain=[('model', 'in', MASS_MAILING_BUSINESS_MODELS)])
 
     @api.multi
     def name_get(self):
-        res = []
-        for rec in self:
-            res.append((rec.id, '%s' % rec.internal_name))
-        return res
+        return [(rec.id, rec.internal_name) for rec in self]
 
     @api.multi
     def put_in_queue(self):
