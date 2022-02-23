@@ -23,8 +23,10 @@ class MassMailing(models.Model):
         """
         self = self.sudo()
         tools.drop_view_if_exists(self.env.cr, 'mail_statistics_report')
-        # ToDo: mm.sent_date as scheduled_date should be as sent_date,
-        # ToDo: but needs testing.
+        # ToDo: mm.sent_date as scheduled_date should be as sent_date?,
+        # ToDo: but needs testing and checks that it dont break anything.
+        # This data can be pretty large if a lot of mailings is done over time,
+        # Maybe consider to restrict how old data we pull in this query.
         self.env.cr.execute("""
             CREATE OR REPLACE VIEW mail_statistics_report AS (
                 SELECT
@@ -50,5 +52,6 @@ class MassMailing(models.Model):
                     left join mail_mass_mailing_campaign as mc ON (ms.mass_mailing_campaign_id=mc.id)
                     left join utm_campaign as utm_campaign ON (mc.campaign_id = utm_campaign.id)
                     left join utm_source as utm_source ON (mm.source_id = utm_source.id)
+                -- Avoid to group on values from ms, as it can break calculations.
                 GROUP BY mm.sent_date, utm_source.name, utm_campaign.name, mm.state, mm.email_from
             )""")
