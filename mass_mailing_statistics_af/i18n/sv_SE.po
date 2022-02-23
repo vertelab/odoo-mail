@@ -216,7 +216,7 @@ msgstr "Öppnade"
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_statistics_report__opened_ratio
 msgid "Opened Ratio"
-msgstr "Öppnade förhållande"
+msgstr " Öppningsfrekvens (OR)"
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__received
