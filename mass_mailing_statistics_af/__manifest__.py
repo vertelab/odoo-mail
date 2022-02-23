@@ -23,6 +23,8 @@
      v12.1.1.4 AFC-3521 Add translation
      v12.1.1.5 AFC-3471 Fixing CTR calculations.
      v12.1.1.6 AFC-3471 Bugfix of CTR and CTOR calculations.
+     v12.1.1.7 AFC-3528 Add translation
+
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
