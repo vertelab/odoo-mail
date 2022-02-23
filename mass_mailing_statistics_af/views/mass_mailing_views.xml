@@ -29,7 +29,7 @@
                         <field name="opened" nolabel="1"/>
                     </span>
                     <span class="o_stat_text">
-                        Öppningsfrekvens (OR)
+                        Öppning
                     </span>
                 </div>
             </xpath>
