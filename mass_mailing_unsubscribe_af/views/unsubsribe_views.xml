@@ -161,6 +161,7 @@
             </field>
         </field>
     </record>
+
     <record model="ir.ui.view" id="mail_unsubscription_inherited_search">
         <field name="name">mail.unsubscription.inherited_remove_unsubscriber_id_search</field>
         <field name="model">mail.unsubscription</field>
@@ -171,6 +172,7 @@
             </field>
         </field>
     </record>
+
     <record model="ir.ui.view" id="inherit_mail_unsubscription_view_tree">
         <field name="name">inherit.Mail Unsubscription Tree</field>
         <field name="model">mail.unsubscription</field>
@@ -181,6 +183,7 @@
             </field>
         </field>
     </record>
+
     <record model="ir.ui.view" id="inherit_mail_unsubscription_view_form">
         <field name="name">inherit.Mail Unsubscription Form</field>
         <field name="model">mail.unsubscription</field>
@@ -226,4 +229,14 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="view_mail_mass_mailing_contact_tree_inherit">
+        <field name="name">mail.mass_mailing.contact.tree</field>
+        <field name="model">mail.mass_mailing.contact</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_contact_tree"/>
+        <field name="arch" type="xml">
+            <field name="opt_out" position="after">
+                <field name="opt_out_reason"/>
+            </field>
+        </field>
+    </record>
 </odoo>
