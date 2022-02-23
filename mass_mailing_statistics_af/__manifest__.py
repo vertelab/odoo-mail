@@ -30,6 +30,7 @@
     "depends": [
         "mass_mailing",
         "link_tracker",
+        "mass_mailing_unsubscribe_af"
         
     ],
     "data": [

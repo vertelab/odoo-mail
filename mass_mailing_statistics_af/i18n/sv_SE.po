@@ -118,7 +118,7 @@ msgstr "E-post Statistik"
 #. module: mass_mailing_statistics_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_statistics_af.inherit_mail_mass_mailing_form_af_statistics
 msgid "Emails Sent"
-msgstr "Skickade e-postmeddelanden"
+msgstr "Skickade brev"
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,help:mass_mailing_statistics_af.field_mail_mass_mailing__total_clicks
@@ -221,7 +221,7 @@ msgstr " Öppningsfrekvens (OR)"
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__received
 msgid "Received"
-msgstr "Mottagen"
+msgstr "Levererade brev"
 
 #. module: mass_mailing_statistics_af
 #: model:ir.model.fields,field_description:mass_mailing_statistics_af.field_mail_mass_mailing__replied

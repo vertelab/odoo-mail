@@ -15,7 +15,6 @@
                     <span style="color:#ffffff">123</span>
                     <field name="sent" string="Emails Sent" widget="statinfo"/>
                     <span style="color:#ffffff">1</span>
-                    <i class="fa fa-lg fa-envelope-o"/>
                 </button>
             </xpath>
             <xpath expr="//button[@name='action_view_delivered']/field[@name='received_ratio']" position="before">
@@ -23,15 +22,21 @@
                 <field name="received" widget="statinfo"/>
                 <span style="color:#ffffff">1</span>
             </xpath>
+            <xpath expr="//button[@name='action_view_delivered']" position="attributes">
+                <attribute name="style">width:200px !important;</attribute>
+            </xpath>
             <xpath expr="//button[@name='action_view_opened']/field[@name='opened_ratio']" position="before">
                 <div class="o_field_widget o_stat_info o_readonly_modifier">
                     <span class="o_stat_value">
                         <field name="opened" nolabel="1"/>
                     </span>
                     <span class="o_stat_text">
-                        Öppningsfrekvens (OR)
+                        Öppning
                     </span>
                 </div>
+            </xpath>
+            <xpath expr="//button[@name='action_view_opened']" position="attributes">
+                <attribute name="style">width:100px !important;</attribute>
             </xpath>
             <xpath expr="//button[@name='action_view_replied']/field[@name='replied_ratio']" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -42,25 +47,25 @@
                         <field name="clicks" nolabel="1"/>
                     </span>
                     <span class="o_stat_text">
-                        Klickade brev (CTR)
+                        CTR
                     </span>
                 </div>
             </xpath>
             <xpath expr="//button[@name='action_view_clicked']" position="attributes">
-                <attribute name="style">width:177px !important;</attribute>
+                <attribute name="style">width:80px !important;</attribute>
             </xpath>
             <xpath expr="//button[@name='action_view_clicked']" position="before">
                 <button name="action_view_clicked"
                         type="object"
                         attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
                         class="oe_stat_button"
-                        style="width:192px !important;">
+                        style="width:90px !important;">
                     <div class="o_field_widget o_stat_info o_readonly_modifier">
                         <span class="o_stat_value">
                             <field name="clicks" nolabel="1"/>
                         </span>
                         <span class="o_stat_text">
-                            Klickade brev (CTOR)
+                            CTOR
                         </span>
                     </div>
                     <field name="ctor" widget="percentpie"/>
@@ -71,7 +76,26 @@
                 <field name="bounced" widget="statinfo"/>
                 <span style="color:#ffffff">1</span>
             </xpath>
-
+            <xpath expr="//button[@name='toggle_active']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_view_opened']" position="after">
+                <button name="action_view_unsubscription"
+                        type="object"
+                        attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
+                        class="oe_stat_button"
+                        style="width:165px !important;">
+                    <div class="o_field_widget o_stat_info o_readonly_modifier">
+                        <span class="o_stat_value">
+                            <field name="total_unsubscribers" nolabel="1"/>
+                        </span>
+                        <span class="o_stat_text">
+                            Avregistreringar
+                        </span>
+                    </div>
+                    <field name="unsubscription_ratio_percent" widget="percentpie"/>
+                </button>
+            </xpath>
         </field>
     </record>
 

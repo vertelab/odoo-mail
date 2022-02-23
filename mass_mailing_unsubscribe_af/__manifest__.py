@@ -47,7 +47,9 @@
     "author": "Vertel AB",
     "contributors": ["Vertel AB"],
     "depends": [
-        "mass_mailing_custom_unsubscribe",'af_security', "mass_mailing_editor_af"
+        'mass_mailing_custom_unsubscribe',
+        'af_security',
+        'mass_mailing_editor_af',
     ],
     "external_dependencies": {"python": ['pytz', 'xlrd']},
     "data": [
