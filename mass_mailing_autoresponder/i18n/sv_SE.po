@@ -563,7 +563,7 @@ msgstr "Öppnad e-post"
 #. module: mass_mailing_autoresponder
 #: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event_email_schedule__opened_ratio
 msgid "Opened Ratio"
-msgstr "Ö Öppningsfrekvens (OR)"
+msgstr "Öppningsfrekvens (OR)"
 
 #. module: mass_mailing_autoresponder
 #: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__organizer_id
