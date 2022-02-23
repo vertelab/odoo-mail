@@ -115,16 +115,20 @@
                 <main role="main">
                     <t t-raw="0"/>
                 </main>
-                <div id="dialog" aria-labelledby="dialogName" role="dialog" tabindex="-1" hidden="">
+                <div id="dialog" aria-labelledby="dialogName" role="dialog" hidden="" >
+                    <div id="closeDiv" onclick="closeDialog('unsubscribe')" aria-label="Close dialog" tabindex="0">
+                        <span>Stäng</span>
+                        <img src = "/mass_mailing_unsubscribe_af/static/img/IkonerComunication_Cross.svg" alt=""/>
+                    </div>
                     <div role="document" id="container">
-                        <h1 id="dialogName" tabindex="-1">Bekräfta avanmälan</h1>
+                        <h2 id="dialogName">Är du säker på att du vill avsluta din prenumeration?</h2>
                         <div id="elementDetail" tabindex="0" role="region" aria-labelledby="dialogName">
                             <p>
-                                Är du säker på att du vill avsluta prenumerationen?
+                                Du kommer inte längre ta emot informationsbrev från Arbetsförmedlingen. Är du säker på att du vill avsluta prenumerationen?
                             </p>
                             <div id="button_container">
-                                <button type="button" id="dialogSubmit">Avsluta prenumeration</button>
-                                <button type="button" id="dialogClose">Avbryt</button>
+                                <button type="button" id="dialogClose">Nej, gå tillbaka till formuläret</button>
+                                <button type="button" id="dialogSubmit">Ja, avsluta prenumerationen</button>
                             </div>
                         </div>
                     </div>
@@ -161,6 +165,7 @@
             </field>
         </field>
     </record>
+
     <record model="ir.ui.view" id="mail_unsubscription_inherited_search">
         <field name="name">mail.unsubscription.inherited_remove_unsubscriber_id_search</field>
         <field name="model">mail.unsubscription</field>
@@ -171,6 +176,7 @@
             </field>
         </field>
     </record>
+
     <record model="ir.ui.view" id="inherit_mail_unsubscription_view_tree">
         <field name="name">inherit.Mail Unsubscription Tree</field>
         <field name="model">mail.unsubscription</field>
@@ -181,6 +187,7 @@
             </field>
         </field>
     </record>
+
     <record model="ir.ui.view" id="inherit_mail_unsubscription_view_form">
         <field name="name">inherit.Mail Unsubscription Form</field>
         <field name="model">mail.unsubscription</field>
@@ -212,4 +219,14 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="view_mail_mass_mailing_contact_tree_inherit">
+        <field name="name">mail.mass_mailing.contact.tree</field>
+        <field name="model">mail.mass_mailing.contact</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_contact_tree"/>
+        <field name="arch" type="xml">
+            <field name="opt_out" position="after">
+                <field name="opt_out_reason"/>
+            </field>
+        </field>
+    </record>
 </odoo>

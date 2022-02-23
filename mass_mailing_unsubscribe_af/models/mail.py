@@ -40,4 +40,25 @@ class MassMailing(models.Model):
 
             if int(record.sent) != 0:
                 record.unsubscription_ratio_percent = 100 * record.total_unsubscribers / int(record.sent)
-                
+
+
+class MassMailingContact(models.Model):
+    _inherit = 'mail.mass_mailing.contact'
+
+    opt_out_reason = fields.Char(
+        compute="_compute_opt_out_reason"
+    )
+
+    def _compute_opt_out_reason(self):
+        for rec in self:
+            if rec.opt_out:
+                last_opt_out = self.env['mail.unsubscription'].search(
+                    [
+                        ('email', '=', rec.email),
+                        ('mailing_list_ids', 'in', rec.list_ids._ids),
+                        ('action', 'in', ['unsubscription', 'blacklist_add'])
+                    ],
+                    order="date desc",
+                    limit=1
+                )
+                rec.opt_out_reason = last_opt_out.reason_id.name
