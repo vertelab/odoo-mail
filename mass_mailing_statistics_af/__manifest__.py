@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing statistics AF",
     "summary": "This module will show number for Email tracking events in Mass Mailing.",
-    "version": "12.0.1.1.6",
+    "version": "12.0.1.1.5",
     "category": "Email Marketing",
     "description": """
      v12.0.0.1 AFC-2100  Added numbers for email tracking events in Mass mailing kanban and form view.\n
