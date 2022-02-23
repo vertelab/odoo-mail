@@ -11,9 +11,16 @@ _logger = logging.getLogger(__name__)
 
 class LinkTracker(models.Model):
     _inherit = 'link.tracker'
-    user_clicks_per_link = fields.One2many('link.tracker.click.user.clicks.per.link', 'link_tracker_id', string='Non unique clicks')
-    count_user_clicks_per_link = fields.Integer(string='Totala klick', compute='_compute_count_user_clicks_per_link', store=True)
-    count = fields.Integer(string='Unika Klick per länk', compute='_compute_count', store=True)
+    user_clicks_per_link = fields.One2many(
+        'link.tracker.click.user.clicks.per.link',
+        'link_tracker_id',
+        string='Non unique clicks')
+    count_user_clicks_per_link = fields.Integer(
+        string='Totala klick',
+        compute='_compute_count_user_clicks_per_link',
+        store=True)
+    count = fields.Integer(
+        string='Unika Klick per länk', compute='_compute_count', store=True)
 
     @api.one
     @api.depends('user_clicks_per_link')
@@ -53,16 +60,19 @@ class LinkTracker(models.Model):
         }
 
 
-# Used to track each time a a mail_receiver clicks the same link.
-# In order to keep track of the date of each click we create a new one each time a user clicks a link.
+# Used to track each time a mail_receiver clicks the same link.
+# In order to keep track of the date of each click we create a new
+# one each time a user clicks a link.
 class LinkTrackerClickUserClicks(models.Model):
     _name = "link.tracker.click.user.clicks.per.link"
     click_date = fields.Datetime(string='Create Date')
     ip = fields.Char(string='Internet Protocol')
     country_id = fields.Many2one('res.country', 'Country')
     customer_id = fields.Char(string="Kundnummer")
-    link_tracker_id = fields.Many2one('link.tracker', 'Link Tracker', required=True, ondelete='cascade')
+    link_tracker_id = fields.Many2one(
+        'link.tracker', 'Link Tracker', required=True, ondelete='cascade')
     mail_stat_id = fields.Many2one('mail.mail.statistics', string='Mail Statistics')
+
 
 class LinkTrackerClick(models.Model):
     _inherit = "link.tracker.click"
@@ -74,13 +84,15 @@ class LinkTrackerClick(models.Model):
         # Care has to be taken on which data we store as not all users have sudo rights.
         # Some res.partners are protected, so we cannot store the actual record.
         self = self.sudo()
-        res = super(LinkTrackerClick, self).add_click(code, ip, country_code, stat_id=stat_id)
+        res = super(
+            LinkTrackerClick, self).add_click(code, ip, country_code, stat_id=stat_id)
 
         code_rec = self.env['link.tracker.code'].search([('code', '=', code)])
         if not code_rec:
             return None
 
-        click = self.env['link.tracker.click'].search([('link_id', '=', code_rec.link_id.id),('ip', '=', ip)])
+        click = self.env['link.tracker.click'].search(
+            [('link_id', '=', code_rec.link_id.id), ('ip', '=', ip)])
         if click:
             statistics = self.env['mail.mail.statistics'].search([('id', '=', stat_id)])
             receiver_model = statistics.model
