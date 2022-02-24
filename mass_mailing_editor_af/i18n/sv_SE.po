@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0-20211011\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-08 15:47+0000\n"
-"PO-Revision-Date: 2021-12-08 15:47+0000\n"
+"POT-Creation-Date: 2022-02-24 10:50+0000\n"
+"PO-Revision-Date: 2022-02-24 10:50+0000\n"
 "Last-Translator: Nils Nyman-Waara <nils.nyman-waara@vertel.se>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -140,8 +140,7 @@ msgstr ""
 #. module: mass_mailing_editor_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_pre_header_af
 msgid "<span style=\"\">Gör smarta val till höstens\n"
-"                                                                        utbildningar\n"
-"                                                                    </span>"
+"                                                                        utbildningar</span>"
 msgstr ""
 
 #. module: mass_mailing_editor_af
@@ -204,28 +203,63 @@ msgstr ""
 
 #. module: mass_mailing_editor_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_small_footer
-msgid "<u>här</u>"
+msgid "<u>avanmäla dig här.</u>"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_header_top_af
+msgid "Arbetsförmedlingen logotyp"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_header_af
+msgid "Arbetsförmedlingen logotyp (Till startsidan)"
 msgstr ""
 
 #. module: mass_mailing_editor_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_text_af
 msgid "Besök oss på\n"
-"                                                                                    www.arbetsformedlingen.se"
+"                                                                                www.arbetsformedlingen.se"
 msgstr ""
 
 #. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_full_width_image_af
+msgid "Bild på kvinna (länken fungerar inte förtillfället)"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.view_mail_mass_mailing_confirm_send
+msgid "Cancel"
+msgstr "Avbryt"
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.view_mail_mass_mailing_confirm_send
+msgid "Confirm Send Mass Mailing"
+msgstr "Godkänn Massutskick"
+
+#. module: mass_mailing_editor_af
+#: model:ir.model.fields,field_description:mass_mailing_editor_af.field_send_confirm_wizard__create_uid
+msgid "Created by"
+msgstr "Skapad av"
+
+#. module: mass_mailing_editor_af
+#: model:ir.model.fields,field_description:mass_mailing_editor_af.field_send_confirm_wizard__create_date
+msgid "Created on"
+msgstr "Skapad den"
+
+#. module: mass_mailing_editor_af
+#: model:ir.model.fields,field_description:mass_mailing_editor_af.field_send_confirm_wizard__display_name
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+#. module: mass_mailing_editor_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_small_footer
-msgid "Du\n"
-"                                            får detta informationsbrev\n"
-"                                            eftersom din epost,\n"
-"                                            ##SubscriberEmail##\n"
-"                                            registrerats när du skapat\n"
-"                                            ett konto hos\n"
-"                                            Arbetsförmedlingen. Vill du\n"
-"                                            inte ta emot fler\n"
-"                                            informationsbrev från\n"
-"                                            Arbetsförmedlingen kan du\n"
-"                                            avanmäla dig"
+msgid "Du får detta informationsbrev\n"
+"                                            eftersom din epost, ##SubscriberEmail##\n"
+"                                            registrerats när du skapat ett konto hos\n"
+"                                            Arbetsförmedlingen. Vill du inte ta emot\n"
+"                                            fler informationsbrev från Arbetsförmedlingen\n"
+"                                            kan du"
 msgstr ""
 
 #. module: mass_mailing_editor_af
@@ -235,24 +269,38 @@ msgid "Här får du\n"
 msgstr ""
 
 #. module: mass_mailing_editor_af
+#: model:ir.model.fields,field_description:mass_mailing_editor_af.field_send_confirm_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: mass_mailing_editor_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.inherit_mail_mass_mailing_internal_name
 msgid "Internal Name"
 msgstr "Internt Namn"
 
 #. module: mass_mailing_editor_af
 #: model:ir.model.fields,field_description:mass_mailing_editor_af.field_mail_mass_mailing__internal_name
-msgid "Internal name"
-msgstr "Internt namn"
+msgid "Internt namn"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model:ir.model.fields,field_description:mass_mailing_editor_af.field_send_confirm_wizard____last_update
+msgid "Last Modified on"
+msgstr "Senast redigerad"
+
+#. module: mass_mailing_editor_af
+#: model:ir.model.fields,field_description:mass_mailing_editor_af.field_send_confirm_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Senast uppdaterad av"
+
+#. module: mass_mailing_editor_af
+#: model:ir.model.fields,field_description:mass_mailing_editor_af.field_send_confirm_wizard__write_date
+msgid "Last Updated on"
+msgstr "Senast uppdaterad"
 
 #. module: mass_mailing_editor_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_text_block_two_col_af
-msgid "Läs\n"
-"                                                                                                    mer\n"
-"                                                                                                    om\n"
-"                                                                                                    hur\n"
-"                                                                                                    du\n"
-"                                                                                                    kan\n"
-"                                                                                                    tänka"
+msgid "Läs mer om hur du kan tänka"
 msgstr ""
 
 #. module: mass_mailing_editor_af
@@ -261,11 +309,42 @@ msgid "Mass Mailing"
 msgstr "Massutskick per e-post"
 
 #. module: mass_mailing_editor_af
+#: model:ir.model.fields,field_description:mass_mailing_editor_af.field_send_confirm_wizard__message
+msgid "Message"
+msgstr "Meddelande"
+
+#. module: mass_mailing_editor_af
+#: model:ir.model.fields,field_description:mass_mailing_editor_af.field_mail_mass_mailing__mailing_model_id
+msgid "Recipients Model"
+msgstr "Mottagar model"
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.view_mail_mass_mailing_confirm_send
+msgid "Send Mail"
+msgstr "Skicka Mail"
+
+#. module: mass_mailing_editor_af
+#: model:ir.actions.act_window,name:mass_mailing_editor_af.action_mass_mailing_confirm_send
+msgid "Send Mails Confirmation"
+msgstr "Godkänn Mailutskick"
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.inherit_view_mail_mass_mailing_form
+msgid "Send Now"
+msgstr "Skicka nu"
+
+#. module: mass_mailing_editor_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_text_two_col
 msgid "Skräddarsy din sökning med hjälp av\n"
 "                                                    sökord och filter. Givetvis kan du spara\n"
 "                                                    dina sökningar och intressanta annonser."
 msgstr ""
+
+#. module: mass_mailing_editor_af
+#: code:addons/mass_mailing_editor_af/wizards/confirm_send.py:20
+#, python-format
+msgid "This will send the mail message to all recipients ({}). Do you want to continue?"
+msgstr "Detta kommer skicka mejlet till alla mottagare ({}). Vill du fortsätta?"
 
 #. module: mass_mailing_editor_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_image_text_af
@@ -278,9 +357,36 @@ msgid "Visa i webbläsaren"
 msgstr ""
 
 #. module: mass_mailing_editor_af
+#: code:addons/mass_mailing_editor_af/wizards/confirm_send.py:31
+#, python-format
+msgid "You have to select a template."
+msgstr "Du måste välja en mall."
+
+#. module: mass_mailing_editor_af
+#: code:addons/mass_mailing_editor_af/wizards/confirm_send.py:29
+#, python-format
+msgid "You must select at least one recipient list."
+msgstr "Du måste välja minst en mottagarlista"
+
+#. module: mass_mailing_editor_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_blue_page_footer_af
 #: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_white_page_footer_af
 msgid "avanmäla dig här."
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.s_mail_block_image_text_af
+msgid "bild på laptop (Till antagning.se)"
+msgstr ""
+
+#. module: mass_mailing_editor_af
+#: model_terms:ir.ui.view,arch_db:mass_mailing_editor_af.view_mail_mass_mailing_confirm_send
+msgid "or"
+msgstr "eller"
+
+#. module: mass_mailing_editor_af
+#: model:ir.model,name:mass_mailing_editor_af.model_send_confirm_wizard
+msgid "send.confirm.wizard"
 msgstr ""
 
 #. module: mass_mailing_editor_af
