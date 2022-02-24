@@ -21,13 +21,6 @@ class MassMailing(models.Model):
     def name_get(self):
         return [(rec.id, rec.internal_name) for rec in self]
 
-    @api.multi
-    def put_in_queue(self):
-        for rec in self:
-            if not rec.body_html:
-                raise UserError("Du måste välja en mall")
-        super(MassMailing, self).put_in_queue()
-
     @api.onchange('mailing_domain')
     def add_email_filter(self):
         """Added email filter for search domain."""
