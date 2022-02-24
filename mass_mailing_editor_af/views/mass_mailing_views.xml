@@ -34,4 +34,41 @@
         </field>
     </record>
 
+    <record id="view_mail_mass_mailing_confirm_send" model="ir.ui.view">
+        <field name="name">mail_mass_mailing_confirm_send</field>
+        <field name="model">send.confirm.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Confirm Send Mass Mailing">
+                <field name="message"/>
+                <footer>
+                    <button string="Send Mail" name="send_confirm" type="object" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mass_mailing_confirm_send" model="ir.actions.act_window">
+        <field name="name">Send Mails Confirmation</field>
+        <field name="res_model">send.confirm.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_mail_mass_mailing_confirm_send"/>
+        <field name="target">new</field>
+    </record>
+
+    <record model="ir.ui.view" id="inherit_view_mail_mass_mailing_form">
+        <field name="name">inherit.mail.mass_mailing.mass_mailing_form</field>
+        <field name="model">mail.mass_mailing</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"/>
+        <field name="arch" type="xml">
+            <button name="put_in_queue" position="replace">
+                <button type="action"
+                        name="%(action_mass_mailing_confirm_send)d"
+                        attrs="{'invisible': [('state', 'in', ('in_queue', 'done'))]}"
+                        class="oe_highlight"
+                        string="Send Now"/>
+            </button>
+        </field>
+    </record>
 </odoo>
