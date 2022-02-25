@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="49px" viewBox="0 0 30 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>0DEE6C3F-2400-459C-8791-45B083BDEABD@2x</title>
+    <defs>
+        <polygon id="path-1" points="17.7645853 12.8017597 22.9425573 7.76923 46.769234 31.5033611 22.408742 55.76923 17.23077 50.7367043 36.5376402 31.5042659"></polygon>
+    </defs>
+    <g id="Ikonguide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-185.000000, -309.000000)" id="Group">
+            <g transform="translate(168.000000, 302.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Icon" fill="#ffffff" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>
