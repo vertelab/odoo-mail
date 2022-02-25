@@ -58,7 +58,12 @@
                 @-ms-viewport { width:320px; }
                 }
             </style>
-
+        </xpath>
+    </template>
+    <template id="mass_mail_editor_af_theme_default" name="mass_mailing_theme"
+              inherit_id="mass_mailing.assets_mail_themes">
+        <xpath expr="//link[@href='/mass_mailing/static/src/scss/themes/theme_default.scss']" position="replace">
+            <link href="/mass_mailing_editor_af/static/src/css/theme_default.scss" rel="stylesheet" type="text/css"/>
         </xpath>
     </template>
 </odoo>

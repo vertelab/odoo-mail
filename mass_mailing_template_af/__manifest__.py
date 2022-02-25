@@ -1,7 +1,7 @@
 {
     "name": "AF Mass Mailing Template",
     "summary": "Adds a Mass Mailing Template Design",
-    "version": "12.0.1.3.5",
+    "version": "12.0.1.3.6",
     "category": "Email Marketing",
     "description": """
     v12.0.0.1 AFC-86  Add Mass mailing template for AF newsletters.\n
@@ -21,6 +21,7 @@
     v12.0.1.3.3 AFC-3066 Fixed a minor bug for background color (till guiden) and (till tipset) snippets.\n
     v12.0.1.3.4 AFC-3204 Change code to pass validation.\n
     v12.0.1.3.5 AFC-3411 Change link titles \n
+    v12.0.1.3.6 AFC-3418 Removed som js code for the editor. \n
     """,
     "license": "AGPL-3",
     "maintainer": "Swedish Public Employement Service",

@@ -479,11 +479,6 @@ odoo.define('web_editor.snippets.options', function (require) {
                 width: ml,
                 left: '-' + ml,
             });
-            _.each(this.$overlay.find(".o_handle.n, .o_handle.s"), function (handle) {
-                var $handle = $(handle);
-                var direction = $handle.hasClass('n') ? 'top': 'bottom';
-                $handle.height(self.$target.css('padding-' + direction));
-            });
         },
     });
 
