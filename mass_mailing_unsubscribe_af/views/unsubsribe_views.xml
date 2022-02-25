@@ -243,4 +243,15 @@
             </field>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="view_mail_mass_mailing_contact_form_inherit">
+        <field name="name">mail.mass_mailing.contact.form</field>
+        <field name="model">mail.mass_mailing.contact</field>
+        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_contact_form"/>
+        <field name="arch" type="xml">
+            <field name="opt_out" position="after">
+                <field name="opt_out_reason"/>
+            </field>
+        </field>
+    </record>
 </odoo>

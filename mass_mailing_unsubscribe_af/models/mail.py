@@ -46,6 +46,7 @@ class MassMailingContact(models.Model):
     _inherit = 'mail.mass_mailing.contact'
 
     opt_out_reason = fields.Char(
+        string="Orsak",
         compute="_compute_opt_out_reason"
     )
 
@@ -61,4 +62,46 @@ class MassMailingContact(models.Model):
                     order="date desc",
                     limit=1
                 )
+                if not last_opt_out:
+                    last_opt_out = self.env['mail.unsubscription'].search(
+                        [
+                            ('email', '=', rec.contact_id.email),
+                            ('action', 'in', ['blacklist_add'])
+                        ],
+                        order="date desc",
+                        limit=1
+                    )
                 rec.opt_out_reason = last_opt_out.reason_id.name
+
+
+class MassMailingContactListRel(models.Model):
+    _inherit = 'mail.mass_mailing.list_contact_rel'
+
+    opt_out_reason = fields.Char(
+        string="Orsak",
+        compute="_compute_opt_out_reason"
+    )
+
+    def _compute_opt_out_reason(self):
+        for rec in self:
+            if rec.opt_out:
+                last_opt_out = self.env['mail.unsubscription'].search(
+                    [
+                        ('email', '=', rec.contact_id.email),
+                        ('mailing_list_ids', 'in', rec.list_id.id),
+                        ('action', 'in', ['unsubscription'])
+                    ],
+                    order="date desc",
+                    limit=1
+                )
+                if not last_opt_out:
+                    last_opt_out = self.env['mail.unsubscription'].search(
+                        [
+                            ('email', '=', rec.contact_id.email),
+                            ('action', 'in', ['blacklist_add'])
+                        ],
+                        order="date desc",
+                        limit=1
+                    )
+                rec.opt_out_reason = last_opt_out.reason_id.name
+
