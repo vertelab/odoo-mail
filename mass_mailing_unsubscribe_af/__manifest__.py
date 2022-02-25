@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.2.1.0",
+    "version": "12.0.2.1.1",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -42,13 +42,16 @@
      v12.0.1.7.5 AFC-3518 Fix issue with subscription form, translate phrases into Swedish \n
      v12.0.2.0.0 AFC-3480 added unsubscriptions rate in the kanban view \n
      v12.0.2.1.0 AFC-3525 Update design of pop-up window \n
+     v12.0.2.1.1 AFC-3530 Deleted unsubscription filed \n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
     "author": "Vertel AB",
     "contributors": ["Vertel AB"],
     "depends": [
-        "mass_mailing_custom_unsubscribe",'af_security', "mass_mailing_editor_af"
+        'mass_mailing_custom_unsubscribe',
+        'af_security',
+        'mass_mailing_editor_af',
     ],
     "external_dependencies": {"python": ['pytz', 'xlrd']},
     "data": [

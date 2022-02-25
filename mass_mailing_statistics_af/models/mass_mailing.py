@@ -85,3 +85,13 @@ class MassMailing(models.Model):
     def _compute_opened_ratio_percentage(self):
         for rec in self:
             rec.opened_ratio_percentage = f"{rec.opened_ratio} %"
+
+    def action_view_unsubscription(self):
+        model_name = self.env['ir.model'].sudo()._get('mail.unsubscription').display_name
+        return {
+            'name': model_name,
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree',
+            'res_model': 'mail.unsubscription',
+            'domain': [('mass_mailing_id', '=', self.id)],
+        }

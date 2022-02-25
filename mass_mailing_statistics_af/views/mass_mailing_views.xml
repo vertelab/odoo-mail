@@ -6,72 +6,94 @@
         <field name="model">mail.mass_mailing</field>
         <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='action_view_sent']" position="replace">
-                <button name="action_view_sent"
-                        type="object"
-                        context="{'search_default_filter_sent': True}"
-                        class="oe_stat_button o_mass_mailing_button"
-                        attrs="{'invisible': ['&amp;', ('sent', '=', 0), ('state', 'in', ('draft','test'))]}">
-                    <span style="color:#ffffff">123</span>
-                    <field name="sent" string="Emails Sent" widget="statinfo"/>
-                    <span style="color:#ffffff">1</span>
-                    <i class="fa fa-lg fa-envelope-o"/>
-                </button>
-            </xpath>
-            <xpath expr="//button[@name='action_view_delivered']/field[@name='received_ratio']" position="before">
-                <span style="color:#ffffff">12</span>
-                <field name="received" widget="statinfo"/>
-                <span style="color:#ffffff">1</span>
-            </xpath>
-            <xpath expr="//button[@name='action_view_opened']/field[@name='opened_ratio']" position="before">
-                <div class="o_field_widget o_stat_info o_readonly_modifier">
-                    <span class="o_stat_value">
-                        <field name="opened" nolabel="1"/>
-                    </span>
-                    <span class="o_stat_text">
-                        Öppning
-                    </span>
+            <xpath expr="//div[@class='oe_button_box']" position="replace">
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_view_unsubscription"
+                            type="object"
+                            attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
+                            class="oe_stat_button"
+                            style="width:165px !important;">
+                        <div class="o_field_widget o_stat_info o_readonly_modifier">
+                            <span class="o_stat_value">
+                                <field name="total_unsubscribers" nolabel="1"/>
+                            </span>
+                            <span class="o_stat_text">
+                                Avregistreringar
+                            </span>
+                        </div>
+                        <field name="unsubscription_ratio_percent" widget="percentpie"/>
+                    </button>
+                    <button name="action_view_clicked"
+                            type="object"
+                            attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
+                            class="oe_stat_button"
+                            style="width:90px !important;">
+                        <div class="o_field_widget o_stat_info o_readonly_modifier">
+                            <span class="o_stat_value">
+                                <field name="clicks" nolabel="1"/>
+                            </span>
+                            <span class="o_stat_text">
+                                CTOR
+                            </span>
+                        </div>
+                        <field name="ctor" widget="percentpie"/>
+                    </button>
+                    <button name="action_view_clicked"
+                            type="object"
+                            attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
+                            class="oe_stat_button"
+                            style="width:80px !important;">
+                        <div class="o_field_widget o_stat_info o_readonly_modifier">
+                            <span class="o_stat_value">
+                                <field name="clicks" nolabel="1"/>
+                            </span>
+                            <span class="o_stat_text">
+                                CTR
+                            </span>
+                        </div>
+                        <field name="clicks_ratio" string="Clicks" widget="percentpie"/>
+                    </button>
+                    <button name="action_view_opened"
+                            type="object"
+                            context="{'search_default_filter_opened': True}"
+                            attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
+                            class="oe_stat_button">
+                        <div class="o_field_widget o_stat_info o_readonly_modifier">
+                            <span class="o_stat_value">
+                                <field name="opened" nolabel="1"/>
+                            </span>
+                            <span class="o_stat_text">
+                                Öppning
+                            </span>
+                        </div>
+                        <field name="opened_ratio" string="Opened" widget="percentpie"/>
+                    </button>
+                    <button name="action_view_delivered"
+                            type="object"
+                            context="{'search_default_filter_received': True}"
+                            attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
+                            class="oe_stat_button"
+                            style="width:180px !important;">
+                        <field name="received" widget="statinfo"/>
+                        <field name="received_ratio" string="Received" widget="percentpie"/>
+                    </button>
+                    <button name="action_view_bounced"
+                            type="object"
+                            context="{'search_default_filter_bounced': True}"
+                            attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
+                            class="oe_stat_button">
+                        <field name="bounced" widget="statinfo"/>
+                        <field name="bounced_ratio" string="Bounced" widget="percentpie"/>
+                    </button>
+                    <button name="action_view_sent"
+                            type="object"
+                            context="{'search_default_filter_sent': True}"
+                            class="oe_stat_button o_mass_mailing_button"
+                            attrs="{'invisible': ['&amp;', ('sent', '=', 0), ('state', 'in', ('draft','test'))]}">
+                        <field name="sent" string="Emails Sent" widget="statinfo"/>
+                    </button>
                 </div>
             </xpath>
-            <xpath expr="//button[@name='action_view_replied']/field[@name='replied_ratio']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//button[@name='action_view_clicked']/field[@name='clicks_ratio']" position="before">
-                <div class="o_field_widget o_stat_info o_readonly_modifier">
-                    <span class="o_stat_value">
-                        <field name="clicks" nolabel="1"/>
-                    </span>
-                    <span class="o_stat_text">
-                        Klickade brev (CTR)
-                    </span>
-                </div>
-            </xpath>
-            <xpath expr="//button[@name='action_view_clicked']" position="attributes">
-                <attribute name="style">width:177px !important;</attribute>
-            </xpath>
-            <xpath expr="//button[@name='action_view_clicked']" position="before">
-                <button name="action_view_clicked"
-                        type="object"
-                        attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
-                        class="oe_stat_button"
-                        style="width:192px !important;">
-                    <div class="o_field_widget o_stat_info o_readonly_modifier">
-                        <span class="o_stat_value">
-                            <field name="clicks" nolabel="1"/>
-                        </span>
-                        <span class="o_stat_text">
-                            Klickade brev (CTOR)
-                        </span>
-                    </div>
-                    <field name="ctor" widget="percentpie"/>
-                </button>
-            </xpath>
-            <xpath expr="//button[@name='action_view_bounced']/field[@name='bounced_ratio']" position="before">
-                <span style="color:#ffffff">12</span>
-                <field name="bounced" widget="statinfo"/>
-                <span style="color:#ffffff">1</span>
-            </xpath>
-
         </field>
     </record>
 
