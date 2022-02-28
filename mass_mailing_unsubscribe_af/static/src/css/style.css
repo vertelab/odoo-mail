@@ -8,18 +8,10 @@
     }
 }
 
-textarea.form-control {
-    border: 1px solid rgb(102, 102, 102);
-}
-
-textarea.form-control:focus {
-    outline: 1px solid rgb(102, 102, 102);
-}
-
 #af_logo {
-    width: 15%;
-    max-width: 250px;
+    max-width: 256px;
     min-width: 160px;
+    padding: 10px;
 }
 
 #overlay {
@@ -83,7 +75,7 @@ textarea.form-control:focus {
 }
 
 #dialog button {
-    padding: 0;
+    border-radius: 5px;
     line-height: 0;
     height: 1.5em;
     overflow: hidden;
@@ -119,11 +111,132 @@ textarea.form-control:focus {
 
 #unsubscribe {
     float:right;
-    border-color:#00005a;
-    color:#00005a;
-    font-size:17px;
-    border-radius:6px;
-    cursor:pointer;
+    color: #FFFFFF;
+    background: #00005a;
+    font-family: 'Open Sans Semibold';
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid #00005a;
+    line-height: 0;
+    padding: 17px;
+}
+
+#unsubscribe:hover {
+    background: #1616b2;
+}
+
+#information_card {
+    background: #f4f8eb;
+    color: #333333;
+    padding: 40px;
+    max-width: 700px;
+    margin:0 auto;
+}
+
+#information_card h1 {
+    font-family: 'Open Sans Semibold';
+    font-size: 28px;
+    font-weight: 600;
+}
+
+#information_card p {
+    font-family: 'Open Sans';
+    font-size: 16px;
+}
+
+#reason_form {
+    color: #333333;
+}
+
+#reason_form h2 {
+    font-size:22px;
+    font-family: 'Open Sans Semibold';
+    font-weight:600;
+}
+
+#reason_form p {
+    font-size: 16px;
+    font-family: 'Open Sans';
+}
+
+#reason_form fieldset {
+    margin-top: 20px;
+}
+
+#reason_form legend {
+    font-family: 'Open Sans Semibold';
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 12px;
+}
+
+.radio_container {
+    font-family: 'Open Sans';
+    font-size: 16px;
+    color: #333333;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio_container input[type='radio'] {
+    position: relative;
+    top: 6px;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 11px;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid rgb(51, 51, 51);
+    margin-right: 10px;
+}
+
+.radio_container input[type='radio']:before {
+    content: '';
+    display: block;
+    width: 75%;
+    height: 75%;
+    margin: 12% auto;
+    border-radius: 50%;
+}
+
+.radio_container input[type='radio']:checked:before {
+    background: #00005a;
+}
+
+.radio_container input[type='radio']:checked {
+    border: 1px solid #00005a;
+}
+
+#other_reason {
+    padding-top: 8px;
+    padding-left: 35px;
+    color: #333333;
+}
+
+#other_reason label {
+    font-family: 'Open Sans Semibold';
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+#other_reason textarea {
+    font-family: 'Open Sans';
+    max-width: 600px;
+    height: 75px;
+    border: 1px solid rgb(102, 102, 102);
+    font-size: 16px;
+}
+
+#other_reason:focus {
+    outline: 1px solid rgb(102, 102, 102);
 }
 
 #closeDiv {
