@@ -49,34 +49,36 @@
         <xpath expr="//div[@id='custom_div_feedback']" position="replace"/>
     </template>
 
-
-    <record model="mail.unsubscription.reason" id="mass_mailing_custom_unsubscribe.reason_not_interested">
-
-    </record>
-
     <template inherit_id="mass_mailing_custom_unsubscribe.reason_form" id="af_nyhetsbrev_unsubscribe_reason_form">
+        <xpath expr="//form" position="before">
+            <div id="information_card">
+                <h1>Avsluta prenumeration av informationsbrev</h1>
+                <p>Genom att avsluta din prenumeration kommer du inte längre ta emot fler informationsbrev från Arbetsförmedlingen. Observera att du fortfarande kan få annan mejl av Arbetsförmedlingen, till exempel kallelser, bevakningar på platsbanken och notiser om nya meddelanden.</p>
+            </div>
+        </xpath>
         <xpath expr="//form" position="attributes">
             <attribute name="role">form</attribute>
             <attribute name="aria-labelledby">legend</attribute>
+            <attribute name="style">max-width: 700px !important; flex: unset !important; margin: 0 auto !important; padding: 40px 0 40px 40px !important;</attribute>
         </xpath>
         <xpath expr="//form" position="inside">
-            <h2 style="font-size:22px; font-family:Open Sans-Semibold; color:#333333; font-weight:600;">Hjälp oss bli bättre!</h2>
-            <p style="font-size: 16px; font-family: Open Sans; color: #333333;">Hjälp oss erbjuda relevant och intressant information genom att berätta varför du vill avsluta din prenumeration</p>
-            <fieldset style="margin-top:18px;">
-                <legend id="legend" style="font-family: Open Sans-Semibold; font-weight:600; color:#333333; font-size: 16px; margin-bottom: 12px;">
+            <h2>Hjälp oss bli bättre!</h2>
+            <p>Hjälp oss erbjuda relevant och intressant information genom att berätta varför du vill avsluta din prenumeration</p>
+            <fieldset>
+                <legend id="legend">
                     Varför vill du avsluta din prenumeration? (frivilligt)
                 </legend>
-                <div class="col-md-12 mb16">
+                <div>
                     <t t-foreach="reasons" t-as="reason">
-                        <div t-if="reason_index == 0" class="radio" style="color:#00005a; display:none;">
-                            <label>
+                        <div t-if="reason_index == 0" class="radio" style="display:none;">
+                            <label class="radio_container">
                                 <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
                                        t-att-value="reason.id"/>
                                 <t t-esc="reason.display_name"/>
                             </label>
                         </div>
-                        <div t-else="" class="radio" style="color:#00005a">
-                            <label>
+                        <div t-else="" class="radio">
+                            <label class="radio_container">
                                 <input type="radio" name="reason_id" class="opt" t-att-data-details-required="reason.details_required"
                                        t-att-value="reason.id"/>
                                 <t t-esc="reason.display_name"/>
@@ -85,11 +87,11 @@
                     </t>
                 </div>
                 <div id="other_reason">
-                    <label style="color:#00005a;" for="other_reason_textfield">Beskriv annan orsak</label>
-                    <textarea id="other_reason_textfield" class="form-control" name="details" style="max-width:600px; height:75px;"></textarea>
+                    <label for="other_reason_textfield">Beskriv annan orsak</label>
+                    <textarea id="other_reason_textfield" class="form-control" name="details"></textarea>
                 </div>
                 <div class="form-group mb16 mt16">
-                    <button id ="unsubscribe" type="submit" style="background: #00005a; border-radius: 6px;" class="button" onclick="return openDialog(event)">
+                    <button id ="unsubscribe" type="submit" class="button" onclick="return openDialog(event)">
                         <b>Unsubscribe now</b>
                     </button>
                 </div>
@@ -112,9 +114,7 @@
             </t>
             <body class="o_white_body">
                 <header role="banner">
-                    <div class="">
-                        <br/>
-                        <br/>
+                    <div>
                         <img id="af_logo" src="/mass_mailing_unsubscribe_af/static/img/login_logo.jpg"
                              alt="Arbetsförmedlingen logotyp"/>
                     </div>
