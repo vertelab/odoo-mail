@@ -61,10 +61,11 @@ class MassMailingStatisticsTest(TransactionCase):
         statistics[2].sent = False
         statistics[2].ignored = datetime.datetime.now()
         self.assertEqual(mass_mailing.ignored, 1)
+        self.assertEqual(mass_mailing.sent, '2')
 
     def test_clicks(self):
         """
-        Test that clicks, total_clicks, clics_ratio
+        Test that clicks, total_clicks, clicks_ratio
         and ctor gets calculated correctly.
         """
         mass_mailing = create_mass_mailing(self.env)
@@ -75,10 +76,14 @@ class MassMailingStatisticsTest(TransactionCase):
         statistics[1].clicked = datetime.datetime.now()
         statistics[1].total_clicks = 2
 
-        self.assertEqual(mass_mailing.clicks, '2')
-        self.assertEqual(mass_mailing.total_clicks, 3)
-        self.assertEqual(mass_mailing.clicks_ratio, 66)
-        self.assertEqual(mass_mailing.ctor, 100)
+        for field, expected, comment in (
+                ('clicks', '2', 'Clicks'),
+                ('total_clicks', 3, 'Total Clicks'),
+                ('clicks_ratio', 66, 'int(100*clicks(2)/received(3))'),
+                ('ctor', 100, 'int(100*clicks(2)/opened(2))'),
+                ('opened_ratio', 66, 'int(opened(2)/received(3))')):
+            with self.subTest(field=field):
+                self.assertEqual(getattr(mass_mailing, field), expected, comment)
 
     def test_replied(self):
         """Check that replied gets calculated correctly."""
@@ -92,7 +97,13 @@ class MassMailingStatisticsTest(TransactionCase):
         mass_mailing = create_mass_mailing(self.env)
         statistics = create_mass_mailing_statistics(self.env, mass_mailing, 3)
         statistics[2].bounced = datetime.datetime.now()
-        self.assertEqual(mass_mailing.bounced, '1')
+        for field, expected, comment in (
+                ('bounced', '1', 'Bounced'),
+                ('received', '2', 'Received'),
+                ('received_ratio', 66, 'int(100*received/sent)'),
+                ('bounced_ratio', 33, 'int(100*bounced/sent)')):
+            with self.subTest(field=field):
+                self.assertEqual(getattr(mass_mailing, field), expected, comment)
 
     def test_failed(self):
         """Test that failed is calculated correctly."""
@@ -100,3 +111,51 @@ class MassMailingStatisticsTest(TransactionCase):
         statistics = create_mass_mailing_statistics(self.env, mass_mailing, 3)
         statistics[2].bounced = datetime.datetime.now()
         self.assertEqual(mass_mailing.bounced, '1')
+
+    def test_optout(self):
+        """Test that optout statistics is correctly calculated."""
+        mass_mailing = create_mass_mailing(self.env)
+        statistics = create_mass_mailing_statistics(self.env, mass_mailing, 3)
+        self.assertEqual(mass_mailing.opt_out, '1')
+        self.assertEqual(mass_mailing.opt_out_ratio,
+                         33,
+                         'int(100*opt_out(1)/received(3))')
+
+    def test_complicated_calculations(self):
+        """Test general calculations more complicated scenarios."""
+        mass_mailing = create_mass_mailing(self.env)
+        statistics = create_mass_mailing_statistics(self.env, mass_mailing, 10)
+        for x in range(10):
+            if x >= 5:
+                statistics[x].opened = False
+        statistics[6].ignored = datetime.datetime.now()
+        statistics[6].sent = False
+        statistics[7].bounced = datetime.datetime.now()
+        statistics[8].bounced = datetime.datetime.now()
+        statistics[0].replied = datetime.datetime.now()
+        statistics[0].clicked = datetime.datetime.now()
+        statistics[0].total_clicks = 1
+        statistics[1].clicked = datetime.datetime.now()
+        statistics[1].total_clicks = 2
+        statistics[2].clicked = datetime.datetime.now()
+        statistics[2].total_clicks = 3
+
+        for field, expected in (
+                ('opened', '5'),
+                ('opened_ratio', 71),  # 100*5/7 Opened/(sent - ignored - bounced)
+                ('sent', '9'),
+                ('ignored', 1),
+                ('received', '7'),
+                ('received_ratio', 77),  # 100*7/9
+                ('bounced', '2'),
+                ('bounced_ratio', 22),  # 100*2/9
+                ('replied', 1),
+                ('replied_ratio', 11),  # 100*1/9
+                ('clicks', '3'),
+                ('total_clicks', 6),
+                ('clicks_ratio', 42),  # 100*3/7
+                ('ctor', 60),  # 100*3/5
+                ('opt_out', 1),
+                ('opt_out_ratio', 1)):
+            with self.subTest(field=field):
+                self.assertEqual(getattr(mass_mailing, field), expected)
