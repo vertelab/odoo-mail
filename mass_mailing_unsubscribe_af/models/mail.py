@@ -1,4 +1,5 @@
 from odoo import _, api, fields, models
+from lxml import etree
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -18,6 +19,21 @@ class MailUnsubscription(models.Model):
     def _compute_customer_id(self):
         for rec in self:
             rec.customer_id = getattr(rec.sudo().unsubscriber_id, 'customer_id', '')
+
+    @api.model
+    def fields_view_get(self, view_id=None, view_type='form',
+                        toolbar=False, submenu=False):
+        result = super(MailUnsubscription, self).fields_view_get(
+            view_id=view_id, view_type=view_type,
+            toolbar=toolbar, submenu=submenu)
+        # Disabling the import button for users who are not in import group
+        if view_type == 'tree':
+            doc = etree.XML(result['arch'])
+            for node in doc.xpath("//tree"):
+                # Set the import to false
+                node.set('create', 'false')
+            result['arch'] = etree.tostring(doc)
+        return result
 
 
 class MassMailing(models.Model):

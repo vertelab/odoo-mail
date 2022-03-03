@@ -148,7 +148,7 @@
     </template>
 
     <record model="ir.ui.menu" id="mass_mailing_custom_unsubscribe.mail_unsubscription_menu">
-        <field name="name">(Av)anmälningar</field>
+        <field name="groups_id" eval="[(6,0, [ref('base.group_system')])]"/>
     </record>
 
     <record model="ir.ui.menu" id="mass_mailing_custom_unsubscribe.mail_unsubscription_reason_menu">
