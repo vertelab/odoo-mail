@@ -102,53 +102,67 @@
         <field name="model">mail.mass_mailing</field>
         <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_kanban"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[1]" position="replace">
-                <div class="row">
-                    <div class="col-6">
-                        <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
-                           type="action">Sent
-                        </a>
-                    </div>
-                    <div class="col-6 text-right">
-                        <field name="sent"/>
-                    </div>
-                </div>
-            </xpath>
-            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[2]" position="replace">
-                <div class="row">
-                    <div class="col-6">
-                        <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
-                           type="action">Delivered
-                        </a>
-                    </div>
-                    <div class="col-6 text-right">
-                        <field name="received_ratio" widget="percentpie"/>
-                    </div>
-                </div>
-            </xpath>
-            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[3]" position="replace">
-                <div class="row">
-                    <div class="col-6">
-                        <a name="%(mass_mailing.action_view_mail_mail_statistics_mailing)d"
-                           context="{'search_default_filter_opened': True}"
-                           type="action">OR
-                        </a>
-                    </div>
-                    <div class="col-6 text-right">
-                        <field name="opened_ratio" widget="percentpie"/>
-                    </div>
-                </div>
-
-            </xpath>
-            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div[4]" position="replace">
-                <div class="row">
-                    <div class="col-6">
-                        <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
-                           type="action">Total clicks
-                        </a>
-                    </div>
-                    <div class="col-6 text-right">
-                        <field name="total_clicks"/>
+            <xpath expr="//div[hasclass('o_kanban_record_body')]/t" position="replace">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3" style="text-align:center">
+                            <div class="row" style="text-align:center">
+                                <div class="col-12" style="text-align:center;margin-top:8px">
+                                    <field name="sent"/>
+                                </div>
+                                <div class="col-12" style="text-align:center;margin-top:10px">
+                                    <a name="%(mass_mailing.action_view_mail_mail_statistics_mailing)d"
+                                       context="{'search_default_filter_sent': True}"
+                                       style="text-align:center;margin-top:-20px"
+                                       type="action">
+                                        <font size="-2">Skickade</font>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3" style="text-align:center;border-left:2px solid lightgray" >
+                            <div class="row">
+                                <div class="col-12" style="text-align:center">
+                                    <field name="received_ratio" widget="percentpie"/>
+                                </div>
+                                <div class="col-12" style="text-align:center">
+                                    <a name="%(mass_mailing.action_view_mail_mail_statistics_mailing)d"
+                                       context="{'search_default_filter_received': True}"
+                                       style="text-align:center"
+                                       type="action">
+                                        <font size="-2">Levererade</font>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3" style="text-align:center;border-left:2px solid lightgray">
+                            <div class="row" style="text-align:center">
+                                <div class="col-12" style="text-align:center">
+                                    <field name="opened_ratio" widget="percentpie"/>
+                                </div>
+                                <div class="col-12" style="text-align:center">
+                                    <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
+                                       style="text-align:center"
+                                       type="action">
+                                        <font size="-2">Öppning</font>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3" style="text-align:center;border-left:2px solid lightgray">
+                            <div class="row" style="text-align:center">
+                                <div class="col-12" style="text-align:center">
+                                    <field name="unsubscription_ratio_percent" widget="percentpie"/>
+                                </div>
+                                <div class="col-12" style="text-align:center">
+                                    <a name="%(mass_mailing_statistics_af.action_view_unsubscribers)d"
+                                       style="text-align:center"
+                                       type="action">
+                                        <font size="-2">Avregistrering</font>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </xpath>
@@ -174,6 +188,14 @@
             </field>
         </field>
     </record>
+
+    <record model="ir.actions.act_window" id="action_view_unsubscribers">
+        <field name="name">Statistics of Unsubscribers</field>
+        <field name="res_model">mail.unsubscription</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{'search_default_mass_mailing_id': active_id}</field>
+    </record>
+
 
 </odoo>
 
