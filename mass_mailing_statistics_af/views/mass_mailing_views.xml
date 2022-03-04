@@ -14,11 +14,11 @@
                             class="oe_stat_button"
                             style="width:165px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value">
+                            <span class="o_stat_value" style="margin-left:10px">
                                 <field name="total_unsubscribers" nolabel="1"/>
                             </span>
-                            <span class="o_stat_text">
-                                Avregistreringar
+                            <span class="o_stat_text" style="margin-left:10px">
+                                Avregistrerade
                             </span>
                         </div>
                         <field name="unsubscription_ratio_percent" widget="percentpie"/>
@@ -27,12 +27,12 @@
                             type="object"
                             attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
                             class="oe_stat_button"
-                            style="width:90px !important;">
+                            style="width:100px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value">
+                            <span class="o_stat_value" style="margin-left:10px">
                                 <field name="clicks" nolabel="1"/>
                             </span>
-                            <span class="o_stat_text">
+                            <span class="o_stat_text" style="margin-left:10px">
                                 CTOR
                             </span>
                         </div>
@@ -42,12 +42,12 @@
                             type="object"
                             attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
                             class="oe_stat_button"
-                            style="width:80px !important;">
+                            style="width:90px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value">
+                            <span class="o_stat_value" style="margin-left:10px">
                                 <field name="clicks" nolabel="1"/>
                             </span>
-                            <span class="o_stat_text">
+                            <span class="o_stat_text" style="margin-left:10px">
                                 CTR
                             </span>
                         </div>
@@ -57,13 +57,14 @@
                             type="object"
                             context="{'search_default_filter_opened': True}"
                             attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
-                            class="oe_stat_button">
+                            class="oe_stat_button"
+                            style="width:125px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value">
+                            <span class="o_stat_value" style="margin-left:10px">
                                 <field name="opened" nolabel="1"/>
                             </span>
-                            <span class="o_stat_text">
-                                Öppning
+                            <span class="o_stat_text" style="margin-left:10px">
+                                Öppnade
                             </span>
                         </div>
                         <field name="opened_ratio" string="Opened" widget="percentpie"/>
@@ -73,24 +74,46 @@
                             context="{'search_default_filter_received': True}"
                             attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
                             class="oe_stat_button"
-                            style="width:180px !important;">
-                        <field name="received" widget="statinfo"/>
-                        <field name="received_ratio" string="Received" widget="percentpie"/>
+                            style="width:140px !important;">
+                        <div class="o_field_widget o_stat_info o_readonly_modifier">
+                            <span class="o_stat_value" style="margin-left:10px">
+                                <field name="received" nolabel="1" widget="statinfo"/>
+                            </span>
+                            <span class="o_stat_text" style="margin-left:10px">
+                                Levererade
+                            </span>
+                        </div>
+                        <field name="received_ratio" string="Levererade" widget="percentpie"/>
                     </button>
                     <button name="action_view_bounced"
                             type="object"
                             context="{'search_default_filter_bounced': True}"
                             attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
                             class="oe_stat_button">
-                        <field name="bounced" widget="statinfo"/>
-                        <field name="bounced_ratio" string="Bounced" widget="percentpie"/>
+                        <div class="o_field_widget o_stat_info o_readonly_modifier">
+                            <span class="o_stat_value" style="margin-left:10px">
+                                <field name="bounced" nolabel="1" widget="statinfo"/>
+                            </span>
+                            <span class="o_stat_text" style="margin-left:10px">
+                                Studsade
+                            </span>
+                        </div>
+                        <field name="bounced_ratio" string="Studsade" widget="percentpie"/>
                     </button>
                     <button name="action_view_sent"
                             type="object"
                             context="{'search_default_filter_sent': True}"
                             class="oe_stat_button o_mass_mailing_button"
-                            attrs="{'invisible': ['&amp;', ('sent', '=', 0), ('state', 'in', ('draft','test'))]}">
-                        <field name="sent" string="Emails Sent" widget="statinfo"/>
+                            attrs="{'invisible': ['&amp;', ('sent', '=', 0), ('state', 'in', ('draft','test'))]}"
+                            style="width:120px !important;">
+                        <div class="o_field_widget o_stat_info o_readonly_modifier">
+                            <span class="o_stat_value" style="margin-left:10px">
+                                <field name="sent" nolabel="1" widget="statinfo"/>
+                            </span>
+                            <span class="o_stat_text" style="margin-left:10px">
+                                Skickade
+                            </span>
+                        </div>
                     </button>
                 </div>
             </xpath>
@@ -109,7 +132,7 @@
         <field name="model">mail.mass_mailing</field>
         <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_kanban"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[hasclass('o_kanban_record_body')]/t" position="replace">
+            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div" position="replace">
                 <div class="container">
                     <div class="row">
                         <div class="col-3" style="text-align:center">
