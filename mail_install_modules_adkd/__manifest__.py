@@ -2,7 +2,7 @@
 
 {
     "name": "Af ADKD Install modules",
-    "version": "12.0.1.0.6",
+    "version": "12.0.1.1.0",
     "author": "Swedish Public Employement Service",
     "license": "AGPL-3",
     "website": "https://arbetsformedlingen.se/",
@@ -11,7 +11,7 @@
     v12.0.1.0.4 AFC-2658 Added ',' between depends modules
     v12.0.1.0.5 AFC-2658 Corrected wrong module name
     v12.0.1.0.6 AFC-3282 Deleted mass_mailing_multi_per_address from depends for testing.
-    
+    v12.0.1.1.0 AFC-3536 Adding the module web_pivot_computed_measure.
     """,
     "category": "Tools",
     "depends": [
@@ -38,6 +38,7 @@
         "mass_mailing_count_af",            # Extends the standard search_count widget with Sudo search.
         # "mass_mailing_multi_per_address", # Extends the standard mass_mailing to fix the bug when contact share the same email address.
         # "snailmail",                      # Odoo standard-module that is not used in our implementation.
+        "web_pivot_computed_measure",       # Adds customizable measures to pivot table view.
     ],
     "application": False,
     "installable": True,
