@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing unsubscribe AF",
     "summary": "Update layout of unsubscribe page.",
-    "version": "12.0.2.2.0",
+    "version": "12.0.2.3.0",
     "category": "Email Marketing",
     "description": """
 	 v12.0.0.0.1 AFC-2173 Update layout of Unsubscribe Page.\n
@@ -46,6 +46,7 @@
      v12.0.2.1.2 AFC-3538 Adjusted background style \n
      v12.0.2.1.3 AFC-3495 Deleted replaced view because it is fixed with mass_mailing_statistics_af \n
      v12.0.2.2.0 AFC-3513 Hide unsubscription menu for all users except admin, hide create button for all users \n
+     v12.0.2.3.0 AFC-3520 Update design for opt-out \n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
