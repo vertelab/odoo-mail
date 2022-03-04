@@ -132,7 +132,7 @@
         <field name="model">mail.mass_mailing</field>
         <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_kanban"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[hasclass('o_kanban_record_body')]/t/div" position="replace">
+            <xpath expr="//div[hasclass('o_kanban_record_body')]/t" position="replace">
                 <div class="container">
                     <div class="row">
                         <div class="col-3" style="text-align:center">
