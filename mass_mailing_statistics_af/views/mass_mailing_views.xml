@@ -151,7 +151,7 @@
                                     <a name="%(mass_mailing.action_view_mass_mailing_links_statistics)d"
                                        style="text-align:center"
                                        type="action">
-                                        <font size="-2">Öppning</font>
+                                        <font size="-2">Öppnade</font>
                                     </a>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                                     <a name="%(mass_mailing_statistics_af.action_view_unsubscribers)d"
                                        style="text-align:center"
                                        type="action">
-                                        <font size="-2">Avregistrering</font>
+                                        <font size="-2" style="margin-left:-7px">Avregistreringar</font>
                                     </a>
                                 </div>
                             </div>
