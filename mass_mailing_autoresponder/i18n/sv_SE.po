@@ -259,7 +259,7 @@ msgstr "Skapad den"
 #. module: mass_mailing_autoresponder
 #: model:ir.model.fields,field_description:mass_mailing_autoresponder.field_partner_event__creation_date
 msgid "Creation Date"
-msgstr "Registeringsdatum"
+msgstr "Registreringsdatum"
 
 #. module: mass_mailing_autoresponder
 #: model_terms:ir.ui.view,arch_db:mass_mailing_autoresponder.view_event_kanban
@@ -733,4 +733,3 @@ msgstr "Arbetsdag(ar)"
 #: model:ir.model,name:mass_mailing_autoresponder.model_partner_event_email_schedule
 msgid "partner.event.email.schedule"
 msgstr "sammarbetspartner.händelse.e-post.schema"
-
