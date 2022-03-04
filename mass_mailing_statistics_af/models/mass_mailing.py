@@ -13,7 +13,7 @@ class MassMailing(models.Model):
     bounced = fields.Char("Bounced", compute='_compute_statistics')
     clicks = fields.Char("Clicked",
                          compute='_compute_statistics',
-                         help="Number of mails where atleast one link was clicked" )
+                         help="Number of mails where at least one link was clicked")
     total_clicks = fields.Integer("Total Clicks",
                                   compute='_compute_statistics',
                                   help="Everytime a link is clicked")
