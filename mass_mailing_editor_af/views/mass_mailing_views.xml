@@ -62,12 +62,11 @@
         <field name="model">mail.mass_mailing</field>
         <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_form"/>
         <field name="arch" type="xml">
-            <button name="put_in_queue" position="replace">
-                <button type="action"
-                        name="%(action_mass_mailing_confirm_send)d"
-                        attrs="{'invisible': [('state', 'in', ('in_queue', 'done'))]}"
-                        class="oe_highlight"
-                        string="Send Now"/>
+            <button name="put_in_queue" position="attributes">
+                <attribute name="confirm"/>
+                <attribute name="id">put_in_queue_id</attribute>
+                <attribute name="type">action</attribute>
+                <attribute name="name">%(action_mass_mailing_confirm_send)d</attribute>
             </button>
         </field>
     </record>

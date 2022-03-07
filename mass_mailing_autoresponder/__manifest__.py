@@ -3,7 +3,7 @@
 {
     'name': 'Mail Autoresponder',
     'summary': "Adds an automatic Emailing Trigger based service",
-    'version': '12.0.2.4.7',
+    'version': '12.0.2.4.8',
     'author': 'Vertel AB',
     'license': 'AGPL-3',
     'maintainer': 'Vertel AB',
@@ -30,6 +30,7 @@
         v12.0.2.4.5  AFC-3103 Autoresponder doesnt create a mass_mailing per contact anymore.\n
         v12.0.2.4.6  AFC-3528 Added translation.\n
         v12.0.2.4.6  AFC-3529 Fixed typo in translation.\n
+        v12.0.2.4.7  AFC-3558 Bug fix concerning overwriting the same button.\n
     """,
     'depends': [
         'base_setup', 'mail', 'mass_mailing', 'resource', 'af_security',
