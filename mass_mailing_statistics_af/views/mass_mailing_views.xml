@@ -14,10 +14,10 @@
                             class="oe_stat_button"
                             style="width:165px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value" style="margin-left:10px">
+                            <span class="o_stat_value" style="margin-left:5px">
                                 <field name="total_unsubscribers" nolabel="1"/>
                             </span>
-                            <span class="o_stat_text" style="margin-left:10px">
+                            <span class="o_stat_text" style="margin-left:5px">
                                 Avregistrerade
                             </span>
                         </div>
@@ -29,10 +29,10 @@
                             class="oe_stat_button"
                             style="width:100px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value" style="margin-left:10px">
+                            <span class="o_stat_value" style="margin-left:5px">
                                 <field name="clicks" nolabel="1"/>
                             </span>
-                            <span class="o_stat_text" style="margin-left:10px">
+                            <span class="o_stat_text" style="margin-left:5px">
                                 CTOR
                             </span>
                         </div>
@@ -44,10 +44,10 @@
                             class="oe_stat_button"
                             style="width:90px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value" style="margin-left:10px">
+                            <span class="o_stat_value" style="margin-left:5px">
                                 <field name="clicks" nolabel="1"/>
                             </span>
-                            <span class="o_stat_text" style="margin-left:10px">
+                            <span class="o_stat_text" style="margin-left:5px">
                                 CTR
                             </span>
                         </div>
@@ -60,10 +60,10 @@
                             class="oe_stat_button"
                             style="width:125px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value" style="margin-left:10px">
+                            <span class="o_stat_value" style="margin-left:5px">
                                 <field name="opened" nolabel="1"/>
                             </span>
-                            <span class="o_stat_text" style="margin-left:10px">
+                            <span class="o_stat_text" style="margin-left:5px">
                                 Öppnade
                             </span>
                         </div>
@@ -76,10 +76,10 @@
                             class="oe_stat_button"
                             style="width:140px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value" style="margin-left:10px">
+                            <span class="o_stat_value" style="margin-left:5px">
                                 <field name="received" nolabel="1" widget="statinfo"/>
                             </span>
-                            <span class="o_stat_text" style="margin-left:10px">
+                            <span class="o_stat_text" style="margin-left:5px">
                                 Levererade
                             </span>
                         </div>
@@ -91,10 +91,10 @@
                             attrs="{'invisible': [('state', 'in', ('draft','test'))]}"
                             class="oe_stat_button">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value" style="margin-left:10px">
+                            <span class="o_stat_value" style="margin-left:5px">
                                 <field name="bounced" nolabel="1" widget="statinfo"/>
                             </span>
-                            <span class="o_stat_text" style="margin-left:10px">
+                            <span class="o_stat_text" style="margin-left:5px">
                                 Studsade
                             </span>
                         </div>
@@ -107,10 +107,10 @@
                             attrs="{'invisible': ['&amp;', ('sent', '=', 0), ('state', 'in', ('draft','test'))]}"
                             style="width:120px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
-                            <span class="o_stat_value" style="margin-left:10px">
+                            <span class="o_stat_value" style="margin-left:5px">
                                 <field name="sent" nolabel="1" widget="statinfo"/>
                             </span>
-                            <span class="o_stat_text" style="margin-left:10px">
+                            <span class="o_stat_text" style="margin-left:5px">
                                 Skickade
                             </span>
                         </div>
