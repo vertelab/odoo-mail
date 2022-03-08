@@ -16,7 +16,7 @@ class ConfirmWizard(models.TransientModel):
         recipient_amount = 0
         for record in self.env['mail.mass_mailing'].browse(ids):
             self.check_validity(record)
-            recipient_amount += len(record.get_recipients())
+            recipient_amount += len(record.sudo().get_recipients())
         msg = _('This will send the mail message to all recipients ({}).'
                 ' Do you want to continue?')
         return msg.format(recipient_amount)
