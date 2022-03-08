@@ -44,18 +44,15 @@ class MassMailing(models.Model):
 
     def _compute_unsubscribe_id(self):
         for record in self:
-            res_blacklist = self.env['mail.unsubscription'].sudo().search(
-                [('mass_mailing_id', '=', record.id),
-                 ("action", "=", 'blacklist_add')])
-
-            res_unsubscritption = self.env['mail.unsubscription'].sudo().search(
-                [('mass_mailing_id', '=', record.id),
-                 ("action", "=", 'unsubscription')])
-
-            record.total_unsubscribers = len(res_blacklist) + len(res_unsubscritption)
-
-            if int(record.sent) != 0:
-                record.unsubscription_ratio_percent = 100 * record.total_unsubscribers / int(record.sent)
+            model_obj = self.env['mail.unsubscription'].sudo()
+            res = set(model_obj.search([('mass_mailing_id', '=', record.id),
+                                        '|',
+                                        ("action", "=", 'blacklist_add'),
+                                        ("action", "=", 'unsubscription')]).mapped('email'))
+            record.total_unsubscribers = len(res)
+            if int(record.received) != 0:
+                perc = 100 * record.total_unsubscribers / int(record.received)
+                record.unsubscription_ratio_percent = perc
 
 
 class MassMailingContact(models.Model):
@@ -81,7 +78,7 @@ class MassMailingContact(models.Model):
                 if not last_opt_out:
                     last_opt_out = self.env['mail.unsubscription'].search(
                         [
-                            ('email', '=', rec.contact_id.email),
+                            ('email', '=', rec.email),
                             ('action', 'in', ['blacklist_add'])
                         ],
                         order="date desc",
