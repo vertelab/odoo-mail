@@ -49,4 +49,3 @@ class MassMailing(models.Model):
         else:
             mailing_domain.append((0, '=', 1))
         self.mailing_domain = repr(mailing_domain)
-        self.body_html = "on_change_model_and_list"
