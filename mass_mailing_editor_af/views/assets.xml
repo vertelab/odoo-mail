@@ -66,4 +66,19 @@
             <link href="/mass_mailing_editor_af/static/src/css/theme_default.scss" rel="stylesheet" type="text/css"/>
         </xpath>
     </template>
+    <template inherit_id="mass_mailing.mass_mailing_mail_style" id="style_editor_af">
+    <xpath expr="." position="inside">
+        <style>
+            @media screen and (max-width: 375px) {
+                .snippets_h1_dark{
+                    font-size: 28px !important;
+                    line-height: 42px !important;
+                }
+                .snippets_div{
+                    padding: 16px !important;
+                }
+            }
+        </style>
+    </xpath>
+    </template>
 </odoo>

@@ -1,7 +1,7 @@
 {
     "name": "AF Mass Mailing Snippets",
     "summary": "This version is used to customize the Odoo standard mail body widgets in accordance to 'Af' mail template.",
-    "version": "12.0.0.5.5",
+    "version": "12.0.0.5.6",
     "category": "Email Marketing",
     "description": """
     v12.0.0.0.1 AFC-2067  Added snippets in Mass mailing body.\n
@@ -30,6 +30,7 @@
     v12.0.0.5.3 AFC-3558 Bug fix concerning overwriting the same button.\n
     v12.0.0.5.4 AFC-3559 Bug fix count the correct amount of recipients in send confirmation.\n
     v12.0.0.5.5 AFC-3560 Bug fix Removed debugging print.\n
+    v12.0.0.5.6 AFC-3422 New snippet created(id=s_mail_block_toppyta_mork_text)\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
