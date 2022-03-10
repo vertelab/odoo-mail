@@ -154,6 +154,17 @@
         </xpath>
     </template>
 
+    <function name="write" model="ir.model.data" >
+        <function name="search" model="ir.model.data">
+            <value eval="[('module', '=', 'mass_mailing_custom_unsubscribe'), ('name', '=', 'reason_too_many')]"/>
+        </function>
+        <value eval="{'noupdate': False}" />
+    </function>
+
+    <record model="ir.model.data" id="mass_mailing_custom_unsubscribe.reason_too_many">
+        <field name="name">TESTA</field>
+    </record>
+
     <record model="ir.ui.menu" id="mass_mailing_custom_unsubscribe.mail_unsubscription_menu">
         <field name="groups_id" eval="[(6,0, [ref('base.group_system')])]"/>
     </record>
