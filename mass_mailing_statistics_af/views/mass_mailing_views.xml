@@ -104,7 +104,7 @@
                             type="object"
                             context="{'search_default_filter_sent': True}"
                             class="oe_stat_button o_mass_mailing_button"
-                            attrs="{'invisible': ['&amp;', ('sent', '=', 0), ('state', 'in', ('draft','test'))]}"
+                            attrs="{'invisible': ['|', ('sent', '=', 0), ('state', 'in', ('draft','test'))]}"
                             style="width:120px !important;">
                         <div class="o_field_widget o_stat_info o_readonly_modifier">
                             <span class="o_stat_value" style="margin-left:5px">

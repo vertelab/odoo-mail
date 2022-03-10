@@ -1,7 +1,7 @@
 {
     "name": "Mass mailing statistics AF",
     "summary": "This module will show number for Email tracking events in Mass Mailing.",
-    "version": "12.0.2.1.2",
+    "version": "12.0.2.1.3",
     "category": "Email Marketing",
     "description": """
      v12.0.0.1 AFC-2100  Added numbers for email tracking events in Mass mailing kanban and form view.\n
@@ -29,6 +29,7 @@
      v12.2.1.0 AFC-3540 Added basic unit tests.
      v12.2.1.1 AFC-3548 Changed name of the field
      v12.2.1.2 AFC-3547 updated how the field looks like
+     v12.2.1.3 AFC-3562 Fixed sent button sees all the time problem
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
