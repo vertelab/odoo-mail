@@ -49,6 +49,11 @@
         <xpath expr="//div[@id='custom_div_feedback']" position="replace"/>
     </template>
 
+
+    <record model="mail.unsubscription.reason" id="mass_mailing_custom_unsubscribe.reason_not_interested">
+
+    </record>
+
     <template inherit_id="mass_mailing_custom_unsubscribe.reason_form" id="af_nyhetsbrev_unsubscribe_reason_form">
         <xpath expr="//form" position="before">
             <div id="information_card">
@@ -91,7 +96,7 @@
                     <textarea id="other_reason_textfield" class="form-control" name="details"></textarea>
                 </div>
                 <div class="form-group mb16 mt16">
-                    <button id ="unsubscribe" type="submit" class="button" onclick="return openDialog(event)">
+                    <button id ="unsubscribe" type="submit" style="background: #00005a; border-radius: 6px;" class="button" onclick="return openDialog(event)">
                         <b>Unsubscribe now</b>
                     </button>
                 </div>
