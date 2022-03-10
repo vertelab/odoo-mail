@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!--H2 left aligned-->
+    <template id="s_mail_block_h2_left_aligned" name="H2 - vänster alignerad">
+        <div style="max-width: 600px; padding: 32px 24px 16px 24px;">
+            <h2 style="line-height: 36px; font-family: 'Open Sans Semibold'; color: rgb(51, 51, 51); font-size: 24px;
+            font-weight: 600; letter-spacing: 0; margin: 0;">H2 - vänster alignerad</h2>
+        </div>
+    </template>
+
     <!--H3 left aligned body text-->
     <template id="s_mail_block_h3_left_aligned_body_text" name="H3 - vänster alignerad + brödtext">
         <div class="snippets_div_h3" style="max-width: 600px; padding: 0 24px 32px 24px;">
@@ -1100,6 +1108,7 @@
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_left_aligned_body_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_mork_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_centered"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_left_aligned"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_pre_header_af"
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/pre_header.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_header_af_with_view_in_browser"
