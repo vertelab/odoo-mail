@@ -77,6 +77,13 @@
                 .snippets_div{
                     padding: 16px !important;
                 }
+                .snippets_div_h3 {
+                    padding: 0 16px 32px 16px !important;
+                }
+                .snippets_div_h3 h3 {
+                    font-size: 18px !important;
+                    line-height: 27px !important;
+                }
             }
         </style>
     </xpath>
