@@ -10,6 +10,14 @@
         </div>
     </template>
 
+    <!--H2 centered-->
+    <template id="s_mail_block_h2_centered" name="H2 - Centrerad">
+        <div style="max-width: 600px; padding: 32px 24px 16px 24px;">
+            <h2 style="line-height: 36px; text-align: center; font-family: 'Open Sans Semibold'; color: rgb(51, 51, 51);
+            font-size: 24px; font-weight: 600; letter-spacing: 0; margin:0;">H2 - centrerad</h2>
+        </div>
+    </template>
+
     <!-- Af Pre Header Snippet -->
     <template id="s_mail_block_pre_header_af" name="Af Pre Header - Gör smarta val till höstens utbildningar">
         <div style="padding:0;margin:0;-webkit-text-size-adjust:none;width:100%;" class="body-div">
@@ -557,13 +565,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </template>
-
-    <!--H2 centrerad-->
-    <template id="s_mail_block_h2_centered" name="H2 centrerad">
-        <div style="width: 600px; min-height: 84px;">
-            <h2 style="text-align: center; line-height: 84px; font-family: 'Open Sans Semibold'; color: rgb(51, 51, 51); font-size: 24px; letter-spacing: 0; padding: 24px; line-height: 36px; margin: 0;">H2 - centrerad</h2>
         </div>
     </template>
 
@@ -1137,9 +1138,7 @@
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/blue_small_footer.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_white_small_footer"
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/white_small_footer.png"/>
-
             </div>
         </xpath>
     </template>
-
 </odoo>
