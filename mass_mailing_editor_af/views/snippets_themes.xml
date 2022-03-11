@@ -1083,8 +1083,8 @@
     </template>
 
     <template id="s_mail_block_toppyta_mork_standing" name="Toppyta mörk - Stående Bild">
-        <div class="snippets_div" style="max-width: 600px; background-color: rgb(0, 0, 90); padding: 40px 40px 40px 40px;">
-            <div style="display:inline-block ; width:250px; background-color: red;">
+        <div class="snippets_div d-flex flex-wrap justify-content-between" style="max-width: 600px; background-color: rgb(0, 0, 90); padding: 40px 40px 40px 40px;">
+            <div style="display:inline-block ; width:250px;">
                 <h1 class="snippets_h1_dark" style="line-height: 48px; font-family: 'Open Sans Semibold'; color: rgb(255, 255, 255);
                         font-size: 32px; font-weight: 600; letter-spacing: 0; margin:0; align:left; margin-bottom:16px;">
                     JumboHeader
@@ -1097,14 +1097,13 @@
                 <div style="color:#ffffff!important;">
                     <a href="https://arbetsformedlingen.se/For-arbetssokande/Yrken-och-studier/Utbildning/Att-valja-utbildning?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_2_AG1"
                        style="color:rgb(255, 255, 255); background-color:#2d860a; border-color: #2d860a; line-height:normal; text-decoration:none;"
-                       class="btn btn-primary" data-original-color="">
-                        <b>Länkknapp ></b>
+                       class="btn btn-primary d-flex justify-content-between col-md-6" data-original-color="">
+                        <b style="color: rgb(0, 0, 90);">Länkknapp</b> <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png"/>
                     </a>
                 </div>
             </div>
-            <div style="display:inline-block; width:183px; height:276px; background: rgb(149, 194, 62); margin-left: 60px;">
-                <p>HEJSAN</p>
-                <img src="/mass_mailing_editor_af/static/src/img/blocks/white_text_box.png" alt="" width="183px" height="276px" />
+            <div class="d-flex" style="display:inline-block; max-width: 200px; background: rgb(149, 194, 62);">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/white_text_box.png" alt="" class="img img-fluid my-auto" />
             </div>
         </div>
     </template>
