@@ -17,6 +17,15 @@
             line-height: 24px; margin: 0;">Brödtext. Rekommendation max 600 tecken.</p>
         </div>
     </template>
+
+    <!--H2 centered-->
+    <template id="s_mail_block_h2_centered" name="H2 - Centrerad">
+        <div style="max-width: 600px; padding: 32px 24px 16px 24px;">
+            <h2 style="line-height: 36px; text-align: center; font-family: 'Open Sans Semibold'; color: rgb(51, 51, 51);
+            font-size: 24px; font-weight: 600; letter-spacing: 0; margin:0;">H2 - centrerad</h2>
+        </div>
+    </template>
+
     <!-- Af Pre Header Snippet -->
     <template id="s_mail_block_pre_header_af" name="Af Pre Header - Gör smarta val till höstens utbildningar">
         <div style="padding:0;margin:0;-webkit-text-size-adjust:none;width:100%;" class="body-div">
@@ -161,134 +170,64 @@
 
 
     <!-- Af SideHeader Dark Snippet -->
-<template id="s_mail_block_header_af_dark" name="Sidhuvud - Mörk">
-    <div class="o_mail_snippet_general">
-        <table style="border-spacing:0;">
-            <tbody>
-                <tr>
-                    <td style="line-height:1px; padding:0;">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table style="width:100%;">
-            <tbody>
-                <tr>
-                    <th style="background-color:#00005a;">
-                        <table style="pointer-events:none; width:100%;">
-                            <tbody>
-                                <tr>
-                                    <th style="width:250px; padding:20px 0 20px 24px;">
-                                        <div id="align-wrapper" style="text-align:center;">
-                                            <a target="_blank"
-                                               href="https://arbetsformedlingen.se/">
-                                                <img src="/mass_mailing_editor_af/static/src/img/blocks/Af_logotyp_gron-vit_rgb.svg"
-                                                     style="display:block; width:238px; height:32px; color:#ffffff; pointer-events:none;"
-                                                     alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
-                                            </a>
-                                        </div>
-                                    </th>
-                                    <th style="width:50%;">
-                                        <table style="width:100%;">
-                                            <tbody>
-                                                <tr>
-                                                    <th style="vertical-align: middle; padding:0; float:right; padding:27px 24px 29px 0;">
-                                                        <div style="height:24px; font-size:16px; font-family:OpenSans-Semibold; pointer-events:none;
-                                                                font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;">
-                                                            <a href="#"
-                                                               style="color:#ffffff;"
-                                                               class="view_in_browser_url">
-                                                                <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right.svg"
-                                                                     style="width: 20px;height: 20.25px;" alt=""/>
-                                                                Visa i webbläsare
-                                                            </a>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </th>
-                </tr>
-            </tbody>
-        </table>
-        <table class="o_mail_table_styles" style="border-spacing:0;">
-            <tbody>
-                <tr>
-                    <td style="line-height:1px; padding:0;">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</template>
-  
+    <template id="s_mail_block_header_af_dark" name="Sidhuvud - Mörk">
+        <div class="div_sideheader_af_padding"
+             style="padding: 24px 24px 25px 24px; max-width: 600px; background-color: rgb(0, 0, 90); border-radius: 0px;">
+            <div id="align-wrapper" style="text-align:center; display: inline;">
+                <a target="_blank"
+                   href="https://arbetsformedlingen.se/">
+                    <img class="image_response_desktop"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/Af_logotyp_gron-vit_rgb.svg"
+                         style="max-width: 43%; pointer-events:none;"
+                         alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
+                    <img class="image_response_mobile"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/AF-icon-blue.png"
+                         style="width:31px; height:32px; pointer-events:none;"
+                         alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
+                </a>
+            </div>
+            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family:OpenSans-Semibold; pointer-events:none;
+                    font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;
+                    vertical-align: middle; color:#ffffff; display: inline; float: right; padding-top: 3px;">
+                <a href="#"
+                   style="color:#ffffff;"
+                   class="view_in_browser_url">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right.svg"
+                         style="width: 20px;height: 20.25px;" alt=""/>
+                    Visa i webbläsare
+                </a>
+            </div>
+        </div>
+    </template>
+
     <!-- Af SideHeader Light Snippet -->
     <template id="s_mail_block_header_af_light" name="Sidhuvud - Ljus">
-        <div class="o_mail_snippet_general">
-            <table style="border-spacing:0;">
-                <tbody>
-                    <tr>
-                        <td style="line-height:1px; padding:0;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table style="width:100%;">
-                <tbody>
-                    <tr>
-                        <th style="background-color:#ffffff;">
-                            <table style="pointer-events:none; width:100%;">
-                                <tbody>
-                                    <tr>
-                                        <th style="width:250px; padding:20px 0 20px 24px;">
-                                            <div id="align-wrapper" style="text-align:center;">
-                                                <a target="_blank"
-                                                   href="https://arbetsformedlingen.se/">
-                                                    <img src="/mass_mailing_editor_af/static/src/img/blocks/Af_logotyp_rgb.svg"
-                                                         style="display:block; width:238px; height:32px; color:#ffffff; pointer-events:none;"
-                                                         alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
-                                                </a>
-                                            </div>
-                                        </th>
-                                        <th style="width:50%;">
-                                            <table style="width:100%;">
-                                                <tbody>
-                                                    <tr>
-                                                        <th style="vertical-align: middle; padding:0; float:right; padding:27px 24px 29px 0;">
-                                                            <div style="height:24px; font-size:16px; font-family:OpenSans-Semibold; pointer-events:none;
-                                                                font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;">
-                                                                <a href="#"
-                                                                   style="color:#1616b2;"
-                                                                   class="view_in_browser_url">
-                                                                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
-                                                                         style="width: 20px;height: 20.25px;" alt=""/>
-                                                                    Visa i webbläsare
-                                                                </a>
-                                                            </div>
-                                                        </th>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="o_mail_table_styles" style="border-spacing:0;">
-                <tbody>
-                    <tr>
-                        <td style="line-height:1px; padding:0;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="div_sideheader_af_padding"
+             style="padding: 24px 24px 25px 24px; max-width: 600px; background-color: #ffffff; border-radius: 0px;">
+            <div id="align-wrapper" style="text-align:center; display: inline;">
+                <a target="_blank"
+                   href="https://arbetsformedlingen.se/">
+                    <img class="image_response_desktop"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/Af_logotyp_rgb.svg"
+                         style="max-width: 43%; pointer-events:none;"
+                         alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
+                    <img class="image_response_mobile"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/AF-icon-white.png"
+                         style="width:31px; height:32px; pointer-events:none;"
+                         alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
+                </a>
+            </div>
+            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family:OpenSans-Semibold; pointer-events:none;
+                    font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;
+                    vertical-align: middle; color: #1616b2; display: inline; float: right; padding-top: 3px;">
+                <a href="#"
+                   style="color: #1616b2;"
+                   class="view_in_browser_url">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
+                         style="width: 20px;height: 20.25px;" alt=""/>
+                    Visa i webbläsare
+                </a>
+            </div>
         </div>
     </template>
 
@@ -1081,12 +1020,27 @@
 
     <!--Toppyta mörk - Text-->
     <template id="s_mail_block_toppyta_mork_text" name="Toppyta mörk - Text">
-        <div class="snippets_div" style="max-width: 600px; background-color: rgb(0, 0, 90); padding: 24px 40px 16px 40px;">
+        <div class="snippets_div"
+             style="max-width: 600px; background-color: rgb(0, 0, 90); padding: 24px 40px 16px 40px;">
             <h1 class="snippets_h1_dark" style="line-height: 48px; font-family: 'Open Sans Semibold'; color: rgb(255, 255, 255);
-        font-size: 32px; font-weight: 600; letter-spacing: 0; margin:0; align:left; margin-bottom:16px;">JumboHeader</h1>
+        font-size: 32px; font-weight: 600; letter-spacing: 0; margin:0; align:left; margin-bottom:16px;">
+                JumboHeader</h1>
             <div style="width: 100px; height: 6px; background-color: rgb(149, 194, 62); border-radius: 0px; margin-bottom:16px;"/>
             <p style="color: rgb(255, 255, 255); font-size: 16px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 24px; margin:0;">
-                Preamble. Toppytan beskriver mailets tema och innehåll och används för att sätta tonen för mailet. Rekommendation 150-250 tecken.</p>
+                Preamble. Toppytan beskriver mailets tema och innehåll och används för att sätta tonen för mailet.
+                Rekommendation 150-250 tecken.</p>
+        </div>
+    </template>
+
+    <!--Toppyta ljus - Text-->
+    <template id="s_mail_block_toppyta_ljus_text" name="Toppyta ljus - Text">
+        <div class="snippets_div" style="padding: 13px 40px 27px 40px; max-width: 600px;">
+            <h1 class="snippets_h1_dark" style="color: rgb(51, 51, 51); font-size: 32px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+             line-height: 48px; align:left; margin:0; margin-bottom:16px;">Jumboheader</h1>
+            <div style="width: 100px; height: 6px; background-color: rgb(0, 0, 90); border-radius: 0px; margin-bottom:16px;"/>
+            <p style="color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 24px; margin:0;">
+                Preamble. Toppytan beskriver mailets tema och innehåll och används för att sätta tonen för mailet.
+                Rekommendation 150-250 tecken.</p>
         </div>
     </template>
 
@@ -1101,6 +1055,8 @@
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_left_aligned_body_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_mork_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_left_aligned"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_centered"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_ljus_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_pre_header_af"
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/pre_header.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_header_af_with_view_in_browser"
