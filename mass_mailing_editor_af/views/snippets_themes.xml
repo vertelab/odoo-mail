@@ -1065,13 +1065,10 @@
             <div class="o_panel_body">
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_left_aligned_body_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_mork_text"/>
-<<<<<<< Dev-12.0-AFC-3429
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_left_aligned_body_text"/>
-=======
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_left_aligned"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_centered"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_ljus_text"/>
->>>>>>> Dev-12.0
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_pre_header_af"
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/pre_header.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_header_af_with_view_in_browser"
