@@ -1116,7 +1116,7 @@
     </template>
 
     <!--textmodul med H3 och länkknapp 2 kolumner-->
-    <template id="s_mail_block_toppyta_h3_button" name="H3 och länkknapp">
+    <template id="s_mail_block_toppyta_h3_button" name="H3 och länkknapp 2 kolumner">
         <div class="snippets_div" style="width: 600px; height:206px; background-color: white; padding: 23.5px 24px 24px 24px;">
             <div style="display:inline-block ; width:260px; background-color: white;">
                 <h3 class="snippets_h1_dark" style="width: 260px; height: 30px; color: rgb(51, 51, 51);
