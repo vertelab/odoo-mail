@@ -69,7 +69,22 @@
     <template inherit_id="mass_mailing.mass_mailing_mail_style" id="style_editor_af">
     <xpath expr="." position="inside">
         <style>
+            .image_response_mobile{
+                display: none !important;
+            }
             @media screen and (max-width: 375px) {
+                .image_response_desktop{
+                    display: none !important;
+                }
+                .image_response_mobile{
+                    display: inline !important;
+                }
+                .div_sideheader_af_padding{
+                    padding: 24px 16px !important;
+                }
+                .div_sideheader_af_padding_link{
+                    padding-top: 4px !important;
+                }
                 .snippets_h1_dark{
                     font-size: 28px !important;
                     line-height: 42px !important;
@@ -83,6 +98,19 @@
                 .snippets_div_h3 h3 {
                     font-size: 18px !important;
                     line-height: 27px !important;
+                }
+                .snippets_footer {
+                    padding: 24px 16px 46px 16px !important;
+                }
+                .snippets_footer p {
+                    text-align: left !important;
+                }
+                .snippets_footer span {
+                    margin-bottom: 24px !important;
+                }
+                .snippets_footer_p {
+                    margin-top: 32px !important;
+                    margin-bottom: 40px !important;
                 }
             }
         </style>
