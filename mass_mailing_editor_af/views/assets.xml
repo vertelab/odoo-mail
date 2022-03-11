@@ -84,6 +84,19 @@
                     font-size: 18px !important;
                     line-height: 27px !important;
                 }
+                .snippets_footer {
+                    padding: 24px 16px 46px 16px !important;
+                }
+                .snippets_footer p {
+                    text-align: left !important;
+                }
+                .snippets_footer span {
+                    margin-bottom: 24px !important;
+                }
+                .snippets_footer_p {
+                    margin-top: 32px !important;
+                    margin-bottom: 40px !important;
+                }
             }
         </style>
     </xpath>
