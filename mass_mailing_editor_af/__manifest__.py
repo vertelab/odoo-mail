@@ -1,7 +1,7 @@
 {
     "name": "AF Mass Mailing Snippets",
     "summary": "This version is used to customize the Odoo standard mail body widgets in accordance to 'Af' mail template.",
-    "version": "12.0.0.5.8",
+    "version": "12.0.0.5.9",
     "category": "Email Marketing",
     "description": """
     v12.0.0.0.1 AFC-2067  Added snippets in Mass mailing body.\n
@@ -33,6 +33,7 @@
     v12.0.0.5.6 AFC-3422 New snippet created(id=s_mail_block_toppyta_mork_text)\n
     v12.0.0.5.7 AFC-3430 Create new snippet(id=s_mail_block_h3_left_aligned_body_text)\n
     v12.0.0.5.8 AFC-3421 New snippet created(id=s_mail_block_toppyta_ljus_text)\n
+    v12.0.0.5.9 AFC-3457 Create new snippet(id=s_mail_block_bullet_list)\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
