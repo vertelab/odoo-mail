@@ -1083,7 +1083,13 @@
     </template>
 
     <template id="s_mail_block_toppyta_mork_standing" name="Toppyta mörk - Stående Bild">
-        <div class="snippets_div d-flex flex-wrap justify-content-between" style="max-width: 600px; background-color: rgb(0, 0, 90); padding: 40px 40px 40px 40px;">
+        <div class="snippets_div" style="justify-content: space-between;
+                                         flex-wrap: wrap;
+                                         display: flex;
+                                         max-width: 600px;
+                                         background-color: rgb(0, 0, 90);
+                                         padding: 40px 40px 40px 40px;">
+
             <div style="display:inline-block ; width:250px;">
                 <h1 class="snippets_h1_dark" style="line-height: 48px; font-family: 'Open Sans Semibold'; color: rgb(255, 255, 255);
                         font-size: 32px; font-weight: 600; letter-spacing: 0; margin:0; align:left; margin-bottom:16px;">
@@ -1094,10 +1100,26 @@
                 <p style="color: rgb(255, 255, 255); font-family: OpenSans-Semibold; font-size: 16px; font-weight: 600; height: 120px; letter-spacing: 0px; line-height: 24px;">
                     Preamble. Toppytan beskriver mailets tema och innehåll och används för att sätta tonen för mailet. Rekommendation 150-250 tecken.
                 </p>
-                <div style="color:#ffffff!important;">
+                <!--
+                btn btn-primary
+                -->
+                <div>
+                    <!--flex: 0 0 50%;
+                       max-width: 50%; -->
                     <a href="https://arbetsformedlingen.se/For-arbetssokande/Yrken-och-studier/Utbildning/Att-valja-utbildning?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_2_AG1"
-                       style="color:rgb(255, 255, 255); background-color:#2d860a; border-color: #2d860a; line-height:normal; text-decoration:none;"
-                       class="btn btn-primary d-flex justify-content-between col-md-6" data-original-color="">
+                       style="background:rgb(183, 238, 74);
+                              border-radius: 30px;
+                              height: 40px;
+                              width: 166px;
+                              display: flex;
+                              justify_content: space-between;
+                              position: relative;
+                              width = 100%;
+                              min-height: 1px;
+                              padding-right: 15px;
+                              padding-left: 15px;
+                             "
+                       class="" data-original-color="">
                         <b style="color: rgb(0, 0, 90);">Länkknapp</b> <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png"/>
                     </a>
                 </div>
