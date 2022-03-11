@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+  
+    <!--footer dark-->
+    <template id="s_mail_block_footer_dark" name="Sidfot mörk">
+        <div class="snippets_footer" style="wax-width: 600px; background-color: rgb(0, 0, 90);
+        padding: 24px 32px 32px 32px;">
+            <img src="/mass_mailing_editor_af/static/src/img/blocks/Af_logotyp_gron-vit_rgb.svg"
+                 alt="Arbetsförmedlingen logotyp" style="display:block; margin:auto;" width="255"/>
+            <p style="margin-top: 32px; color: rgb(255, 255, 255); font-family: 'Open Sans';
+            font-size: 16px; letter-spacing: 0px; line-height: 24px; text-align: center;">
+                Du får detta informationsbrev eftersom din epost, ##SubscriberEmail##
+                registrerats när du skapat ett konto hos Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från Arbetsförmedlingen
+                <a style="font-family: 'Open Sans Semibold'; font-weight: 600; text-decoration: underline;
+                color: rgb(255, 255, 255);" href="/unsubscribe_from_list">
+                    avanmäla dig här
+                </a>
+            </p>
+            <p id="snippets_footer_p" style="margin-top: 25px; margin-bottom: 32px; color: rgb(255, 255, 255); font-family: 'Open Sans'; font-size: 16px;
+            letter-spacing: 0px; line-height: 24px;">
+                Hjälp oss bli bättre –
+                <a style="font-family: 'Open Sans Semibold'; font-weight: 600; text-decoration: underline;
+                color: rgb(255, 255, 255);" href="https://arbetsformedlingen.se">
+                    lämna synpunkter om vår digitala tillgänglighet
+                </a>
+            </p>
+            <span style="color: rgb(255, 255, 255); font-family: 'Open Sans Semibold'; font-size: 16px; display: block;
+            font-weight: 600; letter-spacing: 0px; line-height: 24px; text-align: center; margin-bottom: 17px;">
+                Följ oss
+            </span>
+            <div style="text-align: center;">
+                <a href="https://sv-se.facebook.com/Arbetsformedlingen">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerSocial_Facebook.svg"
+                         alt="Facebook ikon" width="30" style="margin-right: 26px;"/>
+                </a>
+                <a href="https://www.instagram.com/accounts/login/?next=/arbetsformedlingen">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerSocial_Instagram.svg"
+                         alt="Instagram ikon" width="30" style="margin-right: 26px;"/>
+                </a>
+                <a href="https://www.youtube.com/user/arbetsformedlingen">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerSocial_YouTube.svg" alt="YouTube ikon"
+                         width="30" style="margin-right: 26px;"/>
+                </a>
+                <a href="https://www.linkedin.com/company/arbetsformedlingen">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerSocial_LinkedIn.svg"
+                         alt="LinkedIn ikon" width="30"/>
+                </a>
+            </div>
+          </div>
+    </template>
 
     <!--H2 left aligned + body text-->
     <template id="s_mail_block_h2_left_aligned_body_text" name="H2 - vänster alignerad med brödtext">
@@ -1065,6 +1113,7 @@
             <div class="o_panel_body">
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_left_aligned_body_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_mork_text"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_footer_dark"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_left_aligned_body_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_left_aligned"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_centered"/>
