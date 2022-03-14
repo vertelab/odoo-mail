@@ -1103,26 +1103,13 @@
                 <!--
                 btn btn-primary
                 -->
-                <div>
                     <!--flex: 0 0 50%;
                        max-width: 50%; -->
-                    <a href="https://arbetsformedlingen.se/For-arbetssokande/Yrken-och-studier/Utbildning/Att-valja-utbildning?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_2_AG1"
-                       style="background:rgb(183, 238, 74);
-                              border-radius: 30px;
-                              height: 40px;
-                              width: 166px;
-                              display: flex;
-                              justify_content: space-between;
-                              position: relative;
-                              width = 100%;
-                              min-height: 1px;
-                              padding-right: 15px;
-                              padding-left: 15px;
-                             "
-                       class="" data-original-color="">
-                        <b style="color: rgb(0, 0, 90);">Länkknapp</b> <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png"/>
+                    <a href="https://arbetsformedlingen.se/For-arbetssokande/Yrken-och-studier/Utbildning/Att-valja-utbildning?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_2_AG1">
+                        <div class="af_button">
+                            <b>Länkknapp</b> <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png"/>
+                        </div>
                     </a>
-                </div>
             </div>
             <div class="d-flex" style="display:inline-block; max-width: 200px; background: rgb(149, 194, 62);">
                 <img src="/mass_mailing_editor_af/static/src/img/blocks/white_text_box.png" alt="" class="img img-fluid my-auto" />
