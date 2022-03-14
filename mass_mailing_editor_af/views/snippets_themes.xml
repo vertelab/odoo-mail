@@ -1083,12 +1083,7 @@
     </template>
 
     <template id="s_mail_block_toppyta_mork_standing" name="Toppyta mörk - Stående Bild">
-        <div class="snippets_div af_container_dark" style="justify-content: space-between;
-                                                           flex-wrap: wrap;
-                                                           display: flex;
-                                                           max-width: 600px;
-                                                           background-color: rgb(0, 0, 90);
-                                                           padding: 40px 40px 40px 40px;">
+        <div class="snippets_div af_container_dark" style="">
             <div style="display:inline-block ; width:250px;">
                 <h1 class="snippets_h1_dark" style="line-height: 48px; font-family: 'Open Sans Semibold'; color: rgb(255, 255, 255);
                         font-size: 32px; font-weight: 600; letter-spacing: 0; margin:0; align:left; margin-bottom:16px;">

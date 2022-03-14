@@ -1,13 +1,12 @@
-/*
 .af_container_dark{
     justify-content: space-between;
     flex-wrap: wrap;
     display: flex;
     max-width: 600px;
     background-color: rgb(0, 0, 90);
-    padding: 40px 40px 40px 40px;"
+    padding: 40px 40px 40px 40px;
 }
-*/
+
 .af_button_green{
     padding: 14px 20px 14px 20px;
     background:rgb(183, 238, 74);
