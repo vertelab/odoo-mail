@@ -1115,6 +1115,7 @@
         </div>
     </template>
 
+
     <!--textmodul med H3 och länkknapp 2 kolumner-->
     <template id="s_mail_block_toppyta_h3_button" name="H3 och länkknapp 2 kolumner">
         <div class="snippets_div" style="max-width: 600px;background-color: white; padding: 24px 24px 24px 23.5px;">
@@ -1159,6 +1160,17 @@
                         </b>
                     </a>
                 </div>
+              </div>
+        </div>
+    </template>
+
+    <template id="s_mail_block_top_surface_light_secundary" name="Toppyta ljus - sekundärknapp">
+        <div style="max-width: 600px; padding: 40px 0px; text-align: center; background: rgb(255, 255, 255);">
+            <div style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px; display: inline-block;">
+                <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';
+            font-weight: 600; color: rgb(0, 0, 90);">Länkknapp</a>
+                <img class="snippets_div_top_surface" src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt="" width="8"
+                     style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;"/>
             </div>
         </div>
     </template>
@@ -1171,6 +1183,7 @@
                 Af Snippets
             </div>
             <div class="o_panel_body">
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_light_secundary"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_bullet_list"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_left_aligned_body_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_h3_button"/>

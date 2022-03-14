@@ -112,6 +112,9 @@
                     margin-top: 32px !important;
                     margin-bottom: 40px !important;
                 }
+                .snippets_div_top_surface {
+                    margin-left: 120px !important;
+                }
             }
         </style>
     </xpath>
