@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
+    <!--H3 - white background with link and star icon-->
+    <template id="s_mail_block_h3_white_background_link_star_icon" name="H3 - vit bakgrund med länktext och stjärn-ikon">
+        <div class="snippets_div_star" style="max-width: 600px; padding: 24px 28px 24px 24px;
+        background-color: rgb(255, 255, 255); border-radius: 4px;">
+            <div class="snippets_div_star_1" style="float: left; margin-right: 24px; margin-bottom: 4px;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Stjarna.png" alt="Stjärnikon" width="50"
+                     height="50"/>
+            </div>
+            <div class="snippets_div_star_2" style="margin-left: 74px;">
+                <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
+                letter-spacing: 0px; line-height: 30px; margin: 0; margin-bottom: 8px;">
+                    H3 – vänster alignerad
+                </h3>
+                <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+                line-height: 24px; margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-200 tecken.
+                </p>
+                <div>
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
+                         width="8" style="margin-left: 4px; margin-right: 4px;"/>
+                    <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
+                    font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
+                    line-height: 24px; text-decoration: underline;">Länktext
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
     <!--Punktlista-->
     <template id="s_mail_block_bullet_list" name="Punktlista">
         <div style="max-width: 600px; padding: 8px 32px 12px 8px;">
@@ -1194,6 +1221,7 @@
                 Af Snippets
             </div>
             <div class="o_panel_body">
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_white_background_link_star_icon"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_light_primary"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_light_secundary"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_bullet_list"/>
