@@ -114,6 +114,8 @@
                 }
                 .snippets_div_top_surface {
                     margin-left: 120px !important;
+                .snippets_div_star {
+                    padding: 8px 8px 24px 16px !important;
                 }
             }
         </style>
