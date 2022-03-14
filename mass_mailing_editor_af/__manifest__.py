@@ -41,6 +41,7 @@
     v12.0.0.5.14 AFC-3457 Create new snippet(id=s_mail_block_bullet_list)\n
     v12.0.0.5.15 AFC-3425 Create new snippet(id=s_mail_block_top_surface_light_secundary)\n
     v12.0.0.5.16 AFC-3431 Create new snippet(id=s_mail_block_toppyta_h3_button)\n
+    v12.0.0.5.17 AFC-3461 Create new snippet(id=s_mail_block_h3_gray_background_top_border)\n
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
