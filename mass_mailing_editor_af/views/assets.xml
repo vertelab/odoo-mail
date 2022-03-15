@@ -115,6 +115,19 @@
                 .snippets_div_top_surface {
                     margin-left: 120px !important;
                 }
+                .snippets_div_star {
+                    padding: 8px 8px 24px 16px !important;
+                }
+                .snippets_div_star_1 {
+                    float: none !important;
+                }
+                .snippets_div_star_1 img {
+                    width: 62px !important;
+                    height: 62px !important;
+                }
+                .snippets_div_star_2 {
+                    margin-left: 0 !important;
+                }
             }
         </style>
     </xpath>
