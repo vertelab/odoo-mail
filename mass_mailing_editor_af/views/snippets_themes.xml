@@ -1163,23 +1163,42 @@
         </div>
     </template>
 
+    <!--Toppyta Ljus - Sekundär knapp-->
     <template id="s_mail_block_top_surface_light_secundary" name="Toppyta ljus - sekundärknapp">
         <div style="max-width: 600px; padding: 40px 0px; text-align: center; background: rgb(255, 255, 255);">
             <div style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px; display: inline-block;">
                 <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';
             font-weight: 600; color: rgb(0, 0, 90);">Länkknapp</a>
-                <img class="snippets_div_top_surface" src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt="" width="8"
+                <img class="snippets_div_top_surface"
+                     src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt=""
+                     width="8"
                      style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;"/>
             </div>
         </div>
     </template>
 
+    <!--Toppyta Ljus - Primär knapp-->
     <template id="s_mail_block_top_surface_light_primary" name="Toppyta ljus - primärknapp">
         <div style="max-width: 600px; padding: 40px 0px; text-align: center; background: rgb(255, 255, 255);">
             <div style="border-radius: 30px; background: rgb(0, 0, 90); padding: 6px 20px; display: inline-block; background-color: #00005a">
                 <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';
             font-weight: 600; color: rgb(255, 255, 255);">Länkknapp</a>
-                <img class="snippets_div_top_surface" src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right.svg" alt="" width="8"
+                <img class="snippets_div_top_surface"
+                     src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right.svg" alt="" width="8"
+                     style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;"/>
+            </div>
+        </div>
+    </template>
+
+    <!--Toppyta Mörk - Primär knapp-->
+    <template id="s_mail_block_top_surface_dark_primary" name="Toppyta mörk - primärknapp">
+        <div style="max-width: 600px; padding: 40px 0px; text-align: center; background-color: rgb(0, 0, 90);">
+            <div style="border-radius: 30px; background: rgb(0, 0, 90); padding: 6px 20px; display: inline-block; background-color: #b7ee4a">
+                <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';
+            font-weight: 600; color: rgb(0, 0, 90);">Länkknapp</a>
+                <img class="snippets_div_top_surface"
+                     src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt=""
+                     width="8"
                      style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;"/>
             </div>
         </div>
@@ -1252,6 +1271,7 @@
                 Af Snippets
             </div>
             <div class="o_panel_body">
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_dark_primary"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_light_primary"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_light_secundary"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_bullet_list"/>
