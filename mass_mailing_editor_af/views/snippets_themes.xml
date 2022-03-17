@@ -362,14 +362,14 @@
                          alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
                 </a>
             </div>
-            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family:OpenSans-Semibold; pointer-events:none;
+            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family: 'Open Sans Semibold'; pointer-events:none;
                     font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;
                     vertical-align: middle; color:#ffffff; display: inline; float: right; padding-top: 3px;">
                 <a href="#"
                    style="color:#ffffff;"
                    class="view_in_browser_url">
                     <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right.svg"
-                         style="width: 20px;height: 20.25px;" alt=""/>
+                         style="width: 9px; height: 15px;" alt=""/>
                     Visa i webbläsare
                 </a>
             </div>
@@ -393,14 +393,14 @@
                          alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
                 </a>
             </div>
-            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family:OpenSans-Semibold; pointer-events:none;
+            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family: 'Open Sans Semibold'; pointer-events:none;
                     font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;
                     vertical-align: middle; color: #1616b2; display: inline; float: right; padding-top: 3px;">
                 <a href="#"
                    style="color: #1616b2;"
                    class="view_in_browser_url">
                     <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
-                         style="width: 20px;height: 20.25px;" alt=""/>
+                         style="width: 9px; height: 15px;" alt=""/>
                     Visa i webbläsare
                 </a>
             </div>
