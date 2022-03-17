@@ -163,6 +163,9 @@
                     width: 100% !important;
                     padding-bottom: 16px !important;
                 }
+                .snippets_div_responsive {
+                    padding: 0 16px !important;
+                }
             }
         </style>
     </xpath>

@@ -3,7 +3,7 @@
   
     <!--H3 - gray background with top border-->
     <template id="s_mail_block_h3_gray_background_top_border" name="H3 - grå bakgrund med en top border">
-        <div class="snippets_div" style="max-width: 600px; padding: 24px;">
+        <div class="snippets_div_responsive" style="max-width: 600px; padding: 0 24px;">
             <div style="background-color: rgb(245, 245, 245); ">
                 <div style="background-color: rgb(0, 0, 90); height: 10px; width: 100%;"></div>
                 <div style="padding: 24px 16px;">
@@ -16,7 +16,7 @@
                     </p>
                     <div>
                         <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
-                             width="8" style="margin-right: 4px;"/>
+                             width="9" height="15" style="margin-right: 4px;"/>
                         <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
                         font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
                         line-height: 24px; text-decoration: underline;">Länktext
