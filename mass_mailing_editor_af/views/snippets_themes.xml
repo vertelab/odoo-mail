@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  
     <!--H3 - gray background with top border-->
     <template id="s_mail_block_h3_gray_background_top_border" name="H3 - grå bakgrund med en top border">
-        <div class="snippets_div" style="max-width: 600px; padding: 24px;">
+        <div class="snippets_div_responsive" style="max-width: 600px; padding: 0 24px;">
             <div style="background-color: rgb(245, 245, 245); ">
                 <div style="background-color: rgb(0, 0, 90); height: 10px; width: 100%;"></div>
                 <div style="padding: 24px 16px;">
@@ -16,7 +15,7 @@
                     </p>
                     <div>
                         <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
-                             width="8" style="margin-right: 4px;"/>
+                             width="9" height="15" style="margin-right: 4px;"/>
                         <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
                         font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
                         line-height: 24px; text-decoration: underline;">Länktext
@@ -26,7 +25,7 @@
             </div>
         </div>
     </template>
-  
+
     <!--H3 - white background with star icon-->
     <template id="s_mail_block_h3_white_background_star_icon" name="H3 - vit bakgrund med stjärn-ikon">
         <div class="snippets_div_star" style="max-width: 600px; padding: 24px 32px 22px 24px;
@@ -86,9 +85,9 @@
                     Det här är första punkten
                 </li>
             </ul>
-        </div> 
+        </div>
     </template>
-  
+
     <!--footer dark-->
     <template id="s_mail_block_footer_dark" name="Sidfot mörk">
         <div class="snippets_footer" style="wax-width: 600px; background-color: rgb(0, 0, 90);
@@ -134,7 +133,7 @@
                          alt="LinkedIn ikon" width="30"/>
                 </a>
             </div>
-          </div>
+        </div>
     </template>
 
     <!--H2 left aligned + body text-->
@@ -166,7 +165,7 @@
                 </p>
                 <div>
                     <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
-                        width="8" style="margin-left: 4px; margin-right: 4px;"/>
+                         width="8" style="margin-left: 4px; margin-right: 4px;"/>
                     <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
                     font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
                     line-height: 24px; text-decoration: underline;">Länktext
@@ -1257,7 +1256,7 @@
                         <img class="snippets_div_top_surface" src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt="" style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;" width="8"/>
                     </div>
                 </div>
-              </div>
+            </div>
         </div>
     </template>
 
@@ -1301,7 +1300,7 @@
             </div>
         </div>
     </template>
-  
+
     <!--textmodul med H3 och länkktext 2 kolumner-->
     <template id="s_mail_block_toppyta_h3_text" name="H3 och länktext 2 kolumner">
         <div class="snippets_div" style="max-width: 600px;background-color: white; padding: 8px 24px 24px 24px;">
@@ -1342,7 +1341,7 @@
                         </span>
                     </div>
                 </div>
-              </div>
+            </div>
         </div>
     </template>
 
