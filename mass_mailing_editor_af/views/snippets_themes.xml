@@ -50,7 +50,7 @@
 
     <!--H3 - white background with link and star icon-->
     <template id="s_mail_block_h3_white_background_link_star_icon" name="H3 - vit bakgrund med länktext och stjärn-ikon">
-        <div class="snippets_div_star" style="max-width: 600px; padding: 24px 28px 24px 24px;
+        <div class="snippets_div_star_white" style="max-width: 600px; padding: 24px 28px 24px 24px;
         background-color: rgb(255, 255, 255); border-radius: 4px;">
             <div class="snippets_div_star_1" style="float: left; margin-right: 24px; margin-bottom: 4px;">
                 <img src="/mass_mailing_editor_af/static/src/img/blocks/Stjarna.png" alt="Stjärnikon" width="50"
@@ -67,7 +67,7 @@
                 </p>
                 <div>
                     <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
-                         width="8" style="margin-left: 4px; margin-right: 4px;"/>
+                         width="9" height="15" style="margin-left: 4px; margin-right: 4px;"/>
                     <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
                     font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
                     line-height: 24px; text-decoration: underline;">Länktext

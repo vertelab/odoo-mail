@@ -163,6 +163,12 @@
                     width: 100% !important;
                     padding-bottom: 16px !important;
                 }
+                .snippets_div_star_white {
+                    padding: 16px 16px 24px 16px !important;
+                }
+                .snippets_div_star_white h3 {
+                    font-size: 18px !important;
+                }
             }
         </style>
     </xpath>
