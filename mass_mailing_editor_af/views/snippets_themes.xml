@@ -1222,47 +1222,40 @@
 
     <!--textmodul med H3 och länkknapp 2 kolumner-->
     <template id="s_mail_block_toppyta_h3_button" name="H3 och länkknapp 2 kolumner">
-        <div class="snippets_div" style="max-width: 600px;background-color: white; padding: 24px 24px 24px 23.5px;">
-            <div style="display:inline-block ; width:260px; background-color: white; vertical-align: top;">
-                <h3 class="snippets_h1_dark" style="width: 260px;color: rgb(51, 51, 51);
-                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 30px;">
+        <div class="snippets_div_2" style="max-width: 600px; background-color: white; padding: 24px;
+        overflow-wrap: break-word;">
+            <div class="snippets_div_column" style="display: inline-block; width: 47%; background-color: white; vertical-align: top; margin-right: 15px;">
+                <h3 style="color: rgb(51, 51, 51);
+                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                    line-height: 30px; margin: 0; margin-bottom: 16px;">
                     H3 - vänster alignerad
                 </h3>
-                <p style="width: 260px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans'; letter-spacing: 0px; line-height: 24px;">
+                <p style="color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
                     Brödtext. Rekommendation 150-250 tecken.
                 </p>
-                <div style="color:#ffffff!important;">
-                    <a href="this is the placeholder for link address"
-                       style="width: 166px; height: 40px; border: 2px solid rgb(0, 0, 90); border-radius: 30px;background-color:#ffffff;line-height:normal; text-decoration:none;"
-                       class="btn btn-primary" data-original-color="">
-                        <b style="width: 86px; height: 24px; color: rgb(0, 0, 90); font-size: 16px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 24px;">
-                            Länkknapp
-                            <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png" style="margin-left:20px"/>
-                        </b>
-                    </a>
+                <div>
+                    <div style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px; display: inline-block;">
+                        <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';             font-weight: 600; color: rgb(0, 0, 90);" class="o_default_snippet_text">Länkknapp</a>
+                        <img class="snippets_div_top_surface" src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt="" style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;" width="8"/>
+                    </div>
                 </div>
             </div>
-            <div style="display:inline-block ; width:260px; background-color: white;">
-                <h3 class="snippets_h1_dark" style="width: 260px; color: rgb(51, 51, 51);
+            <div class="snippets_div_column" style="display: inline-block; width: 47%; background-color: white; vertical-align: top;">
+                <h3 style="color: rgb(51, 51, 51);
                     font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
-                    line-height: 30px;margin-left:20px;">
+                    line-height: 30px; margin: 0; margin-bottom: 16px;">
                     H3 - vänster alignerad
                 </h3>
-                <p style="width: 260px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
-                   letter-spacing: 0px; line-height: 24px;margin-left:20px;">
+                <p style="color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                   letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
                     Brödtext. Rekommendation 150-250 tecken.
                 </p>
-                <div style="color:#ffffff!important;">
-                    <a href="this is the placeholder for link address"
-                       style="width: 166px; height: 40px; border: 2px solid rgb(0, 0, 90); border-radius: 30px;
-                       background-color:#ffffff;line-height:normal; text-decoration:none;margin-left:20px;"
-                       class="btn btn-primary" data-original-color="">
-                        <b style="width: 86px; height: 24px; color: rgb(0, 0, 90); font-size: 16px;
-                           font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 24px;">
-                            Länkknapp
-                            <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png" style="margin-left:20px"/>
-                        </b>
-                    </a>
+                <div>
+                    <div style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px; display: inline-block;">
+                        <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';             font-weight: 600; color: rgb(0, 0, 90);" class="o_default_snippet_text">Länkknapp</a>
+                        <img class="snippets_div_top_surface" src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt="" style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;" width="8"/>
+                    </div>
                 </div>
               </div>
         </div>
