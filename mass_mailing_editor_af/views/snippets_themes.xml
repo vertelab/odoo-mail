@@ -445,7 +445,6 @@
         </table>
     </template>
 
-
     <!-- Af SideHeader Dark Snippet -->
     <template id="s_mail_block_header_af_dark" name="Sidhuvud - Mörk">
         <div class="div_sideheader_af_padding"
