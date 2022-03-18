@@ -180,6 +180,17 @@
                 .snippets_div_responsive {
                     padding: 0 16px !important;
                 }
+                .snippets_div_medium{
+                    display:block !important;
+                    margin-bottom: 32px !important;
+                    margin-right: 0 !important;
+                }
+                .snippets_div_medium_img{
+                    width: 100% !important;
+                }
+                .snippets_div_medium_outer{
+                    padding: 8px 16px 0 16px !important;
+                }
             }
         </style>
     </xpath>
