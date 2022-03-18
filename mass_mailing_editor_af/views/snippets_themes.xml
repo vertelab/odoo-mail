@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   
+    <!--H4 personal portrait-->
+    <template id="s_mail_block_h4_personal_portrait" name="H4 - personporträtt">
+        <div style="max-width: 600px; padding: 8px 24px 40px 24px;">
+            <p style="margin: 0; margin-bottom: 24px; color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px;
+            letter-spacing: 0px; line-height: 24px;">Brödtext. Rekommendation 150-200 tecken.
+            </p>
+            <div>
+                <img src="" alt="" width="56" height="56" style="border-radius: 28px; border-style:none; float:left; background-color:#efefef;"/>
+                <div style="vertical-align: top; margin-left: 70px;">
+                    <h4 style="margin: 0; margin-bottom: 4px; color: rgb(51, 51, 51); font-family: 'Open Sans Semibold';
+                    font-size: 16px; font-weight: 600; letter-spacing: 0px; line-height: 24px;">H4 – vänster alignerad
+                    </h4>
+                    <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+                    line-height: 24px; margin: 0;">Description – vänster
+                    </p>
+                </div>
+            </div>
+        </div>
+    </template>
+  
     <!--H3 - gray background with top border-->
     <template id="s_mail_block_h3_gray_background_top_border" name="H3 - grå bakgrund med en top border">
-        <div class="snippets_div" style="max-width: 600px; padding: 24px;">
+        <div class="snippets_div_responsive" style="max-width: 600px; padding: 0 24px;">
             <div style="background-color: rgb(245, 245, 245); ">
                 <div style="background-color: rgb(0, 0, 90); height: 10px; width: 100%;"></div>
                 <div style="padding: 24px 16px;">
@@ -16,7 +36,7 @@
                     </p>
                     <div>
                         <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
-                             width="8" style="margin-right: 4px;"/>
+                             width="9" height="15" style="margin-right: 4px;"/>
                         <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
                         font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
                         line-height: 24px; text-decoration: underline;">Länktext
@@ -26,7 +46,7 @@
             </div>
         </div>
     </template>
-  
+
     <!--H3 - white background with star icon-->
     <template id="s_mail_block_h3_white_background_star_icon" name="H3 - vit bakgrund med stjärn-ikon">
         <div class="snippets_div_star" style="max-width: 600px; padding: 24px 32px 22px 24px;
@@ -77,6 +97,34 @@
         </div>
     </template>
 
+    <!--H3 - green background with light bulb icon-->
+    <template id="s_mail_block_h3_green_background_light_bulb_icon" name="H3 - ljusgrön bakgrund med glödlampa-ikon">
+        <div style="max-width: 600px;">
+            <div class="snippets_div_bulb" style="margin: 0 24px; padding: 24px; background-color: rgb(244, 248, 235);">
+                <div class="snippets_div_bulb_icon" style="float: right; max-width: 24%;">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/lightBulb.png" alt="Glödlampa ikon"
+                         style="max-width:108px;"/>
+                </div>
+                <div class="snippets_div_bulb_text" style="width: 75%; display: inline-block;">
+                    <h3 style="margin: 0; margin-bottom: 8px; color: rgb(51, 51, 51); font-family: 'Open Sans Semibold';
+                    font-size: 20px; font-weight: 600; letter-spacing: 0px; line-height: 30px;">H3 – vänster alignerad
+                    </h3>
+                    <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+                    line-height: 24px; margin: 0; margin-bottom: 24px;">Brödtext. Rekommendation 150-200 tecken.
+                    </p>
+                    <div>
+                        <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
+                            width="8" style="margin-right: 4px;"/>
+                        <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
+                        font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
+                        line-height: 24px; text-decoration: underline;">Länktext
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
     <!--Punktlista-->
     <template id="s_mail_block_bullet_list" name="Punktlista">
         <div style="max-width: 600px; padding: 8px 32px 12px 8px;">
@@ -86,9 +134,9 @@
                     Det här är första punkten
                 </li>
             </ul>
-        </div> 
+        </div>
     </template>
-  
+
     <!--footer dark-->
     <template id="s_mail_block_footer_dark" name="Sidfot mörk">
         <div class="snippets_footer" style="wax-width: 600px; background-color: rgb(0, 0, 90);
@@ -134,7 +182,7 @@
                          alt="LinkedIn ikon" width="30"/>
                 </a>
             </div>
-          </div>
+        </div>
     </template>
 
     <!--H2 left aligned + body text-->
@@ -166,7 +214,8 @@
                 </p>
                 <div>
                     <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
-                        width="8" style="margin-left: 4px; margin-right: 4px;"/>
+                         width="8" style="margin-left: 4px; margin-right: 4px;"/>
+                        width="9" height="15" style="margin-left: 4px; margin-right: 4px;"/>
                     <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
                     font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
                     line-height: 24px; text-decoration: underline;">Länktext
@@ -362,14 +411,14 @@
                          alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
                 </a>
             </div>
-            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family:OpenSans-Semibold; pointer-events:none;
+            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family: 'Open Sans Semibold'; pointer-events:none;
                     font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;
                     vertical-align: middle; color:#ffffff; display: inline; float: right; padding-top: 3px;">
                 <a href="#"
                    style="color:#ffffff;"
                    class="view_in_browser_url">
                     <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right.svg"
-                         style="width: 20px;height: 20.25px;" alt=""/>
+                         style="width: 9px; height: 15px;" alt=""/>
                     Visa i webbläsare
                 </a>
             </div>
@@ -393,14 +442,14 @@
                          alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
                 </a>
             </div>
-            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family:OpenSans-Semibold; pointer-events:none;
+            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family: 'Open Sans Semibold'; pointer-events:none;
                     font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;
                     vertical-align: middle; color: #1616b2; display: inline; float: right; padding-top: 3px;">
                 <a href="#"
                    style="color: #1616b2;"
                    class="view_in_browser_url">
                     <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
-                         style="width: 20px;height: 20.25px;" alt=""/>
+                         style="width: 9px; height: 15px;" alt=""/>
                     Visa i webbläsare
                 </a>
             </div>
@@ -1257,7 +1306,7 @@
                         <img class="snippets_div_top_surface" src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt="" style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;" width="8"/>
                     </div>
                 </div>
-              </div>
+            </div>
         </div>
     </template>
 
@@ -1301,7 +1350,7 @@
             </div>
         </div>
     </template>
-  
+
     <!--textmodul med H3 och länkktext 2 kolumner-->
     <template id="s_mail_block_toppyta_h3_text" name="H3 och länktext 2 kolumner">
         <div class="snippets_div" style="max-width: 600px;background-color: white; padding: 8px 24px 24px 24px;">
@@ -1342,7 +1391,7 @@
                         </span>
                     </div>
                 </div>
-              </div>
+            </div>
         </div>
     </template>
 
@@ -1394,10 +1443,12 @@
                 Af Snippets
             </div>
             <div class="o_panel_body">
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h4_personal_portrait"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_gray_background_top_border"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_white_background_star_icon"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_white_background_link_star_icon"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_dark_primary"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_green_background_light_bulb_icon"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_light_primary"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_light_secundary"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_bullet_list"/>
