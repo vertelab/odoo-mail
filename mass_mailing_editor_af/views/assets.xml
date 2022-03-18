@@ -157,6 +157,14 @@
                 .snippets_div_star_2 {
                     margin-left: 0 !important;
                 }
+                .snippets_div_bulb {
+                    padding: 24px 8px 24px 16px !important;
+                }
+                .snippets_div_bulb_icon {
+                    float: none !important;
+                }
+                .snippets_div_bulb_text {
+                    width: 100% !important;
                 .snippets_div_2 {
                     padding: 16px 16px 0 16px !important
                 }
