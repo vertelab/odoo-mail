@@ -1411,7 +1411,7 @@
                        class="btn btn-primary" data-original-color="">
                         <b style="width: 86px; height: 24px; color: rgb(0, 0, 90); font-size: 16px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 24px;">
                             Länkknapp
-                            <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png" style="margin-left:20px;"/>
+                            <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" style="margin-left:20px; width:8px"/>
                         </b>
                     </a>
                 </div>
@@ -1435,7 +1435,7 @@
                         <b style="width: 86px; height: 24px; color: rgb(0, 0, 90); font-size: 16px; font-family: 'Open Sans Semibold';
                                   font-weight: 600; letter-spacing: 0px; line-height: 24px;">
                             Länkknapp
-                            <img src="/mass_mailing_editor_af/static/src/img/blocks/arrow-darkblue.png" style="margin-left:20px;"/>
+                            <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" style="margin-left:20px; width: 8px"/>
                         </b>
                     </a>
                 </div>
