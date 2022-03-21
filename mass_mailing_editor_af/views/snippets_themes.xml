@@ -1084,14 +1084,16 @@
 
     <template id="s_mail_block_toppyta_mork_standing" name="Toppyta mörk - Stående Bild">
         <div class="snippets_div af_container_dark" style="">
-            <div style="display:inline-block ; width:250px;">
+            <div class="af_left_column" style="display:inline-block;">
                 <h1 class="snippets_h1_dark" style="line-height: 48px; font-family: 'Open Sans Semibold'; color: rgb(255, 255, 255);
                         font-size: 32px; font-weight: 600; letter-spacing: 0; margin:0; align:left; margin-bottom:16px;">
                     JumboHeader
                 </h1>
                 <div style="background: rgb(149, 194, 62); border-radius: 0px; height: 6px; width: 100px;">
                 </div>
-                <p style="color: rgb(255, 255, 255); font-family: OpenSans-Semibold; font-size: 16px; font-weight: 600; height: 120px; letter-spacing: 0px; line-height: 24px;">
+                <p class="af_paragraph" style="color: rgb(255, 255, 255);
+                                               font-family: OpenSans-Semibold;
+                                               font-size: 16px;">
                     Preamble. Toppytan beskriver mailets tema och innehåll och används för att sätta tonen för mailet. Rekommendation 150-250 tecken.
                 </p>
                     <a href="https://arbetsformedlingen.se/For-arbetssokande/Yrken-och-studier/Utbildning/Att-valja-utbildning?pk_medium=Email&amp;pk_source=AS_CRM&amp;pk_campaign=ADKd_NK1&amp;pk_content=POS_M1_2_AG1">
