@@ -188,6 +188,22 @@
                 .snippets_div_content_big_button {
                     display: block !important;
                 }
+                .snippets_div_two_column {
+                    padding: 24px 16px !important;
+                }
+                .snippets_div_two_column h3 {
+                    font-size: 18px !important;
+                    line-height: 27px !important;
+                    margin-bottom: 8px !important;
+                }
+                .snippets_div_two_column_top {
+                    margin-bottom: 32px !important;
+                    width: 100% !important;
+                    margin-right: 0 !important;
+                }
+                .snippets_div_two_column div, h3, p {
+                    width: 100% !important;
+                }
             }
         </style>
     </xpath>
