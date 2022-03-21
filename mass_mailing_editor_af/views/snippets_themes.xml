@@ -1408,10 +1408,10 @@
                 <div style="color:#ffffff!important;">
                     <a href="this is the placeholder for link address"
                        style="width: 166px; height: 40px; border: 2px solid rgb(0, 0, 90); border-radius: 30px;background-color:#ffffff;line-height:normal; text-decoration:none;"
-                       class="btn btn-primary" data-original-color="">
+                       class="view_in_browser_url" data-original-color="">
                         <b style="width: 86px; height: 24px; color: rgb(0, 0, 90); font-size: 16px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 24px;">
                             Länkknapp
-                            <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" style="margin-left:20px; width:8px"/>
+                            <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" style="width: 9px; height: 15px; margin-right: 8px;" alt=""/>
                         </b>
                     </a>
                 </div>
@@ -1431,11 +1431,11 @@
                     <a href="this is the placeholder for link address"
                        style="width: 166px; height: 40px; border: 2px solid rgb(0, 0, 90); border-radius: 30px;
                               background-color:#ffffff;line-height:normal; text-decoration:none; margin-left:24px"
-                       class="btn btn-primary" data-original-color="">
+                       class="view_in_browser_url" data-original-color="">
                         <b style="width: 86px; height: 24px; color: rgb(0, 0, 90); font-size: 16px; font-family: 'Open Sans Semibold';
                                   font-weight: 600; letter-spacing: 0px; line-height: 24px;">
                             Länkknapp
-                            <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" style="margin-left:20px; width: 8px"/>
+                            <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" style="width: 9px; height: 15px; margin-right: 8px;" alt=""/>
                         </b>
                     </a>
                 </div>
