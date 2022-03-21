@@ -179,10 +179,9 @@
                 .snippets_div_star_white h3 {
                     font-size: 18px !important;
                     line-height: 27px !important;
-
                 }
                 .snippets_div_responsive {
-                    padding: 0 16px !important;
+                    padding: 0 !important;
                 }
                 .div_snippets_h3_div {
                     padding: 0 16px 24px 16px !important;
