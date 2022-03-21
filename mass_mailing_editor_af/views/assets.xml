@@ -72,7 +72,7 @@
             .image_response_mobile{
                 display: none !important;
             }
-            @media screen and (max-width: 375px) {
+            @media screen and (max-width: 376px) {
                 .image_response_desktop{
                     display: none !important;
                 }
@@ -190,6 +190,17 @@
                     font-size: 18px !important;
                     line-height: 27px !important;
                     margin-bottom: 11px !important;
+                }
+                .snippets_div_medium{
+                    display:block !important;
+                    margin-bottom: 32px !important;
+                    margin-right: 0 !important;
+                }
+                .snippets_div_medium_img{
+                    width: 100% !important;
+                }
+                .snippets_div_medium_outer{
+                    padding: 8px 16px 0 16px !important;
                 }
             }
         </style>
