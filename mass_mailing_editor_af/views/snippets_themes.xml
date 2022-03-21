@@ -266,7 +266,7 @@
             font-size: 24px; font-weight: 600; letter-spacing: 0; margin:0;">H2 - centrerad</h2>
         </div>
     </template>
-=======
+
     <!--H3 left aligned + body text, button-->
     <template id="s_mail_block_h3_left_aligned_body_text_button" name="H3 vänster alignerad med brödtext och länkknapp">
         <div class="div_snippets_h3_div" style="max-width:600px; padding: 24px;">
@@ -277,13 +277,13 @@
             <div style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px;
             display: inline-block;">
                 <a href="https://arbetsformedlingen.se" style="text-decoration: none; font-size: 16px;
-                font-family: 'Open Sans Semibold'; font-weight: 600; color: rgb(0, 0, 90);">Länkknapp</a>
+                letter-spacing: 0px; line-height: 24px; font-family: 'Open Sans Semibold'; font-weight: 600;
+                color: rgb(0, 0, 90); display: inline-block;">Länkknapp</a>
                 <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt=""
                      width="9" height="15" style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;"/>
             </div>
         </div>
     </template>
->>>>>>> 3d1cf3b (create new snippet)
 
     <!-- Af Pre Header Snippet -->
     <template id="s_mail_block_pre_header_af" name="Af Pre Header - Gör smarta val till höstens utbildningar">
