@@ -132,29 +132,6 @@
                     font-size: 18px !important;
                     line-height: 27px !important;
                 }
-                .snippets_div_star {
-                    padding: 8px 8px 24px 16px !important;
-                }
-                .snippets_div_star_1 {
-                    float: none !important;
-                }
-                .snippets_div_star_1 img {
-                    width: 62px !important;
-                    height: 62px !important;
-                }
-                .snippets_div_star_2 {
-                    margin-left: 0 !important;
-                }
-                .snippets_div_star_1 {
-                    float: none !important;
-                }
-                .snippets_div_star_1 img {
-                    width: 62px !important;
-                    height: 62px !important;
-                }
-                .snippets_div_star_2 {
-                    margin-left: 0 !important;
-                }
                 .snippets_div_bulb {
                     padding: 24px 8px 24px 16px !important;
                 }
@@ -201,6 +178,15 @@
                 }
                 .snippets_div_medium_outer{
                     padding: 8px 16px 0 16px !important;
+                }
+                .snippets_div_content_big {
+                    padding: 8px 16px 24px 16px !important;
+                }
+                .snippets_div_content_big h3 {
+                    margin-bottom: 12px !important;
+                }
+                .snippets_div_content_big_button {
+                    display: block !important;
                 }
             }
         </style>
