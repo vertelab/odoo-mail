@@ -72,7 +72,7 @@
                 .image_response_mobile{
                 display: none !important;
                 }
-                @media screen and (max-width: 376px) {
+            @media screen and (max-width: 376px) {
                 .image_response_desktop{
                 display: none !important;
                 }
@@ -161,33 +161,58 @@
                 padding: 0 !important;
                 }
                 .div_snippets_h3_div {
-                padding: 0 16px 24px 16px !important;
+                    padding: 0 16px 24px 16px !important;
+                    font-size: 18px !important;
+                    line-height: 27px !important;
                 }
                 .div_snippets_h3_div h3 {
-                font-size: 18px !important;
-                line-height: 27px !important;
-                margin-bottom: 11px !important;
+                    font-size: 18px !important;
+                    line-height: 27px !important;
+                    margin-bottom: 11px !important;
                 }
                 .snippets_div_medium{
-                display:block !important;
-                margin-bottom: 32px !important;
-                margin-right: 0 !important;
+                    display:block !important;
+                    margin-bottom: 32px !important;
+                    margin-right: 0 !important;
                 }
                 .snippets_div_medium_img{
-                width: 100% !important;
+                    width: 100% !important;
                 }
                 .snippets_div_medium_outer{
-                padding: 8px 16px 0 16px !important;
+                    padding: 8px 16px 0 16px !important;
                 }
                 .snippets_div_content_big {
-                padding: 8px 16px 24px 16px !important;
+                    padding: 8px 16px 24px 16px !important;
                 }
                 .snippets_div_content_big h3 {
-                margin-bottom: 12px !important;
+                    margin-bottom: 12px !important;
                 }
                 .snippets_div_content_big_button {
+                    display: block !important;
+                }
+          
+                .snippets_div_small{
+                display:block !important;
+                padding-left: 0 !important;
+                padding-top: 24px !important;
+                }
+                .snippets_div_small_img{
+                width: 100% !important;
+                }
+                .snippets_div_small_outer{
+                padding: 8px 16px 32x 16px !important;
+                }
+                .snippets_div_content_small_button {
                 display: block !important;
                 }
+                .snippets_div_small_img_container {
+                    width: 100% !important;
+                }
+                .snippets_div_small_img_container img {
+                    display: block !important;
+                    margin: 0 auto !important;
+                }
+
                 }
             </style>
         </xpath>
