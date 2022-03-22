@@ -9,7 +9,7 @@
             line-height: 24px; margin: 0; margin-bottom: 24px;">Brödtext. Rekommendation max 600 tecken.</p>
             <div>
                 <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
-                width="9" height="15" style="margin-right: 8px;"/>
+                width="9" height="15" style="margin-right: 7px; margin-bottom: 3px;"/>
                 <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
                 font-family:'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
                 line-height: 24px; text-decoration: underline;">Länktext</a>
