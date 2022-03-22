@@ -25,6 +25,8 @@ class ImportMailingList(models.TransientModel):
 
     file = fields.Binary(string='File')
     filename = fields.Char(string='File name')
+    example_filename = fields.Char("File name")
+    example_file = fields.Binary("File")
     nr_total_rows = fields.Integer(string='Total number of rows')
     nr_imported_rows = fields.Integer(string='Successful rows')
     nr_failed_rows = fields.Integer(string='Failed rows')
@@ -36,13 +38,7 @@ class ImportMailingList(models.TransientModel):
     import_type = fields.Selection(
         string="Import type",
         selection=[("adkd", "ADKd Campaign"),
-                   ("micro", "Micro campaigns")],
-    )
-    file = fields.Binary(string='File')
-    filename = fields.Char(string='File name')
-    example_filename = fields.Char("File name")
-    example_file = fields.Binary("File")
-
+                   ("micro", "Micro campaigns")],)
 
     @staticmethod
     def check_header(header, import_type):
@@ -50,14 +46,11 @@ class ImportMailingList(models.TransientModel):
         Verify that header has the required columns as well as create
         a dict with indexes.
          """
-        # Verify Header, Force it lowercase
+        # Verify Header, Force lowercase.
         header = {x.lower(): index for index, x in enumerate(header)}
         correct_header = []
         if import_type == 'adkd':
-            correct_header = [
-                'activemail',
-                'sökande id'
-            ]
+            correct_header = ['activemail', 'sökande id']
         elif import_type:
             correct_header = ['sökande id']
         if not all(item in header for item in correct_header):
@@ -69,15 +62,11 @@ class ImportMailingList(models.TransientModel):
     def _get_contact(self, sokande_id, partner_obj, contact_obj, email):
         """Create mass_mailing_contact and tie it to res_partner"""
         # Need to do sudo here if res_partner.is_jobseeker is True
-        partner = partner_obj.sudo().search(
-            [('customer_id', '=', sokande_id)]
-        )
+        partner = partner_obj.sudo().search([('customer_id', '=', sokande_id)])
         if not partner:
             return
         # Check for blacklist
-        if self.env['mail.unsubscription'].search(
-                [('email', '=', partner.email)]
-        ):
+        if self.env['mail.unsubscription'].search([('email', '=', partner.email)]):
             return
         contact = contact_obj.search([('partner_id', '=', partner.id)])
         if contact:
@@ -86,8 +75,7 @@ class ImportMailingList(models.TransientModel):
             'partner_id': partner.id,
             'name': partner.name,
             # If partner doesn't have email then use imported email
-            'email': partner.email or email,
-        })
+            'email': partner.email or email, })
         return contact.id
 
     def get_campaign(self, campaign):
@@ -104,8 +92,8 @@ class ImportMailingList(models.TransientModel):
                      })
             elif len(mailing_list) > 1:
                 raise UserError(
-                    _('There already exist a ADKd Campaign mailing list '
-                      f'"{mailing_list.name}". There can be only one at a time.')
+                    _('There already exist a ADKd Campaign mailing list "{}".'
+                      ' There can be only one at a time.').format(mailing_list.name)
                 )
         elif campaign == 'micro':
             mailing_list = self.env['mail.mass_mailing.list'].search(
@@ -119,8 +107,8 @@ class ImportMailingList(models.TransientModel):
                     })
             elif len(mailing_list) > 1:
                 raise UserError(
-                    _('There already exist a Micro Campaign mailing list '
-                      f'"{mailing_list.name}". There can be only one at a time.')
+                    _('There already exist a Micro Campaign mailing list "{}".'
+                      ' There can be only one at a time.').format(mailing_list.name)
                 )
         return mailing_list
 
@@ -146,7 +134,8 @@ class ImportMailingList(models.TransientModel):
                 mailing_list_ids.append(ml.id)
             return mailing_list_ids
         elif self.import_type == 'micro':
-            mailing_list = self.env['mail.mass_mailing.list'].search([('adkd_mail_name', '=', self.list_name)])
+            mailing_list = self.env['mail.mass_mailing.list'].search(
+                [('adkd_mail_name', '=', self.list_name)])
             if not mailing_list:
                 mailing_list = mailing_list.create({
                     'name': self.list_name,
@@ -166,13 +155,9 @@ class ImportMailingList(models.TransientModel):
         mailing lists and adds the imported contacts
         unless they have opted out for adkd campaign
         """
-        mailing_lists = self.env['mail.mass_mailing.list'].browse(
-            mailing_lists_ids
-        )
+        mailing_lists = self.env['mail.mass_mailing.list'].browse(mailing_lists_ids)
         for mail_list in mailing_lists:
-            mail_list.write({
-                'contact_ids': [(5, )]
-            })
+            mail_list.write({'contact_ids': [(5, )]})
         list_contact = self.env['mail.mass_mailing.list_contact_rel']
         for mail_name, contact_id in contacts:
             mail_list = False
@@ -184,8 +169,7 @@ class ImportMailingList(models.TransientModel):
             if mail_list:
                 list_contact_id = list_contact.search(
                         [('contact_id', '=', contact_id),
-                         ('list_id', '=', mail_list.parent_id.id)]
-                    )
+                         ('list_id', '=', mail_list.parent_id.id)])
                 if list_contact_id and list_contact_id.opt_out:
                     continue
                 mail_list.write({
@@ -316,7 +300,7 @@ class ImportMailingList(models.TransientModel):
         active_mails = set()
         if sheet.nrows == 0:
             raise UserError(f'File is empty')
-        # Verify Header, Force it lowercase and make a dict.
+        # Verify Header, Force lowercase and make a dict.
         headers = self.check_header(
             [cell.value for cell in sheet.row(0)], self.import_type)
         self.nr_total_rows = sheet.nrows - 1
@@ -324,12 +308,12 @@ class ImportMailingList(models.TransientModel):
             active_mail = ''
             if self.import_type == 'adkd':
                 active_mail = sheet.cell_value(row_nr, headers['activemail'])
+            value = sheet.cell_value(row_nr, headers['sökande id'])
             try:
-                value = sheet.cell_value(row_nr, headers['sökande id'])
                 sokande_id = str(int(value))
             except ValueError:
                 msg = _('Faulty value for sökande id: "{value}" on row {row_nr}.')
-                local_vars = locals()
+                local_vars = {'value': value, 'row_nr': row_nr}
                 _logger.exception(msg.format(**local_vars))
                 raise UserError(msg.format(**local_vars))
             if 'e-postadress' in headers:
@@ -370,7 +354,7 @@ class ImportMailingList(models.TransientModel):
             'mass_mailing_import_mailing_list',
             'static/file',
             f'example_file{file_extension}')
-        file = False
+
         with open(file_path, 'rb') as file_date:
             file = base64.b64encode(file_date.read())
         if file:
