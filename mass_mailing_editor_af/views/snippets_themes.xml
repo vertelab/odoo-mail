@@ -474,8 +474,7 @@
                    style="color:#ffffff;"
                    class="view_in_browser_url">
                     <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right.svg"
-                         style="width: 9px; height: 15px;" alt=""/>
-                    Visa i webbläsare
+                         style="width: 9px; height: 15px; margin-right: 8px;" alt=""/>Visa i webbläsare
                 </a>
             </div>
         </div>
@@ -505,8 +504,7 @@
                    style="color: #1616b2;"
                    class="view_in_browser_url">
                     <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
-                         style="width: 9px; height: 15px;" alt=""/>
-                    Visa i webbläsare
+                         style="width: 9px; height: 15px; margin-right: 8px;" alt=""/>Visa i webbläsare
                 </a>
             </div>
         </div>
