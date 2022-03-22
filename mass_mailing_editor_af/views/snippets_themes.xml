@@ -1409,17 +1409,23 @@
 
     <!--textmodul med H3 och länkktext 2 kolumner-->
     <template id="s_mail_block_toppyta_h3_text" name="H3 och länktext 2 kolumner">
-        <div class="snippets_div" style="max-width: 600px;background-color: white; padding: 8px 24px 24px 24px;">
-            <div style="display:inline-block ; width:260px; background-color: white; vertical-align: top;">
+        <div class="snippets_div_two_column" style="max-width: 600px;background-color: white;
+        padding: 8px 24px 24px 24px;">
+            <div class="snippets_div_two_column_top" style="display:inline-block ; width:260px; background-color: white;
+            vertical-align: top; margin-right: 28px;">
                 <h3 style="width: 260px;color: rgb(51, 51, 51);
-                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 30px;">
+                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                    line-height: 30px; margin: 0; margin-bottom: 12px;">
                     H3 - vänster alignerad
                 </h3>
-                <p style="width: 260px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans'; letter-spacing: 0px; line-height: 24px;">
+                <p style="width: 260px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
                     Brödtext. Rekommendation 150-250 tecken.
                 </p>
                 <div style="color:#ffffff!important;">
-                    <div style="margin-left:4px"><img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" width="8"/>
+                    <div style="margin-left:4px">
+                        <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
+                             width="9" height="15"/>
                         <span href="this is the placeholder for link address" style="width: 68px; height: 24px;
                        color: rgb(22, 22, 178); font-size: 16px; font-family: 'Open Sans Semibold';
                        font-weight: 600; letter-spacing: 0px; line-height: 24px;text-decoration: underline;
@@ -1431,14 +1437,18 @@
             </div>
             <div style="display:inline-block ; width:260px; background-color: white; vertical-align: top;">
                 <h3 style="width: 260px;color: rgb(51, 51, 51);
-                        font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 30px;">
+                        font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                        line-height: 30px; margin: 0; margin-bottom: 12px;">
                     H3 - vänster alignerad
                 </h3>
-                <p style="width: 260px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans'; letter-spacing: 0px; line-height: 24px;">
+                <p style="width: 260px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
                     Brödtext. Rekommendation 150-250 tecken.
                 </p>
                 <div style="color:#ffffff!important;">
-                    <div style="margin-left:4px"><img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"  width="8"/>
+                    <div style="margin-left:4px">
+                        <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
+                             width="9" height="15"/>
                         <span href="this is the placeholder for link address" style="width: 68px; height: 24px;
                            color: rgb(22, 22, 178); font-size: 16px; font-family: 'Open Sans Semibold';
                            font-weight: 600; letter-spacing: 0px; line-height: 24px;text-decoration: underline;
@@ -1569,7 +1579,7 @@
             <div class="snippets_div_medium" style="display: inline-block; margin-right: 23px;">
                 <img src="/mass_mailing_editor_af/static/src/img/blocks/Platshallare_medium_lanktext.svg"
                      class="snippets_div_medium_img" alt=""
-                     style="display:block; border-radius: 0px; background-color: #efefef; margin-bottom:24px;" width="100%"/>
+                     style="display:block; border-radius: 0px; background-color: #efefef; margin-bottom:24px;" width="260" height="173"/>
                 <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
                 line-height: 30px; letter-spacing: 0px; max-width: 260px; margin-bottom: 12px;">H3 - vänster
                     alignerad</h3>
@@ -1584,10 +1594,10 @@
                          style="width: 9px; height: 15px; margin-right: 8px;" alt=""/>Länktext
                 </a>
             </div>
-            <div class="snippets_div_medium" style="display: inline-block;">
+            <div class="snippets_div_medium" style="display: inline-block; vertical-align: top;">
                 <img src="/mass_mailing_editor_af/static/src/img/blocks/Platshallare_medium_lanktext.svg"
                      class="snippets_div_medium_img" alt=""
-                     style="display:block; border-radius: 0px; background-color: #efefef; margin-bottom:24px;" width="100%"/>
+                     style="display:block; border-radius: 0px; background-color: #efefef; margin-bottom:24px;" width="260" height="173"/>
                 <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
                     line-height: 30px; letter-spacing: 0px; max-width: 260px; margin-bottom: 12px;">H3 - vänster
                     alignerad</h3>
