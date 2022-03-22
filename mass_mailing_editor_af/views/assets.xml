@@ -176,8 +176,7 @@
                     margin-right: 0 !important;
                 }
                 .snippets_div_medium_img{
-                    width: 343px !important;
-                    height: 229px !important;
+                    width: 100% !important;
                 }
                 .snippets_div_medium_outer{
                     padding: 8px 16px 0 16px !important;
