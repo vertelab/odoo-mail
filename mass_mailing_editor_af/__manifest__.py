@@ -1,7 +1,7 @@
 {
     "name": "AF Mass Mailing Snippets",
     "summary": "This version is used to customize the Odoo standard mail body widgets in accordance to 'Af' mail template.",
-    "version": "12.0.0.5.27",
+    "version": "12.0.0.5.46",
     "category": "Email Marketing",
     "description": """
     v12.0.0.0.1 AFC-2067  Added snippets in Mass mailing body.\n
@@ -51,7 +51,27 @@
     v12.0.0.5.24 AFC-3449 Create new snippet(id=s_mail_block_toppyta_h3_checkikon_testlink)\n
     v12.0.0.5.25 AFC-3461 Create new snippet(id=s_mail_block_h3_gray_background_top_border)\n
     v12.0.0.5.26 AFC-3572 Fix snippet id=s_mail_block_toppyta_h3_button \n
-    v12.0.0.5.27 AFC-3458 Create new snippet(id=s_mail_block_toppyta_small_textlink_button) \n
+    v12.0.0.5.27 AFC-3565 Fix header snippets \n
+    v12.0.0.5.28 AFC-3459 Create new snippet(id=s_mail_block_h3_green_background_light_bulb_icon)\n
+    v12.0.0.5.29 AFC-3455 Create new snippet (id=s_mail_block_h4_personal_portrait) \n
+    v12.0.0.5.30 AFC-3578 Fix snippet id=s_mail_block_h3_gray_background_star_icon\n
+    v12.0.0.5.31 AFC-3579 Fix snippet id=s_mail_block_h3_gray_background_top_border \n
+    v12.0.0.5.32 AFC-3580 Fix snippet id=s_mail_block_h3_white_background_link_star_icon \n
+    v12.0.0.5.33 AFC-3581 Fix snippet id=s_mail_block_h3_white_background_star_icon \n
+    v12.0.0.5.34 AFC-3434 Create snippet id=s_mail_block_h3_left_aligned_body_text_link\n
+    v12.0.0.5.35 AFC-3433 Create new snippet(id=s_mail_block_h3_left_aligned_body_text_button)\n
+    v12.0.0.5.36 AFC-3585 Fix snippet id=s_mail_block_h3_gray_background_star_icon\n
+    v12.0.0.5.37 AFC-3586 Fix snippet id=s_mail_block_h3_gray_background_top_border \n
+    v12.0.0.5.38 AFC-3587 Fix snippet id=s_mail_block_h3_green_background_light_bulb_icon\n
+    v12.0.0.5.39 AFC-3453 Create new snippet(id=s_mail_block_top_innehall_medium_lanktext)\n
+    v12.0.0.5.40 AFC-3450 Create new snippet(id=s_mail_block_content_big)\n
+    v12.0.0.5.41 AFC-3456 Create new snippet(id=s_mail_block_toppyta_small_button)\n
+    v12.0.0.5.42 AFC-3454 Create new snippet(id=s_mail_block_toppyta_medium_button)\n
+    v12.0.0.5.43 AFC-3587 Fix snippet id=s_mail_block_top_innehall_medium_lanktext\n
+    v12.0.0.5.44 AFC-3583 Fix snippet id=s_mail_block_toppyta_h3_text\n
+    v12.0.0.5.45 AFC-3605 Fix snippet id=s_mail_block_h3_left_aligned_body_text_link\n
+    v12.0.0.5.46 AFC-3458 Create new snippet(id=s_mail_block_toppyta_small_textlink_button) \n
+
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
