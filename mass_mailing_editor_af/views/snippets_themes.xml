@@ -1491,6 +1491,34 @@
         </div>
     </template>
 
+    <!--textmodul med H3 small och knapplänk -->
+    <template id="s_mail_block_toppyta_small_button" name="Innehåll - Small + Knapplänk">
+        <div class="snippets_div_small_outer" style="max-width: 600px;background-color: white; padding: 16px 24px 16px 24px; margin: 0;">
+            <div class="snippets_div_small_img_container" style="display:inline-block ; width:200px; background-color: white; vertical-align: top;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Platshållare200x300.svg" style="width: 200px; height: 300px; background: rgb(239, 239, 239); border-radius: 0px;"/>
+            </div>
+            <div class="snippets_div_small" style="display:inline-block ; width:260px; background-color: white; padding-left: 24px;">
+                <h3 style="width: 328px; color: rgb(51, 51, 51);
+                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                    line-height: 30px; margin: 0; margin-bottom: 12px;">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="width: 328px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                   letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+                <div class="snippets_div_content_small_button" style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px;
+                    display: inline-block; ">
+                    <a href="#" style="text-decoration: none; font-size: 16px; letter-spacing: 0px; line-height: 24px;
+                    font-family: 'Open Sans Semibold'; font-weight: 600; color: rgb(0, 0, 90); display: inline-block;">Länkknapp</a>
+                    <img alt="" width="9" height="15"
+                         style="margin-left: 20px; margin-right: 4px; margin-top: 5px; float: right;"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" />
+                </div>
+            </div>
+        </div>
+    </template>
+
     <!--textmodul med H3 och brödtext och textlänk-->
     <template id="s_mail_block_top_innehall_medium_lanktext" name="Innehåll - Medium + Länktext">
         <div class="snippets_div_medium_outer" style="max-width: 600px; padding: 8px 24px 32px 24px; margin: 0;">
@@ -1554,6 +1582,7 @@
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_light_secundary"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_bullet_list"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_gray_background_star_icon"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_small_button"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_h3_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_h3_checkikon_textlink"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_left_aligned_body_text"/>
