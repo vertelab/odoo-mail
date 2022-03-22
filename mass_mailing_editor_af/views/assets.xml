@@ -190,17 +190,24 @@
                 }
                 .snippets_div_small{
                 display:block !important;
-                margin-bottom: 16px !important;
-                margin-right: 0 !important;
+                padding-left: 0 !important;
+                padding-top: 24px !important;
                 }
                 .snippets_div_small_img{
                 width: 100% !important;
                 }
                 .snippets_div_small_outer{
-                padding: 16px 24px 16px 24px !important;
+                padding: 8px 16px 32x 16px !important;
                 }
                 .snippets_div_content_small_button {
                 display: block !important;
+                }
+                .snippets_div_small_img_container {
+                    width: 100% !important;
+                }
+                .snippets_div_small_img_container img {
+                    display: block !important;
+                    margin: 0 auto !important;
                 }
 
                 }
