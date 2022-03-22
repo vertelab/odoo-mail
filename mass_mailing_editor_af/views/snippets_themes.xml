@@ -1584,7 +1584,7 @@
                          style="width: 9px; height: 15px; margin-right: 8px;" alt=""/>Länktext
                 </a>
             </div>
-            <div class="snippets_div_medium" style="display: inline-block;">
+            <div class="snippets_div_medium" style="display: inline-block; vertical-align: top;">
                 <img src="/mass_mailing_editor_af/static/src/img/blocks/Platshallare_medium_lanktext.svg"
                      class="snippets_div_medium_img" alt=""
                      style="display:block; border-radius: 0px; background-color: #efefef; margin-bottom:24px;" width="260" height="173"/>
