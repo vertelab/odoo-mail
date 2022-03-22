@@ -72,7 +72,7 @@
                 .image_response_mobile{
                 display: none !important;
                 }
-            @media screen and (max-width: 376px) {
+                @media screen and (max-width: 376px) {
                 .image_response_desktop{
                 display: none !important;
                 }
