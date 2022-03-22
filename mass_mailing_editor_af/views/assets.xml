@@ -67,104 +67,145 @@
         </xpath>
     </template>
     <template inherit_id="mass_mailing.mass_mailing_mail_style" id="style_editor_af">
-    <xpath expr="." position="inside">
-        <style>
-            .image_response_mobile{
+        <xpath expr="." position="inside">
+            <style>
+                .image_response_mobile{
                 display: none !important;
-            }
-            @media screen and (max-width: 375px) {
+                }
+                @media screen and (max-width: 376px) {
                 .image_response_desktop{
-                    display: none !important;
+                display: none !important;
                 }
                 .image_response_mobile{
-                    display: inline !important;
+                display: inline !important;
                 }
                 .div_sideheader_af_padding{
-                    padding: 24px 16px !important;
+                padding: 24px 16px !important;
                 }
                 .div_sideheader_af_padding_link{
-                    padding-top: 4px !important;
+                padding-top: 4px !important;
                 }
                 .snippets_h1_dark{
-                    font-size: 28px !important;
-                    line-height: 42px !important;
+                font-size: 28px !important;
+                line-height: 42px !important;
                 }
                 .snippets_div{
-                    padding: 16px !important;
+                padding: 16px !important;
                 }
                 .snippets_div_h3 {
-                    padding: 0 16px 32px 16px !important;
+                padding: 0 16px 32px 16px !important;
                 }
                 .snippets_div_h3 h3 {
-                    font-size: 18px !important;
-                    line-height: 27px !important;
+                font-size: 18px !important;
+                line-height: 27px !important;
                 }
                 .snippets_footer {
-                    padding: 24px 16px 46px 16px !important;
+                padding: 24px 16px 46px 16px !important;
                 }
                 .snippets_footer p {
-                    text-align: left !important;
+                text-align: left !important;
                 }
                 .snippets_footer span {
-                    margin-bottom: 24px !important;
+                margin-bottom: 24px !important;
                 }
                 .snippets_footer_p {
-                    margin-top: 32px !important;
-                    margin-bottom: 40px !important;
+                margin-top: 32px !important;
+                margin-bottom: 40px !important;
                 }
                 .snippets_div_top_surface {
-                    margin-left: 120px !important;
+                margin-left: 120px !important;
                 }
                 .snippets_div_star {
-                    padding: 8px 8px 24px 16px !important;
+                padding: 8px 8px 24px 16px !important;
                 }
                 .snippets_div_star_1 {
-                    float: none !important;
+                float: none !important;
                 }
                 .snippets_div_star_1 img {
-                    width: 62px !important;
-                    height: 62px !important;
-                }
-                .snippets_div_star_2 {
-                    margin-left: 0 !important;
-                }
-                .snippets_div_star {
-                    padding: 8px 8px 24px 16px !important;
-                }
-                .snippets_div_star_1 {
-                    float: none !important;
-                }
-                .snippets_div_star_1 img {
-                    width: 62px !important;
-                    height: 62px !important;
+                width: 62px !important;
+                height: 62px !important;
                 }
                 .snippets_div_star_2 {
                 margin-left: 0 !important;
                 }
-                .snippets_div_star {
-                    padding: 8px 8px 24px 16px !important;
+                .snippets_div_star_2 h3 {
+                font-size: 18px !important;
+                line-height: 27px !important;
                 }
-                .snippets_div_star_1 {
-                    float: none !important;
+                .snippets_div_bulb {
+                padding: 24px 8px 24px 16px !important;
                 }
-                .snippets_div_star_1 img {
-                    width: 62px !important;
-                    height: 62px !important;
+                .snippets_div_bulb_icon {
+                float: none !important;
                 }
-                .snippets_div_star_2 {
-                    margin-left: 0 !important;
+                .snippets_div_bulb_text {
+                width: 100% !important;
                 }
                 .snippets_div_2 {
-                    padding: 16px 16px 0 16px !important
+                padding: 16px 16px 0 16px !important
                 }
                 .snippets_div_column {
-                    display: block !important;
-                    float: none !important;
-                    width: 100% !important;
-                    padding-bottom: 16px !important;
+                display: block !important;
+                float: none !important;
+                width: 100% !important;
+                padding-bottom: 16px !important;
                 }
-            }
-        </style>
-    </xpath>
+                .snippets_div_star_white {
+                padding: 16px 16px 24px 16px !important;
+                }
+                .snippets_div_star_white h3 {
+                font-size: 18px !important;
+                line-height: 27px !important;
+                }
+                .snippets_div_responsive {
+                padding: 0 !important;
+                }
+                .div_snippets_h3_div {
+                padding: 0 16px 24px 16px !important;
+                }
+                .div_snippets_h3_div h3 {
+                font-size: 18px !important;
+                line-height: 27px !important;
+                margin-bottom: 11px !important;
+                }
+                .snippets_div_medium{
+                display:block !important;
+                margin-bottom: 32px !important;
+                margin-right: 0 !important;
+                }
+                .snippets_div_medium_img{
+                width: 100% !important;
+                }
+                .snippets_div_medium_outer{
+                padding: 8px 16px 0 16px !important;
+                }
+                .snippets_div_content_big {
+                padding: 8px 16px 24px 16px !important;
+                }
+                .snippets_div_content_big h3 {
+                margin-bottom: 12px !important;
+                }
+                .snippets_div_content_big_button {
+                display: block !important;
+                }
+                .snippets_div_small{
+                display:block !important;
+                margin-bottom: 16px !important;
+                margin-right: 0 !important;
+                }
+                .snippets_div_small_img{
+                width: 100% !important;
+                text-align:center;
+                }
+                .snippets_div_small_outer{
+                padding: 16px 24px 16px 24px !important;
+                }
+                .snippets_div_content_small_button {
+                display: block !important;
+                }
+
+                }
+            </style>
+        </xpath>
     </template>
 </odoo>
