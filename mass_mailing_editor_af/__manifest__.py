@@ -79,7 +79,7 @@
     v12.0.0.5.52 AFC-3615 Fix snippet id=s_mail_block_toppyta_small_textlink_button\n
     v12.0.0.5.53 AFC-3610 Fix snippet chevron icon and placement\n
     v12.0.0.5.54 AFC-3426 Create new snippet(id=s_mail_block_toppyta_mork_standing) \n
-    
+
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",

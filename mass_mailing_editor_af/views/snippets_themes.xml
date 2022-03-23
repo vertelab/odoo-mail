@@ -1,5 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!--H3 left aligned + body text, link-->
+    <template id="s_mail_block_h3_left_aligned_body_text_link" name="H3 vänster alignerad med brödtext och länktext">
+        <div class="div_snippets_h3_div" style="max-width:600px; padding: 24px;">
+            <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
+            letter-spacing: 0px; line-height: 30px; margin: 0; margin-bottom: 12px;">H3 - vänster alignerad</h3>
+            <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+            line-height: 24px; margin: 0; margin-bottom: 24px;">Brödtext. Rekommendation max 600 tecken.</p>
+            <div>
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
+                width="9" height="15" style="margin-right: 7px; margin-bottom: 3px;"/>
+                <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
+                font-family:'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
+                line-height: 24px; text-decoration: underline;">Länktext</a>
+            </div>
+        </div>
+    </template>
+
+    <!--H4 personal portrait-->
+    <template id="s_mail_block_h4_personal_portrait" name="H4 - personporträtt">
+        <div style="max-width: 600px; padding: 8px 24px 40px 24px;">
+            <p style="margin: 0; margin-bottom: 24px; color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px;
+            letter-spacing: 0px; line-height: 24px;">Brödtext. Rekommendation 150-200 tecken.
+            </p>
+            <div>
+                <img src="" alt="" width="56" height="56" style="border-radius: 28px; border-style:none; float:left; background-color:#efefef;"/>
+                <div style="vertical-align: top; margin-left: 70px;">
+                    <h4 style="margin: 0; margin-bottom: 4px; color: rgb(51, 51, 51); font-family: 'Open Sans Semibold';
+                    font-size: 16px; font-weight: 600; letter-spacing: 0px; line-height: 24px;">H4 – vänster alignerad
+                    </h4>
+                    <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+                    line-height: 24px; margin: 0;">Description – vänster
+                    </p>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--Content big-->
+    <template id="s_mail_block_content_big" name="Innehåll - Stor">
+        <div class="snippets_div_content_big" style="max-width: 600px; padding: 8px 24px 32px 24px;">
+            <img src="/mass_mailing_editor_af/static/src/img/blocks/placeholder_big.svg" alt=""
+                 style="background-color: #efefef; margin-bottom: 24px; width:100%; aspect-ratio: 3/2;"/>
+            <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
+            letter-spacing: 0px; line-height: 30px; margin: 0; margin-bottom: 16px;">H3 – vänster alignerad
+            </h3>
+            <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+            line-height: 24px; margin: 0; margin-bottom: 24px;">Brödtext. Rekommendation 150-200 tecken.
+            </p>
+            <div>
+                <div class="snippets_div_content_big_button" style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px;
+                display: inline-block;">
+                    <a href="#" style="text-decoration: none; font-size: 16px; letter-spacing: 0px; line-height: 24px;
+                    font-family: 'Open Sans Semibold'; font-weight: 600; color: rgb(0, 0, 90); display: inline-block;">Länkknapp</a>
+                    <img alt="" width="9" height="15"
+                         style="margin-left: 20px; margin-right: 4px; margin-top: 5px; float: right;"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" />
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--H3 - gray background with top border-->
+    <template id="s_mail_block_h3_gray_background_top_border" name="H3 - grå bakgrund med en top border">
+        <div class="snippets_div_responsive" style="max-width: 600px; padding: 0 24px;">
+            <div style="background-color: rgb(245, 245, 245); ">
+                <div style="background-color: rgb(0, 0, 90); height: 10px; width: 100%;"></div>
+                <div style="padding: 24px 16px;">
+                    <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px;
+                    font-weight: 600; letter-spacing: 0px; line-height: 30px; margin: 0; margin-bottom: 8px;">
+                        H3 – vänster alignerad
+                    </h3>
+                    <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+                    line-height: 24px; margin: 0; margin-bottom: 24px;">Brödtext. Rekommendation 150-200 tecken.
+                    </p>
+                    <div>
+                        <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
+                             width="9" height="15" style="margin-right: 7px; margin-bottom: 3px;"/>
+                        <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
+                        font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
+                        line-height: 24px; text-decoration: underline;">Länktext
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--H3 - white background with star icon-->
+    <template id="s_mail_block_h3_white_background_star_icon" name="H3 - vit bakgrund med stjärn-ikon">
+        <div class="snippets_div_star_white" style="max-width: 600px; padding: 24px 32px 22px 24px;
+        background-color: rgb(255, 255, 255); border-radius: 4px;">
+            <div class="snippets_div_star_1" style="float: left; margin-right: 24px; margin-bottom: 4px;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Stjarna.png" alt="Stjärnikon" width="50"
+                     height="50"/>
+            </div>
+            <div class="snippets_div_star_2" style="margin-left: 74px;">
+                <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
+                letter-spacing: 0px; line-height: 30px; margin: 0; margin-bottom: 8px;">
+                    H3 – vänster alignerad
+                </h3>
+                <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+                line-height: 24px; margin: 0;">
+                    Brödtext. Rekommendation 150-200 tecken.
+                </p>
+            </div>
+        </div>
+    </template>
+
+    <!--H3 - white background with link and star icon-->
+    <template id="s_mail_block_h3_white_background_link_star_icon" name="H3 - vit bakgrund med länktext och stjärn-ikon">
+        <div class="snippets_div_star_white" style="max-width: 600px; padding: 24px 28px 24px 24px;
+        background-color: rgb(255, 255, 255); border-radius: 4px;">
+            <div class="snippets_div_star_1" style="float: left; margin-right: 24px; margin-bottom: 4px;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Stjarna.png" alt="Stjärnikon" width="50"
+                     height="50"/>
+            </div>
+            <div class="snippets_div_star_2" style="margin-left: 74px;">
+                <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
+                letter-spacing: 0px; line-height: 30px; margin: 0; margin-bottom: 8px;">
+                    H3 – vänster alignerad
+                </h3>
+                <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+                line-height: 24px; margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-200 tecken.
+                </p>
+                <div>
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
+                         width="9" height="15" style="margin-left: 4px; margin-right: 7px; margin-bottom: 3px;"/>
+                    <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
+                    font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
+                    line-height: 24px; text-decoration: underline;">Länktext
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--H3 - green background with light bulb icon-->
+    <template id="s_mail_block_h3_green_background_light_bulb_icon" name="H3 - ljusgrön bakgrund med glödlampa-ikon">
+        <div style="max-width: 600px;">
+            <div class="snippets_div_bulb" style="margin: 0 24px; padding: 24px; background-color: rgb(244, 248, 235);">
+                <div class="snippets_div_bulb_icon" style="float: right; max-width: 24%;">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/lightBulb.png" alt="Glödlampa ikon"
+                         style="max-width:108px;"/>
+                </div>
+                <div class="snippets_div_bulb_text" style="width: 75%; display: inline-block;">
+                    <h3 style="margin: 0; margin-bottom: 8px; color: rgb(51, 51, 51); font-family: 'Open Sans Semibold';
+                    font-size: 20px; font-weight: 600; letter-spacing: 0px; line-height: 30px;">H3 – vänster alignerad
+                    </h3>
+                    <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+                    line-height: 24px; margin: 0; margin-bottom: 24px;">Brödtext. Rekommendation 150-200 tecken.
+                    </p>
+                    <div>
+                        <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
+                            width="9" height="15" style="margin-right: 7px; margin-bottom: 3px;"/>
+                        <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
+                        font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
+                        line-height: 24px; text-decoration: underline;">Länktext
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--Punktlista-->
+    <template id="s_mail_block_bullet_list" name="Punktlista">
+        <div style="max-width: 600px; padding: 8px 32px 12px 8px;">
+            <ul style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+            line-height: 24px; margin-bottom: 0;">
+                <li>
+                    Det här är första punkten
+                </li>
+            </ul>
+        </div>
+    </template>
+
+    <!--footer dark-->
+    <template id="s_mail_block_footer_dark" name="Sidfot mörk">
+        <div class="snippets_footer" style="wax-width: 600px; background-color: rgb(0, 0, 90);
+        padding: 24px 32px 32px 32px;">
+            <img src="/mass_mailing_editor_af/static/src/img/blocks/Af_logotyp_gron-vit_rgb.svg"
+                 alt="Arbetsförmedlingen logotyp" style="display:block; margin:auto;" width="255"/>
+            <p style="margin-top: 32px; color: rgb(255, 255, 255); font-family: 'Open Sans';
+            font-size: 16px; letter-spacing: 0px; line-height: 24px; text-align: center;">
+                Du får detta informationsbrev eftersom din epost, ##SubscriberEmail##
+                registrerats när du skapat ett konto hos Arbetsförmedlingen. Vill du inte ta emot fler informationsbrev från Arbetsförmedlingen
+                <a style="font-family: 'Open Sans Semibold'; font-weight: 600; text-decoration: underline;
+                color: rgb(255, 255, 255);" href="/unsubscribe_from_list">
+                    avanmäla dig här
+                </a>
+            </p>
+            <p id="snippets_footer_p" style="margin-top: 25px; margin-bottom: 32px; color: rgb(255, 255, 255); font-family: 'Open Sans'; font-size: 16px;
+            letter-spacing: 0px; line-height: 24px;">
+                Hjälp oss bli bättre –
+                <a style="font-family: 'Open Sans Semibold'; font-weight: 600; text-decoration: underline;
+                color: rgb(255, 255, 255);" href="https://arbetsformedlingen.se">
+                    lämna synpunkter om vår digitala tillgänglighet
+                </a>
+            </p>
+            <span style="color: rgb(255, 255, 255); font-family: 'Open Sans Semibold'; font-size: 16px; display: block;
+            font-weight: 600; letter-spacing: 0px; line-height: 24px; text-align: center; margin-bottom: 17px;">
+                Följ oss
+            </span>
+            <div style="text-align: center;">
+                <a href="https://sv-se.facebook.com/Arbetsformedlingen">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerSocial_Facebook.svg"
+                         alt="Facebook ikon" width="30" style="margin-right: 26px;"/>
+                </a>
+                <a href="https://www.instagram.com/accounts/login/?next=/arbetsformedlingen">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerSocial_Instagram.svg"
+                         alt="Instagram ikon" width="30" style="margin-right: 26px;"/>
+                </a>
+                <a href="https://www.youtube.com/user/arbetsformedlingen">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerSocial_YouTube.svg" alt="YouTube ikon"
+                         width="30" style="margin-right: 26px;"/>
+                </a>
+                <a href="https://www.linkedin.com/company/arbetsformedlingen">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerSocial_LinkedIn.svg"
+                         alt="LinkedIn ikon" width="30"/>
+                </a>
+            </div>
+        </div>
+    </template>
+
+    <!--H2 left aligned + body text-->
+    <template id="s_mail_block_h2_left_aligned_body_text" name="H2 - vänster alignerad med brödtext">
+        <div style="max-width: 600px; padding: 32px 24px;">
+            <h2 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 22px; font-weight: 600;
+            line-height: 33px; letter-spacing: 0px; max-width: 343px; margin-bottom: 8px;">H2 - vänster alignerad</h2>
+            <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; line-height: 24px;
+            letter-spacing: 0; margin: 0;">Brödtext. Rekommendation max 600 tecken.</p>
+        </div>
+    </template>
+
+    <!--H3 - gray background with star icon-->
+    <template id="s_mail_block_h3_gray_background_star_icon" name="H3 - grå bakgrund med stjärn-ikon">
+        <div class="snippets_div_star" style="max-width: 600px; padding: 24px 28px 24px 24px;
+        background-color: rgb(239, 239, 239); border-radius: 4px;">
+            <div class="snippets_div_star_1" style="float: left; margin-right: 24px; margin-bottom: 4px;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Stjarna.png" alt="Stjärnikon" width="50"
+                     height="50"/>
+            </div>
+            <div class="snippets_div_star_2" style="margin-left: 74px;">
+                <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
+                letter-spacing: 0px; line-height: 30px; margin: 0; margin-bottom: 8px;">
+                    H3 – vänster alignerad
+                </h3>
+                <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+                line-height: 24px; margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-200 tecken.
+                </p>
+                <div>
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" alt=""
+                         width="9" height="15" style="margin: 0 7px 3px 4px;"/>
+                    <a href="https://arbetsformedlingen.se" style="color: rgb(22, 22, 178);
+                    font-family: 'Open Sans Semibold'; font-size: 16px; font-weight: 600; letter-spacing: 0px;
+                    line-height: 24px; text-decoration: underline;">Länktext
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--H2 left aligned-->
+    <template id="s_mail_block_h2_left_aligned" name="H2 - vänster alignerad">
+        <div style="max-width: 600px; padding: 32px 24px 16px 24px;">
+            <h2 style="line-height: 36px; font-family: 'Open Sans Semibold'; color: rgb(51, 51, 51); font-size: 24px;
+            font-weight: 600; letter-spacing: 0; margin: 0;">H2 - vänster alignerad</h2>
+        </div>
+    </template>
+
     <!--H3 left aligned body text-->
     <template id="s_mail_block_h3_left_aligned_body_text" name="H3 - vänster alignerad + brödtext">
         <div class="snippets_div_h3" style="max-width: 600px; padding: 0 24px 32px 24px;">
@@ -9,6 +281,33 @@
             line-height: 24px; margin: 0;">Brödtext. Rekommendation max 600 tecken.</p>
         </div>
     </template>
+
+    <!--H2 centered-->
+    <template id="s_mail_block_h2_centered" name="H2 - Centrerad">
+        <div style="max-width: 600px; padding: 32px 24px 16px 24px;">
+            <h2 style="line-height: 36px; text-align: center; font-family: 'Open Sans Semibold'; color: rgb(51, 51, 51);
+            font-size: 24px; font-weight: 600; letter-spacing: 0; margin:0;">H2 - centrerad</h2>
+        </div>
+    </template>
+
+    <!--H3 left aligned + body text, button-->
+    <template id="s_mail_block_h3_left_aligned_body_text_button" name="H3 vänster alignerad med brödtext och länkknapp">
+        <div class="div_snippets_h3_div" style="max-width:600px; padding: 24px;">
+            <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
+            letter-spacing: 0px; line-height: 30px; margin: 0; margin-bottom: 12px;">H3 - vänster alignerad</h3>
+            <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; letter-spacing: 0px;
+            line-height: 24px; margin: 0; margin-bottom: 24px;">Brödtext. Rekommendation max 600 tecken.</p>
+            <div style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px;
+            display: inline-block;">
+                <a href="https://arbetsformedlingen.se" style="text-decoration: none; font-size: 16px;
+                letter-spacing: 0px; line-height: 24px; font-family: 'Open Sans Semibold'; font-weight: 600;
+                color: rgb(0, 0, 90); display: inline-block;">Länkknapp</a>
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt=""
+                     width="9" height="15" style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;"/>
+            </div>
+        </div>
+    </template>
+
     <!-- Af Pre Header Snippet -->
     <template id="s_mail_block_pre_header_af" name="Af Pre Header - Gör smarta val till höstens utbildningar">
         <div style="padding:0;margin:0;-webkit-text-size-adjust:none;width:100%;" class="body-div">
@@ -151,136 +450,63 @@
         </table>
     </template>
 
-
     <!-- Af SideHeader Dark Snippet -->
-<template id="s_mail_block_header_af_dark" name="Sidhuvud - Mörk">
-    <div class="o_mail_snippet_general">
-        <table style="border-spacing:0;">
-            <tbody>
-                <tr>
-                    <td style="line-height:1px; padding:0;">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table style="width:100%;">
-            <tbody>
-                <tr>
-                    <th style="background-color:#00005a;">
-                        <table style="pointer-events:none; width:100%;">
-                            <tbody>
-                                <tr>
-                                    <th style="width:250px; padding:20px 0 20px 24px;">
-                                        <div id="align-wrapper" style="text-align:center;">
-                                            <a target="_blank"
-                                               href="https://arbetsformedlingen.se/">
-                                                <img src="/mass_mailing_editor_af/static/src/img/blocks/Af_logotyp_gron-vit_rgb.svg"
-                                                     style="display:block; width:238px; height:32px; color:#ffffff; pointer-events:none;"
-                                                     alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
-                                            </a>
-                                        </div>
-                                    </th>
-                                    <th style="width:50%;">
-                                        <table style="width:100%;">
-                                            <tbody>
-                                                <tr>
-                                                    <th style="vertical-align: middle; padding:0; float:right; padding:27px 24px 29px 0;">
-                                                        <div style="height:24px; font-size:16px; font-family:OpenSans-Semibold; pointer-events:none;
-                                                                font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;">
-                                                            <a href="#"
-                                                               style="color:#ffffff;"
-                                                               class="view_in_browser_url">
-                                                                <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right.svg"
-                                                                     style="width: 20px;height: 20.25px;" alt=""/>
-                                                                Visa i webbläsare
-                                                            </a>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </th>
-                </tr>
-            </tbody>
-        </table>
-        <table class="o_mail_table_styles" style="border-spacing:0;">
-            <tbody>
-                <tr>
-                    <td style="line-height:1px; padding:0;">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</template>
-  
+    <template id="s_mail_block_header_af_dark" name="Sidhuvud - Mörk">
+        <div class="div_sideheader_af_padding"
+             style="padding: 24px 24px 25px 24px; max-width: 600px; background-color: rgb(0, 0, 90); border-radius: 0px;">
+            <div id="align-wrapper" style="text-align:center; display: inline;">
+                <a target="_blank"
+                   href="https://arbetsformedlingen.se/">
+                    <img class="image_response_desktop"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/Af_logotyp_gron-vit_rgb.svg"
+                         style="max-width: 43%; pointer-events:none;"
+                         alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
+                    <img class="image_response_mobile"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/AF-icon-blue.png"
+                         style="width:31px; height:32px; pointer-events:none;"
+                         alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
+                </a>
+            </div>
+            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family: 'Open Sans Semibold'; pointer-events:none;
+                    font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;
+                    vertical-align: middle; color:#ffffff; display: inline; float: right; padding-top: 3px;">
+                <a href="#"
+                   style="color:#ffffff;"
+                   class="view_in_browser_url">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right.svg"
+                         style="width: 9px; height: 15px; margin-right: 8px;" alt=""/>Visa i webbläsare
+                </a>
+            </div>
+        </div>
+    </template>
+
     <!-- Af SideHeader Light Snippet -->
     <template id="s_mail_block_header_af_light" name="Sidhuvud - Ljus">
-        <div class="o_mail_snippet_general">
-            <table style="border-spacing:0;">
-                <tbody>
-                    <tr>
-                        <td style="line-height:1px; padding:0;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table style="width:100%;">
-                <tbody>
-                    <tr>
-                        <th style="background-color:#ffffff;">
-                            <table style="pointer-events:none; width:100%;">
-                                <tbody>
-                                    <tr>
-                                        <th style="width:250px; padding:20px 0 20px 24px;">
-                                            <div id="align-wrapper" style="text-align:center;">
-                                                <a target="_blank"
-                                                   href="https://arbetsformedlingen.se/">
-                                                    <img src="/mass_mailing_editor_af/static/src/img/blocks/Af_logotyp_rgb.svg"
-                                                         style="display:block; width:238px; height:32px; color:#ffffff; pointer-events:none;"
-                                                         alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
-                                                </a>
-                                            </div>
-                                        </th>
-                                        <th style="width:50%;">
-                                            <table style="width:100%;">
-                                                <tbody>
-                                                    <tr>
-                                                        <th style="vertical-align: middle; padding:0; float:right; padding:27px 24px 29px 0;">
-                                                            <div style="height:24px; font-size:16px; font-family:OpenSans-Semibold; pointer-events:none;
-                                                                font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;">
-                                                                <a href="#"
-                                                                   style="color:#1616b2;"
-                                                                   class="view_in_browser_url">
-                                                                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
-                                                                         style="width: 20px;height: 20.25px;" alt=""/>
-                                                                    Visa i webbläsare
-                                                                </a>
-                                                            </div>
-                                                        </th>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="o_mail_table_styles" style="border-spacing:0;">
-                <tbody>
-                    <tr>
-                        <td style="line-height:1px; padding:0;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="div_sideheader_af_padding"
+             style="padding: 24px 24px 25px 24px; max-width: 600px; background-color: #ffffff; border-radius: 0px;">
+            <div id="align-wrapper" style="text-align:center; display: inline;">
+                <a target="_blank"
+                   href="https://arbetsformedlingen.se/">
+                    <img class="image_response_desktop"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/Af_logotyp_rgb.svg"
+                         style="max-width: 43%; pointer-events:none;"
+                         alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
+                    <img class="image_response_mobile"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/AF-icon-white.png"
+                         style="width:31px; height:32px; pointer-events:none;"
+                         alt="Arbetsförmedlingen logotyp (Till startsidan)"/>
+                </a>
+            </div>
+            <div class="div_sideheader_af_padding_link" style="height:24px; font-size:16px; font-family: 'Open Sans Semibold'; pointer-events:none;
+                    font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;
+                    vertical-align: middle; color: #1616b2; display: inline; float: right; padding-top: 3px;">
+                <a href="#"
+                   style="color: #1616b2;"
+                   class="view_in_browser_url">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
+                         style="width: 9px; height: 15px; margin-right: 8px;" alt=""/>Visa i webbläsare
+                </a>
+            </div>
         </div>
     </template>
 
@@ -1073,12 +1299,364 @@
 
     <!--Toppyta mörk - Text-->
     <template id="s_mail_block_toppyta_mork_text" name="Toppyta mörk - Text">
-        <div class="snippets_div" style="max-width: 600px; background-color: rgb(0, 0, 90); padding: 24px 40px 16px 40px;">
+        <div class="snippets_div"
+             style="max-width: 600px; background-color: rgb(0, 0, 90); padding: 24px 40px 16px 40px;">
             <h1 class="snippets_h1_dark" style="line-height: 48px; font-family: 'Open Sans Semibold'; color: rgb(255, 255, 255);
-        font-size: 32px; font-weight: 600; letter-spacing: 0; margin:0; align:left; margin-bottom:16px;">JumboHeader</h1>
+        font-size: 32px; font-weight: 600; letter-spacing: 0; margin:0; align:left; margin-bottom:16px;">
+                JumboHeader</h1>
             <div style="width: 100px; height: 6px; background-color: rgb(149, 194, 62); border-radius: 0px; margin-bottom:16px;"/>
             <p style="color: rgb(255, 255, 255); font-size: 16px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 24px; margin:0;">
-                Preamble. Toppytan beskriver mailets tema och innehåll och används för att sätta tonen för mailet. Rekommendation 150-250 tecken.</p>
+                Preamble. Toppytan beskriver mailets tema och innehåll och används för att sätta tonen för mailet.
+                Rekommendation 150-250 tecken.</p>
+        </div>
+    </template>
+
+    <!--Toppyta ljus - Text-->
+    <template id="s_mail_block_toppyta_ljus_text" name="Toppyta ljus - Text">
+        <div class="snippets_div" style="padding: 13px 40px 27px 40px; max-width: 600px;">
+            <h1 class="snippets_h1_dark" style="color: rgb(51, 51, 51); font-size: 32px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+             line-height: 48px; align:left; margin:0; margin-bottom:16px;">Jumboheader</h1>
+            <div style="width: 100px; height: 6px; background-color: rgb(0, 0, 90); border-radius: 0px; margin-bottom:16px;"/>
+            <p style="color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 24px; margin:0;">
+                Preamble. Toppytan beskriver mailets tema och innehåll och används för att sätta tonen för mailet.
+                Rekommendation 150-250 tecken.</p>
+        </div>
+    </template>
+
+    <!--textmodul med H3 och länkknapp 2 kolumner-->
+    <template id="s_mail_block_toppyta_h3_button" name="H3 och länkknapp 2 kolumner">
+        <div class="snippets_div_2" style="max-width: 600px; background-color: white; padding: 24px;
+        overflow-wrap: break-word;">
+            <div class="snippets_div_column" style="display: inline-block; width: 47%; background-color: white; vertical-align: top; margin-right: 15px;">
+                <h3 style="color: rgb(51, 51, 51);
+                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                    line-height: 30px; margin: 0; margin-bottom: 16px;">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+                <div>
+                    <div style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px; display: inline-block;">
+                        <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';             font-weight: 600; color: rgb(0, 0, 90);" class="o_default_snippet_text">Länkknapp</a>
+                        <img class="snippets_div_top_surface" src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt="" style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;" width="8"/>
+                    </div>
+                </div>
+            </div>
+            <div class="snippets_div_column" style="display: inline-block; width: 47%; background-color: white; vertical-align: top;">
+                <h3 style="color: rgb(51, 51, 51);
+                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                    line-height: 30px; margin: 0; margin-bottom: 16px;">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                   letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+                <div>
+                    <div style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px; display: inline-block;">
+                        <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';             font-weight: 600; color: rgb(0, 0, 90);" class="o_default_snippet_text">Länkknapp</a>
+                        <img class="snippets_div_top_surface" src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt="" style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;" width="8"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--Toppyta Ljus - Sekundär knapp-->
+    <template id="s_mail_block_top_surface_light_secundary" name="Toppyta ljus - sekundärknapp">
+        <div style="max-width: 600px; padding: 40px 0px; text-align: center; background: rgb(255, 255, 255);">
+            <div style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px; display: inline-block;">
+                <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';
+            font-weight: 600; color: rgb(0, 0, 90);">Länkknapp</a>
+                <img class="snippets_div_top_surface"
+                     src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt=""
+                     width="8"
+                     style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;"/>
+            </div>
+        </div>
+    </template>
+
+    <!--Toppyta Ljus - Primär knapp-->
+    <template id="s_mail_block_top_surface_light_primary" name="Toppyta ljus - primärknapp">
+        <div style="max-width: 600px; padding: 40px 0px; text-align: center; background: rgb(255, 255, 255);">
+            <div style="border-radius: 30px; background: rgb(0, 0, 90); padding: 6px 20px; display: inline-block; background-color: #00005a">
+                <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';
+            font-weight: 600; color: rgb(255, 255, 255);">Länkknapp</a>
+                <img class="snippets_div_top_surface"
+                     src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right.svg" alt="" width="8"
+                     style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;"/>
+            </div>
+        </div>
+    </template>
+
+    <!--Toppyta Mörk - Primär knapp-->
+    <template id="s_mail_block_top_surface_dark_primary" name="Toppyta mörk - primärknapp">
+        <div style="max-width: 600px; padding: 40px 0px; text-align: center; background-color: rgb(0, 0, 90);">
+            <div style="border-radius: 30px; background: rgb(0, 0, 90); padding: 6px 20px; display: inline-block; background-color: #b7ee4a">
+                <a href="" style="text-decoration: none; font-size: 16px; font-family: 'Open Sans Semibold';
+            font-weight: 600; color: rgb(0, 0, 90);">Länkknapp</a>
+                <img class="snippets_div_top_surface"
+                     src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" alt=""
+                     width="8"
+                     style="margin-left: 20px; margin-right: 4px; margin-bottom: 5px;"/>
+            </div>
+        </div>
+    </template>
+
+    <!--textmodul med H3 och länkktext 2 kolumner-->
+    <template id="s_mail_block_toppyta_h3_text" name="H3 och länktext 2 kolumner">
+        <div class="snippets_div_two_column" style="max-width: 600px;background-color: white;
+        padding: 8px 24px 24px 24px;">
+            <div class="snippets_div_two_column_top" style="display:inline-block ; width:260px; background-color: white;
+            vertical-align: top; margin-right: 28px;">
+                <h3 style="width: 260px;color: rgb(51, 51, 51);
+                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                    line-height: 30px; margin: 0; margin-bottom: 12px;">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="width: 260px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+                <div style="color:#ffffff!important;">
+                    <div style="margin-left:4px">
+                        <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
+                             width="9" height="15" style="margin-right: 7px; margin-bottom: 3px;"/>
+                        <span href="this is the placeholder for link address" style="width: 68px; height: 24px;
+                       color: rgb(22, 22, 178); font-size: 16px; font-family: 'Open Sans Semibold';
+                       font-weight: 600; letter-spacing: 0px; line-height: 24px;text-decoration: underline;
+                       margin-left:10px">
+                            Länktext
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div style="display:inline-block ; width:260px; background-color: white; vertical-align: top;">
+                <h3 style="width: 260px;color: rgb(51, 51, 51);
+                        font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                        line-height: 30px; margin: 0; margin-bottom: 12px;">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="width: 260px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+                <div style="color:#ffffff!important;">
+                    <div style="margin-left:4px">
+                        <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
+                             width="9" height="15" style="margin-right: 7px; margin-bottom: 3px;"/>
+                        <span href="this is the placeholder for link address" style="width: 68px; height: 24px;
+                           color: rgb(22, 22, 178); font-size: 16px; font-family: 'Open Sans Semibold';
+                           font-weight: 600; letter-spacing: 0px; line-height: 24px;text-decoration: underline;
+                           margin-left:10px">
+                            Länktext
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--textmodul med H3 och brödtext med check-ikon-->
+    <template id="s_mail_block_toppyta_h3_checkikon" name="H3 och brödtext med check-ikon">
+        <div class="snippets_div" style="max-width: 600px;background-color: white; padding: 8px 24px 0px 34px;">
+            <img src="/mass_mailing_editor_af/static/src/img/blocks/ikoncheck.svg" style="width: 26px;height: 20px; margin-top:10px; float: left;"/>
+            <div style="background-color: white; vertical-align: top; margin-left:60px">
+                <h3 style="color: rgb(51, 51, 51); font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 30px;">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans'; letter-spacing: 0px; line-height: 24px;">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+            </div>
+        </div>
+    </template>
+  
+    <!--textmodul med H3 och brödtext med check-ikon och textlänk-->
+    <template id="s_mail_block_toppyta_h3_checkikon_textlink" name="H3 och brödtext med check-ikon och textlänk">
+        <div class="snippets_div" style="max-width: 600px;background-color: white; padding: 24px 50px 24px 34px;">
+            <img src="/mass_mailing_editor_af/static/src/img/blocks/ikoncheck.svg" style="width: 26px;height: 20px; margin-top:10px; float: left;"/>
+            <div style="background-color: white; vertical-align: top; margin-left:60px">
+                <h3 style="color: rgb(51, 51, 51); font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px; line-height: 30px;">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans'; letter-spacing: 0px; line-height: 24px;">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+            </div>
+            <div style="color:#ffffff!important; margin-left:60px" >
+                <div style="margin-left:4px"><img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" width="8"/>
+                    <span href="this is the placeholder for link address" style="width: 68px; height: 24px;
+                       color: rgb(22, 22, 178); font-size: 16px; font-family: 'Open Sans Semibold';
+                       font-weight: 600; letter-spacing: 0px; line-height: 24px;text-decoration: underline;
+                       margin-left:10px">
+                        Länktext
+                    </span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--textmodul med H3 medium och knapplänk -->
+    <template id="s_mail_block_toppyta_medium_button" name="Innehåll - Medium + Knapplänk">
+        <div class="snippets_div_medium_outer" style="max-width: 600px; background-color: white;
+        padding: 8px 24px 24px 24px; ">
+            <div class="snippets_div_medium" style="display: inline-block; width: 260px; background-color: white;
+            vertical-align: top; margin-right: 23px;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Platshållare260x173.svg"
+                     class="snippets_div_medium_img" style="width: 260px; height: 173px; background: rgb(239, 239, 239);
+                     border-radius: 0px;"/>
+                <h3 style="width: 260px; color: rgb(51, 51, 51); margin-top: 24px; margin-bottom: 12px;
+                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                    line-height: 30px;">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="width: 260px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+                <div class="snippets_div_content_big_button" style="border-radius: 30px;
+                border: 2px solid rgb(0, 0, 90); padding: 6px 20px; display: inline-block; ">
+                    <a href="#" style="text-decoration: none; font-size: 16px; letter-spacing: 0px; line-height: 24px;
+                    font-family: 'Open Sans Semibold'; font-weight: 600; color: rgb(0, 0, 90);
+                    display: inline-block;">Länkknapp</a>
+                    <img alt="" width="9" height="15"
+                         style="margin-left: 20px; margin-right: 4px; margin-top: 5px; float: right;"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" />
+                </div>
+            </div>
+            <div class="snippets_div_medium" style="display:inline-block ; width:260px; background-color: white;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Platshållare260x173.svg"
+                     class="snippets_div_medium_img" style="width: 260px; height: 173px; background: rgb(239, 239, 239);
+                     border-radius: 0px;"/>
+                <h3 style="width: 260px; color: rgb(51, 51, 51); margin-top: 24px; margin-bottom: 12px;
+                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                    line-height: 30px;">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="width: 260px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                   letter-spacing: 0px; line-height: 24px;  margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+                <div class="snippets_div_content_big_button" style="border-radius: 30px;
+                border: 2px solid rgb(0, 0, 90); padding: 6px 20px; display: inline-block; ">
+                    <a href="#" style="text-decoration: none; font-size: 16px; letter-spacing: 0px; line-height: 24px;
+                    font-family: 'Open Sans Semibold'; font-weight: 600; color: rgb(0, 0, 90); display: inline-block;">Länkknapp</a>
+                    <img alt="" width="9" height="15"
+                         style="margin-left: 20px; margin-right: 4px; margin-top: 5px; float: right;"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" />
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--textmodul med H3 small och knapplänk -->
+    <template id="s_mail_block_toppyta_small_button" name="Innehåll - Small + Knapplänk">
+        <div class="snippets_div_small_outer" style="max-width: 600px;background-color: white; padding: 16px 24px 16px 24px; margin: 0;">
+            <div class="snippets_div_small_img_container" style="display:inline-block ; width:200px; background-color: white; vertical-align: top;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Platshållare200x300.svg" style="width: 200px; height: 300px; background: rgb(239, 239, 239); border-radius: 0px;"/>
+            </div>
+            <div class="snippets_div_small" style="display:inline-block ; width:260px; background-color: white; padding-left: 24px;">
+                <h3 style="width: 328px; color: rgb(51, 51, 51);
+                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                    line-height: 30px; margin: 0; margin-bottom: 12px;">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="width: 328px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                   letter-spacing: 0px; line-height: 24px; margin: 0; margin-bottom: 24px;">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+                <div class="snippets_div_content_small_button" style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px;
+                    display: inline-block; ">
+                    <a href="#" style="text-decoration: none; font-size: 16px; letter-spacing: 0px; line-height: 24px;
+                    font-family: 'Open Sans Semibold'; font-weight: 600; color: rgb(0, 0, 90); display: inline-block;">Länkknapp</a>
+                    <img alt="" width="9" height="15"
+                         style="margin-left: 20px; margin-right: 4px; margin-top: 5px; float: right;"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" />
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--textmodul med H3 och brödtext och textlänk-->
+    <template id="s_mail_block_top_innehall_medium_lanktext" name="Innehåll - Medium + Länktext">
+        <div class="snippets_div_medium_outer" style="max-width: 600px; padding: 8px 24px 32px 24px; margin: 0;">
+            <div class="snippets_div_medium" style="display: inline-block; margin-right: 23px;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Platshallare_medium_lanktext.svg"
+                     class="snippets_div_medium_img" alt=""
+                     style="display:block; border-radius: 0px; background-color: #efefef; margin-bottom:24px;" width="260" height="173"/>
+                <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
+                line-height: 30px; letter-spacing: 0px; max-width: 260px; margin-bottom: 12px;">H3 - vänster
+                    alignerad</h3>
+                <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; line-height: 24px;
+                    letter-spacing: 0; margin: 0 0 24px 0; max-width: 260px;">Brödtext. Rekommendation 150-200
+                    tecken.</p>
+                <a href="#"
+                   style="color: #1616b2; font-size:16px; font-family:'Open Sans Semibold'; pointer-events:none;
+                    font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;"
+                   class="view_in_browser_url">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
+                         style="width: 9px; height: 15px; margin-right: 8px;" alt=""/>Länktext
+                </a>
+            </div>
+            <div class="snippets_div_medium" style="display: inline-block; vertical-align: top;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Platshallare_medium_lanktext.svg"
+                     class="snippets_div_medium_img" alt=""
+                     style="display:block; border-radius: 0px; background-color: #efefef; margin-bottom:24px;" width="260" height="173"/>
+                <h3 style="color: rgb(51, 51, 51); font-family: 'Open Sans Semibold'; font-size: 20px; font-weight: 600;
+                    line-height: 30px; letter-spacing: 0px; max-width: 260px; margin-bottom: 12px;">H3 - vänster
+                    alignerad</h3>
+                <p style="color: rgb(51, 51, 51); font-family: 'Open Sans'; font-size: 16px; line-height: 24px;
+                    letter-spacing: 0; margin: 0 0 24px 0; max-width: 260px;">Brödtext. Rekommendation 150-200
+                    tecken.</p>
+                <a href="#"
+                   style="color: #1616b2; font-size:16px; font-family: 'Open Sans Semibold'; pointer-events:none;
+                    font-weight:600; text-decoration:underline; letter-spacing:0px; line-height:24px;"
+                   class="view_in_browser_url">
+                    <img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg"
+                         style="width: 9px; height: 15px; margin-right: 8px;" alt=""/>Länktext
+                </a>
+            </div>
+        </div>
+    </template>
+  
+    <!--textmodul med H3 small och textlänk och knapplänk -->
+    <template id="s_mail_block_toppyta_small_textlink_button" name="Innehåll - Small + Länktext + Knapplänk">
+        <div class="snippets_div_small_outer" style="max-width: 600px;background-color: white; padding: 16px 24px 16px 24px;">
+            <div class="snippets_div_small_img_container" style="display:inline-block; background-color: white; vertical-align: top; margin-right:24px;">
+                <img src="/mass_mailing_editor_af/static/src/img/blocks/Platshållare200x300.svg" class="snippets_div_small_img" style="width: 200px; height: 300px; background: rgb(239, 239, 239); border-radius: 0px;"/>
+            </div>
+            <div class="snippets_div_small" style="display:inline-block ; width:260px; background-color: white;">
+                <h3 style="width: 328px; color: rgb(51, 51, 51);
+                    font-size: 20px; font-family: 'Open Sans Semibold'; font-weight: 600; letter-spacing: 0px;
+                    line-height: 30px; ">
+                    H3 - vänster alignerad
+                </h3>
+                <p style="width: 328px; color: rgb(51, 51, 51); font-size: 16px; font-family: 'Open Sans';
+                   letter-spacing: 0px; line-height: 24px; ">
+                    Brödtext. Rekommendation 150-250 tecken.
+                </p>
+                <div style="color:#ffffff!important; margin-bottom: 24px;" >
+                    <div><img src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light.svg" width="9" height="15"/>
+                        <span href="this is the placeholder for link address" style="width: 304px; height: 24px;
+                       color: rgb(22, 22, 178); font-size: 16px; font-family: 'Open Sans Semibold';
+                       font-weight: 600; letter-spacing: 0px; line-height: 24px;text-decoration: underline;
+                       ">
+                            Läs mer om yrket
+                        </span>
+                    </div>
+                </div>
+                <div class="snippets_div_content_small_button" style="border-radius: 30px; border: 2px solid rgb(0, 0, 90); padding: 6px 20px;
+                    display: inline-block;">
+                    <a href="#" style="text-decoration: none; font-size: 16px; letter-spacing: 0px; line-height: 24px;
+                    font-family: 'Open Sans Semibold'; font-weight: 600; color: rgb(0, 0, 90); display: inline-block;">Boka in studiebesök</a>
+                    <img alt="" width="9" height="15"
+                         style="margin-left: 20px; margin-right: 4px; margin-top: 5px; float: right;"
+                         src="/mass_mailing_editor_af/static/src/img/blocks/IkonerChevron_Right_light(darker).svg" />
+                </div>
+            </div>
         </div>
     </template>
 
@@ -1115,9 +1693,35 @@
                 Af Snippets
             </div>
             <div class="o_panel_body">
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_top_innehall_medium_lanktext"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_left_aligned_body_text_link"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h4_personal_portrait"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_content_big"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_gray_background_top_border"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_white_background_star_icon"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_white_background_link_star_icon"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_dark_primary"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_green_background_light_bulb_icon"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_light_primary"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_top_surface_light_secundary"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_bullet_list"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_medium_button"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_gray_background_star_icon"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_small_button"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_small_textlink_button"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_h3_text"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_h3_checkikon_textlink"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_left_aligned_body_text"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_h3_button"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_h3_checkikon"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h3_left_aligned_body_text_button"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_mork_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_mork_standing"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_footer_dark"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_left_aligned_body_text"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_left_aligned"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_h2_centered"/>
+                <t t-snippet="mass_mailing_editor_af.s_mail_block_toppyta_ljus_text"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_pre_header_af"
                    t-thumbnail="/mass_mailing_editor_af/static/src/img/blocks/pre_header.png"/>
                 <t t-snippet="mass_mailing_editor_af.s_mail_block_header_af_with_view_in_browser"
@@ -1157,5 +1761,4 @@
             </div>
         </xpath>
     </template>
-
 </odoo>
