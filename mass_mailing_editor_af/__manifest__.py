@@ -1,7 +1,7 @@
 {
     "name": "AF Mass Mailing Snippets",
     "summary": "This version is used to customize the Odoo standard mail body widgets in accordance to 'Af' mail template.",
-    "version": "12.0.0.5.7",
+    "version": "12.0.0.5.54",
     "category": "Email Marketing",
     "description": """
     v12.0.0.0.1 AFC-2067  Added snippets in Mass mailing body.\n
@@ -32,6 +32,54 @@
     v12.0.0.5.5 AFC-3560 Bug fix Removed debugging print.\n
     v12.0.0.5.6 AFC-3422 New snippet created(id=s_mail_block_toppyta_mork_text)\n
     v12.0.0.5.7 AFC-3430 Create new snippet(id=s_mail_block_h3_left_aligned_body_text)\n
+    v12.0.0.5.8 AFC-3421 New snippet created(id=s_mail_block_toppyta_ljus_text)\n
+    v12.0.0.5.9 AFC-3549 Made snippets responsive(id=s_mail_block_header_af_dark, id=s_mail_block_header_af_light).\n
+    v12.0.0.5.10 AFC-3427 Create new snippet(id=s_mail_block_h2_centered) \n
+    v12.0.0.5.11 AFC-3428 Create new snippet(id=s_mail_block_h2_left_aligned)\n
+    v12.0.0.5.12 AFC-3429 Create new snippet(id=s_mail_block_h2_left_aligned_body_text)\n
+    v12.0.0.5.13 AFC-3462 Create new snippet(id=s_mail_block_h3_left_aligned_body_text)\n
+    v12.0.0.5.14 AFC-3457 Create new snippet(id=s_mail_block_bullet_list)\n
+    v12.0.0.5.15 AFC-3425 Create new snippet(id=s_mail_block_top_surface_light_secundary)\n
+    v12.0.0.5.16 AFC-3431 Create new snippet(id=s_mail_block_toppyta_h3_button)\n
+    v12.0.0.5.17 AFC-3423 Create new snippet(id=s_mail_block_top_surface_light_primary)\n
+    v12.0.0.5.18 AFC-3432 Create new snippet(id=s_mail_block_toppyta_h3_text)\n
+    v12.0.0.5.19 AFC-3448 Create new snippet(id=s_mail_block_toppyta_h3_checkikon)\n
+    v12.0.0.5.20 AFC-3424 Create new snippet(id=s_mail_block_top_surface_dark_primary)\n
+    v12.0.0.5.21 AFC-3460 Create new snippet(id=s_mail_block_h3_gray_background_star_icon)\n
+    v12.0.0.5.22 AFC-3452 Create new snippet(id=s_mail_block_h3_white_background_link_star_icon)\n
+    v12.0.0.5.23 AFC-3451 Create new snippet(id=s_mail_block_h3_white_background_star_icon)\n
+    v12.0.0.5.24 AFC-3449 Create new snippet(id=s_mail_block_toppyta_h3_checkikon_testlink)\n
+    v12.0.0.5.25 AFC-3461 Create new snippet(id=s_mail_block_h3_gray_background_top_border)\n
+    v12.0.0.5.26 AFC-3572 Fix snippet id=s_mail_block_toppyta_h3_button \n
+    v12.0.0.5.27 AFC-3565 Fix header snippets \n
+    v12.0.0.5.28 AFC-3459 Create new snippet(id=s_mail_block_h3_green_background_light_bulb_icon)\n
+    v12.0.0.5.29 AFC-3455 Create new snippet (id=s_mail_block_h4_personal_portrait) \n
+    v12.0.0.5.30 AFC-3578 Fix snippet id=s_mail_block_h3_gray_background_star_icon\n
+    v12.0.0.5.31 AFC-3579 Fix snippet id=s_mail_block_h3_gray_background_top_border \n
+    v12.0.0.5.32 AFC-3580 Fix snippet id=s_mail_block_h3_white_background_link_star_icon \n
+    v12.0.0.5.33 AFC-3581 Fix snippet id=s_mail_block_h3_white_background_star_icon \n
+    v12.0.0.5.34 AFC-3434 Create snippet id=s_mail_block_h3_left_aligned_body_text_link\n
+    v12.0.0.5.35 AFC-3433 Create new snippet(id=s_mail_block_h3_left_aligned_body_text_button)\n
+    v12.0.0.5.36 AFC-3585 Fix snippet id=s_mail_block_h3_gray_background_star_icon\n
+    v12.0.0.5.37 AFC-3586 Fix snippet id=s_mail_block_h3_gray_background_top_border \n
+    v12.0.0.5.38 AFC-3587 Fix snippet id=s_mail_block_h3_green_background_light_bulb_icon\n
+    v12.0.0.5.39 AFC-3453 Create new snippet(id=s_mail_block_top_innehall_medium_lanktext)\n
+    v12.0.0.5.40 AFC-3450 Create new snippet(id=s_mail_block_content_big)\n
+    v12.0.0.5.41 AFC-3456 Create new snippet(id=s_mail_block_toppyta_small_button)\n
+    v12.0.0.5.42 AFC-3454 Create new snippet(id=s_mail_block_toppyta_medium_button)\n
+    v12.0.0.5.43 AFC-3587 Fix snippet id=s_mail_block_top_innehall_medium_lanktext\n
+    v12.0.0.5.44 AFC-3583 Fix snippet id=s_mail_block_toppyta_h3_text\n
+    v12.0.0.5.45 AFC-3605 Fix snippet id=s_mail_block_h3_left_aligned_body_text_link\n
+    v12.0.0.5.46 AFC-3458 Create new snippet(id=s_mail_block_toppyta_small_textlink_button) \n
+    v12.0.0.5.47 AFC-3606 Fix snippet headers\n
+    v12.0.0.5.48 AFC-3607 Fix snippet chevron icon\n
+    v12.0.0.5.49 AFC-3608 Fix snippet chevron icon\n
+    v12.0.0.5.50 AFC-3609 Fix snippet chevron icon\n
+    v12.0.0.5.51 AFC-3611 Fix snippet id=s_mail_block_toppyta_medium_button\n
+    v12.0.0.5.52 AFC-3615 Fix snippet id=s_mail_block_toppyta_small_textlink_button\n
+    v12.0.0.5.53 AFC-3610 Fix snippet chevron icon and placement\n
+    v12.0.0.5.54 AFC-3426 Create new snippet(id=s_mail_block_toppyta_mork_standing) \n
+    
     """,
     "license": "AGPL-3",
     "maintainer": "Vertel AB",
