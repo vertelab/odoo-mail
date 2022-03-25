@@ -219,15 +219,21 @@
                 }
                 .snippets_div_content_small_button {
                     display: block !important;
+                    margin-bottom:24px;
+                    width: 100% !important;
                 }
                 .snippets_div_small_img_container {
                     width: 100% !important;
+                    display: block !important;
+                    margin: 0 auto !important;
                 }
                 .snippets_div_small_img_container img {
                     display: block !important;
                     margin: 0 auto !important;
                 }
-
+                .snippets_div_dark_outer{
+                    padding: 16px 32px 16x 32px !important;
+                }
                 }
             </style>
         </xpath>
