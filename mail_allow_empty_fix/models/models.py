@@ -3,11 +3,12 @@
 from odoo import models, fields, api
 import lxml
 from lxml import etree
+import logging
+_logger = logging.getLogger(__name__)
 
 
 
-
-class MailThread(models.Model):
+class MailThread(models.AbstractModel):
     _inherit="mail.thread"
 
 
@@ -17,11 +18,7 @@ class MailThread(models.Model):
              return body, attachments
         try:
             root = lxml.html.fromstring(body)
-        except ValueError:
-            # In case the email client sent XHTML, fromstring will fail because 'Unicode strings
-            # with encoding declaration are not supported'.
-            root = lxml.html.fromstring(body.encode('utf-8'))
         except etree.ParserError:
-            body += "<pre></pre>"
+            return " ", attachments
         super()._message_extract_payload_postprocess(message, body, attachments)
 
