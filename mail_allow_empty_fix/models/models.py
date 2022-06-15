@@ -22,3 +22,4 @@ class MailThread(models.AbstractModel):
             return " ", attachments
         return super()._message_extract_payload_postprocess(message, body, attachments)
 
+
