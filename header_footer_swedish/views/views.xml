@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="header_footer_swedish.list">
+      <field name="name">header_footer_swedish list</field>
+      <field name="model">header_footer_swedish.header_footer_swedish</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="header_footer_swedish.action_window">
+      <field name="name">header_footer_swedish window</field>
+      <field name="res_model">header_footer_swedish.header_footer_swedish</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="header_footer_swedish.action_server">
+      <field name="name">header_footer_swedish server</field>
+      <field name="model_id" ref="model_header_footer_swedish_header_footer_swedish"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="header_footer_swedish" id="header_footer_swedish.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="header_footer_swedish.menu_1" parent="header_footer_swedish.menu_root"/>
+    <menuitem name="Menu 2" id="header_footer_swedish.menu_2" parent="header_footer_swedish.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="header_footer_swedish.menu_1_list" parent="header_footer_swedish.menu_1"
+              action="header_footer_swedish.action_window"/>
+    <menuitem name="Server to list" id="header_footer_swedish" parent="header_footer_swedish.menu_2"
+              action="header_footer_swedish.action_server"/>
+-->
+  </data>
+</odoo>
