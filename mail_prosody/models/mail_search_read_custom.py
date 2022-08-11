@@ -16,4 +16,5 @@ class TestSearchRead(models.Model):
 
     def search_read_custom(self, domain=None, fields=None, offset=0, limit=None, order=None):
         res = super().search_read(domain, fields, offset, limit, order)
+        _logger.warn(f"{res=}")
         return res 
