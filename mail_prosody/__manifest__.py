@@ -28,8 +28,9 @@
     'description': """Makes it easy to chat with prosody""",
     'author': 'Vertel AB',
     'website': 'https://vertel.se',
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail', 'mail_bot'],
     'data': [
+        "views/mail_channel_view.xml"
     ],
     "external_dependencies": {
         'python': ['odoorpc'],

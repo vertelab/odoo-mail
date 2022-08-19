@@ -16,8 +16,6 @@ class MailMessage(models.Model):
 
     @api.model
     def create(self, vals):
-        print("+++", vals)
-
         res = super(MailMessage, self).create(vals)
 
         # channel_id = vals.get("id")
