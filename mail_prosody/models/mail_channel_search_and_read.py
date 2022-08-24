@@ -26,7 +26,7 @@ class ChannelSearchRead(models.Model):
     def search_custom(self, *args, offset=0, limit=None, order=None, count=False):
         new_args =[]
         for arg in args:
-            new_arg=[]
+            new_arg = []
             for a in arg:
                 new_arg.append(int(a) if a.isdigit() else a)
             new_args.append(new_arg)
@@ -46,32 +46,17 @@ class ChannelSearchRead(models.Model):
                                    record_name=record_name, **kwargs)
 
         if res.id and not kwargs.get("prosody"):
-            url = "https://lvh.me:5281/rest"
+            url = self.env['ir.config_parameter'].get_param('prosody_url', 'https://lvh.me:5281/rest')
             if res.channel_ids.mapped('channel_partner_ids'):
-
                 recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
-                data = {
-                    'body': body,
-                    'kind': 'message',
-                    # 'from': res.author_id.email,
-                    'id': 'ODOOODOO' + str(res.id),
-                }
+                data = {'body': body, 'kind': 'message', 'id': 'ODOOODOO' + str(res.id)}
                 if self.public == 'groups':
-                    data.update({
-                        'to': self.channel_email,
-                        'type': 'groupchat',
-                        'from': 'admin@lvh.me'
-                    })
+                    data.update({'to': self.channel_email, 'type': 'groupchat'})
                 else:
-                    data.update({
-                        'to': recipient_id[0].email if recipient_id else False,
-                        'type': 'chat'
-                    })
-                print(data)
+                    data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
                 headers = {'Content-type': 'application/json'}
-                request_post = requests.post(url, json=data, headers=headers, verify=False, auth=(
+                requests.post(url, json=data, headers=headers, verify=False, auth=(
                     self.env.user.login, self.env.user.xmpp_password))
-                print(request_post.text)
         return res
 
     @api.model
@@ -111,45 +96,67 @@ class ChannelSearchRead(models.Model):
     def _create_channel(self, channel_name, partner_ids, public='private', channel_type='chat'):
         channel_id = self.env[self._name].create({
             'name': channel_name,
-            'channel_partner_ids': [(4, partner_id.id) for partner_id in partner_ids],
+            'channel_partner_ids': [(4, partner_id.id) for partner_id in partner_ids if partner_id],
             'public': public,
             'channel_type': channel_type
         })
         return channel_id
 
     def _group_chat(self, vals):
-        if "invited" or "declined" in vals.get('text_body'):
+        if vals.get('message_type') == "invitation":
             channel_id = self._group_invitation_handler(vals)
         else:
             channel_id = self._group_message_handler(vals)
         return channel_id
 
     def _group_invitation_handler(self, vals):
-        emails = re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", vals.get("text_body"))
-        channel_name = emails[-1].split("@")[0]  # channel alias seems in the last position
+        # {'recipient': 'demo@lvh.me', 'sender': 'vertel@chat.lvh.me', 'text_body': 'vertel@chat.lvh.me/admin invited you to the room vertel@chat.lvh.me', 'message_type': 'invitation'}
+
+        # {'recipient': 'admin@lvh.me/gajim.CGXXZJRW', 'sender': 'vertel@chat.lvh.me', 'text_body': 'demo@lvh.me/gajim.NUMVO7DO declined your invite to the room vertel@chat.lvh.me', 'message_type': 'invitation'}
+
+        status = "invited"
+
+        channel_name = vals.get('sender').split("@")[0]   # vertel@lvh.me ==> vertel
         channel_id = self.env[self._name].search([('name', '=', channel_name)])
 
-        partner_user_login = emails[0].split("@")[0]  # the invitee is in the first position
-        partner_id = self.env['res.users'].search([('login', '=', partner_user_login)], limit=1).mapped('partner_id')
+        if "invited" in vals.get('text_body'):
+            invitee_jid = vals.get('recipient').split("@")[0]   # possible invitee demo@lvh.me ==> demo
+            moderator_jid = re.findall(r'/([a-z]+)', vals.get("text_body"))
+        else:
+            status = "declined"
+            invitee_jid = re.findall(r'[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+', vals.get("text_body"))[0].split("@")[0]
+            moderator_jid = re.findall(r'[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+', vals.get("recipient"))[0].split("@")[0]
 
-        if channel_id and partner_id and (partner_id not in channel_id.mapped('channel_partner_ids')) and "invited" in vals.get('text_body'):
-            channel_id.write({
-                'channel_partner_ids': [(4, partner_id.id)],
-            })
-        if channel_id and partner_id and (partner_id in channel_id.mapped('channel_partner_ids')) and "declined" in vals.get('text_body'):
-            channel_id.write({
-                'channel_partner_ids': [(3, partner_id.id)],
-            })
+        moderator_partner_id = self._add_moderator_to_channel(moderator_jid=moderator_jid, channel_id=channel_id)
+        invitee_partner_id = self._update_channel_with_other_participant(
+            invitee_jid=invitee_jid, channel_id=channel_id, status=status
+        )
 
         if not channel_id:
             channel_id = self._create_channel(
                 channel_name=channel_name,
-                partner_ids=[partner_id] if partner_id else False,
+                partner_ids=[moderator_partner_id, invitee_partner_id],
                 public='groups',
                 channel_type='channel'
             )
             channel_id.write({'channel_email': vals.get('sender')})
         return channel_id
+
+    def _add_moderator_to_channel(self, moderator_jid, channel_id):
+        moderator_partner_id = self.env['res.users'].search([
+            ('login', '=', moderator_jid)], limit=1).mapped('partner_id')
+        if channel_id and moderator_partner_id not in channel_id.mapped('channel_partner_ids'):
+            channel_id.write({'channel_partner_ids': [(4, moderator_partner_id.id)]})
+        return moderator_partner_id
+
+    def _update_channel_with_other_participant(self, invitee_jid, channel_id, status="invited"):
+        participant_partner_id = self.env['res.users'].search([
+            ('login', '=', invitee_jid)], limit=1).mapped('partner_id')
+        if channel_id and (participant_partner_id not in channel_id.mapped('channel_partner_ids')) and status == "invited":
+            channel_id.write({'channel_partner_ids': [(4, participant_partner_id.id)]})
+        if channel_id and (participant_partner_id in channel_id.mapped('channel_partner_ids')) and status == "declined":
+            channel_id.write({'channel_partner_ids': [(3, participant_partner_id.id)]})
+        return participant_partner_id
 
     def _group_message_handler(self, contact):
         sender = contact.get('sender').split('/')[1]
@@ -169,20 +176,20 @@ class ChannelSearchRead(models.Model):
                 channel_type='channel'
             )
             channel_id.write({'channel_email': contact.get('recipient')})
-        print(channel_id.name)
         return channel_id
 
     def _cleanup_p2p_contact(self, emails):
         cleaned_email = []
         for email in emails:
             cleaned_email.append(email.split('/')[0])
-            #email.split('/')
         return cleaned_email
 
-    def _cleanup_group_contact(self, emails):
-        cleaned_email = []
-        for email in emails:
-            cleaned_email.append(email.split('/')[1])  # to='python@chat.lvh.me' from='python@chat.lvh.me/admin'
-            #email.split('/')
-        return cleaned_email
-
+    @api.model
+    def message_post_test(self, *args):
+        for arg in args:
+            if channel := self.env["mail.channel"].browse(arg.get('id')):
+                _logger.error(f"{channel=}")
+                new_arg = {a: arg[a] for a in arg}
+                new_arg["prosody"] = True
+                message_post = channel.message_post(**new_arg).id
+                return message_post

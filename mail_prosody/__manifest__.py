@@ -30,7 +30,8 @@
     'website': 'https://vertel.se',
     'depends': ['base', 'mail', 'mail_bot'],
     'data': [
-        "views/mail_channel_view.xml"
+        "data/ir_config_parameter.xml",
+        "views/mail_channel_view.xml",
     ],
     "external_dependencies": {
         'python': ['odoorpc'],

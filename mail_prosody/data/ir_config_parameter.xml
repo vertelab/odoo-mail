@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="param_prosody_endpoint" model="ir.config_parameter">
+            <field name="key">prosody_url</field>
+            <field name="value">https://lvh.me:5281/rest</field>
+        </record>
+    </data>
+</odoo>
