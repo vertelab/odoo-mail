@@ -50,13 +50,16 @@ class ChannelSearchRead(models.Model):
             if res.channel_ids.mapped('channel_partner_ids'):
                 recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
                 data = {'body': body, 'kind': 'message', 'id': 'ODOOODOO' + str(res.id)}
-                if self.public == 'groups':
-                    data.update({'to': self.channel_email, 'type': 'groupchat'})
-                else:
-                    data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
-                headers = {'Content-type': 'application/json'}
-                requests.post(url, json=data, headers=headers, verify=False, auth=(
-                    self.env.user.login, self.env.user.xmpp_password))
+                try:
+                    if self.public == 'groups':
+                        data.update({'to': self.channel_email, 'type': 'groupchat'})
+                    else:
+                        data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
+                    headers = {'Content-type': 'application/json'}
+                    js = requests.post(url, json=data, headers=headers, verify=False, auth=(
+                        self.env.user.login, self.env.user.xmpp_password))
+                except Exception as e:
+                    raise ValidationError(_(e))
         return res
 
     @api.model
@@ -110,10 +113,6 @@ class ChannelSearchRead(models.Model):
         return channel_id
 
     def _group_invitation_handler(self, vals):
-        # {'recipient': 'demo@lvh.me', 'sender': 'vertel@chat.lvh.me', 'text_body': 'vertel@chat.lvh.me/admin invited you to the room vertel@chat.lvh.me', 'message_type': 'invitation'}
-
-        # {'recipient': 'admin@lvh.me/gajim.CGXXZJRW', 'sender': 'vertel@chat.lvh.me', 'text_body': 'demo@lvh.me/gajim.NUMVO7DO declined your invite to the room vertel@chat.lvh.me', 'message_type': 'invitation'}
-
         status = "invited"
 
         channel_name = vals.get('sender').split("@")[0]   # vertel@lvh.me ==> vertel
@@ -159,11 +158,17 @@ class ChannelSearchRead(models.Model):
         return participant_partner_id
 
     def _group_message_handler(self, contact):
-        sender = contact.get('sender').split('/')[1]
-        partner_id = self.env['res.users'].search([('login', '=', sender)], limit=1).mapped('partner_id')
+        if contact.get('recipient'):
+            channel_name = contact.get('recipient').split('@')[0]
+            channel_alias = contact.get('recipient')
+        else:
+            channel_alias = re.findall(r'[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+', contact.get('sender'))[0]
+            channel_name = channel_alias.split("@")[0]
+        sender_jid = re.findall(r'/([a-z]+)', contact.get('sender'))
+        partner_id = self.env['res.users'].search([('login', '=', sender_jid)], limit=1).mapped('partner_id')
 
-        channel_name = contact.get('recipient').split('@')[0]
         channel_id = self.env[self._name].search([('name', '=', channel_name)])
+
         if channel_id and (partner_id not in channel_id.mapped('channel_partner_ids')):
             channel_id.write({
                 'channel_partner_ids': [(4, partner_id.id)],
@@ -175,7 +180,7 @@ class ChannelSearchRead(models.Model):
                 public='groups',
                 channel_type='channel'
             )
-            channel_id.write({'channel_email': contact.get('recipient')})
+        channel_id.write({'channel_email': channel_alias})
         return channel_id
 
     def _cleanup_p2p_contact(self, emails):
