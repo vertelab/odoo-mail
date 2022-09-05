@@ -34,7 +34,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class MessageArchive(models.Model):
-    _name = 'mail.message'
+    _inherit = 'mail.message'
     _description = 'Mail Message'
 
     active = fields.Boolean(string='Active')

@@ -5,7 +5,7 @@
         <field name="model">mail.message</field>
         <field name="inherit_id" ref="mail.mail_message_view_form" />
         <field name="arch" type="xml">
-            <field name="partner_id" position="after">
+            <field name="parent_id" position="after">
                 <field name="active" />
             </field>
         </field>
