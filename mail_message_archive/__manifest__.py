@@ -25,7 +25,9 @@
     # Version ledger: 14.0 = Odoo version. 1 = Major. Non regressionable code. 2 = Minor. New features that are regressionable. 3 = Bug fixes
     'summary': 'Makes it easy to archive information.',
     'category': 'Administration',
-    'description': 'Extend mail.message with an active-attribute.',
+    'description': """
+    Extend mail.message with an active-attribute.
+    """,
     #'sequence': '1',
     'author': 'Vertel AB',
     'website': 'https://vertel.se/apps/odoo-mail/mail_message_archive',
