@@ -1,1 +1,4 @@
-from . import mail_channel_search_and_read, mail_create_search_read, mail_post_message, mail_search_read_custom
+from . import mail_channel_search_and_read
+from . import mail_create_search_read
+from . import mail_search_read_custom
+from . import res_users

@@ -33,6 +33,7 @@ import pytz
 import logging
 _logger = logging.getLogger(__name__)
 
+
 class MessageArchive(models.Model):
     _inherit = 'mail.message'
     _description = 'Mail Message'
