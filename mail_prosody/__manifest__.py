@@ -22,21 +22,19 @@
 {
     'name': 'Mail: Prosody',
     'version': '14.0.0.0.0',
-    # Version ledger: 14.0 = Odoo version. 1 = Major. Non regressionable code. 2 = Minor. New features that are regressionable. 3 = Bug fixes
     'summary': 'Odoo chat.',
     'category': 'Administration',
     'description': """"
     Chat in Odoo.
     """,
-    #'sequence': '1',
     'author': 'Vertel AB',
     'website': 'https://vertel.se/apps/odoo-mail/mail_prosody',
-    'images': ['static/description/banner.png'], # 560x280 px.
+    'images': ['static/description/banner.png'],  # 560x280 px.
     'license': 'AGPL-3',
     'contributor': '',
     'maintainer': 'Vertel AB',
     'repository': 'https://github.com/vertelab/odoo-mail',
-    'depends': ['base', 'mail',],
+    'depends': ['base', 'mail', 'mail_bot'],
     'data': [
     ]
 }
