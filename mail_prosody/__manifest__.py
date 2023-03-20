@@ -36,6 +36,9 @@
     'repository': 'https://github.com/vertelab/odoo-mail',
     'depends': ['base', 'mail', 'mail_bot'],
     'data': [
-    ]
+    ],
+    'external_dependencies': {
+        'python': ['OdooRPC'],
+    },
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
