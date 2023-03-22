@@ -64,7 +64,6 @@ class ChannelSearchRead(models.Model):
 
     @api.model
     def search_partner_channels(self, *kwargs):
-        print(kwargs)
         kwargs_vals = kwargs[0]
         sender = kwargs_vals.get('sender')
         recipient = kwargs_vals.get('recipient')
@@ -79,6 +78,7 @@ class ChannelSearchRead(models.Model):
 
     def _p2p_chat(self, contacts):
         members = self._cleanup_p2p_contact(contacts)
+        _logger.warning("p2p members %s", members)
         partner_ids = []
         for member in members:
             partner_ids.append(self.env['res.partner'].search([('email', '=', member)]).id)
