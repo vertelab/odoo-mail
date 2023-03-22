@@ -15,7 +15,9 @@ class Prosody(http.Controller):
     def api_search_channel(self, **kwargs):
         _logger.warning("Incoming data %s", kwargs)
         cr, uid = request.cr, request.session.uid
-        channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)
-        _logger.warning("searched channel %s", channel_id)
-        your_custom_dict_data = {'your_vals': '...'}
-        return successful_response(status=200, dict_data=your_custom_dict_data)
+        if kwargs:
+            channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)
+            _logger.warning("searched channel %s", channel_id)
+            your_custom_dict_data = {'your_vals': '...'}
+            return successful_response(status=200, dict_data=your_custom_dict_data)
+        return successful_response(status=400, dict_data={})

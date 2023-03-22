@@ -64,6 +64,7 @@ class ChannelSearchRead(models.Model):
 
     @api.model
     def search_partner_channels(self, *kwargs):
+        print(kwargs)
         kwargs_vals = kwargs[0]
         sender = kwargs_vals.get('sender')
         recipient = kwargs_vals.get('recipient')
