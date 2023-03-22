@@ -49,7 +49,7 @@ class ChannelSearchRead(models.Model):
             url = self.env['ir.config_parameter'].get_param('prosody_url', 'https://lvh.me:5281/rest')
             if res.channel_ids.mapped('channel_partner_ids'):
                 recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
-                data = {'body': body, 'kind': 'message', 'id': 'ODOOODOO' + str(res.id)}
+                data = {'body': body, 'kind': 'message', 'id': 'odoo' + str(res.id)}
                 try:
                     if self.public == 'groups':
                         data.update({'to': self.channel_email, 'type': 'groupchat'})
