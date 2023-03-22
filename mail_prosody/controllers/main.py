@@ -18,6 +18,6 @@ class Prosody(http.Controller):
         if kwargs:
             channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)
             _logger.warning("searched channel %s", channel_id)
-            your_custom_dict_data = {'your_vals': '...'}
-            return successful_response(status=200, dict_data=your_custom_dict_data)
+            dict_data = {'channel_id': channel_id}
+            return successful_response(status=200, dict_data=dict_data)
         return successful_response(status=400, dict_data={})
