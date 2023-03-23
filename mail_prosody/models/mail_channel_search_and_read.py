@@ -191,9 +191,9 @@ class ChannelSearchRead(models.Model):
         return cleaned_email
 
     @api.model
-    def message_post_test(self, *args):
+    def message_channel_post_chat(self, *args):
         for arg in args:
-            if channel := self.env["mail.channel"].browse(arg.get('id')):
+            if channel := self.env["mail.channel"].browse(arg.get('channel_id')):
                 _logger.error(f"{channel=}")
                 new_arg = {a: arg[a] for a in arg}
                 new_arg["prosody"] = True
