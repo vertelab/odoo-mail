@@ -13,7 +13,6 @@ class Prosody(http.Controller):
     @http.route('/api/chat/channel', methods=['GET'], type='http', auth='none', csrf=False, cors=rest_cors_value)
     @check_permissions
     def api_search_channel(self, **kwargs):
-        _logger.warning("Incoming data %s", kwargs)
         cr, uid = request.cr, request.session.uid
         if kwargs:
             channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)
@@ -25,7 +24,6 @@ class Prosody(http.Controller):
     @http.route('/api/chat', methods=['POST'], type='http', auth='none', csrf=False, cors=rest_cors_value)
     @check_permissions
     def api_chat(self, **kwargs):
-        _logger.warning("Incoming data %s", kwargs)
         cr, uid = request.cr, request.session.uid
         if kwargs:
             kwargs['channel_id'] = int(kwargs.get("channel_id"))
@@ -33,5 +31,31 @@ class Prosody(http.Controller):
             channel_message = request.env(cr, uid)['mail.channel'].sudo().message_channel_post_chat(kwargs)
             _logger.warning("channel_message result =  %s", channel_message)
             dict_data = {'channel_message': channel_message}
+            return successful_response(status=200, dict_data=dict_data)
+        return error_response(400, 'Bad Request', 'Some parameters are missing')
+
+    @http.route('/api/messages', methods=['GET'], type='http', auth='none', csrf=False, cors=rest_cors_value)
+    @check_permissions
+    def search_read_messages(self, **kwargs):
+        _logger.warning("Incoming messages data %s", kwargs)
+        cr, uid = request.cr, request.session.uid
+        if kwargs:
+            comment_messages = request.env(cr, uid)['mail.message'].sudo().search_read([
+                ("message_type", "=", kwargs.get("message_type"))])
+            _logger.warning("channel_messages result =  %s", comment_messages)
+            dict_data = {'messages': comment_messages}
+            return successful_response(status=200, dict_data=dict_data)
+        return error_response(400, 'Bad Request', 'Some parameters are missing')
+
+    @http.route('/api/channels', methods=['GET'], type='http', auth='none', csrf=False, cors=rest_cors_value)
+    @check_permissions
+    def search_read_channels(self, **kwargs):
+        _logger.warning("Incoming channels data %s", kwargs)
+        cr, uid = request.cr, request.session.uid
+        if kwargs:
+            comment_messages = request.env(cr, uid)['mail.channel'].sudo().search_read([
+                ("message_type", "=", kwargs.get("message_type"))])
+            _logger.warning("channel_messages result =  %s", comment_messages)
+            dict_data = {'messages': comment_messages}
             return successful_response(status=200, dict_data=dict_data)
         return error_response(400, 'Bad Request', 'Some parameters are missing')

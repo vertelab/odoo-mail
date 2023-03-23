@@ -18,21 +18,21 @@ class ChannelSearchRead(models.Model):
 
     channel_email = fields.Char(string="XMPP Channel Email")
 
-    def search_read_custom(self, domain=None, fields=None, offset=0, limit=None, order=None):
-        res = super().search_read(domain, fields, offset, limit, order)
-        return res 
-
-    @api.model
-    def search_custom(self, *args, offset=0, limit=None, order=None, count=False):
-        new_args =[]
-        for arg in args:
-            new_arg = []
-            for a in arg:
-                new_arg.append(int(a) if a.isdigit() else a)
-            new_args.append(new_arg)
-        _logger.error(f"{new_args=}")
-        res = super(ChannelSearchRead, self).search(new_args, offset, limit, order, count)
-        return res.ids if res else 0
+    # def search_read_custom(self, domain=None, fields=None, offset=0, limit=None, order=None):
+    #     res = super().search_read(domain, fields, offset, limit, order)
+    #     return res
+    #
+    # @api.model
+    # def search_custom(self, *args, offset=0, limit=None, order=None, count=False):
+    #     new_args =[]
+    #     for arg in args:
+    #         new_arg = []
+    #         for a in arg:
+    #             new_arg.append(int(a) if a.isdigit() else a)
+    #         new_args.append(new_arg)
+    #     _logger.error(f"{new_args=}")
+    #     res = super(ChannelSearchRead, self).search(new_args, offset, limit, order, count)
+    #     return res.ids if res else 0
 
     @api.returns('mail.message', lambda value: value.id)
     def message_post(self, *, body='', subject=None, message_type='notification', email_from=None, author_id=None,
