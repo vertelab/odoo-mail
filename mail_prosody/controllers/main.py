@@ -28,6 +28,8 @@ class Prosody(http.Controller):
         _logger.warning("Incoming data %s", kwargs)
         cr, uid = request.cr, request.session.uid
         if kwargs:
+            kwargs['channel_id'] = int(kwargs.get("channel_id"))
+            kwargs['subtype_id'] = int(kwargs.get("subtype_id"))
             channel_message = request.env(cr, uid)['mail.channel'].sudo().message_channel_post_chat(kwargs)
             _logger.warning("channel_message result =  %s", channel_message)
             dict_data = {'channel_message': channel_message}
