@@ -42,8 +42,13 @@ class Prosody(http.Controller):
         if kwargs:
             comment_messages = request.env(cr, uid)['mail.message'].sudo().search_read([
                 ("message_type", "=", kwargs.get("message_type"))])
-            _logger.warning("channel_messages result =  %s", comment_messages)
-            dict_data = {'messages': comment_messages}
+            dict_data = [{
+                'id': message.get('id'),
+                'create_date': str(message.get('create_date')),
+                'date': str(message.get('date')),
+            } for message in comment_messages]
+
+            _logger.warning("channel_messages result =  %s", dict_data)
             return successful_response(status=200, dict_data=dict_data)
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
@@ -52,10 +57,10 @@ class Prosody(http.Controller):
     def search_read_channels(self, **kwargs):
         _logger.warning("Incoming channels data %s", kwargs)
         cr, uid = request.cr, request.session.uid
-        if kwargs:
-            comment_messages = request.env(cr, uid)['mail.channel'].sudo().search_read([
-                ("message_type", "=", kwargs.get("message_type"))])
-            _logger.warning("channel_messages result =  %s", comment_messages)
-            dict_data = {'messages': comment_messages}
-            return successful_response(status=200, dict_data=dict_data)
-        return error_response(400, 'Bad Request', 'Some parameters are missing')
+        channels = request.env(cr, uid)['mail.channel'].sudo().search_read([])
+        dict_data = [{
+            'id': channel.get('id'),
+            'create_date': str(channel.get('create_date')),
+        } for channel in channels]
+        _logger.warning("channel_messages result =  %s", dict_data)
+        return successful_response(status=200, dict_data=dict_data)
