@@ -3,14 +3,14 @@ import json
 
 from odoo import http
 from odoo.http import Response, request
-from odoo.addons.rest_api.controllers.main import check_permissions, rest_cors_value, successful_response, error_response
+from odoo.addons.rest_api.controllers.main import check_permissions, successful_response, error_response
 
 
 _logger = logging.getLogger(__name__)
 
 
 class Prosody(http.Controller):
-    @http.route('/api/chat/channel', methods=['GET'], type='http', auth='none', csrf=False, cors=rest_cors_value)
+    @http.route('/api/chat/channel', methods=['GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def api_search_channel(self, **kwargs):
         cr, uid = request.cr, request.session.uid
@@ -21,7 +21,7 @@ class Prosody(http.Controller):
             return successful_response(status=200, dict_data=dict_data)
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
-    @http.route('/api/chat', methods=['POST'], type='http', auth='none', csrf=False, cors=rest_cors_value)
+    @http.route('/api/chat', methods=['POST'], type='http', auth='none', csrf=False)
     @check_permissions
     def api_chat(self, **kwargs):
         cr, uid = request.cr, request.session.uid
@@ -34,7 +34,7 @@ class Prosody(http.Controller):
             return successful_response(status=200, dict_data=dict_data)
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
-    @http.route('/api/messages', methods=['GET'], type='http', auth='none', csrf=False, cors=rest_cors_value)
+    @http.route('/api/messages', methods=['GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def search_read_messages(self, **kwargs):
         _logger.warning("Incoming messages data %s", kwargs)
@@ -52,7 +52,7 @@ class Prosody(http.Controller):
             return successful_response(status=200, dict_data=dict_data)
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
-    @http.route('/api/channels', methods=['GET'], type='http', auth='none', csrf=False, cors=rest_cors_value)
+    @http.route('/api/channels', methods=['GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def search_read_channels(self, **kwargs):
         _logger.warning("Incoming channels data %s", kwargs)
