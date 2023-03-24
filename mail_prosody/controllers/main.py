@@ -13,6 +13,7 @@ class Prosody(http.Controller):
     @http.route('/api/chat/channel', methods=['GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def api_search_channel(self, **kwargs):
+        print(request.session)
         cr, uid = request.cr, request.session.uid
         if kwargs:
             channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)

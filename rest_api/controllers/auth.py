@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from .main import *
+from odoo import http
+from odoo.http import request
 import sys
 import time
 
@@ -116,7 +118,7 @@ class ControllerREST(http.Controller):
 
         # Login in Odoo database:
         try:
-            request.session.authenticate(db_name, username, password)
+            request.session.authenticate(jdata.get('db_name', db_name), username, password)
         except:
             # In Odoo v12 was changed the Odoo authentication exception,
             # therefore the 'invalid_database' error response was removed!
