@@ -61,6 +61,7 @@ class Prosody(http.Controller):
         dict_data = [{
             'id': channel.get('id'),
             'create_date': str(channel.get('create_date')),
+            'channel_message_ids': channel.get('channel_message_ids')
         } for channel in channels]
         _logger.warning("channel_messages result =  %s", dict_data)
         return successful_response(status=200, dict_data=dict_data)
