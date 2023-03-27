@@ -3,17 +3,18 @@ import json
 
 from odoo import http
 from odoo.http import Response, request
-from odoo.addons.rest_api.controllers.main import check_permissions, successful_response, error_response
-
+# from odoo.addons.rest_api.controllers.main import check_permissions, successful_response, error_response
+from odoo.addons.restful.common import extract_arguments, successful_response, error_response
+from odoo.addons.restful.controllers.main import validate_token
 
 _logger = logging.getLogger(__name__)
 
 
 class Prosody(http.Controller):
     @http.route('/api/chat/channel', methods=['GET'], type='http', auth='none', csrf=False)
-    @check_permissions
+    @validate_token
     def api_search_channel(self, **kwargs):
-        print(request.session)
+        print(kwargs)
         cr, uid = request.cr, request.session.uid
         if kwargs:
             channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)
@@ -23,7 +24,7 @@ class Prosody(http.Controller):
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
     @http.route('/api/chat', methods=['POST'], type='http', auth='none', csrf=False)
-    @check_permissions
+    @validate_token
     def api_chat(self, **kwargs):
         cr, uid = request.cr, request.session.uid
         if kwargs:
@@ -36,7 +37,7 @@ class Prosody(http.Controller):
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
     @http.route('/api/messages', methods=['GET'], type='http', auth='none', csrf=False)
-    @check_permissions
+    @validate_token
     def search_read_messages(self, **kwargs):
         _logger.warning("Incoming messages data %s", kwargs)
         cr, uid = request.cr, request.session.uid
@@ -54,7 +55,7 @@ class Prosody(http.Controller):
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
     @http.route('/api/channels', methods=['GET'], type='http', auth='none', csrf=False)
-    @check_permissions
+    @validate_token
     def search_read_channels(self, **kwargs):
         _logger.warning("Incoming channels data %s", kwargs)
         cr, uid = request.cr, request.session.uid
