@@ -15,7 +15,7 @@ _logger = logging.getLogger(__name__)
 class AccessToken(http.Controller):
     """."""
 
-    @http.route("/api/auth/token", methods=["GET"], type="http", auth="none", csrf=False)
+    @http.route("/api/auth/token", methods=["GET"], type="http", auth="none", csrf=False, cors='*')
     def token(self, **post):
         """The token URL to be used for getting the access_token:
 
@@ -112,7 +112,7 @@ class AccessToken(http.Controller):
             ),
         )
 
-    @http.route(["/api/auth/token"], methods=["DELETE"], type="http", auth="none", csrf=False)
+    @http.route(["/api/auth/token"], methods=["DELETE"], type="http", auth="none", csrf=False, cors='*')
     def delete(self, **post):
         """Delete a given token"""
         token = request.env["api.access_token"]
