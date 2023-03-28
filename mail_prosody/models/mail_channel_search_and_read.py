@@ -28,7 +28,7 @@ class ChannelSearchRead(models.Model):
                                    record_name=record_name, **kwargs)
 
         if res.id and not kwargs.get("prosody"):
-            url = self.env['ir.config_parameter'].get_param('prosody_url', 'https://lvh.me:5281/rest')
+            url = self.env['ir.config_parameter'].sudo().get_param('prosody_url', 'https://lvh.me:5281/rest')
             if res.channel_ids.mapped('channel_partner_ids'):
                 recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
                 data = {'body': body, 'kind': 'message', 'id': 'odoo' + str(res.id)}
