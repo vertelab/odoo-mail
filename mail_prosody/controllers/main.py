@@ -4,8 +4,6 @@ import json
 from odoo import http
 from odoo.http import Response, request
 from odoo.addons.rest_api.controllers.main import check_permissions, successful_response, error_response
-# from odoo.addons.restful.common import extract_arguments, successful_response, error_response
-# from odoo.addons.restful.controllers.main import validate_token
 
 _logger = logging.getLogger(__name__)
 
@@ -14,8 +12,6 @@ class Prosody(http.Controller):
     @http.route('/api/chat/channel', methods=['GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def api_search_channel(self, **kwargs):
-        print(dir(request))
-        print(request.db)
         cr, uid = request.cr, request.session.uid
         if kwargs:
             channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)

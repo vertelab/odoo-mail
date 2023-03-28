@@ -1,12 +1,9 @@
-from distutils.util import change_root
 import logging
 import requests
 import odoorpc
 import odoo
 import re
 
-from ntpath import join
-from xml.dom import ValidationErr
 from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
 
@@ -18,22 +15,6 @@ class ChannelSearchRead(models.Model):
     _inherit = "mail.channel"
 
     channel_email = fields.Char(string="XMPP Channel Email")
-
-    # def search_read_custom(self, domain=None, fields=None, offset=0, limit=None, order=None):
-    #     res = super().search_read(domain, fields, offset, limit, order)
-    #     return res
-    #
-    # @api.model
-    # def search_custom(self, *args, offset=0, limit=None, order=None, count=False):
-    #     new_args =[]
-    #     for arg in args:
-    #         new_arg = []
-    #         for a in arg:
-    #             new_arg.append(int(a) if a.isdigit() else a)
-    #         new_args.append(new_arg)
-    #     _logger.error(f"{new_args=}")
-    #     res = super(ChannelSearchRead, self).search(new_args, offset, limit, order, count)
-    #     return res.ids if res else 0
 
     @api.returns('mail.message', lambda value: value.id)
     def message_post(self, *, body='', subject=None, message_type='notification', email_from=None, author_id=None,
@@ -47,7 +28,6 @@ class ChannelSearchRead(models.Model):
                                    record_name=record_name, **kwargs)
 
         if res.id and not kwargs.get("prosody"):
-            print(odoo.tools.config.get('admin_passwd', False))
             url = self.env['ir.config_parameter'].get_param('prosody_url', 'https://lvh.me:5281/rest')
             if res.channel_ids.mapped('channel_partner_ids'):
                 recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
@@ -199,6 +179,6 @@ class ChannelSearchRead(models.Model):
         for arg in args:
             if channel := self.env["mail.channel"].browse(arg.get('channel_id')):
                 new_arg = {a: arg[a] for a in arg}
-                # new_arg["prosody"] = True
+                new_arg["prosody"] = True
                 message_post = channel.message_post(**new_arg).id
                 return message_post
