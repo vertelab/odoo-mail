@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from .main import *
 from odoo import http
+from odoo.http import Response, request
+
+from .main import *
 
 _logger = logging.getLogger(__name__)
 

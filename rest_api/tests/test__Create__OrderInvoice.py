@@ -11,7 +11,7 @@ password = 'admin'
 import requests, json
 
 
-print("\n 1. Login in Odoo and get access tokens:")
+print "\n 1. Login in Odoo and get access tokens:"
 r = requests.get(
     url + '/api/auth/get_tokens',
     headers = {'Content-Type': 'text/html; charset=utf-8'},
@@ -21,16 +21,16 @@ r = requests.get(
     }),
     #verify = False      # for self-signed TLS/SSL certificates
 )
-print(r.text)
+print r.text
 access_token = r.json()['access_token']
 
 
-print("\n The following operations completely repeat the manual sequence of actions.")
-print(" Perhaps some operations can be skipped or combined in one operation,")
-print(" but in that case, it's need to carefully analyze Odoo code to not miss anything!")
+print "\n The following operations completely repeat the manual sequence of actions."
+print " Perhaps some operations can be skipped or combined in one operation,"
+print " but in that case, it's need to carefully analyze Odoo code to not miss anything!"
 
 
-print("\n 2. Create Quotation (== sale.order - Create one):")
+print "\n 2. Create Quotation (== sale.order - Create one):"
 r = requests.post(
     url + '/api/sale.order',
     headers = {
@@ -56,11 +56,11 @@ r = requests.post(
     }),
     #verify = False      # for self-signed TLS/SSL certificates
 )
-print(r.text)
+print r.text
 order_id = r.json()['id']
 
 
-print("\n 3. Quotation >> SaleOrder (== Call method 'action_confirm' (without parameters)):")
+print "\n 3. Quotation >> SaleOrder (== Call method 'action_confirm' (without parameters)):"
 r = requests.put(
     url + '/api/sale.order/%s/action_confirm' % order_id,
     headers = {
@@ -69,10 +69,10 @@ r = requests.put(
     },
     #verify = False      # for self-signed TLS/SSL certificates
 )
-print(r.text)
+print r.text
 
 
-print("\n 4. Create Invoice (== Call method 'action_invoice_create' (without parameters)):")
+print "\n 4. Create Invoice (== Call method 'action_invoice_create' (without parameters)):"
 r = requests.put(
     url + '/api/sale.order/%s/action_invoice_create' % order_id,
     headers = {
@@ -81,11 +81,11 @@ r = requests.put(
     },
     #verify = False      # for self-signed TLS/SSL certificates
 )
-print(r.text)
+print r.text
 invoice_id = eval(r.text)[0]
 
 
-print("\n 5. Validate Invoice (== Call method 'action_invoice_open' (without parameters)):")
+print "\n 5. Validate Invoice (== Call method 'action_invoice_open' (without parameters)):"
 r = requests.put(
     url + '/api/account.invoice/%s/action_invoice_open' % invoice_id,
     headers = {
@@ -94,4 +94,4 @@ r = requests.put(
     },
     #verify = False      # for self-signed TLS/SSL certificates
 )
-print(r.text)
+print r.text

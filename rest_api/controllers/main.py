@@ -12,6 +12,8 @@ except ImportError:
 import base64
 from datetime import date, datetime
 
+from . import simple_token_store
+
 import werkzeug.wrappers
 
 import odoo
@@ -555,12 +557,13 @@ def check_permissions(func):
         # Get access token from http header
         access_token = request.httprequest.headers.get('access_token')
         if not access_token:
-            error_descrip = "No access token was provided in request header!"
+            error_description = "No access token was provided in request header!"
             error = 'no_access_token'
-            _logger.error(error_descrip)
-            return error_response(400, error, error_descrip)
+            _logger.error(error_description)
+            return error_response(400, error, error_description)
 
         # Validate access token
+        print(request.db)
         access_token_data = token_store.fetch_by_access_token(request.env, access_token)
         if not access_token_data:
             return error_response_401__invalid_token()
@@ -596,14 +599,14 @@ def successful_response(status, dict_data):
     return resp
 
 
-def error_response(status, error, error_descrip):
+def error_response(status, error, error_description):
     resp = werkzeug.wrappers.Response(
         status=status,
         content_type='application/json; charset=utf-8',
         # headers = None,
         response=json.dumps({
             'error': error,
-            'error_descrip': error_descrip,
+            'error_description': error_description,
         }, ensure_ascii=u_escape_characters_for_unicode_in_responses),
     )
     # Remove cookie session
@@ -688,79 +691,84 @@ def generate_token(length=40):
     return hash_gen.hexdigest()[:length]
 
 
-# Read system parameters and setup token store:
-db_name = odoo.tools.config.get('db_name')
-print(db_name)
-if not db_name:
-    _logger.error(
-        "ERROR: To proper setup OAuth2 and Token Store - it's necessary to set the parameter 'db_name' in Odoo config "
-        "file!")
-    print(
-        "ERROR: To proper setup OAuth2 and Token Store - it's necessary to set the parameter 'db_name' in Odoo config "
-        "file!")
-else:
-    # Read system parameters...
-    registry = Registry(db_name)
-    with registry.cursor() as cr:
-        cr.execute("SELECT value FROM ir_config_parameter \
-            WHERE key = 'rest_api.cors_parameter_value_in_all_routes'")
-        res = cr.fetchone()
-        rest_cors_value = res and res[0].strip() or 'null'
-        cr.execute("SELECT value FROM ir_config_parameter \
-            WHERE key = 'rest_api.u_escape_characters_for_unicode_in_responses'")
-        res = cr.fetchone()
-        u_escape_characters_for_unicode_in_responses = res and res[0].strip()
-        if u_escape_characters_for_unicode_in_responses in ('1', 'True', 'true'):
-            u_escape_characters_for_unicode_in_responses = True
-        else:
-            u_escape_characters_for_unicode_in_responses = False
-        # Token store settings:
-        cr.execute("SELECT value FROM ir_config_parameter \
-            WHERE key = 'rest_api.use_redis_token_store'")
-        res = cr.fetchone()
-        use_redis_token_store = res and res[0].strip()
-        if use_redis_token_store in ('0', 'False', 'None', 'false'):
-            use_redis_token_store = False
-        if not use_redis_token_store:
-            # Setup Simple token store
-            _logger.info("Setup Simple token store...")
-            from . import simple_token_store
+token_store = simple_token_store.SimpleTokenStore()
 
-            token_store = simple_token_store.SimpleTokenStore()
-        else:
-            # Setup Redis token store
-            _logger.info("Setup Redis token store...")
-            cr.execute("SELECT value FROM ir_config_parameter \
-                WHERE key = 'rest_api.redis_host'")
-            res = cr.fetchone()
-            redis_host = res and res[0]
-            cr.execute("SELECT value FROM ir_config_parameter \
-                WHERE key = 'rest_api.redis_port'")
-            res = cr.fetchone()
-            redis_port = res and res[0]
-            cr.execute("SELECT value FROM ir_config_parameter \
-                WHERE key = 'rest_api.redis_db'")
-            res = cr.fetchone()
-            redis_db = res and res[0]
-            cr.execute("SELECT value FROM ir_config_parameter \
-                WHERE key = 'rest_api.redis_password'")
-            res = cr.fetchone()
-            redis_password = res and res[0]
-            if redis_password in ('None', 'False'):
-                redis_password = None
-            if redis_host and redis_port:
-                from . import redis_token_store
+rest_cors_value = "null"
 
-                token_store = redis_token_store.RedisTokenStore(
-                    host=redis_host,
-                    port=redis_port,
-                    db=redis_db,
-                    password=redis_password)
-            else:
-                _logger.warning(
-                    "WARNING: It's necessary to RESTART Odoo server after the installation of 'rest_api' module!")
-                print("WARNING: It's necessary to RESTART Odoo server after the installation of 'rest_api' module!")
-        # Connect REST resources
-        from . import cors_assist
-        from . import resources
-        from . import default_universal_controller
+u_escape_characters_for_unicode_in_responses = True
+
+
+# # Read system parameters and setup token store:
+# db_name = odoo.tools.config.get('db_name')
+# # db_name = 'verteltest'
+# if not db_name:
+#     _logger.error(
+#         "ERROR: To proper setup OAuth2 and Token Store - it's necessary to set the parameter 'db_name' in Odoo config file!")
+#     print(
+#         "ERROR: To proper setup OAuth2 and Token Store - it's necessary to set the parameter 'db_name' in Odoo config file!")
+# else:
+#     # Read system parameters...
+#     registry = Registry(db_name)
+#     with registry.cursor() as cr:
+#         cr.execute("SELECT value FROM ir_config_parameter \
+#             WHERE key = 'rest_api.cors_parameter_value_in_all_routes'")
+#         res = cr.fetchone()
+#         rest_cors_value = res and res[0].strip() or 'null'
+#         cr.execute("SELECT value FROM ir_config_parameter \
+#             WHERE key = 'rest_api.u_escape_characters_for_unicode_in_responses'")
+#         res = cr.fetchone()
+#         u_escape_characters_for_unicode_in_responses = res and res[0].strip()
+#         if u_escape_characters_for_unicode_in_responses in ('1', 'True', 'true'):
+#             u_escape_characters_for_unicode_in_responses = True
+#         else:
+#             u_escape_characters_for_unicode_in_responses = False
+#         # Token store settings:
+#         cr.execute("SELECT value FROM ir_config_parameter \
+#             WHERE key = 'rest_api.use_redis_token_store'")
+#         res = cr.fetchone()
+#         use_redis_token_store = res and res[0].strip()
+#         if use_redis_token_store in ('0', 'False', 'None', 'false'):
+#             use_redis_token_store = False
+#         if not use_redis_token_store:
+#             # Setup Simple token store
+#             _logger.info("Setup Simple token store...")
+#
+#             token_store = simple_token_store.SimpleTokenStore()
+#         else:
+#             # Setup Redis token store
+#             _logger.info("Setup Redis token store...")
+#             cr.execute("SELECT value FROM ir_config_parameter \
+#                 WHERE key = 'rest_api.redis_host'")
+#             res = cr.fetchone()
+#             redis_host = res and res[0]
+#             cr.execute("SELECT value FROM ir_config_parameter \
+#                 WHERE key = 'rest_api.redis_port'")
+#             res = cr.fetchone()
+#             redis_port = res and res[0]
+#             cr.execute("SELECT value FROM ir_config_parameter \
+#                 WHERE key = 'rest_api.redis_db'")
+#             res = cr.fetchone()
+#             redis_db = res and res[0]
+#             cr.execute("SELECT value FROM ir_config_parameter \
+#                 WHERE key = 'rest_api.redis_password'")
+#             res = cr.fetchone()
+#             redis_password = res and res[0]
+#             if redis_password in ('None', 'False'):
+#                 redis_password = None
+#             if redis_host and redis_port:
+#                 from . import redis_token_store
+#
+#                 token_store = redis_token_store.RedisTokenStore(
+#                     host=redis_host,
+#                     port=redis_port,
+#                     db=redis_db,
+#                     password=redis_password)
+#             else:
+#                 _logger.warning(
+#                     "WARNING: It's necessary to RESTART Odoo server after the installation of 'rest_api' module!")
+#                 print("WARNING: It's necessary to RESTART Odoo server after the installation of 'rest_api' module!")
+
+# Connect REST resources
+from . import cors_assist
+from . import resources
+from . import default_universal_controller

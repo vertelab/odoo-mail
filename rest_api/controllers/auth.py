@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+from odoo import http, registry
+from odoo.http import Response, request
+from odoo.exceptions import AccessDenied, AccessError
+from odoo.api import Environment
+
 from .main import *
-from odoo import http
-from odoo.http import request
 import sys
 import time
 
@@ -108,30 +111,37 @@ class ControllerREST(http.Controller):
 
         username = jdata.get('username')
         password = jdata.get('password')
+        db_name = jdata.get('db')
 
         # Empty 'username' or 'password:
         if not username or not password:
-            error_descrip = "Empty value of 'username' or 'password'!"
+            error_description = "Empty value of 'username' or 'password'!"
             error = 'empty_username_or_password'
-            _logger.error(error_descrip)
-            return error_response(400, error, error_descrip)
+            _logger.error(error_description)
+            return error_response(400, error, error_description)
 
         # Login in Odoo database:
         try:
             request.session.authenticate(jdata.get('db_name', db_name), username, password)
-        except:
-            # In Odoo v12 was changed the Odoo authentication exception,
-            # therefore the 'invalid_database' error response was removed!
-            pass
+        except AccessError as aee:
+            return error_response(403, "Access error", "Error: %s" % aee.name)
+        except AccessDenied as ade:
+            return error_response(403, "Access denied", "Login, password or db invalid")
+        except Exception as e:
+            # Invalid database:
+            info = "The database name is not valid {}".format(e)
+            error = "invalid_database"
+            _logger.error(info)
+            return error_response(403, "Forbidden", "Wrong Database name")
 
         uid = request.session.uid
 
         # Odoo login failed:
         if not uid:
-            error_descrip = "Odoo User authentication failed!"
+            error_description = "Odoo User authentication failed!"
             error = 'odoo_user_authentication_failed'
-            _logger.error(error_descrip)
-            return error_response(401, error, error_descrip)
+            _logger.error(error_description)
+            return error_response(401, error, error_description)
 
         # Generate tokens
         access_token = generate_token()
@@ -143,19 +153,21 @@ class ControllerREST(http.Controller):
             refresh_expires_in = expires_in
 
         # Save all tokens in store
-        _logger.info("Save OAuth2 tokens of user in Token Store...")
-        token_store.save_all_tokens(
-            request.env,
-            access_token=access_token,
-            expires_in=expires_in,
-            refresh_token=refresh_token,
-            refresh_expires_in=refresh_expires_in,
-            user_id=uid)
+        with registry(db_name).cursor() as cr:
+            env = Environment(cr, request.env.user.id, {})
+            _logger.info("Save OAuth2 tokens of user in Token Store...")
+            token_store.save_all_tokens(
+                env,
+                access_token=access_token,
+                expires_in=expires_in,
+                refresh_token=refresh_token,
+                refresh_expires_in=refresh_expires_in,
+                user_id=uid)
 
         user_context = request.session.get_context() if uid else {}
         company_id = request.env.user.company_id.id if uid else 'null'
         # Logout from Odoo and close current 'login' session:
-        request.session.logout()
+        # request.session.logout()
 
         # Successful response:
         resp = werkzeug.wrappers.Response(
@@ -173,7 +185,7 @@ class ControllerREST(http.Controller):
                 'refresh_expires_in': refresh_expires_in, }),
         )
         # Remove cookie session
-        resp.set_cookie = lambda *args, **kwargs: None
+        # resp.set_cookie = lambda *args, **kwargs: None
         return resp
 
     # Refresh access token:
@@ -192,11 +204,12 @@ class ControllerREST(http.Controller):
 
         # Get and check refresh token
         refresh_token = jdata.get('refresh_token')
+
         if not refresh_token:
-            error_descrip = "No refresh token was provided in request!"
+            error_description = "No refresh token was provided in request!"
             error = 'no_refresh_token'
-            _logger.error(error_descrip)
-            return error_response(400, error, error_descrip)
+            _logger.error(error_description)
+            return error_response(400, error, error_description)
 
         # Validate refresh token
         refresh_token_data = token_store.fetch_by_refresh_token(request.env, refresh_token)

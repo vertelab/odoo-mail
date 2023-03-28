@@ -8,27 +8,27 @@ _logger = logging.getLogger(__name__)
 
 
 class SimpleTokenStore(object):
-
+    
     def hash(self, token):
         return hashlib.sha1(token.encode('utf-8')).hexdigest()
-
+    
     def save_all_tokens(self, env, access_token, expires_in,
-                        refresh_token, refresh_expires_in, user_id):
+                    refresh_token, refresh_expires_in, user_id):
         current_time = time.time()
         # access_token
         env['rest.api.access.token'].sudo().create({
             'access_token': self.hash(access_token),
-            'user_id': user_id,
-            'expiry_time': current_time + expires_in,
+            'user_id':      user_id,
+            'expiry_time':  current_time + expires_in,
         })
         # refresh_token
         env['rest.api.refresh.token'].sudo().create({
             'refresh_token': self.hash(refresh_token),
             'access_token': self.hash(access_token),
-            'user_id': user_id,
-            'expiry_time': current_time + refresh_expires_in,
+            'user_id':      user_id,
+            'expiry_time':  current_time + refresh_expires_in,
         })
-
+    
     def fetch_by_token(self, env, type, token):
         table = 'rest.api.' + type + '.token'
         field = type + '_token'
@@ -42,13 +42,13 @@ class SimpleTokenStore(object):
             if existing_token.expiry_time >= current_time:
                 res = existing_token
         return res
-
+    
     def fetch_by_access_token(self, env, access_token):
         return self.fetch_by_token(env, 'access', access_token)
-
+    
     def fetch_by_refresh_token(self, env, refresh_token):
         return self.fetch_by_token(env, 'refresh', refresh_token)
-
+    
     def delete_by_token(self, env, type, token):
         table = 'rest.api.' + type + '.token'
         field = type + '_token'
@@ -58,13 +58,13 @@ class SimpleTokenStore(object):
             (field, '=', token)])
         if existing_token:
             existing_token.unlink()
-
+    
     def delete_access_token(self, env, access_token):
         self.delete_by_token(env, 'access', access_token)
-
+    
     def delete_refresh_token(self, env, refresh_token):
         self.delete_by_token(env, 'refresh', refresh_token)
-
+    
     def update_access_token(self, env, old_access_token,
                             new_access_token, expires_in,
                             refresh_token, user_id):
@@ -74,16 +74,17 @@ class SimpleTokenStore(object):
         # Create new access token
         env['rest.api.access.token'].sudo().create({
             'access_token': self.hash(new_access_token),
-            'user_id': user_id,
-            'expiry_time': current_time + expires_in,
+            'user_id':      user_id,
+            'expiry_time':  current_time + expires_in,
         })
         # Update refresh token
         refresh_token = self.hash(refresh_token)
         env['rest.api.refresh.token'].sudo().search([
-            ('refresh_token', '=', refresh_token)], limit=1) \
-            .write({'access_token': self.hash(new_access_token)
-        })
-
+            ('refresh_token', '=', refresh_token)], limit=1)\
+                .write({
+                    'access_token': self.hash(new_access_token)
+                })
+    
     def delete_all_tokens_by_refresh_token(self, env, refresh_token):
         refresh_token_data = self.fetch_by_refresh_token(env, refresh_token)
         if refresh_token_data:

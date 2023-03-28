@@ -3,7 +3,7 @@
 import requests, json
 
 
-print('\n 1. Login in Odoo and get access tokens:')
+print '\n 1. Login in Odoo and get access tokens:'
 r = requests.get(
     'http://localhost:8069/api/auth/get_tokens',
     headers = {'Content-Type': 'text/html; charset=utf-8'},
@@ -14,11 +14,11 @@ r = requests.get(
     }),
     #verify = False      # for self-signed TLS/SSL certificates
 )
-print(r.text)
+print r.text
 access_token = r.json()['access_token']
 
 
-print('\n 2. product.template - Create one:')
+print '\n 2. product.template - Create one:'
 r = requests.post(
     'http://localhost:8069/api/product.template',
     headers = {
@@ -43,4 +43,4 @@ r = requests.post(
     }),
     #verify = False      # for self-signed TLS/SSL certificates
 )
-print(r.text)
+print r.text

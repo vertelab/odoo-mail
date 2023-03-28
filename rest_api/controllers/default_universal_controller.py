@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 from .main import *
 from odoo import http
-from odoo.http import request
+from odoo.http import Response, request
 
 _logger = logging.getLogger(__name__)
 
 
 class ControllerREST(http.Controller):
-
+    
     def define_schema_params(self, request, model_name, method):
+        print(request)
+        print(model_name)
+        print(method)
         schema = pre_schema = default_vals = None
         cr, uid = request.cr, request.session.uid
         Model = request.env['ir.model'].sudo().search([('model', '=', model_name)], limit=1)
@@ -43,7 +46,7 @@ class ControllerREST(http.Controller):
         else:
             model_available = False
         return model_available, schema, pre_schema, default_vals
-
+    
     # Read all (with optional filters, offset, limit, order, exclude_fields, include_fields):
     @http.route('/api/<string:model_name>', methods=['GET'], type='http', auth='none', cors=rest_cors_value)
     @check_permissions
@@ -53,13 +56,13 @@ class ControllerREST(http.Controller):
             return error_response_501__model_not_available()
         _logger.debug('schema == %s; pre_schema == %s' % (schema, pre_schema))
         return wrap__resource__read_all(
-            modelname=model_name,
-            default_domain=[],
-            success_code=200,
-            OUT_fields=schema,
-            pre_schema=pre_schema,
+            modelname = model_name,
+            default_domain = [],
+            success_code = 200,
+            OUT_fields = schema,
+            pre_schema = pre_schema,
         )
-
+    
     # Read one (with optional exclude_fields, include_fields):
     @http.route('/api/<string:model_name>/<id>', methods=['GET'], type='http', auth='none', cors=rest_cors_value)
     @check_permissions
@@ -69,16 +72,15 @@ class ControllerREST(http.Controller):
             return error_response_501__model_not_available()
         _logger.debug('schema == %s; pre_schema == %s' % (schema, pre_schema))
         return wrap__resource__read_one(
-            modelname=model_name,
-            id=id,
-            success_code=200,
-            OUT_fields=schema,
-            pre_schema=pre_schema,
+            modelname = model_name,
+            id = id,
+            success_code = 200,
+            OUT_fields = schema,
+            pre_schema = pre_schema,
         )
-
+    
     # Create one:
-    @http.route('/api/<string:model_name>', methods=['POST'], type='http', auth='none', cors=rest_cors_value,
-                csrf=False)
+    @http.route('/api/<string:model_name>', methods=['POST'], type='http', auth='none', cors=rest_cors_value, csrf=False)
     @check_permissions
     def api__model_name__POST(self, model_name, **kw):
         model_available, schema, _, default_vals = self.define_schema_params(request, model_name, 'create_one')
@@ -86,42 +88,39 @@ class ControllerREST(http.Controller):
             return error_response_501__model_not_available()
         _logger.debug('schema == %s; default_vals == %s' % (schema, default_vals))
         return wrap__resource__create_one(
-            modelname=model_name,
-            default_vals=default_vals,
-            success_code=200,
-            OUT_fields=schema,
+            modelname = model_name,
+            default_vals = default_vals,
+            success_code = 200,
+            OUT_fields = schema,
         )
-
+    
     # Update one:
-    @http.route('/api/<string:model_name>/<id>', methods=['PUT'], type='http', auth='none', cors=rest_cors_value,
-                csrf=False)
+    @http.route('/api/<string:model_name>/<id>', methods=['PUT'], type='http', auth='none', cors=rest_cors_value, csrf=False)
     @check_permissions
     def api__model_name__id_PUT(self, model_name, id, **kw):
         return wrap__resource__update_one(
-            modelname=model_name,
-            id=id,
-            success_code=200,
+            modelname = model_name,
+            id = id,
+            success_code = 200,
         )
-
+    
     # Delete one:
-    @http.route('/api/<string:model_name>/<id>', methods=['DELETE'], type='http', auth='none', cors=rest_cors_value,
-                csrf=False)
+    @http.route('/api/<string:model_name>/<id>', methods=['DELETE'], type='http', auth='none', cors=rest_cors_value, csrf=False)
     @check_permissions
     def api__model_name__id_DELETE(self, model_name, id, **kw):
         return wrap__resource__delete_one(
-            modelname=model_name,
-            id=id,
-            success_code=200,
+            modelname = model_name,
+            id = id,
+            success_code = 200,
         )
-
+    
     # Call method (with optional parameters):
-    @http.route('/api/<string:model_name>/<id>/<method>', methods=['PUT'], type='http', auth='none',
-                cors=rest_cors_value, csrf=False)
+    @http.route('/api/<string:model_name>/<id>/<method>', methods=['PUT'], type='http', auth='none', cors=rest_cors_value, csrf=False)
     @check_permissions
     def api__model_name__id__method_PUT(self, model_name, id, method, **kw):
         return wrap__resource__call_method(
-            modelname=model_name,
-            id=id,
-            method=method,
-            success_code=200,
+            modelname = model_name,
+            id = id,
+            method = method,
+            success_code = 200,
         )
