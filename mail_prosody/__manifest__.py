@@ -34,8 +34,9 @@
     'contributor': '',
     'maintainer': 'Vertel AB',
     'repository': 'https://github.com/vertelab/odoo-mail',
-    'depends': ['base', 'mail', 'mail_bot', 'rest_api'],
+    'depends': ['base', 'mail', 'mail_bot', 'rest_api', 'auth_admin'],
     'data': [
+        'data/ir_config_parameter.xml'
     ],
     'external_dependencies': {
         'python': ['OdooRPC'],

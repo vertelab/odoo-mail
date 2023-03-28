@@ -2,6 +2,7 @@ from distutils.util import change_root
 import logging
 import requests
 import odoorpc
+import odoo
 import re
 
 from ntpath import join
@@ -46,6 +47,7 @@ class ChannelSearchRead(models.Model):
                                    record_name=record_name, **kwargs)
 
         if res.id and not kwargs.get("prosody"):
+            print(odoo.tools.config.get('admin_passwd', False))
             url = self.env['ir.config_parameter'].get_param('prosody_url', 'https://lvh.me:5281/rest')
             if res.channel_ids.mapped('channel_partner_ids'):
                 recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
@@ -56,8 +58,10 @@ class ChannelSearchRead(models.Model):
                     else:
                         data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
                     headers = {'Content-type': 'application/json'}
-                    js = requests.post(url, json=data, headers=headers, verify=False, auth=(
-                        self.env.user.login, self.env.user.xmpp_password))
+
+                    admin_passwd = odoo.tools.config.get('admin_passwd', False)
+                    requests.post(url, json=data, headers=headers, verify=False,
+                                  auth=(self.env.user.login, admin_passwd))
                 except Exception as e:
                     raise ValidationError(_(e))
         return res
@@ -194,8 +198,7 @@ class ChannelSearchRead(models.Model):
     def message_channel_post_chat(self, *args):
         for arg in args:
             if channel := self.env["mail.channel"].browse(arg.get('channel_id')):
-                _logger.error(f"{channel=}")
                 new_arg = {a: arg[a] for a in arg}
-                new_arg["prosody"] = True
+                # new_arg["prosody"] = True
                 message_post = channel.message_post(**new_arg).id
                 return message_post
