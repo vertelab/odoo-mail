@@ -48,7 +48,7 @@ class ChannelSearchRead(models.Model):
         url = f"{url}/message/groupchat/{self.channel_email}"
         headers = {'Content-type': 'text/plain'}
         requests.post(url, headers=headers, data=body, auth=(self.env.user.login, admin_passwd), verify=False)
-        response = requests.request("POST", url, headers=headers, data=body)
+        response = requests.request("POST", url, headers=headers, data=body, auth=(self.env.user.login, admin_passwd), verify=False)
         _logger.warning("response+++++ %s", response.text)
 
     def public_p2p_message(self, url, data, admin_passwd):
