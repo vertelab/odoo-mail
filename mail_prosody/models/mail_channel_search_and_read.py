@@ -29,19 +29,33 @@ class ChannelSearchRead(models.Model):
 
         if res.id and not kwargs.get("prosody"):
             url = self.env['ir.config_parameter'].sudo().get_param('prosody_url', 'https://lvh.me:5281/rest')
+            # if res.channel_ids.mapped('channel_partner_ids'):
+            #     recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
+            #     data = {'body': body, 'kind': 'message', 'id': 'odoo' + str(res.id)}
+            #     try:
+            #         if self.public == 'groups':
+            #             data.update({'to': self.channel_email, 'type': 'groupchat'})
+            #         else:
+            #             data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
+            #         headers = {'Content-type': 'application/json'}
+            #
+            #         admin_passwd = odoo.tools.config.get('admin_passwd', False)
+            #         requests.post(url, json=data, headers=headers, verify=False,
+            #                       auth=(self.env.user.login, admin_passwd))
+            #     except Exception as e:
+            #         raise ValidationError(_(e))
+
             if res.channel_ids.mapped('channel_partner_ids'):
                 recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
-                data = {'body': body, 'kind': 'message', 'id': 'odoo' + str(res.id)}
                 try:
                     if self.public == 'groups':
-                        data.update({'to': self.channel_email, 'type': 'groupchat'})
+                        url = f"{url}/message/groupchat/{self.channel_email}"
                     else:
-                        data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
-                    headers = {'Content-type': 'application/json'}
+                        url = f"{url}/message/chat/{recipient_id[0].email if recipient_id else False}"
+                    headers = {'Content-type': 'tex/plain'}
 
                     admin_passwd = odoo.tools.config.get('admin_passwd', False)
-                    requests.post(url, json=data, headers=headers, verify=False,
-                                  auth=(self.env.user.login, admin_passwd))
+                    requests.request("POST", url, headers=headers, data=body, auth=(self.env.user.login, admin_passwd), verify=False)
                 except Exception as e:
                     raise ValidationError(_(e))
         return res
