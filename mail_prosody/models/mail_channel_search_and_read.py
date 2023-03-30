@@ -29,40 +29,30 @@ class ChannelSearchRead(models.Model):
 
         if res.id and not kwargs.get("prosody"):
             url = self.env['ir.config_parameter'].sudo().get_param('prosody_url', 'https://lvh.me:5281/rest')
-            # if res.channel_ids.mapped('channel_partner_ids'):
-            #     recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
-            #     data = {'body': body, 'kind': 'message', 'id': 'odoo' + str(res.id)}
-            #     try:
-            #         if self.public == 'groups':
-            #             data.update({'to': self.channel_email, 'type': 'groupchat'})
-            #         else:
-            #             data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
-            #         headers = {'Content-type': 'application/json'}
-            #
-            #         admin_passwd = odoo.tools.config.get('admin_passwd', False)
-            #         requests.post(url, json=data, headers=headers, verify=False,
-            #                       auth=(self.env.user.login, admin_passwd))
-            #     except Exception as e:
-            #         raise ValidationError(_(e))
-
             if res.channel_ids.mapped('channel_partner_ids'):
                 recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
-                _logger.warning("recipient_id %s", recipient_id)
-                _logger.warning("res.author_id %s", res.author_id)
-                _logger.warning("channel_partner_ids %s", res.channel_ids.mapped('channel_partner_ids'))
+                data = {'body': body, 'kind': 'message', 'id': 'odoo' + str(res.id)}
+                admin_passwd = odoo.tools.config.get('admin_passwd', False)
+
                 try:
                     if self.public == 'groups':
                         url = f"{url}/message/groupchat/{self.channel_email}"
+                        self.publish_group_message(url, body, admin_passwd)
                     else:
-                        url = f"{url}/message/chat/{recipient_id[0].email if recipient_id else False}"
-                    headers = {'Content-type': 'tex/plain'}
-
-                    admin_passwd = odoo.tools.config.get('admin_passwd', False)
-                    requests.request("POST", url, headers=headers, data=body,
-                                     auth=(self.env.user.login, admin_passwd), verify=False)
+                        data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
+                        self.public_p2p_message(url, data, admin_passwd)
                 except Exception as e:
                     raise ValidationError(_(e))
         return res
+
+    def publish_group_message(self, url, body, admin_passwd):
+        url = f"{url}/message/groupchat/{self.channel_email}"
+        headers = {'Content-type': 'tex/plain'}
+        requests.post(url, headers=headers, data=body, auth=(self.env.user.login, admin_passwd), verify=False)
+
+    def public_p2p_message(self, url, data, admin_passwd):
+        headers = {'Content-type': 'application/json'}
+        requests.post(url, json=data, headers=headers, verify=False, auth=(self.env.user.login, admin_passwd))
 
     @api.model
     def search_partner_channels(self, *kwargs):
