@@ -28,7 +28,6 @@ class Prosody(http.Controller):
             kwargs['channel_id'] = int(kwargs.get("channel_id"))
             kwargs['subtype_id'] = int(kwargs.get("subtype_id"))
             channel_message = request.env(cr, uid)['mail.channel'].sudo().message_channel_post_chat(kwargs)
-            _logger.warning("channel_message result =  %s", channel_message)
             dict_data = {'channel_message': channel_message}
             return successful_response(status=200, dict_data=dict_data)
         return error_response(400, 'Bad Request', 'Some parameters are missing')
@@ -45,8 +44,6 @@ class Prosody(http.Controller):
                 'create_date': str(message.get('create_date')),
                 'date': str(message.get('date')),
             } for message in comment_messages]
-
-            _logger.warning("channel_messages result =  %s", dict_data)
             return successful_response(status=200, dict_data=dict_data)
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
@@ -60,5 +57,4 @@ class Prosody(http.Controller):
             'create_date': str(channel.get('create_date')),
             'channel_message_ids': channel.get('channel_message_ids')
         } for channel in channels]
-        _logger.warning("channel_messages result =  %s", dict_data)
         return successful_response(status=200, dict_data=dict_data)
