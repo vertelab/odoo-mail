@@ -36,7 +36,6 @@ class ChannelSearchRead(models.Model):
 
                 try:
                     if self.public == 'groups':
-                        url = f"{url}/message/groupchat/{self.channel_email}"
                         self.publish_group_message(url, body, admin_passwd)
                     else:
                         data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})

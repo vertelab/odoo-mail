@@ -36,7 +36,6 @@ class Prosody(http.Controller):
     @http.route('/api/messages', methods=['GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def search_read_messages(self, **kwargs):
-        _logger.warning("Incoming messages data %s", kwargs)
         cr, uid = request.cr, request.session.uid
         if kwargs:
             comment_messages = request.env(cr, uid)['mail.message'].sudo().search_read([
@@ -54,7 +53,6 @@ class Prosody(http.Controller):
     @http.route('/api/channels', methods=['GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def search_read_channels(self, **kwargs):
-        _logger.warning("Incoming channels data %s", kwargs)
         cr, uid = request.cr, request.session.uid
         channels = request.env(cr, uid)['mail.channel'].sudo().search_read([])
         dict_data = [{
