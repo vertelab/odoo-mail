@@ -47,6 +47,9 @@ class ChannelSearchRead(models.Model):
 
             if res.channel_ids.mapped('channel_partner_ids'):
                 recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
+                _logger.warning("recipient_id %s", recipient_id)
+                _logger.warning("res.author_id %s", res.author_id)
+                _logger.warning("channel_partner_ids %s", res.channel_ids.mapped('channel_partner_ids'))
                 try:
                     if self.public == 'groups':
                         url = f"{url}/message/groupchat/{self.channel_email}"
@@ -55,7 +58,8 @@ class ChannelSearchRead(models.Model):
                     headers = {'Content-type': 'tex/plain'}
 
                     admin_passwd = odoo.tools.config.get('admin_passwd', False)
-                    requests.request("POST", url, headers=headers, data=body, auth=(self.env.user.login, admin_passwd), verify=False)
+                    requests.request("POST", url, headers=headers, data=body,
+                                     auth=(self.env.user.login, admin_passwd), verify=False)
                 except Exception as e:
                     raise ValidationError(_(e))
         return res
