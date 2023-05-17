@@ -5,7 +5,7 @@
             <field name="model">mail.channel</field>
             <field name="inherit_id" ref="mail.mail_channel_view_form"/>
             <field name="arch" type="xml">
-                <field name="public" position="after">
+                <field name="description" position="before">
                     <field name="channel_email"/>
                 </field>
             </field>

@@ -18,7 +18,7 @@ import werkzeug.wrappers
 
 import odoo
 from odoo import http, SUPERUSER_ID, models, fields
-from odoo.http import request, OpenERPSession
+from odoo.http import request
 from odoo.modules.registry import Registry
 from psycopg2.extensions import ISOLATION_LEVEL_READ_COMMITTED
 
@@ -563,7 +563,6 @@ def check_permissions(func):
             return error_response(400, error, error_description)
 
         # Validate access token
-        print(request.db)
         access_token_data = token_store.fetch_by_access_token(request.env, access_token)
         if not access_token_data:
             return error_response_401__invalid_token()
@@ -573,7 +572,7 @@ def check_permissions(func):
         # Set user's context
         user_context = request.env(request.cr, request.session.uid)['res.users'].context_get().copy()
         user_context['uid'] = request.session.uid
-        request.session.context = request.context = user_context
+        request.session.context = request.update_context = user_context
         # Set website request object
         if not hasattr(request, 'website') and request.env['ir.module.module'].sudo().search([
             ('name', '=', 'website'), ('state', 'in', ['installed', 'to upgrade', 'to remove'])], limit=1):

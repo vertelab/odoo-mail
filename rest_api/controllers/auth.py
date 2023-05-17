@@ -163,8 +163,16 @@ class ControllerREST(http.Controller):
                 refresh_token=refresh_token,
                 refresh_expires_in=refresh_expires_in,
                 user_id=uid)
+        session_uid = request.session.uid
 
-        user_context = request.session.get_context() if uid else {}
+        if session_uid:
+            user_context = dict(request.env['res.users'].context_get())
+            if user_context != request.session.context:
+                request.session.context = user_context
+        else:
+            user_context = {}
+
+        # user_context = request.session.get_context() if uid else {}
         company_id = request.env.user.company_id.id if uid else 'null'
         # Logout from Odoo and close current 'login' session:
         # request.session.logout()

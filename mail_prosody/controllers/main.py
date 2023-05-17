@@ -14,12 +14,20 @@ class Prosody(http.Controller):
     def api_search_channel(self, **kwargs):
         cr, uid = request.cr, request.session.uid
         if kwargs:
+            if kwargs.get("chat"):
+                if kwargs.get("recipient") and kwargs.get("sender"):
+                    channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)
+                    dict_data = {'channel_id': channel_id}
+                    return successful_response(status=200, dict_data=dict_data)
+                else:
+                    return error_response(400, 'Bad Request', 'Some parameters are missing')
+
             channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)
             dict_data = {'channel_id': channel_id}
             return successful_response(status=200, dict_data=dict_data)
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
-    @http.route('/api/chat', methods=['POST'], type='http', auth='none', csrf=False)
+    @http.route('/api/chat', methods=['GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def api_chat(self, **kwargs):
         cr, uid = request.cr, request.session.uid

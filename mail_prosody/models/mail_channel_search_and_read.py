@@ -17,33 +17,29 @@ class ChannelSearchRead(models.Model):
     channel_email = fields.Char(string="XMPP Channel Email")
 
     @api.returns('mail.message', lambda value: value.id)
-    def message_post(self, *, body='', subject=None, message_type='notification', email_from=None, author_id=None,
-                     parent_id=False, subtype_xmlid=None, subtype_id=False, partner_ids=None, channel_ids=None,
-                     attachments=None, attachment_ids=None, add_sign=True, record_name=False, **kwargs):
-
-        res = super().message_post(body=body, subject=subject, message_type=message_type, email_from=email_from,
-                                   author_id=author_id, parent_id=parent_id, subtype_xmlid=subtype_xmlid,
-                                   subtype_id=subtype_id, partner_ids=partner_ids, channel_ids=channel_ids,
-                                   attachments=attachments, attachment_ids=attachment_ids, add_sign=add_sign,
-                                   record_name=record_name, **kwargs)
+    def message_post(self, *, message_type='notification', **kwargs):
+        res = super().message_post(message_type=message_type, **kwargs)
 
         if res.id and not kwargs.get("prosody"):
             url = self.env['ir.config_parameter'].sudo().get_param('prosody_url', 'https://lvh.me:5281/rest')
-            if res.channel_ids.mapped('channel_partner_ids'):
-                recipient_id = res.channel_ids.mapped('channel_partner_ids') - res.author_id
-                data = {'body': body, 'kind': 'message', 'id': 'odoo' + str(res.id)}
-                try:
-                    if self.public == 'groups':
-                        data.update({'to': self.channel_email, 'type': 'groupchat'})
-                    else:
-                        data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
-                    headers = {'Content-type': 'application/json'}
+            print(self.channel_type)
 
-                    admin_passwd = odoo.tools.config.get('admin_passwd', False)
-                    requests.post(url, json=data, headers=headers, verify=False,
-                                  auth=(self.env.user.login, admin_passwd))
-                except Exception as e:
-                    raise ValidationError(_(e))
+            data = {'body': kwargs.get("body"), 'kind': 'message', 'id': 'odoo' + str(res.id)}
+            try:
+                if self.channel_type == 'channel':
+                    data.update({'to': self.channel_email, 'type': 'groupchat'})
+                else:
+                    if res.model == "mail.channel" and res.res_id:
+                        channel_id = self.env[res.model].browse(int(res.res_id))
+                        recipient_id = channel_id.mapped('channel_partner_ids') - res.author_id
+                        data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
+
+                headers = {'Content-type': 'application/json'}
+                admin_passwd = odoo.tools.config.get('admin_passwd', False)
+                requests.post(url, json=data, headers=headers, verify=False,
+                              auth=(self.env.user.login, admin_passwd))
+            except Exception as e:
+                raise ValidationError(_(e))
         return res
 
     @api.model
@@ -81,11 +77,10 @@ class ChannelSearchRead(models.Model):
             chat_channel = self._create_channel(channel_name, partner_ids)
         return chat_channel
 
-    def _create_channel(self, channel_name, partner_ids, public='private', channel_type='chat'):
+    def _create_channel(self, channel_name, partner_ids, channel_type='chat'):
         channel_id = self.env[self._name].create({
             'name': channel_name,
             'channel_partner_ids': [(4, partner_id.id) for partner_id in partner_ids if partner_id],
-            'public': public,
             'channel_type': channel_type
         })
         return channel_id
@@ -120,7 +115,6 @@ class ChannelSearchRead(models.Model):
             channel_id = self._create_channel(
                 channel_name=channel_name,
                 partner_ids=[moderator_partner_id, invitee_partner_id],
-                public='groups',
                 channel_type='channel'
             )
             channel_id.write({'channel_email': vals.get('sender')})
@@ -162,7 +156,6 @@ class ChannelSearchRead(models.Model):
             channel_id = self._create_channel(
                 channel_name=channel_name,
                 partner_ids=[partner_id],
-                public='groups',
                 channel_type='channel'
             )
         channel_id.write({'channel_email': channel_alias})
