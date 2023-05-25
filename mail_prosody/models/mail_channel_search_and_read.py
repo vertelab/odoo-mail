@@ -149,7 +149,10 @@ class ChannelSearchRead(models.Model):
         sender_jid = re.findall(r'/([a-z]+)', contact.get('sender'))
         partner_id = self.env['res.users'].search([('login', '=', sender_jid)], limit=1).mapped('partner_id')
 
-        channel_id = self.env[self._name].search([('name', '=', channel_name)])
+        # search channel mail first
+        channel_id = self.env[self._name].search([('channel_email', '=', channel_alias)])
+        if not channel_id:
+            channel_id = self.env[self._name].search([('name', '=', channel_name)])
 
         if channel_id and (partner_id not in channel_id.mapped('channel_partner_ids')):
             channel_id.write({
