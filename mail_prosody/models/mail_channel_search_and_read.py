@@ -22,7 +22,6 @@ class ChannelSearchRead(models.Model):
 
         if res.id and not kwargs.get("prosody"):
             url = self.env['ir.config_parameter'].sudo().get_param('prosody_url', 'https://lvh.me:5281/rest')
-            print(self.channel_type)
 
             data = {'body': kwargs.get("body"), 'kind': 'message', 'id': 'odoo' + str(res.id)}
             try:
