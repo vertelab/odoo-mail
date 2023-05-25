@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_show_all_chats_template_tree" model="ir.actions.act_window">
+        <field name="name">Show all chats</field>
+        <field name="res_model">mail.channel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        
+    <data>
+        <menuitem
+        name="Show chats" 
+        id="mail.menu_root_discuss_retrieve"
+        parent="mail.menu_root_discuss"
+        action="action_show_all_chats_template_tree"/>
+    </data>
+
+</odoo>
+    
