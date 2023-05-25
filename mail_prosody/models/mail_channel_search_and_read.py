@@ -96,7 +96,10 @@ class ChannelSearchRead(models.Model):
         status = "invited"
 
         channel_name = vals.get('sender').split("@")[0]   # vertel@lvh.me ==> vertel
-        channel_id = self.env[self._name].search([('name', '=', channel_name)])
+        # search channel mail first
+        channel_id = self.env[self._name].search([('channel_email', '=', vals.get('sender'))])
+        if not channel_id:
+            channel_id = self.env[self._name].search([('name', '=', channel_name)])
 
         if "invited" in vals.get('text_body'):
             invitee_jid = vals.get('recipient').split("@")[0]   # possible invitee demo@lvh.me ==> demo
