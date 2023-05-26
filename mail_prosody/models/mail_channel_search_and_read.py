@@ -22,11 +22,10 @@ class ChannelSearchRead(models.Model):
 
         if res.id and not kwargs.get("prosody"):
             url = self.env['ir.config_parameter'].sudo().get_param('prosody_url', 'https://lvh.me:5281/rest')
-            print(self.channel_type)
 
             data = {'body': kwargs.get("body"), 'kind': 'message', 'id': 'odoo' + str(res.id)}
             try:
-                if self.channel_type == 'channel':
+                if self.channel_type in ['channel', 'group']:
                     data.update({'to': self.channel_email, 'type': 'groupchat'})
                 else:
                     if res.model == "mail.channel" and res.res_id:
@@ -96,7 +95,10 @@ class ChannelSearchRead(models.Model):
         status = "invited"
 
         channel_name = vals.get('sender').split("@")[0]   # vertel@lvh.me ==> vertel
-        channel_id = self.env[self._name].search([('name', '=', channel_name)])
+        # search channel mail first
+        channel_id = self.env[self._name].search([('channel_email', '=', vals.get('sender'))], limit=1)
+        if not channel_id:
+            channel_id = self.env[self._name].search([('name', '=', channel_name)])
 
         if "invited" in vals.get('text_body'):
             invitee_jid = vals.get('recipient').split("@")[0]   # possible invitee demo@lvh.me ==> demo
@@ -146,7 +148,10 @@ class ChannelSearchRead(models.Model):
         sender_jid = re.findall(r'/([a-z]+)', contact.get('sender'))
         partner_id = self.env['res.users'].search([('login', '=', sender_jid)], limit=1).mapped('partner_id')
 
-        channel_id = self.env[self._name].search([('name', '=', channel_name)])
+        # search channel mail first
+        channel_id = self.env[self._name].search([('channel_email', '=', channel_alias)], limit=1)
+        if not channel_id:
+            channel_id = self.env[self._name].search([('name', '=', channel_name)])
 
         if channel_id and (partner_id not in channel_id.mapped('channel_partner_ids')):
             channel_id.write({
