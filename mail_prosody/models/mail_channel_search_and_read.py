@@ -25,7 +25,7 @@ class ChannelSearchRead(models.Model):
 
             data = {'body': kwargs.get("body"), 'kind': 'message', 'id': 'odoo' + str(res.id)}
             try:
-                if self.channel_type == 'channel':
+                if self.channel_type in ['channel', 'group']:
                     data.update({'to': self.channel_email, 'type': 'groupchat'})
                 else:
                     if res.model == "mail.channel" and res.res_id:
