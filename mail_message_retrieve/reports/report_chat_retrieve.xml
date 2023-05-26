@@ -1,60 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    
-    <template id="chat_document">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <t t-call="web.external_layout">
-                    <div class="page">
-<!--
-                        <h1>Kawaii</h1>
--->
-                        <h2 t-esc="doc.name"/>
-                        <t t-foreach="doc.message_ids.sorted(message_ids, reverse=True)" t-as="chat">
-                            <span t-esc="chat.author_id.name" style="font-weight: bold;">/: </span>
-                            <span t-esc="chat.date" style="color:gray;"/>
-                            <span t-esc="chat.body"/>
-                            <t t-foreach="chat.attachment_ids" t-as="img">
-<!--
-                                <t t-if="img.mimetype == 'image/jpeg'" >
--->
-                                    <p t-esc="img.name"/>
-<!--
-                                </t>
--->
-                            </t>
-<!--
-                            <span t-esc="chat"/>
--->
-                        </t>
-                    </div>
-                </t>
+  <template id="chat_document">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="doc">
+        <t t-call="web.external_layout">
+          <div class="page">
+            <h2 t-esc="doc.name" />
+            <t t-foreach="doc.message_ids.sorted(message_ids, reverse=True)" t-as="chat">
+              <span t-esc="chat.author_id.name" style="font-weight: bold;">/:</span>
+              <span t-esc="chat.date" style="color:gray;" />
+              <span t-esc="chat.body" />
+              <t t-foreach="chat.attachment_ids" t-as="img">
+                <p t-esc="img.name" />
+              </t>
             </t>
+          </div>
         </t>
-    </template>
-    
-    <record id="chat_action_report" model="ir.actions.report">
-        <field name="name">Chat Report</field>
-        <field name="model">mail.channel</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">mail_message_retrieve.chat_document</field>
-        <field name="report_file">mail_message_retrieve.chat_document</field>
-        <field name="print_report_name">"Chat Report"</field>
-        <field name="binding_model_id" ref="mail.model_mail_channel"></field>
-        <field name="binding_type">report</field>
-<!--
-        <field name="binding_model_id" ref=""/>
-        <field name="binding_type">report</field>
--->
-<!--
-<report id="l10n_se_hr_payroll.payslip" 
-model="user.payslip"  
-string="Payslip SE" 
-report_type="qweb-pdf" 
-name="l10n_se_hr_payroll.l10n_se_hr_payroll_payslip_document" 
-file="l10n_se_hr_payroll.l10n_se_hr_payroll_payslip_document" 
-attachment_use="False" 
-attachment="('payslip_'+(object.number.replace('/','') if object.number else ''))+'.pdf'" />
--->
-    </record>
+      </t>
+    </t>
+  </template>
+  <record id="chat_action_report" model="ir.actions.report">
+    <field name="name">Chat Report</field>
+    <field name="model">mail.channel</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">mail_message_retrieve.chat_document</field>
+    <field name="report_file">mail_message_retrieve.chat_document</field>
+    <field name="print_report_name">"Chat Report"</field>
+    <field name="binding_model_id" ref="mail.model_mail_channel" />
+    <field name="binding_type">report</field>
+  </record>
 </odoo>
