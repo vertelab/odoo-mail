@@ -35,8 +35,9 @@ class ChannelSearchRead(models.Model):
 
                 headers = {'Content-type': 'application/json'}
                 admin_passwd = odoo.tools.config.get('admin_passwd', False)
-                requests.post(url, json=data, headers=headers, verify=False,
+                xyz = requests.post(url, json=data, headers=headers, verify=False,
                               auth=(self.env.user.login, admin_passwd))
+                _logger.info(xyz.json())
             except Exception as e:
                 raise ValidationError(_(e))
         return res
