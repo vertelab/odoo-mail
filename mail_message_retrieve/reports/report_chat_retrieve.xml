@@ -11,10 +11,18 @@
 -->
                         <h2 t-esc="doc.name"/>
                         <t t-foreach="doc.message_ids.sorted(message_ids, reverse=True)" t-as="chat">
-<!--
-                            <span>hi</span>
--->
+                            <span t-esc="chat.author_id.name" style="font-weight: bold;">/: </span>
+                            <span t-esc="chat.date" style="color:gray;"/>
                             <span t-esc="chat.body"/>
+                            <t t-foreach="chat.attachment_ids" t-as="img">
+<!--
+                                <t t-if="img.mimetype == 'image/jpeg'" >
+-->
+                                    <p t-esc="img.name"/>
+<!--
+                                </t>
+-->
+                            </t>
 <!--
                             <span t-esc="chat"/>
 -->
