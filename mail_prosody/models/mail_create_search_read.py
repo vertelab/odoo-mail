@@ -7,7 +7,7 @@ _logger = logging.getLogger(__name__)
 class MailMessage(models.Model):
     _inherit = "mail.message"
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         res = super(MailMessage, self).create(vals)
         return res
