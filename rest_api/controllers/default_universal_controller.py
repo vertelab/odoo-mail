@@ -9,9 +9,6 @@ _logger = logging.getLogger(__name__)
 class ControllerREST(http.Controller):
     
     def define_schema_params(self, request, model_name, method):
-        print(request)
-        print(model_name)
-        print(method)
         schema = pre_schema = default_vals = None
         cr, uid = request.cr, request.session.uid
         Model = request.env['ir.model'].sudo().search([('model', '=', model_name)], limit=1)
