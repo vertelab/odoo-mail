@@ -27,7 +27,7 @@ class Prosody(http.Controller):
             return successful_response(status=200, dict_data=dict_data)
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
-    @http.route('/api/chat', methods=['GET'], type='http', auth='none', csrf=False)
+    @http.route('/api/chat', methods=['POST', 'GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def api_chat(self, **kwargs):
         cr, uid = request.cr, request.session.uid
