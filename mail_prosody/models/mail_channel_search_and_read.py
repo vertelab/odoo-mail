@@ -37,7 +37,7 @@ class ChannelSearchRead(models.Model):
                 admin_passwd = odoo.tools.config.get('admin_passwd', False)
                 xyz = requests.post(url, json=data, headers=headers, verify=False,
                               auth=(self.env.user.login, admin_passwd))
-                _logger.info(xyz.json())
+                _logger.info(xyz.text)
             except Exception as e:
                 raise ValidationError(_(e))
         return res
@@ -147,7 +147,7 @@ class ChannelSearchRead(models.Model):
             channel_alias = re.findall(r'[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+', contact.get('sender'))[0]
             channel_name = channel_alias.split("@")[0]
         sender_jid = re.findall(r'/([a-z]+)', contact.get('sender'))
-        partner_id = self.env['res.users'].search([('login', '=', sender_jid)], limit=1).mapped('partner_id')
+        partner_id = self.env['res.users'].search([('login', '=', sender_jid[0])], limit=1).mapped('partner_id')
 
         # search channel mail first
         channel_id = self.env[self._name].search([('channel_email', '=', channel_alias)], limit=1)
