@@ -42,6 +42,20 @@ class ChannelSearchRead(models.Model):
                 raise ValidationError(_(e))
         return res
 
+    def _update_prosodyarchive(self):
+        query = """
+                    INSERT INTO website_visitor (
+                        host, user, store, when, with, key, type, value)
+                    VALUES (
+                        %(partner_id)s, %(access_token)s, now() at time zone 'UTC', 1, %(lang_id)s,
+                        %(website_id)s, %(timezone)s, %(create_uid)s, %(write_uid)s,
+                        now() at time zone 'UTC', now() at time zone 'UTC', (
+                            SELECT id FROM res_country WHERE code = %(country_code)s
+                        )
+                    )
+                """
+
+
     @api.model
     def search_partner_channels(self, *kwargs):
         kwargs_vals = kwargs[0]
