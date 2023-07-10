@@ -184,7 +184,6 @@ class ChannelSearchRead(models.Model):
     def message_channel_post_chat(self, *args):
         for arg in args:
             if channel := self.env["mail.channel"].browse(arg.get('channel_id')):
-                print("channel", channel)
                 new_arg = {a: arg[a] for a in arg}
                 new_arg["prosody"] = True
                 message_post = channel.message_post(**new_arg).id

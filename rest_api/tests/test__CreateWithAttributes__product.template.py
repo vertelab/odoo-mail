@@ -13,11 +13,11 @@ r = requests.get(
     }),
     #verify = False      # for self-signed TLS/SSL certificates
 )
-print r.text
+print(r.text)
 access_token = r.json()['access_token']
 
 
-print '\n 2. product.template - Create one:'
+print('\n 2. product.template - Create one:')
 r = requests.post(
     'http://localhost:8069/api/product.template',
     headers = {
@@ -66,4 +66,4 @@ r = requests.post(
     }),
     #verify = False      # for self-signed TLS/SSL certificates
 )
-print r.text
+print(r.text)
