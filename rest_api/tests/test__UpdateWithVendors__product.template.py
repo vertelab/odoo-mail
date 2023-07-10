@@ -46,4 +46,4 @@ r = requests.put(
     }),
     #verify = False      # for self-signed TLS/SSL certificates
 )
-print r.text
+print(r.text)
