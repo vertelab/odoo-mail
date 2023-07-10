@@ -563,7 +563,6 @@ def check_permissions(func):
             return error_response(400, error, error_description)
 
         # Validate access token
-        print(request.db)
         access_token_data = token_store.fetch_by_access_token(request.env, access_token)
         if not access_token_data:
             return error_response_401__invalid_token()
