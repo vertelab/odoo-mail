@@ -28,27 +28,34 @@ class ChannelSearchRead(models.Model):
         res = super().message_post(message_type=message_type, **kwargs)
 
         if res.id and not kwargs.get("prosody"):
-            url = self.env['ir.config_parameter'].sudo().get_param('prosody_url', 'https://lvh.me:5281/rest')
-
-            data = {'body': kwargs.get("body"), 'kind': 'message', 'id': 'odoo' + str(res.id)}
-            try:
-                if self.channel_type in ['channel', 'group']:
-                    data.update({'to': self.channel_email, 'type': 'groupchat'})
-                else:
-                    if res.model == "mail.channel" and res.res_id:
-                        channel_id = self.env[res.model].browse(int(res.res_id))
-                        recipient_id = channel_id.mapped('channel_partner_ids') - res.author_id
-                        data.update({'to': recipient_id[0].email if recipient_id else False, 'type': 'chat'})
-
-                headers = {'Content-type': 'application/json'}
-                admin_passwd = odoo.tools.config.get('admin_passwd', False)
-                requests.post(url, json=data, headers=headers, verify=False,
-                              auth=(self.env.user.login, admin_passwd))
-            except Exception as e:
-                raise ValidationError(_(e))
+            self._update_prosodyarchive(res)
         return res
 
+    def _update_prosodyarchive(self, res):
+        channel_id = self.env[res.model].browse(int(res.res_id))
+        recipient_id = channel_id.mapped('channel_partner_ids') - res.author_id
+        recipient_id = self.env["res.users"].search([("partner_id", "=", recipient_id[0].id)], limit=1)
 
+        sender_id = self.env["res.users"].search([("partner_id", "=", res.author_id.id)], limit=1)
+
+        dt = datetime.now()
+        timestamp = time.mktime(dt.timetuple()) + dt.microsecond / 1e6
+        random_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+
+        print(recipient_id.email)
+
+        jabberid = self.env.user.email
+        password = odoo.tools.config.get('admin_passwd', False)
+        receiver = recipient_id.email
+        message = re.sub('<[^<]+?>', '', res.body)
+
+        jid = xmpp.protocol.JID(jabberid)
+        connection = xmpp.Client(server=jid.getDomain(), debug=True)
+        print(connection)
+        connection.connect()
+        connection.auth(user=jid.getNode(), password=password, resource=jid.getResource())
+        connection.send(xmpp.protocol.Message(to=receiver, body=message))
+        print(connection.__dict__)
 
     @api.model
     def search_partner_channels(self, *kwargs):
