@@ -36,6 +36,7 @@
     'repository': 'https://github.com/vertelab/odoo-mail',
     'depends': ['base', 'mail', 'mail_bot', 'rest_api'],
     'data': [
+        'security/ir.model.access.csv',
         'views/mail_channel_view.xml',
         'data/ir_config_parameter.xml'
     ],

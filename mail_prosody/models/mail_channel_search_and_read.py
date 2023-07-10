@@ -2,7 +2,14 @@ import logging
 import requests
 import odoorpc
 import odoo
+import datetime
+import random
+import string
+from datetime import datetime
+import time
 import re
+import uuid
+import xmpp
 
 from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
@@ -35,25 +42,12 @@ class ChannelSearchRead(models.Model):
 
                 headers = {'Content-type': 'application/json'}
                 admin_passwd = odoo.tools.config.get('admin_passwd', False)
-                xyz = requests.post(url, json=data, headers=headers, verify=False,
+                requests.post(url, json=data, headers=headers, verify=False,
                               auth=(self.env.user.login, admin_passwd))
-                _logger.info(xyz.text)
             except Exception as e:
                 raise ValidationError(_(e))
         return res
 
-    def _update_prosodyarchive(self):
-        query = """
-                    INSERT INTO website_visitor (
-                        host, user, store, when, with, key, type, value)
-                    VALUES (
-                        %(partner_id)s, %(access_token)s, now() at time zone 'UTC', 1, %(lang_id)s,
-                        %(website_id)s, %(timezone)s, %(create_uid)s, %(write_uid)s,
-                        now() at time zone 'UTC', now() at time zone 'UTC', (
-                            SELECT id FROM res_country WHERE code = %(country_code)s
-                        )
-                    )
-                """
 
 
     @api.model
@@ -72,7 +66,6 @@ class ChannelSearchRead(models.Model):
 
     def _p2p_chat(self, contacts):
         members = self._cleanup_p2p_contact(contacts)
-        _logger.warning("p2p members %s", members)
         partner_ids = []
         for member in members:
             partner_ids.append(self.env['res.partner'].search([('email', '=', member)]).id)
@@ -191,6 +184,7 @@ class ChannelSearchRead(models.Model):
     def message_channel_post_chat(self, *args):
         for arg in args:
             if channel := self.env["mail.channel"].browse(arg.get('channel_id')):
+                print("channel", channel)
                 new_arg = {a: arg[a] for a in arg}
                 new_arg["prosody"] = True
                 message_post = channel.message_post(**new_arg).id
