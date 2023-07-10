@@ -90,7 +90,10 @@ class MailMessageProsodyArchiveProcessor(models.TransientModel):
                 "recipient": rec.recipient_id.email,
                 "message_type": "chat",
             }
-            rec.channel_id = self.env['mail.channel'].search_partner_channels(vals)
+            if vals.get('sender') and vals.get('recipient'):
+                rec.channel_id = self.env['mail.channel'].search_partner_channels(vals)
+            else:
+                rec.channel_id = False
 
     channel_id = fields.Many2one("mail.channel", string="Channel", compute=_get_channel)
 
