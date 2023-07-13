@@ -1,7 +1,7 @@
 import logging
 import json
-
-from odoo import http
+from odoo import fields
+from odoo import http, SUPERUSER_ID
 from odoo.http import Response, request
 from odoo.addons.rest_api.controllers.main import check_permissions, successful_response, error_response
 
@@ -9,6 +9,34 @@ _logger = logging.getLogger(__name__)
 
 
 class Prosody(http.Controller):
+    def _cleanup_p2p_mail(self, email):
+        return email.split('/')[0]
+
+    @http.route('/api/prosodyarchive', methods=['GET'], type='http', auth='none', csrf=False)
+    @check_permissions
+    def api_prosody_archive(self, **kwargs):
+        cr, uid = request.cr, request.session.uid
+        if kwargs.get('sender'):
+            channel_vals = {
+                "sender": kwargs.get('sender'),
+                "recipient": kwargs.get('recipient'),
+                "message_type": kwargs.get('message_type'),
+            }
+            channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(channel_vals)
+
+            chat_vals = {
+                "body": kwargs.get('message_body'),
+                "channel_id": channel_id.id,
+                "subtype_id": 1,
+                "message_type": 'comment',
+                "prosody_message_id": kwargs.get('message_id'),
+            }
+            mail_message_id = request.env(cr, uid)["mail.message"].sudo().search([
+                ("prosody_message_id", "=", kwargs.get('message_id'))
+            ], limit=1)
+            if not mail_message_id:
+                request.env(cr, uid)["mail.channel"].sudo().message_channel_post_chat(chat_vals)
+
     @http.route('/api/chat/channel', methods=['GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def api_search_channel(self, **kwargs):

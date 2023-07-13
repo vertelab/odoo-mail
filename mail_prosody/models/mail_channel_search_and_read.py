@@ -33,29 +33,25 @@ class ChannelSearchRead(models.Model):
 
     def _update_prosodyarchive(self, res):
         channel_id = self.env[res.model].browse(int(res.res_id))
-        recipient_id = channel_id.mapped('channel_partner_ids') - res.author_id
-        recipient_id = self.env["res.users"].search([("partner_id", "=", recipient_id[0].id)], limit=1)
 
-        sender_id = self.env["res.users"].search([("partner_id", "=", res.author_id.id)], limit=1)
-
-        dt = datetime.now()
-        timestamp = time.mktime(dt.timetuple()) + dt.microsecond / 1e6
-        random_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
-
-        print(recipient_id.email)
+        if channel_id.channel_type in ['channel', 'group']:
+            receiver = channel_id.channel_email
+            type = 'groupchat'
+        else:
+            recipient_id = channel_id.mapped('channel_partner_ids') - res.author_id
+            recipient_id = self.env["res.users"].sudo().search([("partner_id", "=", recipient_id[0].id)], limit=1)
+            receiver = recipient_id.email
+            type = 'chat'
 
         jabberid = self.env.user.email
         password = odoo.tools.config.get('admin_passwd', False)
-        receiver = recipient_id.email
         message = re.sub('<[^<]+?>', '', res.body)
 
         jid = xmpp.protocol.JID(jabberid)
-        connection = xmpp.Client(server=jid.getDomain(), debug=True)
-        print(connection)
+        connection = xmpp.Client(server=jid.getDomain(), debug=False)
         connection.connect()
         connection.auth(user=jid.getNode(), password=password, resource=jid.getResource())
-        connection.send(xmpp.protocol.Message(to=receiver, body=message))
-        print(connection.__dict__)
+        connection.send(xmpp.protocol.Message(to=receiver, body=message, typ=type, subject='odoo'))
 
     @api.model
     def search_partner_channels(self, *kwargs):
@@ -69,7 +65,7 @@ class ChannelSearchRead(models.Model):
         else:
             chat_channel = self._group_chat(kwargs_vals)
 
-        return chat_channel.id
+        return chat_channel
 
     def _p2p_chat(self, contacts):
         members = self._cleanup_p2p_contact(contacts)
@@ -161,6 +157,8 @@ class ChannelSearchRead(models.Model):
             channel_alias = re.findall(r'[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+', contact.get('sender'))[0]
             channel_name = channel_alias.split("@")[0]
         sender_jid = re.findall(r'/([a-z]+)', contact.get('sender'))
+        print(contact)
+        print(sender_jid)
         partner_id = self.env['res.users'].search([('login', '=', sender_jid[0])], limit=1).mapped('partner_id')
 
         # search channel mail first
