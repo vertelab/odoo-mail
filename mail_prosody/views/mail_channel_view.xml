@@ -10,50 +10,5 @@
                 </field>
             </field>
         </record>
-
-        <record id="mail_message_prosody_archive_processor_tree_view" model="ir.ui.view">
-            <field name="name">mail.message.prosody.archive.processor.tree</field>
-            <field name="model">mail.message.prosody.archive.processor</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="prosody_user"/>
-                    <field name="prosody_with"/>
-                    <field name="sender_id"/>
-                    <field name="recipient_id"/>
-                    <field name="channel_id"/>
-                    <field name="message_id"/>
-                    <field name="chat_is_synced"/>
-                </tree>
-            </field>
-        </record>
-
-        <record id="mail_message_prosody_archive_processor_form_view" model="ir.ui.view">
-            <field name="name">mail.message.prosody.archive.processor.form</field>
-            <field name="model">mail.message.prosody.archive.processor</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="prosody_user"/>
-                                <field name="prosody_with"/>
-                                <field name="sender_id"/>
-                                <field name="recipient_id"/>
-                                <field name="message_id"/>
-                            </group>
-                            <group>
-                                <field name="message_id"/>
-                                <field name="message_body"/>
-                                <field name="prosody_key"/>
-                                <field name="prosody_store"/>
-                                <field name="channel_id"/>
-                                <field name="chat_is_synced"/>
-                            </group>
-                            <field name="prosody_value"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
     </data>
 </odoo>

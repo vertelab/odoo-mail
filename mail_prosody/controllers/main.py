@@ -34,7 +34,7 @@ class Prosody(http.Controller):
             mail_message_id = request.env(cr, uid)["mail.message"].sudo().search([
                 ("prosody_message_id", "=", kwargs.get('message_id'))
             ], limit=1)
-            if not mail_message_id:
+            if not mail_message_id and chat_vals.get("body"):
                 request.env(cr, uid)["mail.channel"].sudo().message_channel_post_chat(chat_vals)
 
     @http.route('/api/chat/channel', methods=['GET'], type='http', auth='none', csrf=False)
