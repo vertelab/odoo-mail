@@ -7,6 +7,9 @@
             <field name="arch" type="xml">
                 <field name="description" position="before">
                     <field name="channel_email"/>
+                    <field name="is_private"/>
+                    <field name="has_password"/>
+                    <field name="prosody_room_password"/>
                 </field>
             </field>
         </record>

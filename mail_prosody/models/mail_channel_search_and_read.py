@@ -4,15 +4,40 @@ import re
 import xmpp
 
 from odoo import fields, models, api, _
+from odoo.exceptions import AccessError
 
 
 _logger = logging.getLogger(__name__)
 
 
-class ChannelSearchRead(models.Model):
+class MailChannel(models.Model):
     _inherit = "mail.channel"
 
     channel_email = fields.Char(string="XMPP Channel Email")
+    is_private = fields.Boolean(string="Private")
+
+    @api.depends("prosody_room_password")
+    def _compute_has_password(self):
+        for rec in self:
+            if rec.prosody_room_password:
+                rec.has_password = True
+            else:
+                rec.has_password = False
+
+    has_password = fields.Boolean(string="Has Password", compute=_compute_has_password)
+    prosody_room_password = fields.Char(string="Prosody Room Password")
+
+    def add_members(self, partner_ids=None, guest_ids=None, invite_to_rtc_call=False, open_chat_window=False,
+                    post_joined_message=True):
+        if self.has_password:
+            raise AccessError("This channel is private, kindly contact prosody administrator to add you to the channel")
+        return super(MailChannel, self).add_members(
+            partner_ids=partner_ids,
+            guest_ids=guest_ids,
+            invite_to_rtc_call=invite_to_rtc_call,
+            open_chat_window=open_chat_window,
+            post_joined_message=post_joined_message
+        )
 
     @api.returns('mail.message', lambda value: value.id)
     def message_post(self, *, message_type='notification', **kwargs):

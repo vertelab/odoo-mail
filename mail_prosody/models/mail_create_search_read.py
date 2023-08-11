@@ -1,6 +1,7 @@
 import logging
 from odoo import fields, models, api, _
 import xml.etree.ElementTree as ET
+from odoo.exceptions import AccessError
 
 _logger = logging.getLogger(__name__)
 
@@ -37,3 +38,17 @@ class MailMessage(models.Model):
         res = super().search_read(domain, fields, offset, limit, order)
         return res
 
+
+class ChannelMember(models.Model):
+    _inherit = 'mail.channel.member'
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        """Similar access rule as the access rule of the mail channel.
+
+        It can not be implemented in XML, because when the record will be created, the
+        partner will be added in the channel and the security rule will always authorize
+        the creation.
+        """
+        vals_list = list(filter(lambda x: x.get("partner_id"), vals_list))
+        return super().create(vals_list)
