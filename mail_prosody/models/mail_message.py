@@ -1,7 +1,6 @@
 import logging
 from odoo import fields, models, api, _
-import xml.etree.ElementTree as ET
-from odoo.exceptions import AccessError
+
 
 _logger = logging.getLogger(__name__)
 
