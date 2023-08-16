@@ -144,3 +144,32 @@ class Prosody(http.Controller):
                 channel_id.sudo().write(channel_vals)
             dict_data.update({'channel_id': channel_id.id})
         return successful_response(status=200, dict_data=dict_data)
+
+    @http.route('/muc/config', methods=['GET'], type='http', auth='none', csrf=False)
+    # @check_permissions
+    def muc_configuration(self, **kwargs):
+        print(kwargs)
+        config = {
+            "affiliations": [
+                {
+                    "affiliation": "owner",
+                    "jid": "admin@rita.vertel.se",
+                    "nick": "admin"
+                },
+                {
+                    "affiliation": "admin",
+                    "jid": "demo@rita.vertel.se",
+                    "nick": "demo"
+                },
+            ],
+            "config": {
+                "description": "Digital Discussions",
+                "members_only": False,
+                "moderated": False,
+                "name": "The Digital",
+                "persistent": True,
+                "public": True,
+                "subject": "Discussions regarding The Place"
+            }
+        }
+        return config
