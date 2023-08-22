@@ -382,4 +382,6 @@ class MailChannel(models.Model):
         res = super().write(vals_list)
         if res and self.channel_email:
             self._persistent_query(self)
+        if vals_list.get('channel_member_ids'):
+            self._affiliation_data_query()
         return res

@@ -18,3 +18,9 @@ class ChannelMember(models.Model):
         if res.channel_id:
             res.channel_id._affiliation_data_query()
         return res
+
+    def write(self, vals):
+        res = super(ChannelMember, self).write(vals)
+        if self.channel_id:
+            self.channel_id._affiliation_data_query()
+        return res
