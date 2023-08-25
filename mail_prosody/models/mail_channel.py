@@ -5,6 +5,7 @@ import xmpp
 import uuid
 import psycopg2
 import json
+from odoo import http, SUPERUSER_ID, Command
 from psycopg2 import sql
 
 from odoo import fields, models, api, _
@@ -67,10 +68,11 @@ class MailChannel(models.Model):
         message = re.sub('<[^<]+?>', '', res.body)
 
         jid = xmpp.protocol.JID(jabberid)
-        connection = xmpp.Client(server=jid.getDomain(), debug=False)
+        connection = xmpp.Client(server=jid.getDomain(), debug=True)
         connection.connect()
         connection.auth(user=jid.getNode(), password=password, resource=jid.getResource())
-        connection.send(xmpp.protocol.Message(to=receiver, body=message, typ=chat_type, subject='odoo'))
+        d = connection.send(xmpp.protocol.Message(to=receiver, body=message, typ=chat_type, subject=f'odoo-{uuid.uuid4()}'))
+        print(d)
 
     @api.model
     def search_partner_channels(self, *kwargs):
@@ -84,7 +86,7 @@ class MailChannel(models.Model):
         else:
             chat_channel = self._group_chat(kwargs_vals)
 
-        return chat_channel
+        return chat_channel.id
 
     def _p2p_chat(self, contacts):
         members = self._cleanup_p2p_contact(contacts)
@@ -204,6 +206,7 @@ class MailChannel(models.Model):
 
     @api.model
     def message_channel_post_chat(self, *args):
+        print(args)
         for arg in args:
             if channel := self.env["mail.channel"].browse(arg.get('channel_id')):
                 new_arg = {a: arg[a] for a in arg}
@@ -211,177 +214,273 @@ class MailChannel(models.Model):
                 message_post = channel.message_post(**new_arg).id
                 return message_post
 
-    def _persistent_query(self, channel_id):
-        values = {
-            'host': channel_id.channel_email.split('@')[1],
-            'user': '',
-            'store': 'persistent',
-            'key': channel_id.channel_email,
-            'type': 'boolean',
-            'value': 'true'
-        }
-        self.sql_query(values)
-        self._jid_query(channel_id)
+    def search_read_custom(self, domain=None, fields=None, offset=0, limit=None, order=None):
+        res = super().search_read(domain, fields, offset, limit, order)
+        return res
+
+        # def _persistent_query(self, channel_id):
+    #     values = {
+    #         'host': channel_id.channel_email.split('@')[1],
+    #         'user': '',
+    #         'store': 'persistent',
+    #         'key': channel_id.channel_email,
+    #         'type': 'boolean',
+    #         'value': 'true'
+    #     }
+    #     self.sql_query(values)
+    #     self._jid_query(channel_id)
 
     @api.model_create_multi
     def create(self, vals_list):
         res = super().create(vals_list)
         if res and res.channel_email:
-            self._persistent_query(res)
+            # jabberid = xmpp.protocol.JID(res.get('channel_email'))
+            # password = odoo.tools.config.get('admin_passwd', False)
+            # jabberid = self.env.user.email
+            #
+            # jid = xmpp.protocol.JID(jabberid)
+            # connection = xmpp.Client(server=jid.getDomain(), debug=True)
+            # connection.connect()
+            # connection.auth(user=jid.getNode(), password=password, resource=jid.getResource())
+            # pres = xmpp.Presence(to=res.channel_email)
+            # connection.sendInitPresence()
+            # connection.send(pres)
+            # print(connection)
+            import sys, os, xmpp, time
+            # jid = xmpp.protocol.JID(res.get('channel_email'))
+            psw = odoo.tools.config.get('admin_passwd', False)
+            jid = self.env.user.email
+
+            jid = xmpp.protocol.JID(jid)
+            cl = xmpp.Client(jid.getDomain(), debug=[])
+            cl.connect()
+            cl.auth(jid.getNode(), psw)
+
+            node = jid.getNode()
+            domain = 'conference.rita.vertel.se'
+            room = res.name + '@' + domain
+            print("room", room)
+            nroom = room + '/' + 'Maria'
+            mes = xmpp.Presence(to=nroom)
+            print(mes)
+            res1 = cl.sendInitPresence()
+            import time
+            time.sleep(10)
+            print(res1)
+            res1 = cl.send(mes)
+            print(res1)
+
+
+
+            # self._persistent_query(res)
         return res
 
-    def _get_param(self, param):
-        return self.env['ir.config_parameter'].get_param(param)
+    #     def _get_param(self, param):
+#     return self.env['ir.config_parameter'].get_param(param)
+#
+# def _psql_connection(self, query, values):
+#     try:
+#         # Connect to the PostgreSQL database
+#         connection = psycopg2.connect(
+#             host=self._get_param('PG_HOST'),
+#             user=self._get_param('PG_USER'),
+#             password=self._get_param('PG_PASSWORD'),
+#             database=self.env.cr.dbname
+#         )
+#         # Create a cursor
+#         cursor = connection.cursor()
+#
+#         # Execute the query with parameterized values
+#         cursor.execute(query, values)
+#
+#         # Commit the changes
+#         connection.commit()
+#     except (Exception, psycopg2.Error) as error:
+#         print("Error:", error)
+#     finally:
+#         if connection:
+#             cursor.close()
+#             connection.close()
+#
+# def delete_query(self, values):
+#     del_vals = (
+#         values.get('host'),
+#         values.get('user'),
+#         values.get('store'),
+#         values.get('key'),
+#     )
+#     query = """
+#         DELETE FROM prosody WHERE "host"=%s AND "user"=%s AND "store"=%s AND "key"=%s
+#     """
+#     self._psql_connection(query, del_vals)
+#
+# def sql_query(self, values):
+#     self.delete_query(values)
+#     query = """
+#         INSERT INTO prosody(
+#             host,
+#             "user",
+#             store,
+#             key,
+#             type,
+#             value
+#         )
+#         VALUES (
+#             %(host)s, %(user)s, %(store)s, %(key)s, %(type)s, %(value)s
+#         )
+#     """
+#     self._psql_connection(query, values)
 
-    def _psql_connection(self, query, values):
-        try:
-            # Connect to the PostgreSQL database
-            connection = psycopg2.connect(
-                host=self._get_param('PG_HOST'),
-                user=self._get_param('PG_USER'),
-                password=self._get_param('PG_PASSWORD'),
-                database=self.env.cr.dbname
-            )
-            # Create a cursor
-            cursor = connection.cursor()
+# def _jid_query(self, channel_id):
+    #     values = {
+    #         'host': channel_id.channel_email.split('@')[1],
+    #         'user': channel_id.channel_email.split('@')[0],
+    #         'store': 'config',
+    #         'key': '_jid',
+    #         'type': 'string',
+    #         'value': channel_id.channel_email
+    #     }
+    #     self.sql_query(values)
+    #     self._data_query(channel_id)
 
-            # Execute the query with parameterized values
-            cursor.execute(query, values)
+    # def _data_query(self, channel_id):
+    #     values = {
+    #         'host': channel_id.channel_email.split('@')[1],
+    #         'user': channel_id.channel_email.split('@')[0],
+    #         'store': 'config',
+    #         'key': '_data',
+    #         'type': 'json',
+    #         'value':  json.dumps(self._data_query_value(channel_id))
+    #     }
+    #     self.sql_query(values)
 
-            # Commit the changes
-            connection.commit()
-        except (Exception, psycopg2.Error) as error:
-            print("Error:", error)
-        finally:
-            if connection:
-                cursor.close()
-                connection.close()
+    # def _data_query_value(self, channel_id):
+    #     data_vals = {
+    #         "name": channel_id.channel_email,
+    #         "persistent": True,
+    #         "archiving": True,
+    #         "language": "en",
+    #         "whois": "anyone",
+    #         "occupant_id_salt": str(uuid.uuid4()),
+    #     }
+    #     if channel_id.prosody_room_password:
+    #         data_vals.update({
+    #             "password": channel_id.prosody_room_password,
+    #             "hidden": True,
+    #         })
+    #     if channel_id.description:
+    #         data_vals.update({
+    #             "description": channel_id.description,
+    #         })
+    #     return data_vals
 
-    def delete_query(self, values):
-        del_vals = (
-            values.get('host'),
-            values.get('user'),
-            values.get('store'),
-            values.get('key'),
-        )
-        query = """
-            DELETE FROM prosody WHERE "host"=%s AND "user"=%s AND "store"=%s AND "key"=%s
-        """
-        self._psql_connection(query, del_vals)
+    # def _affiliation_data_query(self):
+    #     values = {
+    #         'host': self.channel_email.split('@')[1],
+    #         'user': self.channel_email.split('@')[0],
+    #         'store': 'config',
+    #         'key': '_affiliation_data',
+    #         'type': 'json',
+    #         'value': json.dumps(self._affliation_users())
+    #     }
+    #     self.sql_query(values)
+    #     self.room_members()
+    #
+    # def _affliation_users(self):
+    #     user_vals = {}
+    #     for member in self.channel_member_ids:
+    #         user_id = self.env['res.users'].search([("email", "=", member.partner_email)])
+    #         user_vals.update({
+    #             member.partner_email: {"reserved_nickname": user_id.login}
+    #         })
+    #     return user_vals
+    #
+    # def room_members(self):
+    #     for member in self.channel_member_ids:
+    #         partner_user_id = self.env['res.users'].search([("email", "=", member.partner_email)], limit=1)
+    #         values = {
+    #             'host': self.channel_email.split('@')[1],
+    #             'user': self.channel_email.split('@')[0],
+    #             'store': 'config',
+    #             'key': member.partner_email,
+    #             'type': 'string',
+    #             'value': "owner" if member.channel_id.create_uid.id == partner_user_id.id else "member"
+    #         }
+    #         self.sql_query(values)
+    #
+    # def unlink(self):
+    #     if self.channel_email:
+    #         self._del_persistent()
+    #         query = """
+    #             DELETE FROM prosody WHERE "user"=%s
+    #         """
+    #         self._psql_connection(query, (self.channel_email.split('@')[0], ))
+    #     return super(MailChannel, self).unlink()
+    #
+    # def _del_persistent(self):
+    #     query = """
+    #         DELETE FROM prosody WHERE "key"=%s
+    #     """
+    #     self._psql_connection(query, (self.channel_email, ))
 
-    def sql_query(self, values):
-        self.delete_query(values)
-        query = """
-            INSERT INTO prosody(
-                host,
-                "user",
-                store,
-                key,
-                type,
-                value
-            )
-            VALUES (
-                %(host)s, %(user)s, %(store)s, %(key)s, %(type)s, %(value)s
-            )
-        """
-        self._psql_connection(query, values)
+    # def write(self, vals_list):
+    #     res = super().write(vals_list)
+    #     if res and self.channel_email:
+    #         self._persistent_query(self)
+    #     if vals_list.get('channel_member_ids'):
+    #         self._affiliation_data_query()
+    #     return res
 
-    def _jid_query(self, channel_id):
-        values = {
-            'host': channel_id.channel_email.split('@')[1],
-            'user': channel_id.channel_email.split('@')[0],
-            'store': 'config',
-            'key': '_jid',
-            'type': 'string',
-            'value': channel_id.channel_email
-        }
-        self.sql_query(values)
-        self._data_query(channel_id)
+    @api.model
+    def create_prosody_channel(self, *kwargs):
+        print("=====", kwargs)
+        dict_data = {}
+        kwargs = kwargs[0]
 
-    def _data_query(self, channel_id):
-        values = {
-            'host': channel_id.channel_email.split('@')[1],
-            'user': channel_id.channel_email.split('@')[0],
-            'store': 'config',
-            'key': '_data',
-            'type': 'json',
-            'value':  json.dumps(self._data_query_value(channel_id))
-        }
-        self.sql_query(values)
+        if kwargs.get("jid"):
+            channel_id = self.env['mail.channel'].sudo().search([("channel_email", "=", kwargs.get("jid"))])
 
-    def _data_query_value(self, channel_id):
-        data_vals = {
-            "name": channel_id.channel_email,
-            "persistent": True,
-            "archiving": True,
-            "language": "en",
-            "whois": "anyone",
-            "occupant_id_salt": str(uuid.uuid4()),
-        }
-        if channel_id.prosody_room_password:
-            data_vals.update({
-                "password": channel_id.prosody_room_password,
-                "hidden": True,
-            })
-        if channel_id.description:
-            data_vals.update({
-                "description": channel_id.description,
-            })
-        return data_vals
+            partner_ids = []
+            for member in kwargs.get("occupants").split(","):
+                partner_ids.append(self.env['res.users'].sudo().search([('login', '=', member)]).partner_id)
 
-    def _affiliation_data_query(self):
-        values = {
-            'host': self.channel_email.split('@')[1],
-            'user': self.channel_email.split('@')[0],
-            'store': 'config',
-            'key': '_affiliation_data',
-            'type': 'json',
-            'value': json.dumps(self._affliation_users())
-        }
-        self.sql_query(values)
-        self.room_members()
-
-    def _affliation_users(self):
-        user_vals = {}
-        for member in self.channel_member_ids:
-            user_id = self.env['res.users'].search([("email", "=", member.partner_email)])
-            user_vals.update({
-                member.partner_email: {"reserved_nickname": user_id.login}
-            })
-        return user_vals
-
-    def room_members(self):
-        for member in self.channel_member_ids:
-            partner_user_id = self.env['res.users'].search([("email", "=", member.partner_email)], limit=1)
-            values = {
-                'host': self.channel_email.split('@')[1],
-                'user': self.channel_email.split('@')[0],
-                'store': 'config',
-                'key': member.partner_email,
-                'type': 'string',
-                'value': "owner" if member.channel_id.create_uid.id == partner_user_id.id else "member"
+            channel_vals = {
+                "prosody_room_password": kwargs.get("password", False),
+                "description": kwargs.get("description", False),
             }
-            self.sql_query(values)
 
-    def unlink(self):
-        if self.channel_email:
-            self._del_persistent()
-            query = """
-                DELETE FROM prosody WHERE "user"=%s
-            """
-            self._psql_connection(query, (self.channel_email.split('@')[0], ))
-        return super(MailChannel, self).unlink()
+            if not channel_id:
+                channel_vals.update({
+                    'name': kwargs.get("jid").split("@")[0],
+                    'channel_type': "channel",
+                    'channel_email': kwargs.get("jid"),
+                    'channel_member_ids': [
+                        Command.create({
+                            "partner_id": partner_id.id
+                        })
+                        for partner_id in partner_ids if partner_id
+                    ]
+                })
+                self.env['mail.channel'].sudo().create(channel_vals)
 
-    def _del_persistent(self):
-        query = """
-            DELETE FROM prosody WHERE "key"=%s
-        """
-        self._psql_connection(query, (self.channel_email, ))
+            if channel_id:
+                partner_ids = self.env['res.partner'].sudo().browse([
+                    partner_id.id for partner_id in partner_ids if partner_id
+                ])
 
-    def write(self, vals_list):
-        res = super().write(vals_list)
-        if res and self.channel_email:
-            self._persistent_query(self)
-        if vals_list.get('channel_member_ids'):
-            self._affiliation_data_query()
-        return res
+                absent_partner = partner_ids - channel_id.channel_member_ids.mapped('partner_id')
+
+                channel_vals.update({
+                    'channel_member_ids': [
+                        Command.create({
+                            "partner_id": partner_id.id
+                        })
+                        for partner_id in absent_partner if partner_id
+                    ]
+                })
+
+                channel_id.sudo().write(channel_vals)
+            dict_data.update({'channel_id': channel_id.id})
+
+        print(dict_data)
+        return dict_data
