@@ -41,7 +41,7 @@
         'data/ir_config_parameter.xml'
     ],
     'external_dependencies': {
-        'python': ['OdooRPC'],
+        'python': ['xmpppy', 'slixmpp'],
     },
     # "post_init_hook": "post_init_hook",
 }

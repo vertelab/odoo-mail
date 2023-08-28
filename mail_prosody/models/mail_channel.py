@@ -11,6 +11,10 @@ from psycopg2 import sql
 from odoo import fields, models, api, _
 from odoo.exceptions import AccessError, UserError
 
+import asyncio
+import logging
+from slixmpp import ClientXMPP
+from slixmpp.plugins import xep_0045
 
 _logger = logging.getLogger(__name__)
 
@@ -71,7 +75,8 @@ class MailChannel(models.Model):
         connection = xmpp.Client(server=jid.getDomain(), debug=True)
         connection.connect()
         connection.auth(user=jid.getNode(), password=password, resource=jid.getResource())
-        d = connection.send(xmpp.protocol.Message(to=receiver, body=message, typ=chat_type, subject=f'odoo-{uuid.uuid4()}'))
+        d = connection.send(
+            xmpp.protocol.Message(to=receiver, body=message, typ=chat_type, subject=f'odoo-{uuid.uuid4()}'))
         print(d)
 
     @api.model
@@ -126,19 +131,20 @@ class MailChannel(models.Model):
     def _group_invitation_handler(self, vals):
         status = "invited"
 
-        channel_name = vals.get('sender').split("@")[0]   # vertel@lvh.me ==> vertel
+        channel_name = vals.get('sender').split("@")[0]  # vertel@lvh.me ==> vertel
         # search channel mail first
         channel_id = self.env[self._name].search([('channel_email', '=', vals.get('sender'))], limit=1)
         if not channel_id:
             channel_id = self.env[self._name].search([('name', '=', channel_name)])
 
         if "invited" in vals.get('text_body'):
-            invitee_jid = vals.get('recipient').split("@")[0]   # possible invitee demo@lvh.me ==> demo
+            invitee_jid = vals.get('recipient').split("@")[0]  # possible invitee demo@lvh.me ==> demo
             moderator_jid = re.findall(r'/([a-z]+)', vals.get("text_body"))
         else:
             status = "declined"
             invitee_jid = re.findall(r'[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+', vals.get("text_body"))[0].split("@")[0]
-            moderator_jid = re.findall(r'[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+', vals.get("recipient"))[0].split("@")[0]
+            moderator_jid = re.findall(r'[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+', vals.get("recipient"))[0].split("@")[
+                0]
 
         moderator_partner_id = self._add_moderator_to_channel(moderator_jid=moderator_jid, channel_id=channel_id)
         invitee_partner_id = self._update_channel_with_other_participant(
@@ -164,7 +170,8 @@ class MailChannel(models.Model):
     def _update_channel_with_other_participant(self, invitee_jid, channel_id, status="invited"):
         participant_partner_id = self.env['res.users'].search([
             ('login', '=', invitee_jid)], limit=1).mapped('partner_id')
-        if channel_id and (participant_partner_id not in channel_id.mapped('channel_partner_ids')) and status == "invited":
+        if channel_id and (
+                participant_partner_id not in channel_id.mapped('channel_partner_ids')) and status == "invited":
             channel_id.write({'channel_partner_ids': [(4, participant_partner_id.id)]})
         if channel_id and (participant_partner_id in channel_id.mapped('channel_partner_ids')) and status == "declined":
             channel_id.write({'channel_partner_ids': [(3, participant_partner_id.id)]})
@@ -218,222 +225,60 @@ class MailChannel(models.Model):
         res = super().search_read(domain, fields, offset, limit, order)
         return res
 
-        # def _persistent_query(self, channel_id):
-    #     values = {
-    #         'host': channel_id.channel_email.split('@')[1],
-    #         'user': '',
-    #         'store': 'persistent',
-    #         'key': channel_id.channel_email,
-    #         'type': 'boolean',
-    #         'value': 'true'
-    #     }
-    #     self.sql_query(values)
-    #     self._jid_query(channel_id)
-
     @api.model_create_multi
     def create(self, vals_list):
         res = super().create(vals_list)
         if res and res.channel_email:
-            # jabberid = xmpp.protocol.JID(res.get('channel_email'))
-            # password = odoo.tools.config.get('admin_passwd', False)
-            # jabberid = self.env.user.email
-            #
-            # jid = xmpp.protocol.JID(jabberid)
-            # connection = xmpp.Client(server=jid.getDomain(), debug=True)
-            # connection.connect()
-            # connection.auth(user=jid.getNode(), password=password, resource=jid.getResource())
-            # pres = xmpp.Presence(to=res.channel_email)
-            # connection.sendInitPresence()
-            # connection.send(pres)
-            # print(connection)
-            import sys, os, xmpp, time
-            # jid = xmpp.protocol.JID(res.get('channel_email'))
-            psw = odoo.tools.config.get('admin_passwd', False)
-            jid = self.env.user.email
+            jabberid = xmpp.protocol.JID(res.channel_email)
+            password = odoo.tools.config.get('admin_passwd', False)
+            jabberid = self.env.user.email
+            nickname = self.env.user.email.split('@')[0]
 
-            jid = xmpp.protocol.JID(jid)
-            cl = xmpp.Client(jid.getDomain(), debug=[])
-            cl.connect()
-            cl.auth(jid.getNode(), psw)
+            from . import prosody_muc
+            from odoo.addons.queue_job.delay import group, chain
 
-            node = jid.getNode()
-            domain = 'conference.rita.vertel.se'
-            room = res.name + '@' + domain
-            print("room", room)
-            nroom = room + '/' + 'Maria'
-            mes = xmpp.Presence(to=nroom)
-            print(mes)
-            res1 = cl.sendInitPresence()
-            import time
-            time.sleep(10)
-            print(res1)
-            res1 = cl.send(mes)
-            print(res1)
+            loop = asyncio.get_event_loop()
 
+            # loop = asyncio.get_event_loop()
+            # loop.run_in_executor(None, self.create_and_configure_muc_room, jabberid, password)
 
+            # loop = asyncio.get_event_loop()
+            # loop.run_until_complete(self.create_and_configure_muc_room(jabberid, password=password))
 
-            # self._persistent_query(res)
         return res
 
-    #     def _get_param(self, param):
-#     return self.env['ir.config_parameter'].get_param(param)
-#
-# def _psql_connection(self, query, values):
-#     try:
-#         # Connect to the PostgreSQL database
-#         connection = psycopg2.connect(
-#             host=self._get_param('PG_HOST'),
-#             user=self._get_param('PG_USER'),
-#             password=self._get_param('PG_PASSWORD'),
-#             database=self.env.cr.dbname
-#         )
-#         # Create a cursor
-#         cursor = connection.cursor()
-#
-#         # Execute the query with parameterized values
-#         cursor.execute(query, values)
-#
-#         # Commit the changes
-#         connection.commit()
-#     except (Exception, psycopg2.Error) as error:
-#         print("Error:", error)
-#     finally:
-#         if connection:
-#             cursor.close()
-#             connection.close()
-#
-# def delete_query(self, values):
-#     del_vals = (
-#         values.get('host'),
-#         values.get('user'),
-#         values.get('store'),
-#         values.get('key'),
-#     )
-#     query = """
-#         DELETE FROM prosody WHERE "host"=%s AND "user"=%s AND "store"=%s AND "key"=%s
-#     """
-#     self._psql_connection(query, del_vals)
-#
-# def sql_query(self, values):
-#     self.delete_query(values)
-#     query = """
-#         INSERT INTO prosody(
-#             host,
-#             "user",
-#             store,
-#             key,
-#             type,
-#             value
-#         )
-#         VALUES (
-#             %(host)s, %(user)s, %(store)s, %(key)s, %(type)s, %(value)s
-#         )
-#     """
-#     self._psql_connection(query, values)
+    @api.model
+    def create_and_configure_muc_room(self, jid, password):
+        xmpp = ClientXMPP(jid, password)
+        xmpp.register_plugin('xep_0045')  # Register the xep_0045 plugin
 
-# def _jid_query(self, channel_id):
-    #     values = {
-    #         'host': channel_id.channel_email.split('@')[1],
-    #         'user': channel_id.channel_email.split('@')[0],
-    #         'store': 'config',
-    #         'key': '_jid',
-    #         'type': 'string',
-    #         'value': channel_id.channel_email
-    #     }
-    #     self.sql_query(values)
-    #     self._data_query(channel_id)
+        async def start(event):
+            await xmpp.get_roster()
+            xmpp.send_presence()
+            await create_room()
 
-    # def _data_query(self, channel_id):
-    #     values = {
-    #         'host': channel_id.channel_email.split('@')[1],
-    #         'user': channel_id.channel_email.split('@')[0],
-    #         'store': 'config',
-    #         'key': '_data',
-    #         'type': 'json',
-    #         'value':  json.dumps(self._data_query_value(channel_id))
-    #     }
-    #     self.sql_query(values)
+        async def create_room():
+            room_name = "helloworld"
+            room_domain = "conference.rita.vertel.se"
+            room_jid = f"{room_name}@{room_domain}"
 
-    # def _data_query_value(self, channel_id):
-    #     data_vals = {
-    #         "name": channel_id.channel_email,
-    #         "persistent": True,
-    #         "archiving": True,
-    #         "language": "en",
-    #         "whois": "anyone",
-    #         "occupant_id_salt": str(uuid.uuid4()),
-    #     }
-    #     if channel_id.prosody_room_password:
-    #         data_vals.update({
-    #             "password": channel_id.prosody_room_password,
-    #             "hidden": True,
-    #         })
-    #     if channel_id.description:
-    #         data_vals.update({
-    #             "description": channel_id.description,
-    #         })
-    #     return data_vals
+            await xmpp.plugin['xep_0045'].join_muc(room_jid, "admin")
 
-    # def _affiliation_data_query(self):
-    #     values = {
-    #         'host': self.channel_email.split('@')[1],
-    #         'user': self.channel_email.split('@')[0],
-    #         'store': 'config',
-    #         'key': '_affiliation_data',
-    #         'type': 'json',
-    #         'value': json.dumps(self._affliation_users())
-    #     }
-    #     self.sql_query(values)
-    #     self.room_members()
-    #
-    # def _affliation_users(self):
-    #     user_vals = {}
-    #     for member in self.channel_member_ids:
-    #         user_id = self.env['res.users'].search([("email", "=", member.partner_email)])
-    #         user_vals.update({
-    #             member.partner_email: {"reserved_nickname": user_id.login}
-    #         })
-    #     return user_vals
-    #
-    # def room_members(self):
-    #     for member in self.channel_member_ids:
-    #         partner_user_id = self.env['res.users'].search([("email", "=", member.partner_email)], limit=1)
-    #         values = {
-    #             'host': self.channel_email.split('@')[1],
-    #             'user': self.channel_email.split('@')[0],
-    #             'store': 'config',
-    #             'key': member.partner_email,
-    #             'type': 'string',
-    #             'value': "owner" if member.channel_id.create_uid.id == partner_user_id.id else "member"
-    #         }
-    #         self.sql_query(values)
-    #
-    # def unlink(self):
-    #     if self.channel_email:
-    #         self._del_persistent()
-    #         query = """
-    #             DELETE FROM prosody WHERE "user"=%s
-    #         """
-    #         self._psql_connection(query, (self.channel_email.split('@')[0], ))
-    #     return super(MailChannel, self).unlink()
-    #
-    # def _del_persistent(self):
-    #     query = """
-    #         DELETE FROM prosody WHERE "key"=%s
-    #     """
-    #     self._psql_connection(query, (self.channel_email, ))
+            form = await xmpp.plugin['xep_0045'].get_room_config(room_jid)
+            form['muc#roomconfig_roomname'] = 'Hello World Room'
+            form['muc#roomconfig_publicroom'] = True
 
-    # def write(self, vals_list):
-    #     res = super().write(vals_list)
-    #     if res and self.channel_email:
-    #         self._persistent_query(self)
-    #     if vals_list.get('channel_member_ids'):
-    #         self._affiliation_data_query()
-    #     return res
+            await xmpp.plugin['xep_0045'].set_room_config(room_jid, form)
+
+        xmpp.add_event_handler("session_start", start)
+
+        loop = xmpp.loop
+        loop.run_until_complete(xmpp.connect())
+        loop.run_until_complete(xmpp.process())
+
 
     @api.model
     def create_prosody_channel(self, *kwargs):
-        print("=====", kwargs)
         dict_data = {}
         kwargs = kwargs[0]
 

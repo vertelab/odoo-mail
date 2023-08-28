@@ -7,6 +7,13 @@ from odoo.addons.rest_api.controllers.main import check_permissions, successful_
 
 _logger = logging.getLogger(__name__)
 
+import asyncio
+import logging
+from slixmpp import ClientXMPP
+from slixmpp.plugins import xep_0045
+
+logging.basicConfig(level=logging.DEBUG)
+
 
 class Prosody(http.Controller):
     def _cleanup_p2p_mail(self, email):
@@ -173,3 +180,40 @@ class Prosody(http.Controller):
             }
         }
         return config
+
+    @http.route('/create/muc/', methods=['GET', 'POST'], type='json', auth='none', csrf=False)
+    # @check_permissions
+    def create_muc_configuration(self, **kwargs):
+        print(kwargs)
+        jid = "admin@rita.vertel.se"
+        password = "admin"
+
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.create_and_configure_muc_room(jid, password))
+
+    async def create_and_configure_muc_room(jid, password):
+        xmpp = ClientXMPP(jid, password)
+        xmpp.register_plugin('xep_0045')  # Register the xep_0045 plugin
+
+        async def start(event):
+            await xmpp.get_roster()
+            xmpp.send_presence()
+            await create_room()
+
+        async def create_room():
+            room_name = "helloworld"
+            room_domain = "conference.rita.vertel.se"
+            room_jid = f"{room_name}@{room_domain}"
+
+            await xmpp.plugin['xep_0045'].join_muc(room_jid, "admin")
+
+            form = await xmpp.plugin['xep_0045'].get_room_config(room_jid)
+            form['muc#roomconfig_roomname'] = 'Hello World Room'
+            form['muc#roomconfig_publicroom'] = True
+
+            await xmpp.plugin['xep_0045'].set_room_config(room_jid, form)
+
+        xmpp.add_event_handler("session_start", start)
+
+        await xmpp.connect()
+        await xmpp.process()
