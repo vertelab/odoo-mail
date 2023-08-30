@@ -5,5 +5,20 @@
             <field name="key">prosody_url</field>
             <field name="value">https://lvh.me:5281/rest</field>
         </record>
+
+        <record id="param_pg_password" model="ir.config_parameter">
+            <field name="key">PG_PASSWORD</field>
+            <field name="value"></field>
+        </record>
+
+        <record id="param_pg_host" model="ir.config_parameter">
+            <field name="key">PG_HOST</field>
+            <field name="value"></field>
+        </record>
+
+        <record id="param_pg_user" model="ir.config_parameter">
+            <field name="key">PG_USER</field>
+            <field name="value"></field>
+        </record>
     </data>
 </odoo>

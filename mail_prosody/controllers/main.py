@@ -1,19 +1,62 @@
 import logging
 import json
-
-from odoo import http
+from odoo import fields
+from odoo import http, SUPERUSER_ID, Command
 from odoo.http import Response, request
 from odoo.addons.rest_api.controllers.main import check_permissions, successful_response, error_response
 
 _logger = logging.getLogger(__name__)
 
+import asyncio
+import logging
+from slixmpp import ClientXMPP
+from slixmpp.plugins import xep_0045
+
+logging.basicConfig(level=logging.DEBUG)
+
 
 class Prosody(http.Controller):
+    def _cleanup_p2p_mail(self, email):
+        return email.split('/')[0]
+
+    @http.route('/api/prosodyarchive', methods=['GET'], type='http', auth='none', csrf=False)
+    @check_permissions
+    def api_prosody_archive(self, **kwargs):
+        cr, uid = request.cr, request.session.uid
+        if kwargs.get('sender'):
+            channel_vals = {
+                "sender": kwargs.get('sender'),
+                "recipient": kwargs.get('recipient'),
+                "message_type": kwargs.get('message_type'),
+            }
+            channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(channel_vals)
+
+            chat_vals = {
+                "body": kwargs.get('message_body'),
+                "channel_id": channel_id.id,
+                "subtype_id": 1,
+                "message_type": 'comment',
+                "prosody_message_id": kwargs.get('message_id'),
+            }
+            mail_message_id = request.env(cr, uid)["mail.message"].sudo().search([
+                ("prosody_message_id", "=", kwargs.get('message_id'))
+            ], limit=1)
+            if not mail_message_id and chat_vals.get("body"):
+                request.env(cr, uid)["mail.channel"].sudo().message_channel_post_chat(chat_vals)
+
     @http.route('/api/chat/channel', methods=['GET'], type='http', auth='none', csrf=False)
     @check_permissions
     def api_search_channel(self, **kwargs):
         cr, uid = request.cr, request.session.uid
         if kwargs:
+            if kwargs.get("chat"):
+                if kwargs.get("recipient") and kwargs.get("sender"):
+                    channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)
+                    dict_data = {'channel_id': channel_id}
+                    return successful_response(status=200, dict_data=dict_data)
+                else:
+                    return error_response(400, 'Bad Request', 'Some parameters are missing')
+
             channel_id = request.env(cr, uid)['mail.channel'].sudo().search_partner_channels(kwargs)
             dict_data = {'channel_id': channel_id}
             return successful_response(status=200, dict_data=dict_data)
@@ -47,7 +90,7 @@ class Prosody(http.Controller):
         return error_response(400, 'Bad Request', 'Some parameters are missing')
 
     @http.route('/api/channels', methods=['GET'], type='http', auth='none', csrf=False)
-    @check_permissions
+    # @check_permissions
     def search_read_channels(self, **kwargs):
         cr, uid = request.cr, request.session.uid
         channels = request.env(cr, uid)['mail.channel'].sudo().search_read([])
@@ -57,3 +100,120 @@ class Prosody(http.Controller):
             'channel_message_ids': channel.get('channel_message_ids')
         } for channel in channels]
         return successful_response(status=200, dict_data=dict_data)
+
+    @http.route('/channel', methods=['GET'], type='http', auth='none', csrf=False)
+    # @check_permissions
+    def create_channel(self, **kwargs):
+        dict_data = {}
+        cr, uid = request.cr, request.session.uid
+        if kwargs.get("jid"):
+            channel_id = request.env(cr, uid)['mail.channel'].sudo().search([("channel_email", "=", kwargs.get("jid"))])
+
+            partner_ids = []
+            for member in kwargs.get("occupants").split(","):
+                partner_ids.append(request.env['res.users'].sudo().search([('login', '=', member)]).partner_id)
+
+            channel_vals = {
+                "prosody_room_password": kwargs.get("password", False),
+                "description": kwargs.get("description", False),
+            }
+
+            if not channel_id:
+                channel_vals.update({
+                    'name': kwargs.get("jid").split("@")[0],
+                    'channel_type': "channel",
+                    'channel_email': kwargs.get("jid"),
+                    'channel_member_ids': [
+                        Command.create({
+                            "partner_id": partner_id.id
+                        })
+                        for partner_id in partner_ids if partner_id
+                    ]
+                })
+                request.env(cr, uid)['mail.channel'].sudo().create(channel_vals)
+
+            if channel_id:
+                partner_ids = request.env['res.partner'].sudo().browse([
+                    partner_id.id for partner_id in partner_ids if partner_id
+                ])
+
+                absent_partner = partner_ids - channel_id.channel_member_ids.mapped('partner_id')
+
+                channel_vals.update({
+                    'channel_member_ids': [
+                        Command.create({
+                            "partner_id": partner_id.id
+                        })
+                        for partner_id in absent_partner if partner_id
+                    ]
+                })
+
+                channel_id.sudo().write(channel_vals)
+            dict_data.update({'channel_id': channel_id.id})
+        return successful_response(status=200, dict_data=dict_data)
+
+    @http.route('/muc/config', methods=['GET'], type='http', auth='none', csrf=False)
+    # @check_permissions
+    def muc_configuration(self, **kwargs):
+        print(kwargs)
+        config = {
+            "affiliations": [
+                {
+                    "affiliation": "owner",
+                    "jid": "admin@rita.vertel.se",
+                    "nick": "admin"
+                },
+                {
+                    "affiliation": "admin",
+                    "jid": "demo@rita.vertel.se",
+                    "nick": "demo"
+                },
+            ],
+            "config": {
+                "description": "Digital Discussions",
+                "members_only": False,
+                "moderated": False,
+                "name": "The Digital",
+                "persistent": True,
+                "public": True,
+                "subject": "Discussions regarding The Place"
+            }
+        }
+        return config
+
+    @http.route('/create/muc/', methods=['GET', 'POST'], type='json', auth='none', csrf=False)
+    # @check_permissions
+    def create_muc_configuration(self, **kwargs):
+        print(kwargs)
+        jid = "admin@rita.vertel.se"
+        password = "admin"
+
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.create_and_configure_muc_room(jid, password))
+
+    async def create_and_configure_muc_room(jid, password):
+        xmpp = ClientXMPP(jid, password)
+        xmpp.register_plugin('xep_0045')  # Register the xep_0045 plugin
+
+        async def start(event):
+            await xmpp.get_roster()
+            xmpp.send_presence()
+            await create_room()
+
+        async def create_room():
+            room_name = "helloworld"
+            room_domain = "conference.rita.vertel.se"
+            room_jid = f"{room_name}@{room_domain}"
+
+            await xmpp.plugin['xep_0045'].join_muc(room_jid, "admin")
+
+            form = await xmpp.plugin['xep_0045'].get_room_config(room_jid)
+            form['muc#roomconfig_roomname'] = 'Hello World Room'
+            form['muc#roomconfig_publicroom'] = True
+
+            await xmpp.plugin['xep_0045'].set_room_config(room_jid, form)
+
+        xmpp.add_event_handler("session_start", start)
+
+        await xmpp.connect()
+        await xmpp.process()

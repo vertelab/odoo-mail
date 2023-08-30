@@ -20,29 +20,27 @@
 ##############################################################################
 
 {
-    'name': 'Mail: Prosody',
-    'version': '14.0.0.0.0',
-    'summary': 'Odoo chat.',
+    'name': 'Mail: Message Retrieve',
+    'version': '16.0.0.0.0',
+    # Version ledger: 16.0 = Odoo version. 1 = Major. Non regressionable code. 2 = Minor. New features that are regressionable. 3 = Bug fixes
+    'summary': 'User can retrieve mail convertietions.',
     'category': 'Administration',
-    'description': """"
-    Chat in Odoo.
+    'description': """
+    Extend mail.message with a tree view and retrieving button that can download chat messages.
     """,
+    #'sequence': '1',
     'author': 'Vertel AB',
-    'website': 'https://vertel.se/apps/odoo-mail/mail_prosody',
-    'images': ['static/description/banner.png'],  # 560x280 px.
+    'website': 'https://vertel.se/apps/odoo-mail/',
+    'images': ['static/description/banner.png'], # 560x280 px.
     'license': 'AGPL-3',
     'contributor': '',
     'maintainer': 'Vertel AB',
     'repository': 'https://github.com/vertelab/odoo-mail',
-    'depends': ['base', 'mail', 'mail_bot', 'rest_api'],
+    'depends': ['mail'],
     'data': [
-        'security/ir.model.access.csv',
-        'views/mail_channel_view.xml',
-        'data/ir_config_parameter.xml'
+        'views/mail_message_extention.xml',
+        'reports/report_chat_retrieve.xml'
     ],
-    'external_dependencies': {
-        'python': ['xmpppy', 'slixmpp'],
-    },
-    # "post_init_hook": "post_init_hook",
+    'auto_install': False,
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+# vim:expandtab:smartindent:tabstop=4s:softtabstop=4:shiftwidth=4:

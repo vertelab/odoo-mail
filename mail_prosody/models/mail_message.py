@@ -1,13 +1,16 @@
 import logging
 from odoo import fields, models, api, _
 
+
 _logger = logging.getLogger(__name__)
 
 
 class MailMessage(models.Model):
     _inherit = "mail.message"
 
-    @api.model
+    prosody_message_id = fields.Char(string="Prosody Message ID")
+
+    @api.model_create_multi
     def create(self, vals):
         res = super(MailMessage, self).create(vals)
         return res
@@ -33,3 +36,4 @@ class MailMessage(models.Model):
                     domain[i][2] = possible_int
         res = super().search_read(domain, fields, offset, limit, order)
         return res
+
