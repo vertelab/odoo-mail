@@ -3,6 +3,8 @@ import odoo
 import re
 import xmpp
 import uuid
+import os
+import shlex
 import psycopg2
 import json
 from odoo import http, SUPERUSER_ID, Command
@@ -72,12 +74,14 @@ class MailChannel(models.Model):
         message = re.sub('<[^<]+?>', '', res.body)
 
         jid = xmpp.protocol.JID(jabberid)
-        connection = xmpp.Client(server=jid.getDomain(), debug=True)
+        connection = xmpp.Client(server=jid.getDomain(), debug=False)
         connection.connect()
         connection.auth(user=jid.getNode(), password=password, resource=jid.getResource())
-        d = connection.send(
-            xmpp.protocol.Message(to=receiver, body=message, typ=chat_type, subject=f'odoo-{uuid.uuid4()}'))
-        print(d)
+
+        msg = xmpp.protocol.Message(to=receiver, body=message, typ=chat_type)
+        msg['id'] = f'odoo-{uuid.uuid4()}'  # Assign a unique ID to the message
+        connection.send(msg)
+
 
     @api.model
     def search_partner_channels(self, *kwargs):
@@ -213,7 +217,6 @@ class MailChannel(models.Model):
 
     @api.model
     def message_channel_post_chat(self, *args):
-        print(args)
         for arg in args:
             if channel := self.env["mail.channel"].browse(arg.get('channel_id')):
                 new_arg = {a: arg[a] for a in arg}
@@ -229,60 +232,36 @@ class MailChannel(models.Model):
     def create(self, vals_list):
         res = super().create(vals_list)
         if res and res.channel_email:
-            jabberid = xmpp.protocol.JID(res.channel_email)
-            password = odoo.tools.config.get('admin_passwd', False)
-            jabberid = self.env.user.email
-            nickname = self.env.user.email.split('@')[0]
-
-            from . import prosody_muc
-            from odoo.addons.queue_job.delay import group, chain
-
-            loop = asyncio.get_event_loop()
-
-            # loop = asyncio.get_event_loop()
-            # loop.run_in_executor(None, self.create_and_configure_muc_room, jabberid, password)
-
-            # loop = asyncio.get_event_loop()
-            # loop.run_until_complete(self.create_and_configure_muc_room(jabberid, password=password))
-
+            self.create_and_configure_muc_room(res)
         return res
 
-    @api.model
-    def create_and_configure_muc_room(self, jid, password):
-        xmpp = ClientXMPP(jid, password)
-        xmpp.register_plugin('xep_0045')  # Register the xep_0045 plugin
+    def create_and_configure_muc_room(self, res):
+        jabberid = self.env.user.email
+        password = odoo.tools.config.get('admin_passwd', False)
+        nickname = self.env.user.email.split('@')[0]
 
-        async def start(event):
-            await xmpp.get_roster()
-            xmpp.send_presence()
-            await create_room()
+        options = {
+            "jid": jabberid,
+            "password": password,
+            "nickname": nickname,
+            "room_name": f"{res.name} -odoo",
+            "room_jid": res.channel_email,
+            "room_desc": res.description,
+            "room_password": res.prosody_room_password
+        }
 
-        async def create_room():
-            room_name = "helloworld"
-            room_domain = "conference.rita.vertel.se"
-            room_jid = f"{room_name}@{room_domain}"
-
-            await xmpp.plugin['xep_0045'].join_muc(room_jid, "admin")
-
-            form = await xmpp.plugin['xep_0045'].get_room_config(room_jid)
-            form['muc#roomconfig_roomname'] = 'Hello World Room'
-            form['muc#roomconfig_publicroom'] = True
-
-            await xmpp.plugin['xep_0045'].set_room_config(room_jid, form)
-
-        xmpp.add_event_handler("session_start", start)
-
-        loop = xmpp.loop
-        loop.run_until_complete(xmpp.connect())
-        loop.run_until_complete(xmpp.process())
-
+        options_str = json.dumps(options)
+        command = f"/usr/bin/prosody_muc.py --options {shlex.quote(options_str)}"
+        os.system(command)
 
     @api.model
-    def create_prosody_channel(self, *kwargs):
+    def channel_sync(self, *kwargs):
         dict_data = {}
         kwargs = kwargs[0]
 
-        if kwargs.get("jid"):
+        print("kwargs", kwargs)
+
+        if kwargs.get("jid") and kwargs.get('prosody_server'):
             channel_id = self.env['mail.channel'].sudo().search([("channel_email", "=", kwargs.get("jid"))])
 
             partner_ids = []
@@ -326,6 +305,4 @@ class MailChannel(models.Model):
 
                 channel_id.sudo().write(channel_vals)
             dict_data.update({'channel_id': channel_id.id})
-
-        print(dict_data)
         return dict_data
