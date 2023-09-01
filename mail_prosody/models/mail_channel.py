@@ -7,7 +7,7 @@ import os
 import shlex
 import psycopg2
 import json
-from odoo import http, SUPERUSER_ID, Command
+from odoo import http, SUPERUSER_ID
 from psycopg2 import sql
 
 from odoo import fields, models, api, _
@@ -278,12 +278,7 @@ class MailChannel(models.Model):
                     'name': kwargs.get("jid").split("@")[0],
                     'channel_type': "channel",
                     'channel_email': kwargs.get("jid"),
-                    'channel_member_ids': [
-                        Command.create({
-                            "partner_id": partner_id.id
-                        })
-                        for partner_id in partner_ids if partner_id
-                    ]
+                    'channel_partner_ids': [(4, partner_id.id) for partner_id in partner_ids if partner_id]
                 })
                 self.env['mail.channel'].sudo().create(channel_vals)
 
@@ -292,15 +287,11 @@ class MailChannel(models.Model):
                     partner_id.id for partner_id in partner_ids if partner_id
                 ])
 
-                absent_partner = partner_ids - channel_id.channel_member_ids.mapped('partner_id')
+                # absent_partner = partner_ids - channel_id.channel_member_ids.mapped('partner_id')
+                absent_partner = partner_ids - channel_id.mapped('channel_partner_ids')
 
                 channel_vals.update({
-                    'channel_member_ids': [
-                        Command.create({
-                            "partner_id": partner_id.id
-                        })
-                        for partner_id in absent_partner if partner_id
-                    ]
+                    'channel_partner_ids': [(4, partner_id.id) for partner_id in absent_partner if partner_id]
                 })
 
                 channel_id.sudo().write(channel_vals)

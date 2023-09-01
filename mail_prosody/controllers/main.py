@@ -1,7 +1,7 @@
 import logging
 import json
 from odoo import fields
-from odoo import http, SUPERUSER_ID, Command
+from odoo import http, SUPERUSER_ID
 from odoo.http import Response, request
 from odoo.addons.rest_api.controllers.main import check_permissions, successful_response, error_response
 
@@ -101,56 +101,56 @@ class Prosody(http.Controller):
         } for channel in channels]
         return successful_response(status=200, dict_data=dict_data)
 
-    @http.route('/channel', methods=['GET'], type='http', auth='none', csrf=False)
-    # @check_permissions
-    def create_channel(self, **kwargs):
-        dict_data = {}
-        cr, uid = request.cr, request.session.uid
-        if kwargs.get("jid"):
-            channel_id = request.env(cr, uid)['mail.channel'].sudo().search([("channel_email", "=", kwargs.get("jid"))])
-
-            partner_ids = []
-            for member in kwargs.get("occupants").split(","):
-                partner_ids.append(request.env['res.users'].sudo().search([('login', '=', member)]).partner_id)
-
-            channel_vals = {
-                "prosody_room_password": kwargs.get("password", False),
-                "description": kwargs.get("description", False),
-            }
-
-            if not channel_id:
-                channel_vals.update({
-                    'name': kwargs.get("jid").split("@")[0],
-                    'channel_type': "channel",
-                    'channel_email': kwargs.get("jid"),
-                    'channel_member_ids': [
-                        Command.create({
-                            "partner_id": partner_id.id
-                        })
-                        for partner_id in partner_ids if partner_id
-                    ]
-                })
-                request.env(cr, uid)['mail.channel'].sudo().create(channel_vals)
-
-            if channel_id:
-                partner_ids = request.env['res.partner'].sudo().browse([
-                    partner_id.id for partner_id in partner_ids if partner_id
-                ])
-
-                absent_partner = partner_ids - channel_id.channel_member_ids.mapped('partner_id')
-
-                channel_vals.update({
-                    'channel_member_ids': [
-                        Command.create({
-                            "partner_id": partner_id.id
-                        })
-                        for partner_id in absent_partner if partner_id
-                    ]
-                })
-
-                channel_id.sudo().write(channel_vals)
-            dict_data.update({'channel_id': channel_id.id})
-        return successful_response(status=200, dict_data=dict_data)
+    # @http.route('/channel', methods=['GET'], type='http', auth='none', csrf=False)
+    # # @check_permissions
+    # def create_channel(self, **kwargs):
+    #     dict_data = {}
+    #     cr, uid = request.cr, request.session.uid
+    #     if kwargs.get("jid"):
+    #         channel_id = request.env(cr, uid)['mail.channel'].sudo().search([("channel_email", "=", kwargs.get("jid"))])
+    #
+    #         partner_ids = []
+    #         for member in kwargs.get("occupants").split(","):
+    #             partner_ids.append(request.env['res.users'].sudo().search([('login', '=', member)]).partner_id)
+    #
+    #         channel_vals = {
+    #             "prosody_room_password": kwargs.get("password", False),
+    #             "description": kwargs.get("description", False),
+    #         }
+    #
+    #         if not channel_id:
+    #             channel_vals.update({
+    #                 'name': kwargs.get("jid").split("@")[0],
+    #                 'channel_type': "channel",
+    #                 'channel_email': kwargs.get("jid"),
+    #                 'channel_member_ids': [
+    #                     Command.create({
+    #                         "partner_id": partner_id.id
+    #                     })
+    #                     for partner_id in partner_ids if partner_id
+    #                 ]
+    #             })
+    #             request.env(cr, uid)['mail.channel'].sudo().create(channel_vals)
+    #
+    #         if channel_id:
+    #             partner_ids = request.env['res.partner'].sudo().browse([
+    #                 partner_id.id for partner_id in partner_ids if partner_id
+    #             ])
+    #
+    #             absent_partner = partner_ids - channel_id.channel_member_ids.mapped('partner_id')
+    #
+    #             channel_vals.update({
+    #                 'channel_member_ids': [
+    #                     Command.create({
+    #                         "partner_id": partner_id.id
+    #                     })
+    #                     for partner_id in absent_partner if partner_id
+    #                 ]
+    #             })
+    #
+    #             channel_id.sudo().write(channel_vals)
+    #         dict_data.update({'channel_id': channel_id.id})
+    #     return successful_response(status=200, dict_data=dict_data)
 
     @http.route('/muc/config', methods=['GET'], type='http', auth='none', csrf=False)
     # @check_permissions
