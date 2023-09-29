@@ -190,6 +190,8 @@ class MailChannel(models.Model):
             channel_name = channel_alias.split("@")[0]
         sender_jid = re.findall(r'/([a-z]+)', contact.get('sender'))
         partner_id = self.env['res.users'].search([('login', '=', sender_jid[0])], limit=1).mapped('partner_id')
+        if not partner_id:
+            partner_id = self.env['res.users'].search([('login', '=', contact.get('sender').split('/')[-1])], limit=1).mapped('partner_id')
 
         # search channel mail first
         channel_id = self.env[self._name].search([('channel_email', '=', channel_alias)], limit=1)
