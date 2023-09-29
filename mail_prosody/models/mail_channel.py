@@ -53,8 +53,8 @@ class MailChannel(models.Model):
     def message_post(self, *, message_type='notification', **kwargs):
         res = super().message_post(message_type=message_type, **kwargs)
 
-        if res.id and not kwargs.get("prosody"):
-            self._update_prosodyarchive(res)
+        # if res.id and not kwargs.get("prosody"):
+        #     self._update_prosodyarchive(res)
         return res
 
     def _update_prosodyarchive(self, res):
