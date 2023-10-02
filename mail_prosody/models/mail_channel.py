@@ -53,7 +53,7 @@ class MailChannel(models.Model):
     def message_post(self, *, message_type='notification', **kwargs):
         res = super().message_post(message_type=message_type, **kwargs)
 
-        if res.id and not kwargs.get("prosody"):
+        if ('odoobot' not in res.email_from) and (not kwargs.get("prosody")):
             self._send_chat(res)
         return res
 
@@ -284,8 +284,7 @@ class MailChannel(models.Model):
         print(os.path.dirname(os.path.abspath(__file__)))
 
         options_str = json.dumps(options)
-        # command = f"/usr/bin/prosody_muc.py --options {shlex.quote(options_str)}"
-        command = f"/home/ayomir/odoo/16.0/vertel/odoo-mail/mail_prosody/models/prosody_muc.py --options {shlex.quote(options_str)}"
+        command = f"/usr/bin/prosody_muc.py --options {shlex.quote(options_str)}"
         os.system(command)
 
     @api.model
