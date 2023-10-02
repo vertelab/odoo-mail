@@ -53,9 +53,39 @@ class MailChannel(models.Model):
     def message_post(self, *, message_type='notification', **kwargs):
         res = super().message_post(message_type=message_type, **kwargs)
 
-        # if res.id and not kwargs.get("prosody"):
-        #     self._update_prosodyarchive(res)
+        if res.id and not kwargs.get("prosody"):
+            self._send_chat(res)
         return res
+
+    def _send_chat(self, res):
+        channel_id = self.env[res.model].browse(int(res.res_id))
+        jabberid = self.env.user.email
+        password = odoo.tools.config.get('admin_passwd', False)
+
+        if channel_id.channel_type in ['channel', 'group']:
+            receiver = channel_id.channel_email
+            chat_type = 'groupchat'
+        else:
+            channel_partner_ids = channel_id.mapped('channel_partner_ids') - res.author_id
+            receiver = self.env["res.users"].sudo().search([
+                ("partner_id", "=", channel_partner_ids[0].id)
+            ], limit=1).email
+            chat_type = 'chat'
+
+        message = re.sub('<[^<]+?>', '', res.body)
+
+        options = {
+            "receiver_jid": receiver,
+            "type": chat_type,
+            "message": message,
+            "message_id": f'odoo-{uuid.uuid4()}',
+            "jid": jabberid,
+            "password": password,
+        }
+
+        options_str = json.dumps(options)
+        command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
+        os.system(command)
 
     def _update_prosodyarchive(self, res):
         channel_id = self.env[res.model].browse(int(res.res_id))
@@ -251,9 +281,11 @@ class MailChannel(models.Model):
             "room_desc": res.description,
             "room_password": res.prosody_room_password
         }
+        print(os.path.dirname(os.path.abspath(__file__)))
 
         options_str = json.dumps(options)
-        command = f"/usr/bin/prosody_muc.py --options {shlex.quote(options_str)}"
+        # command = f"/usr/bin/prosody_muc.py --options {shlex.quote(options_str)}"
+        command = f"/home/ayomir/odoo/16.0/vertel/odoo-mail/mail_prosody/models/prosody_muc.py --options {shlex.quote(options_str)}"
         os.system(command)
 
     @api.model
