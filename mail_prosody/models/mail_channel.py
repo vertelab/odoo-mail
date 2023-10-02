@@ -25,6 +25,7 @@ class MailChannel(models.Model):
     _inherit = "mail.channel"
 
     channel_email = fields.Char(string="XMPP Channel Email")
+    prosody_server = fields.Boolean(string="Created From Prosody Server")
 
     @api.depends("prosody_room_password")
     def _compute_has_password(self):
@@ -263,7 +264,7 @@ class MailChannel(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         res = super().create(vals_list)
-        if res and res.channel_email:
+        if res and res.channel_email and not res.prosody_server:
             self.create_and_configure_muc_room(res)
         return res
 
@@ -292,34 +293,24 @@ class MailChannel(models.Model):
         dict_data = {}
         kwargs = kwargs[0]
 
-        print("kwargs", kwargs)
+        _logger.info(f"kwargs {kwargs}")
 
         if kwargs.get("jid") and kwargs.get('prosody_server'):
             channel_id = self.env['mail.channel'].sudo().search([("channel_email", "=", kwargs.get("jid"))])
 
             partner_ids = []
             for member in kwargs.get("occupants").split(","):
+                pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+                if not re.match(pattern, member):
+                    member = f"{member}@e-iris.top"
                 partner_ids.append(self.env['res.users'].sudo().search([('login', '=', member)]).partner_id)
 
             channel_vals = {
                 "prosody_room_password": kwargs.get("password", False),
                 "description": kwargs.get("description", False),
+                "prosody_server": kwargs.get('prosody_server')
             }
-
-            if not channel_id:
-                channel_vals.update({
-                    'name': kwargs.get("jid").split("@")[0],
-                    'channel_type': "channel",
-                    'channel_email': kwargs.get("jid"),
-                    'channel_member_ids': [
-                        Command.create({
-                            "partner_id": partner_id.id
-                        })
-                        for partner_id in partner_ids if partner_id
-                    ]
-                })
-                self.env['mail.channel'].sudo().create(channel_vals)
-
+            
             if channel_id:
                 partner_ids = self.env['res.partner'].sudo().browse([
                     partner_id.id for partner_id in partner_ids if partner_id
@@ -337,5 +328,24 @@ class MailChannel(models.Model):
                 })
 
                 channel_id.sudo().write(channel_vals)
+            else:
+                _logger.info(f"partner_ids partner_ids channel_id {partner_ids}")
+
+                channel_vals.update({
+                    'name': kwargs.get("jid").split("@")[0],
+                    'channel_type': "channel",
+                    'channel_email': kwargs.get("jid"),
+                    'channel_member_ids': [
+                        Command.create({
+                            "partner_id": partner_id.id
+                        })
+                        for partner_id in partner_ids if partner_id
+                    ]
+                })
+                
+                _logger.info(f"channel_id channel_id channel_id {channel_vals}")
+                channel_id = self.env['mail.channel'].sudo().create(channel_vals)
+
             dict_data.update({'channel_id': channel_id.id})
+        _logger.info(f"dict_data dict_data dict_data {dict_data}")
         return dict_data
