@@ -1,71 +1,87 @@
-# import slixmpp
-# from slixmpp.plugins import xep_0045
-# import logging
-#
-# logging.basicConfig(level=logging.DEBUG)
-#
-#
-# class MUCBot(slixmpp.ClientXMPP):
-#     def __init__(self, jid, password):
-#         super().__init__(jid, password)
-#         self.register_plugin("xep_0045")  # Register the xep_0045 plugin
-#         self.add_event_handler("session_start", self.start)
-#         self.add_event_handler("muc::{}::got_online".format(self.boundjid.bare), self.on_muc_online)
-#
-#     def start(self, event):
-#         self.get_roster()
-#         self.send_presence()
-#         # Create a MUC room
-#         muc_plugin = self.plugin["xep_0045"]
-#         muc_plugin.join_muc("helloworld14@conference.rita.vertel.se", "john")
-#
-#     def on_muc_online(self, presence):
-#         print("Room creation verified. Presence received: {}".format(presence))
-#
-#
-# if __name__ == "__main__":
-#     xmpp = MUCBot("john@rita.vertel.se", "john")
-#     xmpp.connect()
-#     xmpp.process()
-
-
+#!/usr/bin/python3
 import slixmpp
 from slixmpp.plugins import xep_0045
+import argparse
 import logging
+import ast
+import asyncio
+import json
 
 # logging.basicConfig(level=logging.DEBUG)
 
 
 class MUCBot(slixmpp.ClientXMPP):
-    def __init__(self, jid, password):
-        super().__init__(jid, password)
+    def __init__(self, options_dict):
+        self.options_dict = options_dict
+        super().__init__(self.options_dict.get("jid", ""), self.options_dict.get("password", ""))
+
         self.add_event_handler("session_start", self.start)
-        self.add_event_handler("muc::{}::got_online".format(self.boundjid.bare), self.on_muc_online)
+        self.add_event_handler("muc::{}::got_online".format(self.options_dict.get("jid", "")), self.on_muc_online)
 
     async def start(self, event):
+        self.options_dict["jid"] = self.boundjid.full  # Store the full JID
         await self.get_roster()
         self.send_presence()
         await self.create_and_configure_muc_room()
 
     async def create_and_configure_muc_room(self):
-        room_name = "helloworld"
-        room_domain = "conference.rita.vertel.se"
-        room_jid = f"{room_name}@{room_domain}"
+        await self.plugin['xep_0045'].join_muc(
+            self.options_dict.get("room_jid", ""), self.options_dict.get("nickname", ""))
 
-        await self.plugin['xep_0045'].join_muc(room_jid, "admin")
+        form = await self.plugin['xep_0045'].get_room_config(self.options_dict.get("room_jid", ""))
 
-        form = await self.plugin['xep_0045'].get_room_config(room_jid)
-        form['muc#roomconfig_roomname'] = 'Hello World Room'
-        form['muc#roomconfig_publicroom'] = True
+        # Update the 'muc#roomconfig_roomname' field
+        for field in form['fields']:
+            if field['var'] == 'muc#roomconfig_roomname':
+                field['value'] = self.options_dict.get("room_name", "")
+                break
 
-        await self.plugin['xep_0045'].set_room_config(room_jid, form)
+        # Update the 'muc#roomconfig_roomdesc' field
+        for field in form['fields']:
+            if field['var'] == 'muc#roomconfig_roomdesc':
+                field['value'] = self.options_dict.get("room_desc", "")
+                break
+
+        # Update the 'muc#roomconfig_persistentroom' field
+        for field in form['fields']:
+            if field['var'] == 'muc#roomconfig_persistentroom':
+                field['value'] = '1'
+                break
+
+        # Update the 'muc#roomconfig_publicroom' field
+        for field in form['fields']:
+            if field['var'] == 'muc#roomconfig_publicroom':
+                field['value'] = '1'
+                break
+
+        # Update the 'muc#roomconfig_roomsecret' field
+        for field in form['fields']:
+            if field['var'] == 'muc#roomconfig_roomsecret':
+                field['value'] = self.options_dict.get("room_password", "")
+                break
+
+        await self.plugin['xep_0045'].set_room_config(self.options_dict.get("room_jid", ""), form)
+        print("Room creation and configuration complete.")
+
+        await asyncio.sleep(2)  # Wait for a moment to allow presence updates to be processed
+
+        loop = asyncio.get_event_loop()
+        loop.stop()  # Stop the event loop to end the script
 
     def on_muc_online(self, presence):
         print("Room creation verified. Presence received: {}".format(presence))
 
 
 if __name__ == "__main__":
-    xmpp = MUCBot("admin@rita.vertel.se", "admin")
+    parser = argparse.ArgumentParser(description="Create and configure a MUC room")
+    parser.add_argument("--options", type=str, help="Dictionary of options as a string")
+    args = parser.parse_args()
+
+    # options_dict = ast.literal_eval(args.options) if args.options else {}
+    options_dict = json.loads(args.options) if args.options else {}
+
+    xmpp = MUCBot(options_dict)
     xmpp.register_plugin('xep_0045')  # Register the xep_0045 plugin
     xmpp.connect()
     xmpp.process()
+

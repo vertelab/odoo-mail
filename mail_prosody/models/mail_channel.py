@@ -25,6 +25,7 @@ class MailChannel(models.Model):
     _inherit = "mail.channel"
 
     channel_email = fields.Char(string="XMPP Channel Email")
+    prosody_server = fields.Boolean(string="Created From Prosody Server")
 
     @api.depends("prosody_room_password")
     def _compute_has_password(self):
@@ -53,9 +54,39 @@ class MailChannel(models.Model):
     def message_post(self, *, message_type='notification', **kwargs):
         res = super().message_post(message_type=message_type, **kwargs)
 
-        if res.id and not kwargs.get("prosody"):
-            self._update_prosodyarchive(res)
+        if ('odoobot' not in res.email_from) and (not kwargs.get("prosody")):
+            self._send_chat(res)
         return res
+
+    def _send_chat(self, res):
+        channel_id = self.env[res.model].browse(int(res.res_id))
+        jabberid = self.env.user.email
+        password = odoo.tools.config.get('admin_passwd', False)
+
+        if channel_id.channel_type in ['channel', 'group']:
+            receiver = channel_id.channel_email
+            chat_type = 'groupchat'
+        else:
+            channel_partner_ids = channel_id.mapped('channel_partner_ids') - res.author_id
+            receiver = self.env["res.users"].sudo().search([
+                ("partner_id", "=", channel_partner_ids[0].id)
+            ], limit=1).email
+            chat_type = 'chat'
+
+        message = re.sub('<[^<]+?>', '', res.body)
+
+        options = {
+            "receiver_jid": receiver,
+            "type": chat_type,
+            "message": message,
+            "message_id": f'odoo-{uuid.uuid4()}',
+            "jid": jabberid,
+            "password": password,
+        }
+
+        options_str = json.dumps(options)
+        command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
+        os.system(command)
 
     def _update_prosodyarchive(self, res):
         channel_id = self.env[res.model].browse(int(res.res_id))
@@ -190,6 +221,8 @@ class MailChannel(models.Model):
             channel_name = channel_alias.split("@")[0]
         sender_jid = re.findall(r'/([a-z]+)', contact.get('sender'))
         partner_id = self.env['res.users'].search([('login', '=', sender_jid[0])], limit=1).mapped('partner_id')
+        if not partner_id:
+            partner_id = self.env['res.users'].search([('login', '=', contact.get('sender').split('/')[-1])], limit=1).mapped('partner_id')
 
         # search channel mail first
         channel_id = self.env[self._name].search([('channel_email', '=', channel_alias)], limit=1)
@@ -231,7 +264,7 @@ class MailChannel(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         res = super().create(vals_list)
-        if res and res.channel_email:
+        if res and res.channel_email and not res.prosody_server:
             self.create_and_configure_muc_room(res)
         return res
 
@@ -249,6 +282,7 @@ class MailChannel(models.Model):
             "room_desc": res.description,
             "room_password": res.prosody_room_password
         }
+        print(os.path.dirname(os.path.abspath(__file__)))
 
         options_str = json.dumps(options)
         command = f"/usr/bin/prosody_muc.py --options {shlex.quote(options_str)}"
@@ -259,18 +293,22 @@ class MailChannel(models.Model):
         dict_data = {}
         kwargs = kwargs[0]
 
-        print("kwargs", kwargs)
+        _logger.info(f"kwargs {kwargs}")
 
         if kwargs.get("jid") and kwargs.get('prosody_server'):
             channel_id = self.env['mail.channel'].sudo().search([("channel_email", "=", kwargs.get("jid"))])
 
             partner_ids = []
             for member in kwargs.get("occupants").split(","):
+                pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+                if not re.match(pattern, member):
+                    member = f"{member}@e-iris.top"
                 partner_ids.append(self.env['res.users'].sudo().search([('login', '=', member)]).partner_id)
 
             channel_vals = {
                 "prosody_room_password": kwargs.get("password", False),
                 "description": kwargs.get("description", False),
+                "prosody_server": kwargs.get('prosody_server')
             }
 
             if not channel_id:
@@ -295,5 +333,7 @@ class MailChannel(models.Model):
                 })
 
                 channel_id.sudo().write(channel_vals)
+
             dict_data.update({'channel_id': channel_id.id})
+        _logger.info(f"dict_data dict_data dict_data {dict_data}")
         return dict_data
