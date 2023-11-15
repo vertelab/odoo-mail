@@ -53,12 +53,18 @@ class MailChannel(models.Model):
     @api.returns('mail.message', lambda value: value.id)
     def message_post(self, *, message_type='notification', **kwargs):
         res = super().message_post(message_type=message_type, **kwargs)
+        
+        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        attachment_ids = self.env['ir.attachment'].browse(kwargs.get('attachment_ids'))
+        attachment_id_url = '\n'.join(
+            f"{base_url}/web/content/{attachment_id.id}/{attachment_id.name}" for attachment_id in attachment_ids
+        )
 
         if ('odoobot' not in res.email_from) and (not kwargs.get("prosody")):
-            self._send_chat(res)
+            self._send_chat(res, attachment_id_url)
         return res
 
-    def _send_chat(self, res):
+    def _send_chat(self, res, attachment_id_url):
         channel_id = self.env[res.model].browse(int(res.res_id))
         jabberid = self.env.user.email
         password = odoo.tools.config.get('admin_passwd', False)
@@ -74,6 +80,9 @@ class MailChannel(models.Model):
             chat_type = 'chat'
 
         message = re.sub('<[^<]+?>', '', res.body)
+        
+        if attachment_id_url:
+            message = f"{message} \n {attachment_id_url}"
 
         options = {
             "receiver_jid": receiver,
