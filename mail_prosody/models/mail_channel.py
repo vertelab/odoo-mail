@@ -141,8 +141,10 @@ class MailChannel(models.Model):
         members = self._cleanup_p2p_contact(contacts)
         partner_ids = []
         for member in members:
-            partner_ids.append(self.env['res.partner'].search([('email', '=', member)]).id)
-        channel_ids = self.env[self._name].search([('channel_partner_ids', 'in', partner_ids)])
+            # res_partner = self.env['res.partner'].search([('email', '=', member)], limit=1)
+            res_user = self.env['res.users'].search([('email', '=', member)], limit=1)
+            partner_ids.append(res_user.partner_id.id)
+        channel_ids = self.env[self._name].search([('channel_partner_ids', 'in', partner_ids)], limit=1)
 
         partner_ids = self.env['res.partner'].browse(partner_ids)
         partner_names = ', '.join(partner.name for partner in partner_ids)
@@ -299,11 +301,10 @@ class MailChannel(models.Model):
 
     @api.model
     def channel_sync(self, *kwargs):
+        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         dict_data = {}
         kwargs = kwargs[0]
-
-        _logger.info(f"kwargs {kwargs}")
-
+        
         if kwargs.get("jid") and kwargs.get('prosody_server'):
             channel_id = self.env['mail.channel'].sudo().search([("channel_email", "=", kwargs.get("jid"))])
 
@@ -311,8 +312,9 @@ class MailChannel(models.Model):
             for member in kwargs.get("occupants").split(","):
                 pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
                 if not re.match(pattern, member):
-                    member = f"{member}@e-iris.top"
-                partner_ids.append(self.env['res.users'].sudo().search([('login', '=', member)]).partner_id)
+                    member = f"{member}@{base_url}"
+                user_id = self.env['res.users'].sudo().search([('login', '=', member)], limit=1)
+                partner_ids.append(user_id.partner_id)
 
             channel_vals = {
                 "prosody_room_password": kwargs.get("password", False),
