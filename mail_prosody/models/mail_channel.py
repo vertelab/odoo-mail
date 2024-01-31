@@ -5,6 +5,8 @@ import xmpp
 import uuid
 import os
 import shlex
+import time
+import threading
 import psycopg2
 import json
 from odoo import http, SUPERUSER_ID
@@ -55,38 +57,84 @@ class MailChannel(models.Model):
         res = super().message_post(message_type=message_type, **kwargs)
 
         if ('odoobot' not in res.email_from) and (not kwargs.get("prosody")):
-            self._send_chat(res)
+            thread_action = threading.Thread(
+                target=self._send_chat,
+                args=res
+            )
+            thread_action.start()
+            # self._send_chat(res)
         return res
 
     def _send_chat(self, res):
-        channel_id = self.env[res.model].browse(int(res.res_id))
-        jabberid = self.env.user.email
-        password = odoo.tools.config.get('admin_passwd', False)
+        time.sleep(3)
+        with self.env.registry.cursor() as cr:
+            try:
+                env = api.Environment(cr, self.env.uid, self.env.context)
 
-        if channel_id.channel_type in ['channel', 'group']:
-            receiver = channel_id.channel_email
-            chat_type = 'groupchat'
-        else:
-            channel_partner_ids = channel_id.mapped('channel_partner_ids') - res.author_id
-            receiver = self.env["res.users"].sudo().search([
-                ("partner_id", "=", channel_partner_ids[0].id)
-            ], limit=1).email
-            chat_type = 'chat'
+                channel_id = env[res.model].browse(int(res.res_id))
+                _logger.info(f"channel_id channel_id {channel_id}")
 
-        message = re.sub('<[^<]+?>', '', res.body)
+                jabberid = env.user.email
+                _logger.info(f"channel_id jabberid {jabberid}")
 
-        options = {
-            "receiver_jid": receiver,
-            "type": chat_type,
-            "message": message,
-            "message_id": f'odoo-{uuid.uuid4()}',
-            "jid": jabberid,
-            "password": password,
-        }
+                password = odoo.tools.config.get('admin_passwd', False)
 
-        options_str = json.dumps(options)
-        command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
-        os.system(command)
+                if channel_id.channel_type in ['channel', 'group']:
+                    receiver = channel_id.channel_email
+                    chat_type = 'groupchat'
+                else:
+                    channel_partner_ids = channel_id.mapped('channel_partner_ids') - res.author_id
+                    receiver = env["res.users"].sudo().search([
+                        ("partner_id", "=", channel_partner_ids[0].id)
+                    ], limit=1).email
+                    chat_type = 'chat'
+
+                message = re.sub('<[^<]+?>', '', res.body)
+
+                options = {
+                    "receiver_jid": receiver,
+                    "type": chat_type,
+                    "message": message,
+                    "message_id": f'odoo-{uuid.uuid4()}',
+                    "jid": jabberid,
+                    "password": password,
+                }
+
+                options_str = json.dumps(options)
+                command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
+                os.system(command)
+
+            except Exception as e:
+                _logger.error(f"{e}")
+
+        # channel_id = self.env[res.model].browse(int(res.res_id))
+        # jabberid = self.env.user.email
+        # password = odoo.tools.config.get('admin_passwd', False)
+        #
+        # if channel_id.channel_type in ['channel', 'group']:
+        #     receiver = channel_id.channel_email
+        #     chat_type = 'groupchat'
+        # else:
+        #     channel_partner_ids = channel_id.mapped('channel_partner_ids') - res.author_id
+        #     receiver = self.env["res.users"].sudo().search([
+        #         ("partner_id", "=", channel_partner_ids[0].id)
+        #     ], limit=1).email
+        #     chat_type = 'chat'
+        #
+        # message = re.sub('<[^<]+?>', '', res.body)
+        #
+        # options = {
+        #     "receiver_jid": receiver,
+        #     "type": chat_type,
+        #     "message": message,
+        #     "message_id": f'odoo-{uuid.uuid4()}',
+        #     "jid": jabberid,
+        #     "password": password,
+        # }
+        #
+        # options_str = json.dumps(options)
+        # command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
+        # os.system(command)
 
     def _update_prosodyarchive(self, res):
         channel_id = self.env[res.model].browse(int(res.res_id))
