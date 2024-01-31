@@ -141,22 +141,32 @@ class MailChannel(models.Model):
         members = self._cleanup_p2p_contact(contacts)
         partner_ids = []
         for member in members:
+            _logger.info(f"member of members {member}")
             # res_partner = self.env['res.partner'].search([('email', '=', member)], limit=1)
             res_user = self.env['res.users'].search([('email', '=', member)], limit=1)
+            _logger.info(f"member of res.user {res_user}")
             partner_ids.append(res_user.partner_id.id)
-        channel_ids = self.env[self._name].search([('channel_partner_ids', 'in', partner_ids)], limit=1)
+            _logger.info(f"member of user of partner {res_user.partner_id}")
+            _logger.info(f"member of user of partner name {res_user.partner_id.name}")
+        channel_ids = self.env[self._name].search([('channel_partner_ids', 'in', partner_ids)])
 
         partner_ids = self.env['res.partner'].browse(partner_ids)
         partner_names = ', '.join(partner.name for partner in partner_ids)
+        _logger.info(f"p2p chat partner_names {partner_names}")
         sorted_partner_names = ', '.join(sorted(partner_names.split(', ')))
+        _logger.info(f"p2p chat sorted_partner_names {sorted_partner_names}")
 
         chat_channel = channel_ids.filtered(
             lambda channel: ', '.join(sorted(channel.name.split(', '))) == sorted_partner_names
         )
+        
+        _logger.info(f"p2p chat_channel {chat_channel}")
 
         if not chat_channel:
             channel_name = ', '.join(partner_id.name for partner_id in partner_ids)
             chat_channel = self._create_channel(channel_name, partner_ids)
+        else:
+            chat_channel = chat_channel[-1]
         return chat_channel
 
     def _create_channel(self, channel_name, partner_ids, channel_type='chat'):
@@ -230,8 +240,13 @@ class MailChannel(models.Model):
         else:
             channel_alias = re.findall(r'[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+', contact.get('sender'))[0]
             channel_name = channel_alias.split("@")[0]
+
         sender_jid = re.findall(r'/([a-z]+)', contact.get('sender'))
-        partner_id = self.env['res.users'].search([('login', '=', sender_jid[0])], limit=1).mapped('partner_id')
+        if not sender_jid:
+            sender_jid = contact.get('sender')
+        else:
+            sender_jid = sender_jid[0]
+        partner_id = self.env['res.users'].search([('login', '=', sender_jid)], limit=1).mapped('partner_id')
         if not partner_id:
             partner_id = self.env['res.users'].search([('login', '=', contact.get('sender').split('/')[-1])], limit=1).mapped('partner_id')
 
