@@ -1,6 +1,8 @@
 import logging
 import odoo
 import re
+import threading
+import time
 import xmpp
 import uuid
 import os
@@ -53,49 +55,57 @@ class MailChannel(models.Model):
     @api.returns('mail.message', lambda value: value.id)
     def message_post(self, *, message_type='notification', **kwargs):
         res = super().message_post(message_type=message_type, **kwargs)
-        
-        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-        attachment_ids = self.env['ir.attachment'].browse(kwargs.get('attachment_ids'))
-        attachment_id_url = '\n'.join(
-            f"{base_url}/web/content/{attachment_id.id}/{attachment_id.name}" for attachment_id in attachment_ids
-        )
 
         if ('odoobot' not in res.email_from) and (not kwargs.get("prosody")):
-            self._send_chat(res, attachment_id_url)
+            thread_action = threading.Thread(
+                target=self._send_chat,
+                args=res
+            )
+            thread_action.start()
+            # self._send_chat(res)
         return res
 
-    def _send_chat(self, res, attachment_id_url):
-        channel_id = self.env[res.model].browse(int(res.res_id))
-        jabberid = self.env.user.email
-        password = odoo.tools.config.get('admin_passwd', False)
+    def _send_chat(self, res):
+        time.sleep(3)
+        with self.env.registry.cursor() as cr:
+            try:
+                env = api.Environment(cr, self.env.uid, self.env.context)
 
-        if channel_id.channel_type in ['channel', 'group']:
-            receiver = channel_id.channel_email
-            chat_type = 'groupchat'
-        else:
-            channel_partner_ids = channel_id.mapped('channel_partner_ids') - res.author_id
-            receiver = self.env["res.users"].sudo().search([
-                ("partner_id", "=", channel_partner_ids[0].id)
-            ], limit=1).email
-            chat_type = 'chat'
+                channel_id = env[res.model].browse(int(res.res_id))
+                _logger.info(f"channel_id channel_id {channel_id}")
 
-        message = re.sub('<[^<]+?>', '', res.body)
-        
-        if attachment_id_url:
-            message = f"{message} \n {attachment_id_url}"
+                jabberid = env.user.email
+                _logger.info(f"channel_id jabberid {jabberid}")
 
-        options = {
-            "receiver_jid": receiver,
-            "type": chat_type,
-            "message": message,
-            "message_id": f'odoo-{uuid.uuid4()}',
-            "jid": jabberid,
-            "password": password,
-        }
+                password = odoo.tools.config.get('admin_passwd', False)
 
-        options_str = json.dumps(options)
-        command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
-        os.system(command)
+                if channel_id.channel_type in ['channel', 'group']:
+                    receiver = channel_id.channel_email
+                    chat_type = 'groupchat'
+                else:
+                    channel_partner_ids = channel_id.mapped('channel_partner_ids') - res.author_id
+                    receiver = env["res.users"].sudo().search([
+                        ("partner_id", "=", channel_partner_ids[0].id)
+                    ], limit=1).email
+                    chat_type = 'chat'
+
+                message = re.sub('<[^<]+?>', '', res.body)
+
+                options = {
+                    "receiver_jid": receiver,
+                    "type": chat_type,
+                    "message": message,
+                    "message_id": f'odoo-{uuid.uuid4()}',
+                    "jid": jabberid,
+                    "password": password,
+                }
+
+                options_str = json.dumps(options)
+                command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
+                os.system(command)
+
+            except Exception as e:
+                _logger.error(f"{e}")
 
     def _update_prosodyarchive(self, res):
         channel_id = self.env[res.model].browse(int(res.res_id))
@@ -141,13 +151,8 @@ class MailChannel(models.Model):
         members = self._cleanup_p2p_contact(contacts)
         partner_ids = []
         for member in members:
-            _logger.info(f"member of members {member}")
-            # res_partner = self.env['res.partner'].search([('email', '=', member)], limit=1)
             res_user = self.env['res.users'].search([('email', '=', member)], limit=1)
-            _logger.info(f"member of res.user {res_user}")
-            partner_ids.append(res_user.partner_id.id)
-            _logger.info(f"member of user of partner {res_user.partner_id}")
-            _logger.info(f"member of user of partner name {res_user.partner_id.name}")
+            partner_ids.append(self.env['res.partner'].search([('email', '=', member)]).id)
         channel_ids = self.env[self._name].search([('channel_partner_ids', 'in', partner_ids)])
 
         partner_ids = self.env['res.partner'].browse(partner_ids)
@@ -316,10 +321,11 @@ class MailChannel(models.Model):
 
     @api.model
     def channel_sync(self, *kwargs):
-        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         dict_data = {}
         kwargs = kwargs[0]
-        
+
+        _logger.info(f"kwargs {kwargs}")
+
         if kwargs.get("jid") and kwargs.get('prosody_server'):
             channel_id = self.env['mail.channel'].sudo().search([("channel_email", "=", kwargs.get("jid"))])
 
@@ -327,9 +333,8 @@ class MailChannel(models.Model):
             for member in kwargs.get("occupants").split(","):
                 pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
                 if not re.match(pattern, member):
-                    member = f"{member}@{base_url}"
-                user_id = self.env['res.users'].sudo().search([('login', '=', member)], limit=1)
-                partner_ids.append(user_id.partner_id)
+                    member = f"{member}@e-iris.top"
+                partner_ids.append(self.env['res.users'].sudo().search([('login', '=', member)]).partner_id)
 
             channel_vals = {
                 "prosody_room_password": kwargs.get("password", False),
