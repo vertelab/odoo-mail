@@ -17,6 +17,7 @@ class MailMessage(models.Model):
 
     @api.model
     def search_read(self, domain=None, fields=None, offset=0, limit=None, order=None):
+        fields = ['id', 'date', 'res_id']
         keys = self.fields_get()
         for i, dom in enumerate(domain):
             field = dom[0]
