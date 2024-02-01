@@ -68,9 +68,10 @@ class MailChannel(models.Model):
 
     def _send_chat(self, res):
         _logger.error(f"inside threading start ========")
-        time.sleep(3)
+        # time.sleep(3)
         _logger.error(f"before registry cursor got env --- {res}")
         with self.env.registry.cursor() as cr:
+            _logger.error(f"got to cursor registry cursor got env")
             try:
                 env = api.Environment(cr, self.env.uid, self.env.context)
                 _logger.error(f"this got env --- {env}")
