@@ -57,8 +57,6 @@ class MailChannel(models.Model):
         res = super().message_post(message_type=message_type, **kwargs)
 
         if ('odoobot' not in res.email_from) and (not kwargs.get("prosody")):
-            _logger.error(f"before threading start")
-            _logger.error(f"before threading start {res.id}")
             thread_action = threading.Thread(
                 target=self._send_chat,
                 args=res
@@ -69,29 +67,19 @@ class MailChannel(models.Model):
 
     def _send_chat(self, res_id):
         time.sleep(3)
-        _logger.error(f"before registry cursor got env")
-        _logger.error(f"{res_id}")
-        
         with api.Environment.manage():
-            _logger.error(f"get dbname --- {self.env.cr.dbname}")
-        
             with registry(self.env.cr.dbname).cursor() as cr:
-                _logger.error(f"got to cursor registry cursor got env")
-        
+
                 try:
-                    _logger.error(f"got to get context {res_id.id}")
                     env = api.Environment(cr, self.env.uid, self.env.context)
         
                     mail_message_id = env['mail.message'].browse(res_id.id)
         
                     channel_id = env[mail_message_id.model].browse(int(mail_message_id.res_id))
-                    _logger.info(f"channel_id channel_id {channel_id}")
-        
+
                     jabberid = env.user.email
-                    _logger.info(f"channel_id jabberid {jabberid}")
-        
+
                     password = odoo.tools.config.get('admin_passwd', False)
-                    _logger.info(f"channel_id jabberid {channel_id.channel_type}")
         #
                     if channel_id.channel_type in ['channel', 'group']:
                         receiver = channel_id.channel_email
@@ -119,7 +107,6 @@ class MailChannel(models.Model):
                     _logger.info(f"options vals {options}")
         #
                     options_str = json.dumps(options)
-                    _logger.info(f"options_str vals {options_str}")
                     command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
                     os.system(command)
         #
