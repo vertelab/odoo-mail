@@ -69,6 +69,8 @@ class MailChannel(models.Model):
     def _send_chat(self, res):
         time.sleep(3)
         _logger.error(f"before registry cursor got env --- {res}")
+        _logger.error(f"before registry cursor got model --- {res.model}")
+        _logger.error(f"before registry cursor got res_id --- {res.res_id}")
 
         with api.Environment.manage():
             _logger.error(f"get dbname --- {self.env.cr.dbname}")
