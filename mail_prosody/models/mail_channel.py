@@ -12,7 +12,7 @@ import json
 from odoo import http, SUPERUSER_ID
 from psycopg2 import sql
 
-from odoo import fields, models, api, _
+from odoo import fields, models, api, _, registry
 from odoo.exceptions import AccessError, UserError
 
 import asyncio
@@ -70,49 +70,54 @@ class MailChannel(models.Model):
         _logger.error(f"inside threading start ========")
         # time.sleep(3)
         _logger.error(f"before registry cursor got env --- {res}")
-        with self.env.registry.cursor() as cr:
-            _logger.error(f"got to cursor registry cursor got env")
-            try:
-                _logger.error(f"got to get uid {self.env.uid}")
-                _logger.error(f"got to get context {self.env.context}")
-                env = api.Environment(cr, self.env.uid, self.env.context)
-                _logger.error(f"this got env --- {env}")
 
-                channel_id = env[res.model].browse(int(res.res_id))
-                _logger.info(f"channel_id channel_id {channel_id}")
+        with api.Environment.manage():
+            _logger.error(f"get dbname --- {self.env.cr.dbname}")
 
-                jabberid = env.user.email
-                _logger.info(f"channel_id jabberid {jabberid}")
+            with registry(self.env.cr.dbname).cursor() as cr:
+                _logger.error(f"got to cursor registry cursor got env")
 
-                password = odoo.tools.config.get('admin_passwd', False)
+                try:
+                    _logger.error(f"got to get uid {self.env.uid}")
+                    _logger.error(f"got to get context {self.env.context}")
+                    env = api.Environment(cr, self.env.uid, self.env.context)
+                    _logger.error(f"this got env --- {env}")
 
-                if channel_id.channel_type in ['channel', 'group']:
-                    receiver = channel_id.channel_email
-                    chat_type = 'groupchat'
-                else:
-                    channel_partner_ids = channel_id.mapped('channel_partner_ids') - res.author_id
-                    receiver = env["res.users"].sudo().search([
-                        ("partner_id", "=", channel_partner_ids[0].id)
-                    ], limit=1).email
-                    chat_type = 'chat'
+                    channel_id = env[res.model].browse(int(res.res_id))
+                    _logger.info(f"channel_id channel_id {channel_id}")
 
-                message = re.sub('<[^<]+?>', '', res.body)
+                    jabberid = env.user.email
+                    _logger.info(f"channel_id jabberid {jabberid}")
 
-                options = {
-                    "receiver_jid": receiver,
-                    "type": chat_type,
-                    "message": message,
-                    "message_id": f'odoo-{uuid.uuid4()}',
-                    "jid": jabberid,
-                    "password": password,
-                }
+                    password = odoo.tools.config.get('admin_passwd', False)
 
-                options_str = json.dumps(options)
-                command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
-                os.system(command)
+                    if channel_id.channel_type in ['channel', 'group']:
+                        receiver = channel_id.channel_email
+                        chat_type = 'groupchat'
+                    else:
+                        channel_partner_ids = channel_id.mapped('channel_partner_ids') - res.author_id
+                        receiver = env["res.users"].sudo().search([
+                            ("partner_id", "=", channel_partner_ids[0].id)
+                        ], limit=1).email
+                        chat_type = 'chat'
 
-            except Exception as e:
-                _logger.error(f"{e}")
+                    message = re.sub('<[^<]+?>', '', res.body)
+
+                    options = {
+                        "receiver_jid": receiver,
+                        "type": chat_type,
+                        "message": message,
+                        "message_id": f'odoo-{uuid.uuid4()}',
+                        "jid": jabberid,
+                        "password": password,
+                    }
+
+                    options_str = json.dumps(options)
+                    command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
+                    os.system(command)
+
+                except Exception as e:
+                    _logger.error(f"{e}")
 
     def _update_prosodyarchive(self, res):
         channel_id = self.env[res.model].browse(int(res.res_id))
