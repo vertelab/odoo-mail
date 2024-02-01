@@ -73,6 +73,8 @@ class MailChannel(models.Model):
         with self.env.registry.cursor() as cr:
             _logger.error(f"got to cursor registry cursor got env")
             try:
+                _logger.error(f"got to get uid {self.env.uid}")
+                _logger.error(f"got to get context {self.env.context}")
                 env = api.Environment(cr, self.env.uid, self.env.context)
                 _logger.error(f"this got env --- {env}")
 
