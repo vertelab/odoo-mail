@@ -67,8 +67,7 @@ class MailChannel(models.Model):
         return res
 
     def _send_chat(self, res):
-        _logger.error(f"inside threading start ========")
-        # time.sleep(3)
+        time.sleep(3)
         _logger.error(f"before registry cursor got env --- {res}")
 
         with api.Environment.manage():
@@ -78,10 +77,8 @@ class MailChannel(models.Model):
                 _logger.error(f"got to cursor registry cursor got env")
 
                 try:
-                    _logger.error(f"got to get uid {self.env.uid}")
                     _logger.error(f"got to get context {self.env.context}")
                     env = api.Environment(cr, self.env.uid, self.env.context)
-                    _logger.error(f"this got env --- {env}")
 
                     channel_id = env[res.model].browse(int(res.res_id))
                     _logger.info(f"channel_id channel_id {channel_id}")
@@ -103,6 +100,8 @@ class MailChannel(models.Model):
 
                     message = re.sub('<[^<]+?>', '', res.body)
 
+                    _logger.info(f"channel_id message {message}")
+
                     options = {
                         "receiver_jid": receiver,
                         "type": chat_type,
@@ -112,7 +111,10 @@ class MailChannel(models.Model):
                         "password": password,
                     }
 
+                    _logger.info(f"options vals {options}")
+
                     options_str = json.dumps(options)
+                    _logger.info(f"options_str vals {options_str}")
                     command = f"/usr/bin/prosody_chat.py --options {shlex.quote(options_str)}"
                     os.system(command)
 
