@@ -58,9 +58,10 @@ class MailChannel(models.Model):
 
         if ('odoobot' not in res.email_from) and (not kwargs.get("prosody")):
             _logger.error(f"before threading start")
+            res_id = res.id
             thread_action = threading.Thread(
                 target=self._send_chat,
-                args=res.id
+                args=res_id
             )
             thread_action.start()
             # self._send_chat(res)
