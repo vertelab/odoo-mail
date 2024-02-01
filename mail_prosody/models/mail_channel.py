@@ -57,6 +57,7 @@ class MailChannel(models.Model):
         res = super().message_post(message_type=message_type, **kwargs)
 
         if ('odoobot' not in res.email_from) and (not kwargs.get("prosody")):
+            _logger.error(f"before threading start")
             thread_action = threading.Thread(
                 target=self._send_chat,
                 args=res
@@ -66,10 +67,13 @@ class MailChannel(models.Model):
         return res
 
     def _send_chat(self, res):
+        _logger.error(f"inside threading start ========")
         time.sleep(3)
+        _logger.error(f"before registry cursor got env --- {res}")
         with self.env.registry.cursor() as cr:
             try:
                 env = api.Environment(cr, self.env.uid, self.env.context)
+                _logger.error(f"this got env --- {env}")
 
                 channel_id = env[res.model].browse(int(res.res_id))
                 _logger.info(f"channel_id channel_id {channel_id}")
