@@ -1,0 +1,14 @@
+<odoo>
+  <data>
+    <record id="view_add_no_replay_checkbox" model="ir.ui.view">
+      <field name="name">mail.alias.form</field>
+      <field name="model">mail.alias</field>
+      <field name="inherit_id" ref="mail.view_mail_alias_form"/>
+      <field name="arch" type="xml">
+        <field name="alias_bounced_content" position="after">
+          <field name="no_message_on_replay" type="boolean"/>
+        </field>
+      </field>
+    </record>
+  </data>
+</odoo>
