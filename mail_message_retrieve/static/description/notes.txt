@@ -1,4 +1,4 @@
-odoo-mail / mail_message_archive
+odoo-mail / mail_message_retrieve
 2024-08-13
 
 Be aware of these!
