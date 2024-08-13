@@ -13,10 +13,10 @@ class MailThread(models.AbstractModel):
         res = super(MailThread,self)._get_creation_message()
         #return _('%s created') % doc_name
 
-        _logger.warning(f"{request.httprequest.headers=}")
-        _logger.warning(f"{os.environ=}")
-        _logger.warning(f"{[r for r in request.httprequest.headers if 'X-Real-Ip' in r]}")
-        _logger.warning(f"{[r for r in request.httprequest.headers if 'User-Agent' in r]}")
+        #_logger.warning(f"{request.httprequest.headers=}")
+        #_logger.warning(f"{os.environ=}")
+        #_logger.warning(f"{[r for r in request.httprequest.headers if 'X-Real-Ip' in r]}")
+        #_logger.warning(f"{[r for r in request.httprequest.headers if 'User-Agent' in r]}")
         # ~ _logger.warning(f"{[r for r in request.httprequest.headers.items()]}")
         return _('%s \n%s') % (res,[r for r in request.httprequest.headers if 'X-Real-Ip' in r])
 
@@ -25,9 +25,9 @@ class MailThread(models.AbstractModel):
         res = super(MailThread,self)._creation_message()
         #return _('%s created') % doc_name
 
-        _logger.warning(f"{request.httprequest.headers=}")
-        _logger.warning(f"{os.environ=}")
-        _logger.warning(f"{[r for r in request.httprequest.headers if 'X-Real-Ip' in r]}")
-        _logger.warning(f"{[r for r in request.httprequest.headers if 'User-Agent' in r]}")
+        #_logger.warning(f"{request.httprequest.headers=}")
+        #_logger.warning(f"{os.environ=}")
+        #_logger.warning(f"{[r for r in request.httprequest.headers if 'X-Real-Ip' in r]}")
+        #_logger.warning(f"{[r for r in request.httprequest.headers if 'User-Agent' in r]}")
         # ~ _logger.warning(f"{[r for r in request.httprequest.headers.items()]}")
         return _('%s \n%s') % (res,[r for r in request.httprequest.headers if 'X-Real-Ip' in r])
