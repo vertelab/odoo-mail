@@ -9,7 +9,7 @@ class MailThread(models.AbstractModel):
     
     _inherit = "mail.thread"
 
-    def _get_creation_message(self)
+    def _get_creation_message(self):
         res = super(MailThread,self)._get_creation_message()
         #return _('%s created') % doc_name
 
