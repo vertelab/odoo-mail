@@ -20,7 +20,7 @@
 ##############################################################################
 # __manifest__.py
 {
-    'name': 'Channel Auto Subscription by Company',
+    'name': 'Mail: Channel Auto Subscription by Company',
     'version': '1.0',
     'category': 'Discuss',
     'summary': 'Auto subscribe users to channels based on company',
