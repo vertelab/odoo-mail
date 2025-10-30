@@ -23,6 +23,7 @@
     'name': 'Mail: Channel Auto Subscription by Company',
     'version': '1.0',
     'category': 'Discuss',
+    'license': 'AGPL-3',
     'summary': 'Auto subscribe users to channels based on company',
     'depends': ['mail'],
     'data': [
