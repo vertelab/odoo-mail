@@ -23,7 +23,8 @@ from odoo import models, fields, api, _
 from datetime import timedelta
 #from random import choice
 #from odoo.tools.safe_eval import safe_eval
-from odoo.exceptions import Warning
+# ~ from odoo.exceptions import Warning
+from odoo.exceptions import UserError
 
 import time
 import datetime
@@ -31,7 +32,7 @@ import dateutil
 import pytz
 
 import logging
-_logger = logging.getLogger(__name__)
+# ~ _logger = logging.getLogger(__name__)
 
 
 class MessageArchive(models.Model):

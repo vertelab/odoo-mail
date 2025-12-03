@@ -35,7 +35,7 @@
     'contributor': '',
     'maintainer': 'Vertel AB',
     'repository': 'https://github.com/vertelab/odoo-mail',
-    'depends': ['base', 'hr', 'mail'],
+    'depends': ['mail', 'base', 'hr' ],
     'data': [
 	    'views/channel_view.xml',
     ],
