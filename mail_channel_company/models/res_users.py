@@ -15,12 +15,12 @@ class ResUsers(models.Model):
         return res
 
     def _update_user_channels(self):
-        channels = self.env['mail.channel'].search([('auto_subscribe_company_id', 'in', self.company_ids.ids)])
+        channels = self.env['discuss.channel'].search([('auto_subscribe_company_id', 'in', self.company_ids.ids)])
         for channel in channels:
             if self.partner_id not in channel.channel_partner_ids:
                 channel.channel_partner_ids |= self.partner_id
         # Also remove user from channels where company no longer matches
-        remove_channels = self.env['mail.channel'].search([
+        remove_channels = self.env['discuss.channel'].search([
             ('auto_subscribe_company_id', '!=', False),
             ('id', 'not in', channels.ids)
         ])
