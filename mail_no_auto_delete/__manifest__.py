@@ -31,7 +31,7 @@
     """,
     #'sequence': '1',
     'author': 'Vertel AB',
-    'website': 'https://vertel.se/apps/odoo-mail/mail_message_archive',
+    'website': 'https://vertel.se/apps/odoo-mail/mail_no_auto_delete',
     'images': ['static/description/banner.png'], # 560x280 px.
     'license': 'AGPL-3',
     'contributor': '',

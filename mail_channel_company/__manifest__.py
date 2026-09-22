@@ -20,6 +20,7 @@
 ##############################################################################
 # __manifest__.py
 {
+    'website': 'https://vertel.se/apps/odoo-mail/mail_channel_company',
     'name': 'Mail: Channel Auto Subscription by Company',
     'version': '1.0',
     'category': 'Discuss',
