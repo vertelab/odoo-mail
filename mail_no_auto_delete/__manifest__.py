@@ -21,14 +21,21 @@
 
 {
     'name': 'Mail: No Auto Delete',
-    'version': '1.0',
+    'version': '18.0.1.0.0',
     # Version ledger: 14.0 = Odoo version. 1 = Major. Non regressionable code. 2 = Minor. New features that are regressionable. 3 = Bug fixes
-    'summary': 'Makes it so that no mail is deleted, ignoring the Auto Delete field',
+    'summary': 'Makes it so that no mail is deleted, ignoring the Auto Delete field.',
     'category': 'Administration',
-    'description': """
-        Makes it so that no mail is deleted, ignoring the Auto Delete field.
-        This is accomplished by forcefully setting the Auto Delete field to 'false' on all newly created mail.mail, as well as ending all writes of mail.mail by setting the auto_delete to false.
-    """,
+    'description': '''
+No Auto Delete
+==============
+
+    Makes it so that no mail is deleted, ignoring the Auto Delete field.
+            This is accomplished by forcefully setting the Auto Delete field to 'false' on all newly created mail.mail, as well as ending all writes of mail.mail by setting the auto_delete to false.
+
+    Features:
+
+        - Extends Odoo: Builds on mail.mail.
+    ''',
     #'sequence': '1',
     'author': 'Vertel AB',
     'website': 'https://vertel.se/apps/odoo-mail/mail_no_auto_delete',

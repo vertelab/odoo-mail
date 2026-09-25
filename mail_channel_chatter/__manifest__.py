@@ -21,12 +21,20 @@
 
 {
     'name': 'Mail: Channel Chatter',
-    'version': '0.1',
+    'version': '18.0.1.0.0',
     # Version ledger: XX.0 = Odoo version. 1 = Major. Non regressionable code. 2 = Minor. New features that are regressionable. 3 = Bug fixes
-    'summary': 'Add chat to chat',
+    'summary': 'Add chat to chat.',
     'category': 'Government',
-    'description': """
-    """,
+    'description': '''
+Channel Chatter
+===============
+
+    Add chat to chat.
+
+    Features:
+
+        - Focused Fix: A small, targeted improvement to standard Odoo behaviour.
+    ''',
     #'sequence': '1'
     'author': 'Vertel AB',
     'website': 'https://vertel.se/apps/odoo-mail/mail_channel_chatter',

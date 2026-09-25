@@ -22,11 +22,18 @@
 {
     'name': 'Project: Mail Include Latest Message',
     'version': '18.0.1.0.3',
-    'summary': 'Mail Include Latest Message',
+    'summary': 'Mail Include Latest Message.',
     'category': 'Project',
-    'description': """
-        Mail Include Latest Message
-    """,
+    'description': '''
+Mail Include Latest Message
+===========================
+
+    Mail Include Latest Message.
+
+    Features:
+
+        - Focused Fix: A small, targeted improvement to standard Odoo behaviour.
+    ''',
     'author': 'Vertel AB',
     'website': 'https://vertel.se/apps/odoo-mail/mail_include_latest_message',
     'images': ['static/description/banner.png'], # 560x280 px.

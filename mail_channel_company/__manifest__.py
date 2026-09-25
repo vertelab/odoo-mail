@@ -22,10 +22,21 @@
 {
     'website': 'https://vertel.se/apps/odoo-mail/mail_channel_company',
     'name': 'Mail: Channel Auto Subscription by Company',
-    'version': '1.0',
+    'version': '18.0.1.0.0',
     'category': 'Discuss',
     'license': 'AGPL-3',
-    'summary': 'Auto subscribe users to channels based on company',
+    'summary': 'Auto subscribe users to channels based on company.',
+    'description': '''
+Channel Auto Subscription by Company
+====================================
+
+    Auto subscribe users to channels based on company.
+
+    Features:
+
+        - UI Integration: Extends 1 view(s) in the Odoo interface.
+        - Extends Odoo: Builds on discuss.channel.
+    ''',
     'depends': ['mail'],
     'data': [
         'views/mail_channel_views.xml',
