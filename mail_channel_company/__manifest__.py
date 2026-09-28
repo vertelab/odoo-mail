@@ -44,5 +44,3 @@ Channel Auto Subscription by Company
     'installable': True,
     'application': False,
 }
-
-# vim:expandtab:smartindent:tabstop=4s:softtabstop=4:shiftwidth=4:
