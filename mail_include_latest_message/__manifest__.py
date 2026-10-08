@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Odoo SA, Open Source Management Solution, third party addon
-#    Copyright (C) 2022- Vertel AB (<https://vertel.se>).
+#    Copyright (C) 2022- Vertel Sverige AB (<https://vertel.se>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -22,24 +22,17 @@
 {
     'name': 'Project: Mail Include Latest Message',
     'version': '18.0.1.0.3',
-    'summary': 'Mail Include Latest Message.',
+    'summary': 'Mail Include Latest Message',
     'category': 'Project',
-    'description': '''
-Mail Include Latest Message
-===========================
-
-    Mail Include Latest Message.
-
-    Features:
-
-        - Focused Fix: A small, targeted improvement to standard Odoo behaviour.
-    ''',
-    'author': 'Vertel AB',
+    'description': """
+        Mail Include Latest Message
+    """,
+    'author': 'Vertel Sverige AB',
     'website': 'https://vertel.se/apps/odoo-mail/mail_include_latest_message',
     'images': ['static/description/banner.png'], # 560x280 px.
     'license': 'AGPL-3',
-    'contributor': 'Vertel AB,',
-    'maintainer': 'Vertel AB',
+    'contributor': 'Vertel Sverige AB,',
+    'maintainer': 'Vertel Sverige AB',
     'repository': 'https://github.com/vertelab/odoo-mail',
     'depends': [
         'mail',
@@ -55,3 +48,4 @@ Mail Include Latest Message
     'application': False,
     'installable': True,
 }
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

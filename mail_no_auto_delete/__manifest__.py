@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Odoo SA, Open Source Management Solution, third party addon
-#    Copyright (C) 2022- Vertel AB (<https://vertel.se>).
+#    Copyright (C) 2022- Vertel Sverige AB (<https://vertel.se>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -21,28 +21,21 @@
 
 {
     'name': 'Mail: No Auto Delete',
-    'version': '18.0.1.0.0',
+    'version': '1.0',
     # Version ledger: 14.0 = Odoo version. 1 = Major. Non regressionable code. 2 = Minor. New features that are regressionable. 3 = Bug fixes
-    'summary': 'Makes it so that no mail is deleted, ignoring the Auto Delete field.',
+    'summary': 'Makes it so that no mail is deleted, ignoring the Auto Delete field',
     'category': 'Administration',
-    'description': '''
-No Auto Delete
-==============
-
-    Makes it so that no mail is deleted, ignoring the Auto Delete field.
-            This is accomplished by forcefully setting the Auto Delete field to 'false' on all newly created mail.mail, as well as ending all writes of mail.mail by setting the auto_delete to false.
-
-    Features:
-
-        - Extends Odoo: Builds on mail.mail.
-    ''',
+    'description': """
+        Makes it so that no mail is deleted, ignoring the Auto Delete field.
+        This is accomplished by forcefully setting the Auto Delete field to 'false' on all newly created mail.mail, as well as ending all writes of mail.mail by setting the auto_delete to false.
+    """,
     #'sequence': '1',
-    'author': 'Vertel AB',
-    'website': 'https://vertel.se/apps/odoo-mail/mail_no_auto_delete',
+    'author': 'Vertel Sverige AB',
+    'website': 'https://vertel.se/apps/odoo-mail/mail_message_archive',
     'images': ['static/description/banner.png'], # 560x280 px.
     'license': 'AGPL-3',
     'contributor': '',
-    'maintainer': 'Vertel AB',
+    'maintainer': 'Vertel Sverige AB',
     'repository': 'https://github.com/vertelab/odoo-mail',
     'depends': ['mail'],
     'data': [
@@ -51,3 +44,4 @@ No Auto Delete
     ],
     'auto_install': False,
 }
+# vim:expandtab:smartindent:tabstop=4s:softtabstop=4:shiftwidth=4:
